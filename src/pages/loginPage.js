@@ -1,3 +1,8 @@
+import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
+import PostData from './postData'
+import styled from 'styled-components';
+
 class loginPage extends Component {
     constructor(props) {
         super(props);
