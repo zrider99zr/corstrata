@@ -1,8 +1,12 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
-//import PostData from './postData'
-import styled from 'styled-components';
-import '../styleForm'
+import 'font-awesome/css/font-awesome.min.css'
+import { Link, Redirect, Route } from 'react-router-dom'
+//import { PostData } from './postData'
+
+import {
+    Container, InputBox, HelpmMessage, LoginForm, SubButton, InputGroup,
+    AuthPage, WelcomeParagraph, InputField, StackedInputs, SubmitButton
+} from '../styleForm';
 
 class loginPage extends Component {
     constructor(props) {
