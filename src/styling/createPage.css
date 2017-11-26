@@ -1,0 +1,45 @@
+.container{
+  display:grid;
+  grid-template:"topleft topmiddle"
+                
+}
+
+.logo{
+  margin-bottom:1em;
+}
+
+.b{
+  grid-area:leftbar;
+  width: 150px;
+  display: inline-block;
+  height: 50px;
+  margin-top:1em;
+  position: relative;
+  padding:5px;
+}
+.lab{
+  font-size:150%;
+}
+.leftside{
+  grid-area: leftbar;
+  height:100%;
+  background-size:cover;
+  background-color:#eb7c32;
+  border-radius: 5px;
+  float:left;
+}
+div.buttonArea{
+  margin-top: 30vh;
+  margin-left: 70vh;
+}
+.createClient{
+display:block;
+padding: 2px;
+width: 120px;
+}
+
+.buttonpatient{
+ grid-area:bottomright;
+ padding: 2px;
+ width: 120px;
+}
