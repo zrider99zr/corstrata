@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import 'font-awesome/css/font-awesome.min.css'
-import { Link, Redirect, Route } from 'react-router-dom'
+import { Link, Route } from 'react-router-dom'
 //import { PostData } from './postData'
 
 import {
@@ -40,8 +40,8 @@ class loginPage extends Component {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                email: userData.email,
-                passwo: userData.password,
+                email: this.state.email,
+                passwo: this.state.password,
             })
         })
             .then((response) => response.json())
