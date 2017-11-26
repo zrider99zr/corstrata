@@ -33,13 +33,14 @@ class loginPage extends Component {
             let responseJSON = results;
             console.log(responseJSON);
         });*/
-        fetch('.../api/requests/login.php', {
+        fetch('api/index.php', {
             method: 'POST',
             headers: {
                 'Accept': 'application/.json',
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
+                request: "login",
                 email: this.state.email,
                 passwo: this.state.password,
             })
