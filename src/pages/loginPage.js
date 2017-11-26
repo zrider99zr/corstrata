@@ -24,10 +24,10 @@ class loginPage extends Component {
 
     checkInput(e) {
         //loggin in and passing it state, will need to trim or extend the method to show more/less state variables
-        PostData("login", this.state).then((results) => {
+        /*PostData("login", this.state).then((results) => {
             let responseJSON = results;
             console.log(responseJSON);
-        });
+        });*/
     }
 
     render() {
