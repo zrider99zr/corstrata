@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import 'font-awesome/css/font-awesome.min.css'
 import { Link, Redirect, Route } from 'react-router-dom'
-import { PostData } from './postData'
+//import { PostData } from './postData'
 
 import {
     Container, InputBox, HelpmMessage, LoginForm, SubButton, InputGroup,
@@ -29,10 +29,29 @@ class loginPage extends Component {
 
     checkInput(e) {
         //loggin in and passing it state, will need to trim or extend the method to show more/less state variables
-        PostData("login", this.state).then((results) => {
+        /*PostData("login", this.state).then((results) => {
             let responseJSON = results;
             console.log(responseJSON);
-        });
+        });*/
+        fetch('165.227.191.245', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/.json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                email: userData.email,
+                passwo: userData.password,
+            })
+        })
+            .then((response) => response.json())
+            .then((res) => {
+                alert(res.message);
+            })
+            .catch((error) => {
+                alert(error.message);
+            })
+            .done();
     }
 
     render() {
