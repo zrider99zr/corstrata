@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 //import PostData from './postData'
-import styled from '../styleForm';
+import styled from 'styled-components';
+import '../styleForm'
 
 class loginPage extends Component {
     constructor(props) {
