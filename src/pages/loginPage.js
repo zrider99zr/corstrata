@@ -33,7 +33,7 @@ class loginPage extends Component {
             let responseJSON = results;
             console.log(responseJSON);
         });*/
-        fetch('165.227.191.245', {
+        fetch('.../api/requests/login.php', {
             method: 'POST',
             headers: {
                 'Accept': 'application/.json',
