@@ -33,7 +33,7 @@ class loginPage extends Component {
             let responseJSON = results;
             console.log(responseJSON);
         });*/
-        fetch('corstrata/api/index.php', {
+        fetch('api/index.php', {
             method: 'POST',
             headers: {
                 'Accept': 'application/.json',
