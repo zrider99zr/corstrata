@@ -52,7 +52,7 @@ class createAccount extends Component {
 
     submitForm() {
         console.log(this.state);
-        fetch('h/ttp://165.227.191.245/corstrata/api/index.php', {
+        fetch('http://165.227.191.245/corstrata/api/index.php', {
             method: 'POST',
             headers: {
                 'Accept': 'application/.json',
