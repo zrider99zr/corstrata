@@ -16,6 +16,7 @@ class loginPage extends Component {
             error: props.error,
             info: props.info,
             password: "",
+            request:"login"
         };
     }
 
@@ -41,7 +42,7 @@ class loginPage extends Component {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                request: abc,
+                request: this.state.request,
                 email: this.state.email,
                 password: this.state.password,
             })
