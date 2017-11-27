@@ -1,16 +1,17 @@
 <?php
 
 //Function that returns the userID of a user if the email and password are correct
-/*
 function login($email, $password){
+   $qry = $db->prepare("SELECT accountID, salt, hash FROM account WHERE emailAddress = ?");
    
-   if(isset($result[0]['userID'])){
-       return $result[0]['userID'];
-   }
-   else{
-       return -1;
-   }
-   
+   $qry->bind_param("s",$email);
+   $qry->execute();
+   $qry->bind_result($userID,$dbSalt,$dbHash);
+   $qry->store_result();
+
+   $qry->fetch();
+   return $userID;
+   /*
    $options = [
        'cost' => 11,
        'salt' => $dbsalt,
@@ -23,9 +24,8 @@ function login($email, $password){
    else {
      return -1;
    } 
-   
+   */
 }
-*/
 
 //USAGE
 //Send a json with request field login and fields shown below filled
@@ -34,32 +34,21 @@ $email = $decoded['email'];
 $password = $decoded['password'];
 
 if(isset($email) && isset($password)){
-    if($qry = $db->prepare("SELECT userID FROM account WHERE emailAddress = ?")){
-        $qry->bind_param("s",$email);
-        $qry->execute();
-        $result = $qry->get_result();
-    
-        $userID = isset($result[0]['userID']) ? $result[0]['userID'] : -1;
-    
-        if($userID != -1){
-            $array = array();
-            $array['message'] = "Login was successful";
-            $array['status'] = 1;
-            //$_SESSION['uid'] = $userID;
-            echo json_encode($array);
-        }
-        else{
-            $array = array();
-            $array['message'] = "Invalid Username/Pasword";
-            $array['status'] = 0;
-            echo json_encode($array);
-        }
+    $userID = login($email,$password);
+    if($userID != -1){
+        $array = array();
+        $array['message'] = "Login was successful";
+        $array['status'] = 1;
+        //$_SESSION['uid'] = $userID;
+        echo json_encode($array);
     }
     else{
         $array = array();
-        $array['message'] = "query prepare uncsuccessful:(" . $db->errno . ") " . $db->error;
+        $array['message'] = "Invalid Username/Pasword";
         $array['status'] = 0;
         echo json_encode($array);
     }
+    
+    
 }    
 
