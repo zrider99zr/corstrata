@@ -37,15 +37,15 @@ class createAccount extends Component {
     checkStatus(e) {
         if (e.target.checked == true) {
             if (e.target.name == "client") {
-                this.setState({ isClient: true });
+                this.setState({ isClient: 1 });
             } else if (e.target.name == "admin") {
-                this.setState({ isAdmin: true });
+                this.setState({ isAdmin: 1 });
             }
         } else{
             if (e.target.name == "client") {
-                this.setState({ isClient: false });
+                this.setState({ isClient: 0 });
             } else if (e.target.name == "admin") {
-                this.setState({ isAdmin: false });
+                this.setState({ isAdmin: 0 });
             }
         }
     }
