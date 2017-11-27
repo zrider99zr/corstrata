@@ -1,4 +1,5 @@
 <?php
+header('Access-Control-Allow-Headers: *');
 header('Access-Control-Allow-Origin: *');
 
 require_once(__DIR__ . '/config/global.php');
