@@ -7,7 +7,7 @@ require_once('base.php');
 $email = $decoded['email'];
 $password = $decoded['password'];
 if(isset($email) && isset($password)){
-    /*
+    
     if($session->login($email,$password) == 1){
         $array = array();
         $array['message'] = "Login was successful";
@@ -20,10 +20,7 @@ if(isset($email) && isset($password)){
         $array['status'] = 0;
         echo json_encode($array);
     }
-    */
-    $array = array();
-    $array['message'] = "Login was successful";
-    $array['status'] = 1;
-    echo json_encode($array);
+    
+    
 }    
 

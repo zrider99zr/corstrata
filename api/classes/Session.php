@@ -9,7 +9,7 @@ class Session {
 
   public function __construct($dbc){
     $this->mysqli = $dbc;
-    /*
+    
     //Determines if the user has a session id set
     $this->sid = isset($_SESSION['sid']) ? $_SESSION['sid'] : null;
     
@@ -17,7 +17,7 @@ class Session {
       //Sets the current loggedIn status and validates any session in the browser
       $this->validate($this->sid, time());
     }
-    */
+    
     
   }
 
