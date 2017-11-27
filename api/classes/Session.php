@@ -11,10 +11,12 @@ class Session {
 
         //Determines if the user has a session id set
     $this->sid = isset($_SESSION['sid']) ? $_SESSION['sid'] : null;
+    /*
     if ($this->sid != null) {
       //Sets the current loggedIn status and validates any session in the browser
       $this->validate($this->sid, time());
     }
+    */
   }
 
   public function __destruct() {
