@@ -25,7 +25,7 @@ else{
         
         if(isset($request)){
             $array = array();
-            $array['message'] = "The request type was " + $request; 
+            $array['message'] = "The request type was ";
             echo json_encode($array);
         }
         else{
