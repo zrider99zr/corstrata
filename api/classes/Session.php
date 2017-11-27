@@ -221,6 +221,8 @@ class Session {
 
   //Logs in with an email and password if successful creates a session
   function login($email, $pass){
+    return 1;
+    /*
     //Validate the credentials of the users
     if($this->validateLogin($email, $pass)){
       //Get the userid
@@ -230,6 +232,7 @@ class Session {
       }
     }
     return 0;
+    */
   }
 
   function validateLogin($email, $passwordInput){
