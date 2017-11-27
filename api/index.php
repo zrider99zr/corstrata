@@ -6,7 +6,7 @@ function __autoload($className){
 }
 
 $db = Database::getConnection();
-$session = new Session($db);
+
 
 $VALID_REQUESTS = array('login','logout', 'register');
 

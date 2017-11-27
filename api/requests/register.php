@@ -2,7 +2,6 @@
 
 //USAGE
 //Send a json with request field register and fields shown below filled
-
 function registerAccount($email, $firstName, $lastName, $password, $isClient, $isAdmin, $institutionID, $db){
     //TODO sanitize inputs; ensure email is an email, ensure password doesn't have weird characters\
     //TODO solve institution picking problem (see TODO 2.2.1.3)
