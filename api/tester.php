@@ -25,7 +25,7 @@ else{
         $email = $decoded['email'];
         if(isset($request)){
             $array = array();
-            $message = "login " + $request;
+            $message = "login " . $request;
             $array['message'] = $message;
             echo json_encode($array);
         }
