@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+0<?php
+require_once('base.php');
+=======
 <?php
 
 //Function that returns the userID of a user if the email and password are correct
@@ -37,6 +41,7 @@ function login($email, $password, $db){
         return -1;
     }
 }
+>>>>>>> 658e76efbdefd5e3c02f795aaf13626bc44db8f6
 
 //USAGE
 //Send a json with request field login and fields shown below filled
