@@ -3,12 +3,15 @@
 //Function that returns the userID of a user if the email and password are correct
 function login($email, $password){
    $qry = $db->prepare("SELECT userID, salt, hash FROM account WHERE emailAddress = ?");
+   
    $qry->bind_param("s",$email);
    $qry->execute();
    $qry->bind_result($userID,$dbSalt,$dbHash);
    $qry->store_result();
 
    $qry->fetch();
+   return $userID;
+   /*
    $options = [
        'cost' => 11,
        'salt' => $dbsalt,
@@ -21,6 +24,7 @@ function login($email, $password){
    else {
      return -1;
    } 
+   */
 }
 
 //USAGE
@@ -30,7 +34,7 @@ $email = $decoded['email'];
 $password = $decoded['password'];
 
 if(isset($email) && isset($password)){
-    $userID = 1;
+    $userID = login($email,$password);
     if($userID != -1){
         $array = array();
         $array['message'] = "Login was successful";
