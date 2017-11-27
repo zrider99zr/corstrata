@@ -13,7 +13,7 @@ $db = Database::getConnection();
 
 $VALID_REQUESTS = array('login','logout', 'register');
 
-$contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
+$contentType = isset($_SERVER["Content-Type"]) ? trim($_SERVER["Content-Type"]) : '';
 if(strcasecmp($contentType, 'application/json') != 0){
     echo json_encode(array(
         'message' => 'Content type must be: application/json'
