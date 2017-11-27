@@ -31,7 +31,7 @@ else{
       $request = $decoded['request'];
       if(isset($request)){
         $access = true;
-        require_once(__DIR__ . '/requests/' . $request . '.php');
+        require_once(__DIR__ . '/requests/login.php');
       }
       else{
         echo json_encode(array(
