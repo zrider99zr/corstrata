@@ -6,11 +6,13 @@ function login($email, $password){
    
    $qry->bind_param("s",$email);
    $qry->execute();
-   $qry->bind_result($userID);
-   $qry->store_result();
-
-   $qry->fetch();
-   return $userID;
+   $result = $qry->get_result();
+   if(isset($result[0]['userID'])){
+       return $result[0]['userID'];
+   }
+   else{
+       return -1;
+   }
    /*
    $options = [
        'cost' => 11,
