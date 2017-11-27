@@ -24,17 +24,10 @@ else{
         $request = $decoded['request'];
         
         if(isset($request)){
-            if(strcmp($request,"login")){
-                $array = array();
-                $array['message'] = "login";
-                echo json_encode($array);
-            }
-            else{
-                $array = array();
-                $array['message'] = "Not Login";
-                echo json_encode($array);
-            }
-            
+            $array = array();
+            $message = "login " + $request;
+            $array['message'] = $message;
+            echo json_encode($array);
         }
         else{
             echo json_encode(array(
