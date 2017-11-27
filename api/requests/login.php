@@ -7,14 +7,19 @@ function login($email, $password, $db){
         $qry->execute();
         $qry->bind_result($userID,$dbSalt,$dbHash);
         $qry->store_result();
-     
         $qry->fetch();
 
+        $isset = isset($userID) && isset($dbSalt) && isset($dbHash);
+
+        if(!$isset){
+            return -1;
+        }
         
         $options = [
             'cost' => 11,
-            'salt' => $dbsalt,
+            'salt' => $dbSalt,
         ];
+        
         $hash = password_hash($password, PASSWORD_BCRYPT, $options);
         $qry->close();
         if($hash == $dbHash){
