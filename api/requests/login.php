@@ -13,7 +13,7 @@ function login($email, $pass){
        'cost' => 11,
        'salt' => $dbsalt,
    ];
-   $hash = password_hash($passwordInput, PASSWORD_BCRYPT, $options);
+   $hash = password_hash($pass, PASSWORD_BCRYPT, $options);
    $qry->close();
    if($hash == $dbHash){
      return $userID; //hashes match, passwords match
@@ -35,7 +35,7 @@ if(isset($email) && isset($password)){
         $array = array();
         $array['message'] = "Login was successful";
         $array['status'] = 1;
-        $_SESSION['uid'] = $userID;
+        //$_SESSION['uid'] = $userID;
         echo json_encode($array);
     }
     else{
