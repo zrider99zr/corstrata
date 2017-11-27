@@ -33,7 +33,7 @@ class loginPage extends Component {
             let responseJSON = results;
             console.log(responseJSON);
         });*/
-        fetch('http://165.227.191.245/corstrata/api/index.php', {
+        fetch('http://165.227.191.245/corstrata/api/tester.php', {
             method: 'POST',
             headers: {
                 'Accept': 'application/.json',
@@ -42,7 +42,7 @@ class loginPage extends Component {
             body: JSON.stringify({
                 request: "login",
                 email: this.state.email,
-                passwo: this.state.password,
+                password: this.state.password,
             })
         })
             .then((response) => response.json())

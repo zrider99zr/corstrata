@@ -23,6 +23,8 @@ if(!is_array($decoded)){
 
 $request = $decoded['request'];
 
-echo $request;
+echo json_encode(array(
+    'message' => 'The request type was ' + $request
+));
 
 ?>

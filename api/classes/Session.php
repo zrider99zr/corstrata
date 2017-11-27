@@ -176,10 +176,10 @@ class Session {
         $saltedPassword = $newSalt.$newPassword;
         $hash = hash('scrypt',$saltedPassword);
         $uid = getUID($this->sid);
-        $qry2 = $this->mysqli->prepare("UPDATE account SET hash = ?, salt = ? WHERE accountID = ?")
-        $qry2->bind_param("ssi",$hash,$saltedPassword,$uid);
-        $qry2->execute();
-        $qry2->close();
+        $qry = $this->mysqli->prepare("UPDATE account SET hash = ?, salt = ? WHERE accountID = ?")
+        $qry->bind_param("ssi",$hash,$saltedPassword,$uid);
+        $qry->execute();
+        $qry->close();
         return true;
       }
       else{
