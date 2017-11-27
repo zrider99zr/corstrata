@@ -40,9 +40,9 @@ class loginPage extends Component {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                request: "login",
+                request: 'login',
                 email: this.state.email,
-                passwo: this.state.password,
+                password: this.state.password,
             })
         })
             .then((response) => response.json())

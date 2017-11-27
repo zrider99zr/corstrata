@@ -2,19 +2,23 @@
 require_once __DIR__ . '/../config/global.php';
 
 class Session {
+
   private static $self_instance;
   private $mysqli; //reference to the database
   public $sid; //session ID
 
   public function __construct($dbc){
     $this->mysqli = $dbc;
-
-        //Determines if the user has a session id set
+    
+    //Determines if the user has a session id set
     $this->sid = isset($_SESSION['sid']) ? $_SESSION['sid'] : null;
+    
     if ($this->sid != null) {
       //Sets the current loggedIn status and validates any session in the browser
       $this->validate($this->sid, time());
     }
+    
+    
   }
 
   public function __destruct() {
@@ -27,7 +31,7 @@ class Session {
     }
     return self::$self_instance;
   }
-
+  
   //TODO implement a function to register institutions
   public function registerInstitution($name, $address, $state, $city, $zipCode, $phoneNumber){
     $uid = getUID($this->sid);
@@ -176,23 +180,25 @@ class Session {
         $saltedPassword = $newSalt.$newPassword;
         $hash = hash('scrypt',$saltedPassword);
         $uid = getUID($this->sid);
-        $qry2 = $this->mysqli->prepare("UPDATE account SET hash = ?, salt = ? WHERE accountID = ?")
-        $qry2->bind_param("ssi",$hash,$saltedPassword,$uid);
-        $qry2->execute();
-        $qry2->close();
+        $qry = $this->mysqli->prepare("UPDATE account SET hash = ?, salt = ? WHERE accountID = ?");
+        $qry->bind_param("ssi",$hash,$saltedPassword,$uid);
+        $qry->execute();
+        $qry->close();
         return true;
       }
       else{
+        $qry->close();
         return false;
       }
     }
     else {
+      $qry->close();
       return false;
     }
   }
 
   function validate($sid, $currentTime){
-    $sid = htmlentities(mysqli_real_escape_string(this->mysqli),$sid);
+    //$sid = htmlentities(mysqli_real_escape_string(this->mysqli),$sid);
     $qry = $this->mysqli->prepare("SELECT timeCreated, accountID FROM sessions WHERE sessionID = ?");
     $qry->bind_param("s",$sid);
     $qry->execute();
@@ -219,19 +225,23 @@ class Session {
 
   //Logs in with an email and password if successful creates a session
   function login($email, $pass){
+    
     //Validate the credentials of the users
     if($this->validateLogin($email, $pass)){
       //Get the userid
+      /*
       $userid = $this->getUID($email);
       if($this->handleSID($userid)){
         return 1;
       }
+      */
     }
     return 0;
+    
   }
 
   function validateLogin($email, $passwordInput){
-    $email = htmlspecialchars(mysqli_real_escape_string($this->mysqli, $email));
+    //$email = htmlspecialchars(mysqli_real_escape_string($this->mysqli, $email));
 
     $qry = $this->mysqli->prepare("SELECT salt, hash FROM account WHERE emailAddress = ?");
     $qry->bind_param("s",$email);
@@ -293,6 +303,13 @@ class Session {
     else {
       return $this->mysqli->error;
     }
+    unset($_SESSION['sid']);
+  }
+
+  //Clear the database of
+  function clear($sid) {
+    $sid = mysqli_real_escape_string($this->mysqli, $sid);
+    $this->mysqli->query("DELETE FROM sessions WHERE sid='{$sid}'");
     unset($_SESSION['sid']);
   }
 
@@ -446,7 +463,7 @@ class Session {
 
     //dump test results and raw data into table
     //order of table keys for reference: testID, PUSHScore, BatesJensenScore, SussmanScore, size, depth, edges, undermining, necType, necAmount, exudateType, exudateAmount, skinColorAround, peripheralEdema, peripheralInduration, granTissue, epith
-    $qry = $this->$mysqli->prepare("INSERT INTO pressureWoundTest" VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?));
+    $qry = $this->$mysqli->prepare("INSERT INTO pressureWoundTest VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
     $qry->bind_param("iiibdiiiiiiiiiiii",$testID, $PUSHScore, $BatesJensenScore, $SussmanScore, $size, $depth, $edges, $undermining, $necType, $necAmount, $exudateType, $exudateAmount, $skinColorAround, $peripheralEdema, $peripheralInduration, $granTissue, $epith);
     //hey so sussman is an array of 10 0's and 1's: change this in the DB so it either accepts this data type or has its own table.
     $qry->execute();
