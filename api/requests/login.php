@@ -10,7 +10,6 @@ function login($email, $password){
      
         $qry->fetch();
 
-        return $userID;
         
         $options = [
             'cost' => 11,
