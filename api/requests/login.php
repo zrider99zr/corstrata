@@ -2,15 +2,23 @@
 
 //Function that returns the userID of a user if the email and password are correct
 function login($email, $password){
-   $qry = $db->prepare("SELECT accountID, salt, hash FROM account WHERE emailAddress = ?");
+   if($qry = $db->prepare("SELECT accountID, salt, hash FROM account WHERE emailAddress = ?")){
+    $qry->bind_param("s",$email);
+    $qry->execute();
+    $qry->bind_result($userID,$dbSalt,$dbHash);
+    $qry->store_result();
+ 
+    $qry->fetch();
+    return $userID;
+   }
+   else{
+    $array = array();
+    $array['message'] = "query prepare uncsuccessful:(" . $db->errno . ") " . $db->error;
+    $array['status'] = 0;
+    echo json_encode($array); 
+   }
    
-   $qry->bind_param("s",$email);
-   $qry->execute();
-   $qry->bind_result($userID,$dbSalt,$dbHash);
-   $qry->store_result();
-
-   $qry->fetch();
-   return $userID;
+   
    /*
    $options = [
        'cost' => 11,
