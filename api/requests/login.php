@@ -2,21 +2,7 @@
 
 //Function that returns the userID of a user if the email and password are correct
 function login($email, $password){
-   if($qry = $db->prepare("SELECT accountID, salt, hash FROM account WHERE emailAddress = ?")){
-    $qry->bind_param("s",$email);
-    $qry->execute();
-    $qry->bind_result($userID,$dbSalt,$dbHash);
-    $qry->store_result();
- 
-    $qry->fetch();
-    return $userID;
-   }
-   else{
-    $array = array();
-    $array['message'] = "query prepare uncsuccessful:(" . $db->errno . ") " . $db->error;
-    $array['status'] = 0;
-    echo json_encode($array); 
-   }
+   
    
    
    /*
@@ -42,20 +28,34 @@ $email = $decoded['email'];
 $password = $decoded['password'];
 
 if(isset($email) && isset($password)){
-    $userID = login($email,$password);
-    if($userID != -1){
-        $array = array();
-        $array['message'] = "Login was successful";
-        $array['status'] = 1;
-        //$_SESSION['uid'] = $userID;
-        echo json_encode($array);
+    if($qry = $db->prepare("SELECT accountID, salt, hash FROM account WHERE emailAddress = ?")){
+        $qry->bind_param("s",$email);
+        $qry->execute();
+        $qry->bind_result($userID,$dbSalt,$dbHash);
+        $qry->store_result();
+     
+        $qry->fetch();
+        if($userID != -1){
+            $array = array();
+            $array['message'] = "Login was successful";
+            $array['status'] = 1;
+            //$_SESSION['uid'] = $userID;
+            echo json_encode($array);
+        }
+        else{
+            $array = array();
+            $array['message'] = "Invalid Username/Pasword";
+            $array['status'] = 0;
+            echo json_encode($array);
+        }
     }
     else{
         $array = array();
-        $array['message'] = "Invalid Username/Pasword";
+        $array['message'] = "query prepare uncsuccessful:(" . $db->errno . ") " . $db->error;
         $array['status'] = 0;
-        echo json_encode($array);
+        echo json_encode($array); 
     }
+    
     
     
 }    
