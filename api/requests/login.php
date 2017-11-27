@@ -1,6 +1,4 @@
 <?php
-header("Access-Control-Allow-Origin: *");
-
 //Function that returns the userID of a user if the email and password are correct
 function login($email, $password, $db){
     if($qry = $db->prepare("SELECT accountID, salt, hash FROM account WHERE emailAddress = ?")){
