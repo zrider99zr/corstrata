@@ -33,7 +33,6 @@ class loginPage extends Component {
             let responseJSON = results;
             console.log(responseJSON);
         });*/
-        var abc = 'login'
         fetch('http://165.227.191.245/corstrata/api/index.php', {
             method: 'POST',
             headers: {
