@@ -2,20 +2,22 @@
 require_once __DIR__ . '/../config/global.php';
 
 class Session {
+
   private static $self_instance;
   private $mysqli; //reference to the database
   public $sid; //session ID
 
   public function __construct($dbc){
     $this->mysqli = $dbc;
-
-        //Determines if the user has a session id set
+    /*
+    //Determines if the user has a session id set
     $this->sid = isset($_SESSION['sid']) ? $_SESSION['sid'] : null;
     
     if ($this->sid != null) {
       //Sets the current loggedIn status and validates any session in the browser
       $this->validate($this->sid, time());
     }
+    */
     
   }
 
@@ -29,7 +31,7 @@ class Session {
     }
     return self::$self_instance;
   }
-
+  
   //TODO implement a function to register institutions
   public function registerInstitution($name, $address, $state, $city, $zipCode, $phoneNumber){
     $uid = getUID($this->sid);
