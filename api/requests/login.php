@@ -8,7 +8,7 @@ function login($email, $password, $db){
         $qry->store_result();
         $qry->fetch();
 
-        $isset = isset($userID) && isset($dbSalt) && isset($dbHash);
+        $isset = isset($userID, $dbSalt, $dbHash);
 
         if(!$isset){
             return -1;
@@ -44,7 +44,7 @@ function login($email, $password, $db){
 $email = $decoded['email'];
 $password = $decoded['password'];
 
-if(isset($email) && isset($password)){ 
+if(isset($email, $password)){ 
     $userID = login($email,$password,$db);
     if($userID != -1){
         $array = array();
