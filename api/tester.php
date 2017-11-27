@@ -24,7 +24,7 @@ $request = $decoded['request'];
 
 if(isset($request)){
     echo json_encode(array(
-        'message' => 'The request type was ' + $request
+        'message' => 'The request type was '
     ));
 }
 else{
