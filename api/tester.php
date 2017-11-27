@@ -22,10 +22,10 @@ else{
     }
     else{
         $request = $decoded['request'];
-        
+        $email = $decoded['email'];
         if(isset($request)){
             $array = array();
-            $message = "login " + $request;
+            $message = "login " + $email;
             $array['message'] = $message;
             echo json_encode($array);
         }
