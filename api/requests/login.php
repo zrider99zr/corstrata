@@ -39,27 +39,21 @@ function login($email, $password){
 $email = $decoded['email'];
 $password = $decoded['password'];
 
-if(isset($email) && isset($password)){
-    if($qry = $db->prepare("SELECT accountID, salt, hash FROM account WHERE emailAddress = ?")){
-        
-        if($userID != -1){
-            $array = array();
-            $array['message'] = "Login was successful";
-            $array['status'] = 1;
-            $array['uid'] = $userID;
-            $_SESSION['uid'] = $userID;
-            echo json_encode($array);
-        }
-        else{
-            $array = array();
-            $array['message'] = "Invalid Username/Pasword";
-            $array['status'] = 0;
-            echo json_encode($array);
-        }
+if(isset($email) && isset($password)){ 
+    $userID = login($email,$password);
+    if($userID != -1){
+        $array = array();
+        $array['message'] = "Login was successful";
+        $array['status'] = 1;
+        $array['uid'] = $userID;
+        $_SESSION['uid'] = $userID;
+        echo json_encode($array);
     }
-    
-    
-    
-    
+    else{
+        $array = array();
+        $array['message'] = "Invalid Username/Pasword";
+        $array['status'] = 0;
+        echo json_encode($array);
+    }  
 }    
 
