@@ -37,8 +37,12 @@ class createAccount extends Component {
             <form id="accountForm" action="#" method="POST" encType="multipart/form-data">
                 <br />
                 <div className="row">
+                    <input type="text" name="email" />First Name <br />
                     <input type="text" name="fname" />First Name <br />
                     <input type="text" name="lname" />Last Name <br />
+                    <input type="radio" />is this account a client?(if no don't click)<br />
+                    <input type="radio" />is this account an admin?(if no don't click)<br />
+                    <input type="text" />What is the name of the institution that you work for?<br />
                 </div>
                 {/* potentially swap this submit button out for an actual link button with a function to interface to the backend*/}
                 <input id="submit_button" type="submit" value="Sumbit form" />
