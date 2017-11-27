@@ -16,7 +16,7 @@ class loginPage extends Component {
             error: props.error,
             info: props.info,
             password: "",
-            request:"login"
+            request:"login",
         };
     }
 
