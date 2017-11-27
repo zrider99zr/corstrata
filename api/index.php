@@ -1,4 +1,5 @@
 <?php
+/*
 require_once(__DIR__ . '/config/global.php');
 function __autoload($className){
   require_once(__DIR__ . '/classes/' . $className . '.php');
@@ -8,7 +9,7 @@ $db = Database::getConnection();
 $session = new Session($db);
 
 $VALID_REQUESTS = array('login','logout', 'register');
-
+*/
 $contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
 if(strcasecmp($contentType, 'application/json') != 0){
     echo json_encode(array(
