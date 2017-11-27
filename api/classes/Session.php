@@ -180,7 +180,7 @@ class Session {
         $saltedPassword = $newSalt.$newPassword;
         $hash = hash('scrypt',$saltedPassword);
         $uid = getUID($this->sid);
-        $qry = $this->mysqli->prepare("UPDATE account SET hash = ?, salt = ? WHERE accountID = ?")
+        $qry = $this->mysqli->prepare("UPDATE account SET hash = ?, salt = ? WHERE accountID = ?");
         $qry->bind_param("ssi",$hash,$saltedPassword,$uid);
         $qry->execute();
         $qry->close();
@@ -198,7 +198,7 @@ class Session {
   }
 
   function validate($sid, $currentTime){
-    $sid = htmlentities(mysqli_real_escape_string(this->mysqli),$sid);
+    //$sid = htmlentities(mysqli_real_escape_string(this->mysqli),$sid);
     $qry = $this->mysqli->prepare("SELECT timeCreated, accountID FROM sessions WHERE sessionID = ?");
     $qry->bind_param("s",$sid);
     $qry->execute();
@@ -462,7 +462,7 @@ class Session {
 
     //dump test results and raw data into table
     //order of table keys for reference: testID, PUSHScore, BatesJensenScore, SussmanScore, size, depth, edges, undermining, necType, necAmount, exudateType, exudateAmount, skinColorAround, peripheralEdema, peripheralInduration, granTissue, epith
-    $qry = $this->$mysqli->prepare("INSERT INTO pressureWoundTest" VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?));
+    $qry = $this->$mysqli->prepare("INSERT INTO pressureWoundTest VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
     $qry->bind_param("iiibdiiiiiiiiiiii",$testID, $PUSHScore, $BatesJensenScore, $SussmanScore, $size, $depth, $edges, $undermining, $necType, $necAmount, $exudateType, $exudateAmount, $skinColorAround, $peripheralEdema, $peripheralInduration, $granTissue, $epith);
     //hey so sussman is an array of 10 0's and 1's: change this in the DB so it either accepts this data type or has its own table.
     $qry->execute();
