@@ -31,7 +31,7 @@ else{
       $request = $decoded['request'];
       if(isset($request)){
         $access = true;
-        $file = './requests/' . $request . '.php';
+        $file = __DIR__ . '/requests/' . $request . '.php';
         
         if(file_exists($file) && in_array($request, $VALID_REQUESTS)){
           require_once($file);
