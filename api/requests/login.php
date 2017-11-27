@@ -1,8 +1,8 @@
 <?php
 
 //Function that returns the userID of a user if the email and password are correct
-function login($email, $password){
-    if($qry = $this->db->prepare("SELECT accountID, salt, hash FROM account WHERE emailAddress = ?")){
+function login($email, $password, $db){
+    if($qry = $db->prepare("SELECT accountID, salt, hash FROM account WHERE emailAddress = ?")){
         $qry->bind_param("s",$email);
         $qry->execute();
         $qry->bind_result($userID,$dbSalt,$dbHash);
@@ -40,7 +40,7 @@ $email = $decoded['email'];
 $password = $decoded['password'];
 
 if(isset($email) && isset($password)){ 
-    $userID = login($email,$password);
+    $userID = login($email,$password,$db);
     if($userID != -1){
         $array = array();
         $array['message'] = "Login was successful";
