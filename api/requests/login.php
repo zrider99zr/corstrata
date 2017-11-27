@@ -2,7 +2,6 @@
 
 //Function that returns the userID of a user if the email and password are correct
 function login($email, $pass){
-   //$email = htmlspecialchars(mysqli_real_escape_string($this->mysqli, $email));
    $qry = $db->prepare("SELECT userID, salt, hash FROM account WHERE emailAddress = ?");
    $qry->bind_param("s",$email);
    $qry->execute();
