@@ -7,14 +7,14 @@ function registerAccount($email, $firstName, $lastName, $password, $isClient, $i
     //TODO solve institution picking problem (see TODO 2.2.1.3)
     
     //This function registers a system account
-    function registerSystemAccount($accountID){
+    function registerSystemAccount($accountID, $db){
         $qry = $db->prepare("INSERT INTO systemAdmin VALUES(?)");
         $qry->bind_param("iii",$accountID);
         $qry->execute();
         $qry->close();
     }
     //Function registers a client account from an account ID and an institution ID
-    function registerClientAccount($accountID, $institutionID, $isAdmin){
+    function registerClientAccount($accountID, $institutionID, $isAdmin, $db){
         //Insert into client account
         $qry = $db->prepare("INSERT INTO clientAccount VALUES(?,?,?)");
         $qry->bind_param("iii",$accountID,$institutionID,$isAdmin);
@@ -22,7 +22,7 @@ function registerAccount($email, $firstName, $lastName, $password, $isClient, $i
         $qry->close();
     }
     //Function returns institution ID of the user
-    function getInstitutionID(){
+    function getInstitutionID($db){
         $uid = $_SESSION['uid'];
         $qry = $db->prepare("SELECT institutionID from clientAccount where accountID =  ?");
         $qry->bind_param("i",$uid);
@@ -51,7 +51,7 @@ function registerAccount($email, $firstName, $lastName, $password, $isClient, $i
     if($isClient == 1){
       if($institutionID == -1){
         //If no specified institutionID from the front end get one from the current users institutionID
-        $iID = getInstitutionID();
+        $iID = getInstitutionID($db);
         if($iID != -1){
           registerClientAccount($incrementID,$iID,$isAdmin);
           return 1;
@@ -62,13 +62,13 @@ function registerAccount($email, $firstName, $lastName, $password, $isClient, $i
       }
       else{
         //Otherwise just use the one from the frontend
-        registerClientAccount($incrementID,$institutionID,$isAdmin);
+        registerClientAccount($incrementID,$institutionID,$isAdmin,$db);
         return 1;
       }
     }
     //Otherwise create a system account
     else{
-      registerSystemAccount($incrementID);
+      registerSystemAccount($incrementID,$db);
       return 1;
     }
     
