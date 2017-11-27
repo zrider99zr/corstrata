@@ -229,10 +229,13 @@ class Session {
     //Validate the credentials of the users
     if($this->validateLogin($email, $pass)){
       //Get the userid
+      /*
       $userid = $this->getUID($email);
       if($this->handleSID($userid)){
         return 1;
       }
+      */
+      return 1;
     }
     return 0;
     
