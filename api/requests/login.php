@@ -1,19 +1,16 @@
 <?php
 
 //Function that returns the userID of a user if the email and password are correct
+/*
 function login($email, $password){
-   $qry = $db->prepare("SELECT userID FROM account WHERE emailAddress = ?");
    
-   $qry->bind_param("s",$email);
-   $qry->execute();
-   $result = $qry->get_result();
    if(isset($result[0]['userID'])){
        return $result[0]['userID'];
    }
    else{
        return -1;
    }
-   /*
+   
    $options = [
        'cost' => 11,
        'salt' => $dbsalt,
@@ -26,8 +23,9 @@ function login($email, $password){
    else {
      return -1;
    } 
-   */
+   
 }
+*/
 
 //USAGE
 //Send a json with request field login and fields shown below filled
@@ -36,7 +34,13 @@ $email = $decoded['email'];
 $password = $decoded['password'];
 
 if(isset($email) && isset($password)){
-    $userID = login($email,$password);
+    $qry = $db->prepare("SELECT userID FROM account WHERE emailAddress = ?");
+    $qry->bind_param("s",$email);
+    $qry->execute();
+    $result = $qry->get_result();
+
+    $userID = isset($result[0]['userID']) ? $result[0]['userID'] : -1;
+
     if($userID != -1){
         $array = array();
         $array['message'] = "Login was successful";
