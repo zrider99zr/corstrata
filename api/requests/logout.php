@@ -1,3 +1,2 @@
 <?php
-if(isset($_SESSION['sid']))
-    $session->clear($_SESSION['sid']);
+if(isset($_SESSION['uid'])) unset($_SESSION['uid']);
