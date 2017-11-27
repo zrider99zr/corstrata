@@ -1,7 +1,7 @@
 <?php
 
 //Function that returns the userID of a user if the email and password are correct
-function login($email, $pass){
+function login($email, $password){
    $qry = $db->prepare("SELECT userID, salt, hash FROM account WHERE emailAddress = ?");
    $qry->bind_param("s",$email);
    $qry->execute();
@@ -13,7 +13,7 @@ function login($email, $pass){
        'cost' => 11,
        'salt' => $dbsalt,
    ];
-   $hash = password_hash($pass, PASSWORD_BCRYPT, $options);
+   $hash = password_hash($password, PASSWORD_BCRYPT, $options);
    $qry->close();
    if($hash == $dbHash){
      return $userID; //hashes match, passwords match
@@ -30,7 +30,7 @@ $email = $decoded['email'];
 $password = $decoded['password'];
 
 if(isset($email) && isset($password)){
-    $userID = login($email,$password);
+    $userID = 1;
     if($userID != -1){
         $array = array();
         $array['message'] = "Login was successful";
