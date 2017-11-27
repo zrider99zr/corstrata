@@ -11,7 +11,7 @@ function login($email, $password){
         $qry->fetch();
 
         return $userID;
-        /*
+        
         $options = [
             'cost' => 11,
             'salt' => $dbsalt,
@@ -23,8 +23,7 @@ function login($email, $password){
         }
         else {
           return -1;
-        } 
-        */
+        }
     }
     else{
         $array = array();
