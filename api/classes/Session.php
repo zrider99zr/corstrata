@@ -183,10 +183,12 @@ class Session {
         return true;
       }
       else{
+        $qry->close();
         return false;
       }
     }
     else {
+      $qry->close();
       return false;
     }
   }
@@ -231,7 +233,7 @@ class Session {
   }
 
   function validateLogin($email, $passwordInput){
-    $email = htmlspecialchars(mysqli_real_escape_string($this->mysqli, $email));
+    //$email = htmlspecialchars(mysqli_real_escape_string($this->mysqli, $email));
 
     $qry = $this->mysqli->prepare("SELECT salt, hash FROM account WHERE emailAddress = ?");
     $qry->bind_param("s",$email);
