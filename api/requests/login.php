@@ -2,11 +2,11 @@
 
 //Function that returns the userID of a user if the email and password are correct
 function login($email, $password){
-   $qry = $db->prepare("SELECT userID, salt, hash FROM account WHERE emailAddress = ?");
+   $qry = $db->prepare("SELECT userID FROM account WHERE emailAddress = ?");
    
    $qry->bind_param("s",$email);
    $qry->execute();
-   $qry->bind_result($userID,$dbSalt,$dbHash);
+   $qry->bind_result($userID);
    $qry->store_result();
 
    $qry->fetch();
