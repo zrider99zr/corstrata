@@ -46,6 +46,7 @@ if(isset($email) && isset($password)){
             $array = array();
             $array['message'] = "Login was successful";
             $array['status'] = 1;
+            $array['uid'] = $userID;
             $_SESSION['uid'] = $userID;
             echo json_encode($array);
         }
