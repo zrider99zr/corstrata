@@ -1,5 +1,5 @@
 <?php
-require_once('base.php');
+
 
 //USAGE
 //Send a json with request field login and fields shown below filled
