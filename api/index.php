@@ -31,17 +31,7 @@ else{
       $request = $decoded['request'];
       if(isset($request)){
         $access = true;
-        $file = __DIR__ . '/requests/' . $request . '.php';
-        
-        if(file_exists($file) && in_array($request, $VALID_REQUESTS)){
-          require_once($file);
-        }
-        else{
-          $message = "Request not found in host file-system OR not whitelisted. {$request}";
-          echo json_encode(array(
-            'message' => $message
-          ));
-        }
+        require_once(__DIR__ . '/requests/' . $request . '.php');
       }
       else{
         echo json_encode(array(
