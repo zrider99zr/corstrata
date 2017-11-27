@@ -24,7 +24,7 @@ if(!is_array($decoded)){
 else{
   $request = $decoded['request'];
   if(isset($request)){
-    require_once(__DIR__ . '/requests/' . $request . '.php')
+    require_once(__DIR__ . '/requests/' . $request . '.php');
   }
   else{
     echo json_encode(array(
