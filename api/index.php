@@ -31,7 +31,13 @@ else{
       $request = $decoded['request'];
       if(isset($request)){
         $access = true;
-        require_once(__DIR__ . '/requests/login.php');
+        $array = array();
+        $email = $decoded['email'];
+        $password = $decoded['password'];
+        $message = "Request: " . $request . " Login: " . $email . " Password: " . $password;
+        $array['message'] = $message;
+        echo json_encode($array);
+        //require_once(__DIR__ . '/requests/login.php');
       }
       else{
         echo json_encode(array(
