@@ -1,35 +1,25 @@
 import React, { Component } from 'react'
-import { Link, Redirect, Route, withRouter } from 'react-router-dom'
-import '../styling/home.css'
+import { Link } from 'react-router-dom'
+import '../styling/testselection.css'
+import { Button, ButtonGroup } from 'react-bootstrap';
 
 class testSelectionPage extends Component {
-    constructor() {
-        super();
-        this.state = {
-            redirectToReferrer: false,
-        };
-    }
-
-    changePage() {
-        const redirect = true;
-        this.setState({ redirectToReferrer : true });
-    }
-
     render() {
-
-        if (this.state.redirectToReferrer == true) {
-            return (
-                <Redirect to="./" />
-                )
-        }
-
         return (
+          
             <div className="classContainer">
-                <label>Which test do you wish to perform?</label>
-                    <Link className='button' to='./'>Pressure Wound Test</Link>
-                    <Link className='button' to='./wagnerScaleTest'>Wagner Scale Test</Link>
-                    <Link className='button' to='./MNAtest'>Mini-Nutritional Assessment</Link>
-                    <button onClick={this.changePage.bind(this)} >Mini-Nutritional Assessment</button>
+                 <label>Which test do you wish to perform?</label>
+                <div id="buttongroup">
+                <Link  to='./'> <Button className = "testbutton">Pressure Wound </Button></Link> <br></br>
+                <Link  to='./wagnerScaleTest'> <Button className = "testbutton">Wagner Scale Test </Button></Link>
+                     <br></br>
+                     <Link  to='/MNAtest'><Button className = "testbutton">Mini-Nutritional Assessment</Button> </Link>
+                      <br></br> 
+                      <Link to='./bates'> <Button className = "testbutton">Bates Jensen Wound Assessment</Button></Link>
+                </div>
+                
+                
+                 
             </div>
         );
     };

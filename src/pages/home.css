@@ -1,0 +1,31 @@
+.classContainer {
+    display:flex;
+    flex-direction: column;
+   
+
+
+}
+
+.button {
+    color:#ffffff;
+    Background:#e67716;
+    border:none;
+    font-size:16px;
+    border-radius:3px;
+    width:200px;
+    text-align:center;
+    display:block;
+    padding:7px 0;
+    margin: 10px auto;
+    text-decoration: none;
+}
+
+.button:hover:enabled {
+    background: linear-gradient(#00ff88, #808080);
+    color: #ffffff;
+    text-decoration:none;
+}
+
+.button.active {
+    transform: translate(1px);
+}

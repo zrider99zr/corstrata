@@ -1,0 +1,50 @@
+#bodyf{
+    
+    background: url(Logo.jpg) no-repeat;
+    
+     
+     background-position: center center;
+     
+    background-color:white;
+     background-size: 50%;
+     height: 200px;
+
+
+  }
+
+  #logout{
+    font-size: fit-content(60%);
+    border-radius: 25px; 
+    height: 5em;
+    width: 9em;
+ margin-top: 40px;
+float: right;
+
+margin-right: 40px
+
+  }
+
+  #menu{
+    font-size: fit-content(60%);
+    border-radius: 25px; 
+    height: 5em;
+    width: 9em;
+ margin-top: 40px;
+float: left;
+
+margin-right: 40px
+
+  }
+
+
+
+  
+
+  #in{
+display: grid;
+grid-template-columns: 40% fit-content(100%);
+grid-auto-columns: 1fr;
+
+  }
+
+ 

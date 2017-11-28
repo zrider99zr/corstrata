@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import 'font-awesome/css/font-awesome.min.css'
-import { Link, Route } from 'react-router-dom'
-//import { PostData } from './postData'
+import { Link } from 'react-router-dom'
+
+//import styled from 'styled-components';
 
 import {
     Container, InputBox, HelpmMessage, LoginForm, SubButton, InputGroup,
@@ -29,10 +30,7 @@ class loginPage extends Component {
 
     checkInput(e) {
         //loggin in and passing it state, will need to trim or extend the method to show more/less state variables
-        /*PostData("login", this.state).then((results) => {
-            let responseJSON = results;
-            console.log(responseJSON);
-        });*/
+       
         fetch('http://165.227.191.245/corstrata/api/index.php', {
             method: 'POST',
             headers: {
@@ -55,32 +53,32 @@ class loginPage extends Component {
     }
 
     render() {
-
         return (
-            <AuthPage subtitle="Navigating to Home Page">
+            <AuthPage subtitle="Welcome Please Sign in">
                 <StackedInputs>
 
-                    <InputField
+                    <InputField 
                         type="email"
                         name="uname"
                         id="username"
                         value={this.state.email}
-                        placeholder="email@gmail.com"
                         onInput={this.setEmail.bind(this)}
+                        placeholder="User Name"
                         required
                         autoFocus
                     />
-
                     <InputGroup>
                         <InputField
                             type="password"
                             name="password"
-                            placeholder="Password"
                             onInput={this.setPass.bind(this)}
+                            placeholder="Password"
                             required
                         />
-
-                        <SubmitButton onClick={this.checkInput.bind(this)}>
+                        <SubmitButton style={{marginTop:"0px"}}
+                            onClick={this.checkInput.bind(this)}>
+                            <i className="fa fa-sign-in fa-lg" />
+                            <Link to='./'> </Link>
                         </SubmitButton>
 
                     </InputGroup>
