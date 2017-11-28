@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import 'font-awesome/css/font-awesome.min.css'
-import { Link, Route } from 'react-router-dom'
-//import { PostData } from './postData'
+import { Link } from 'react-router-dom'
+
+//import styled from 'styled-components';
 
 import {
     Container, InputBox, HelpmMessage, LoginForm, SubButton, InputGroup,
@@ -12,75 +13,39 @@ class loginPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            email: "",
+            username: props.username,
             error: props.error,
             info: props.info,
-            password: "",
+            password: ''
         };
     }
 
-    setEmail(e) {
-        this.setState({ email: e.target.value });
-    }
-
-    setPass(e) {
-        this.setState({ password: e.target.value });
-    }
-
-    checkInput(e) {
-        //loggin in and passing it state, will need to trim or extend the method to show more/less state variables
-        /*PostData("login", this.state).then((results) => {
-            let responseJSON = results;
-            console.log(responseJSON);
-        });*/
-        fetch('http://165.227.191.245/corstrata/api/index.php', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/.json',
-            },
-            body: JSON.stringify({
-                request: 'login',
-                email: this.state.email,
-                password: this.state.password,
-            })
-        })
-            .then((response) => response.json())
-            .then((res) => {
-                alert(res.message);
-            })
-            .catch((error) => {
-                alert(error.message);
-            })
-            .done();
-    }
-
     render() {
-
         return (
-            <AuthPage subtitle="Navigating to Home Page">
+            <AuthPage subtitle="Welcome Please Sign in">
                 <StackedInputs>
 
-                    <InputField
+                    <InputField 
                         type="email"
                         name="uname"
                         id="username"
                         value={this.state.email}
-                        placeholder="email@gmail.com"
-                        onInput={this.setEmail.bind(this)}
+                        onInput={this.changeUsername}
+                        placeholder="User Name"
                         required
                         autoFocus
                     />
-
                     <InputGroup>
                         <InputField
                             type="password"
                             name="password"
+                            onInput={this.changePassword}
                             placeholder="Password"
-                            onInput={this.setPass.bind(this)}
                             required
                         />
-
-                        <SubmitButton onClick={this.checkInput.bind(this)}>
+                        <SubmitButton style={{marginTop:"0px"}}>
+                            <i className="fa fa-sign-in fa-lg" />
+                            <Link to='./'> </Link>
                         </SubmitButton>
 
                     </InputGroup>

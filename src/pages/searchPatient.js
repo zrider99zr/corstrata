@@ -3,20 +3,22 @@ import '../styling/searchPatient.css';
 import { Link } from 'react-router-dom';
 
 const searchPatient = () => (
-    <div className="container">
 
-        <div className="logo"> LOGO </div>
-        <div className="b">
-            <label className="lab">Welcome,</label>
-            <button type="button" className="b"><Link to='resetPassword'>Change Password</Link></button>
-            <button type="button" className="b">Logout</button>
-        </div>
-
-        <div className="class">
+    <div className="containerl" >
+<div class="container">
+        <form class="searchform"  >       
+               <div id="top" >
+            <label id="Header"> Search </label>
+            <input  type="text" id= "input" />
+            <div><button>Create Patient</button></div></div>
+                
+             
+  
+             
+             <div className="class">
                              {/*come back to replace the function here with the actual functionality*/}
-            <input type="search" id="myInput" onKeyUp="myFunction()" placeholder="search for patient..." className="searchPatient" />
 
-            <table className="blueTable">
+            <table className="blueTable" border="0">
                     <thead>
                         <tr>
                             <th>Name</th>
@@ -63,12 +65,28 @@ const searchPatient = () => (
                             <td>cell1_8</td>
                             <td>cell2_8</td>
                         </tr>
+                        <tr>
+                            <td>cell1_8</td>
+                            <td>cell2_8</td>
+                        </tr>
+                        <tr>
+                            <td>cell1_8</td>
+                            <td>cell2_8</td>
+                        </tr>
                     </tbody>
                 </table>
     
   </div>
+         </form>
+  
+            
+     
+
+    </div >
+
+       
 </div>
 
-    ) 
+    ) ;
 
 export default searchPatient

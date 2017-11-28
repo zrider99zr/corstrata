@@ -1,5 +1,6 @@
 .linechart-withPadding {
   padding: .625rem .625rem 0 0;
+  margin:20px;
 }
 
 .linechart_grid {
@@ -9,7 +10,7 @@
 }
 
 .linechart_axis {
-  stroke: #bdc3c7;
+  stroke: #000000;
 }
 
 .linechart_area {
@@ -33,4 +34,10 @@
 .linechart_label {
   fill: #bdc3c7;
   stroke-width: 0;
+}
+
+#back{
+  background-color: rgba(0, 0, 0, 0.733);;
+  
+
 }

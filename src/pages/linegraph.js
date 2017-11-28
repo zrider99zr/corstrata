@@ -21,15 +21,14 @@ export default class MyComponent extends Component {
     })
   }*/
 
-  render() {
-    const data = []
+    
 
-    for (let x = 1; x <= 30; x++) {
-      data.push({ x: x, y: Math.floor(Math.random() * (40)) })
-    }
+  render() {
+   
+
 
     return (
-      <div>
+      <div id="back" >
         
         { this.state.tooltipTrigger
           ? (
@@ -43,7 +42,13 @@ export default class MyComponent extends Component {
 
         <LineChart
           activePoint={ this.state.activePoint }
-          data={ data }
+          style="margin:20px"
+          data={[
+            {x: 1, y: 10},
+            {x: 2, y: 5},
+            {x: 3, y: 15},
+            {x: 7, y: 8}
+          ]}
           onPointHover={ this.handlePointHover }
           nogrid
         />
