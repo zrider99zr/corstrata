@@ -13,11 +13,43 @@ class loginPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            username: props.username,
+            email: "",
             error: props.error,
             info: props.info,
-            password: ''
+            password: "",
         };
+    }
+
+    setEmail(e) {
+        this.setState({ email: e.target.value });
+    }
+
+    setPass(e) {
+        this.setState({ password: e.target.value });
+    }
+
+    checkInput(e) {
+        //loggin in and passing it state, will need to trim or extend the method to show more/less state variables
+       
+        fetch('http://165.227.191.245/corstrata/api/index.php', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/.json',
+            },
+            body: JSON.stringify({
+                request: 'login',
+                email: this.state.email,
+                password: this.state.password,
+            })
+        })
+            .then((response) => response.json())
+            .then((res) => {
+                alert(res.message);
+            })
+            .catch((error) => {
+                alert(error.message);
+            })
+            .done();
     }
 
     render() {
@@ -30,7 +62,7 @@ class loginPage extends Component {
                         name="uname"
                         id="username"
                         value={this.state.email}
-                        onInput={this.changeUsername}
+                        onInput={this.setEmail.bind(this)}
                         placeholder="User Name"
                         required
                         autoFocus
@@ -39,11 +71,12 @@ class loginPage extends Component {
                         <InputField
                             type="password"
                             name="password"
-                            onInput={this.changePassword}
+                            onInput={this.setPass.bind(this)}
                             placeholder="Password"
                             required
                         />
-                        <SubmitButton style={{marginTop:"0px"}}>
+                        <SubmitButton style={{marginTop:"0px"}}
+                            onClick={this.checkInput.bind(this)}>
                             <i className="fa fa-sign-in fa-lg" />
                             <Link to='./'> </Link>
                         </SubmitButton>
