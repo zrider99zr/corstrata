@@ -1,5 +1,5 @@
 <?php
-public function getRecentTests($patientID, $db){
+function getRecentTests($patientID, $db){
     //Returns an employee name given and account id
     function getEmployeeName($accountID, $db){
         $qry = $db->prepare("SELECT firstName, lastName FROM account WHERE accountID = ?");
@@ -9,12 +9,13 @@ public function getRecentTests($patientID, $db){
         $qry->fetch();
         return $firstName . " " . $lastName;
     }
-    //Returst the test type given a test ID
+    //Return the test type given a test ID
     function getTestType($testID, $db){
         $qry = $db->prepare("SELECT * FROM pressureWoundTest WHERE testID = ?");
         $qry->bind_param("i",$testID);
         $qry->execute();
         if($qry->num_rows > 0){
+            $qry->close();
             return "Pressure Wound";
         }
         else{
@@ -22,6 +23,7 @@ public function getRecentTests($patientID, $db){
             $qry->bind_param("i",$testID);
             $qry->execute();
             if($qry->num_rows > 0){
+                $qry->close();
                 return "Semmes Weinstein Monophiliment";
             }
             else{
@@ -29,6 +31,7 @@ public function getRecentTests($patientID, $db){
                 $qry->bind_param("i",$testID);
                 $qry->execute();
                 if($qry->num_rows > 0){
+                    $qry->close();
                     return "Wagner";
                 }
                 else{
@@ -36,9 +39,11 @@ public function getRecentTests($patientID, $db){
                     $qry->bind_param("i",$testID);
                     $qry->execute();
                     if($qry->num_rows > 0){
+                        $qry->close();
                         return "Mini-Nutritional";
                     }
                     else{
+                        $qry->close();
                         return "Test Type not found";
                     }
                 }
