@@ -130,12 +130,16 @@ class Session {
   }
   //Takes either an email address or a session id and returns a user id
   function getUID($sid){
-    $qry = $this->mysqli->prepare("SELECT accountID from sessions where sessionID = ?");
-    $qry->bind_param("s",$sid);
-    $qry->execute();
-    $result = $qry->get_result();
-    $qry->close();
-    return isset($result[0]['accountID']) ? $result[0]['accountID'] : -1;
+    if($qry = $this->mysqli->prepare("SELECT accountID from sessions where sessionID = ?")){
+      $qry->bind_param("s",$sid);
+      $qry->execute();
+      $result = $qry->get_result();
+      $qry->close();
+      return isset($result[0]['accountID']) ? $result[0]['accountID'] : -1;
+    }
+    else{
+      return $this->mysqli->error;
+    }
   }
 
   //Verifies if the session is logged in
