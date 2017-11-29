@@ -24,7 +24,8 @@ const nav = () =>(
   <li><Link to='/linegraph'>linegraph</Link></li>
   <li><Link to='/createInstitution'>Create Institution</Link></li>   
   <li><Link to='/createPatient'>Create Patient</Link></li>  
-            
+  <li><Link to='/tempSearchPatient'>Search Patient</Link></li> 
+                
 </Menu>
 </div>
 );

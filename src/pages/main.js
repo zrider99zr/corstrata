@@ -14,6 +14,7 @@ import bates from './bates'
 import linegraph from './linegraph'
 import createInstitution from './createInstitution'
 import createPatient from './createPatient'
+import tempSearchPatient from './tempSearchPatient'
 
 
 // The Main component renders one of the three provided
@@ -39,6 +40,7 @@ const main = () => (
             <Route path='/nav' component={nav} />
             <Route path='/createInstitution' component={createInstitution} />
             <Route path='/createPatient' component={createPatient} />
+            <Route path='/tempSearchPatient' component={tempSearchPatient} />
         </Switch>
     </main>
 )
