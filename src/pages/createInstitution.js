@@ -9,6 +9,7 @@ class createInstitution extends Component {
             state: "",
             city: "",
             zCode: "",
+            pNumber: "",
         };
     }
 
@@ -28,6 +29,9 @@ class createInstitution extends Component {
         } else if (e.target.name === "zCode") {
             this.setState({ zCode: e.target.value });
 
+        } else if (e.target.name === "number") {
+            this.setState({ pNumber: e.target.value });
+
         }
     }
 
@@ -45,6 +49,7 @@ class createInstitution extends Component {
                 city: this.state.city,
                 state: this.state.state,
                 zipCode: this.state.zCode,
+                phoneNumber: this.state.pNumber,
             })
         })
             .then((response) => response.json())
@@ -69,6 +74,7 @@ class createInstitution extends Component {
                         <input type="text" onInput={this.updateText.bind(this)} name="state" placeholder="state" />State <br />
                         <input type="text" onInput={this.updateText.bind(this)} name="city" placeholder="city" />City <br />
                         <input type="text" onInput={this.updateText.bind(this)} name="zCode" placeholder="Zip Code" />Zip Code <br />
+                        <input type="text" onInput={this.updateText.bind(this)} name="number" placeholder="Phone Number" />Zip Code <br />
                         <button type="button" onClick={this.submitForm.bind(this)}>Submit</button>
                     </div>
                 </form>
