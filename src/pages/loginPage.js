@@ -59,7 +59,6 @@ class loginPage extends Component {
     render() {
         if (this.state.login === true) {
             return (<Redirect to={'/'} / >)
-        }
 
         return (
             <AuthPage subtitle="Welcome Please Sign in">
