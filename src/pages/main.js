@@ -42,6 +42,7 @@ const main = () => (
             <Route path='/createPatient' component={createPatient} />
             <Route path='/tempSearchPatient' component={tempSearchPatient} />
         </Switch>
+        
     </main>
 )
 

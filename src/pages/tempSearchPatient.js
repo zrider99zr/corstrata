@@ -36,11 +36,33 @@ class tempSearchPatient extends Component {
             .done();
     }
 
+    searchInstitution() {
+        fetch('http://165.227.191.245/corstrata/api/index.php', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/.json',
+            },
+            body: JSON.stringify({
+                request: 'getInstitutionID',
+
+            })
+        })
+            .then((response) => response.json())
+            .then((res) => {
+                alert(res.message);
+            })
+            .catch((error) => {
+                alert(error.message);
+            })
+            .done();
+    }
+
     render(){
         return (
             <div>
                 <input type="text" name="sPatient" onInput={this.updateText.bind(this)} />
                 <button onClick={this.submitForm.bind(this)}></button>
+                <button onClick={this.searchInstitution.bind(this)}>Find Institution</button>
             </div>
         );
     };

@@ -90,7 +90,10 @@ class wagnerScaleTest extends Component {
 
     render() {
         return (
-   
+            <div>
+                <div align="left">
+                    <nav />
+                </div>
             <div id="containera">
                 <form id="wagnerForm" action="#" method="POST" encType="multipart/form-data">
                 <div id="oldpassword">
@@ -113,7 +116,7 @@ class wagnerScaleTest extends Component {
                 </form>
                 
             </div>
-
+                </div>
         );
     };
 }
