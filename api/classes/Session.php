@@ -129,17 +129,10 @@ class Session {
     return getUID($sid);
   }
   //Takes either an email address or a session id and returns a user id
-  function getUID($input){
-    if(filter_var($input, FILTER_VALIDATE_EMAIL) == true){
-      $qry = $this->mysqli->prepare("SELECT accountID from accounts where emailAddress = ?");
-      $qry->bind_param($input);
-      $qry->execute();
-    }
-    else{
-      $qry = $this->mysqli->prepare("SELECT accountID from sessions where sessionID = ?");
-      $qry->bind_param($input);
-      $qry->execute();
-    }
+  function getUID($sid){
+    $qry = $this->mysqli->prepare("SELECT accountID from sessions where sessionID = ?");
+    $qry->bind_param("s",$sid);
+    $qry->execute();
     $result = $qry->get_result();
     $qry->close();
     return isset($result[0]['userid']) ? $result[0]['userid'] : -1;
