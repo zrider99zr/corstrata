@@ -1,5 +1,6 @@
 <?php
 function registerInstitution($name, $address, $state, $city, $zipCode, $phoneNumber, $db){
+    /*
     if($qry = $db->prepare("INSERT INTO institution(name,address,state,city,zipCode,phoneNumber) VALUES(?,?,?,?,?,?)")){
         $qry->bind_param("ssssii",$name, $address, $state, $city, $zipCode, $phoneNumber);
         if($qry->execute()){
@@ -28,6 +29,8 @@ function registerInstitution($name, $address, $state, $city, $zipCode, $phoneNum
         echo json_encode($array); 
         return -1;
     }
+    */
+    return -1;
 }
 
 $name = $decoded['name'];
