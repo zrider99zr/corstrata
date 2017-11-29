@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import Response from './response'
-import './home.css'
 import '../styling/wagner.css'
 
 class wagnerScaleTest extends Component {
@@ -17,6 +16,29 @@ class wagnerScaleTest extends Component {
         console.log(e.target.value);
         const input = e.target.value;
         this.changeInput(input);
+    }
+
+    submitForm() {
+        console.log(this.state);
+        fetch('http://165.227.191.245/corstrata/api/index.php', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/.json',
+            },
+            body: JSON.stringify({
+                request: 'createWagnerTest',
+                patientID: this.state.fName,
+                grade: this.state.input,
+            })
+        })
+            .then((response) => response.json())
+            .then((res) => {
+                alert(res.message);
+            })
+            .catch((error) => {
+                alert(error.message);
+            })
+            .done();
     }
 
     changeInput(input) {
@@ -63,7 +85,6 @@ class wagnerScaleTest extends Component {
                 <li>The possiblity of limb loss increases</li>
             </ul>
         }
-
         this.setState({ info });
     }
 
@@ -71,13 +92,8 @@ class wagnerScaleTest extends Component {
         return (
    
             <div id="containera">
-
-              
-
                 <form id="wagnerForm" action="#" method="POST" encType="multipart/form-data">
                 <div id="oldpassword">
-                 
-                    
                         <label className="lab">Select the option that best describes the situation</label><br></br> <label>&nbsp;</label><label>&nbsp;</label>   <br></br>
                         <input type="radio" id="rb" onClick={this.updateInput.bind(this)} info="zignewton" name="WSD" value="0" /> Ulcers have intact skin <br></br>
                         <input type="radio" id="rb" onClick={this.updateInput.bind(this)} name="WSD" value="1" /> Ulcers are superficial <br></br>
@@ -85,7 +101,6 @@ class wagnerScaleTest extends Component {
                         <input type="radio" id="rb" onClick={this.updateInput.bind(this)} name="WSD" value="3" /> Ulcers contain an abscess or osteomyelitis <br></br>
                         <input type="radio" id="rb" onClick={this.updateInput.bind(this)} name="WSD" value="4" /> Ulcers have gangrene of the forefoot  <br></br>
                         <input type="radio" id="rb" onClick={this.updateInput.bind(this)} name="WSD" value="5" /> Ulcers have gangrene of a major portion of the foot<br></br>
-                  
                     </div>
                     <div className="class">
                     {/* potentially swap this submit button out for an actual link button with a function to interface to the backend*/}
@@ -94,10 +109,9 @@ class wagnerScaleTest extends Component {
                 <br></br>
                 
                 </div>
-                <input id="submit_button" type="submit" value="Sumbit form" />
+                    <button id="changeButton" type="submit">Submit</button>
                 </form>
                 
-                {/* show test feedback here based upon what they select*/}
             </div>
 
         );
