@@ -1,12 +1,7 @@
 import React from 'react';
 import '../styling/nav.css';
 import { Link } from 'react-router-dom';
-import {slide as Menu} from 'react-burger-menu';
- /* export const ButtonGroup = styled.div`
-
-  
-  `;*/
- 
+import { slide as Menu } from 'react-burger-menu';
 
 const nav = () =>(
   <div>
@@ -27,8 +22,7 @@ const nav = () =>(
   <li><Link to='/nav'>Nav Bar</Link></li>
   <li><Link to='/bates'>bates</Link></li>
   <li><Link to='/linegraph'>linegraph</Link></li>
-  <li><Link to='/createInstitution'>Create Institution</Link></li>
-            
+  <li><Link to='/createInstitution'>Create Institution</Link></li>            
 </Menu>
 </div>
 );
