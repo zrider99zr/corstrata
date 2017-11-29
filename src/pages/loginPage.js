@@ -57,8 +57,8 @@ class loginPage extends Component {
     }
 
     render() {
-        if (login === true) {
-            return (<Redirect to="/" />)
+        if (this.state.login === true) {
+            return (<Redirect to={'/'} / >)
         }
 
         return (
