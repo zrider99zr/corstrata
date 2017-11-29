@@ -22,7 +22,9 @@ const nav = () =>(
   <li><Link to='/nav'>Nav Bar</Link></li>
   <li><Link to='/bates'>bates</Link></li>
   <li><Link to='/linegraph'>linegraph</Link></li>
-  <li><Link to='/createInstitution'>Create Institution</Link></li>            
+  <li><Link to='/createInstitution'>Create Institution</Link></li>   
+  <li><Link to='/createPatient'>Create Patient</Link></li>  
+            
 </Menu>
 </div>
 );

@@ -94,7 +94,6 @@ class createAccount extends Component {
                         <input type="checkbox" onClick={this.checkStatus.bind(this)} name="admin" />is this account an admin?(if no don't click)<br />
                         <input type="text" onInput={this.updateText.bind(this)} name="institution" placeholder="Institution" />What is the name of the institution that you work for?<br />
                     </div>
-                    {/* potentially swap this submit button out for an actual link button with a function to interface to the backend*/}
                     <button type="button" onClick={this.submitForm.bind(this)}>Create</button>
                 </form>
             </div>
