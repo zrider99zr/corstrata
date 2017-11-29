@@ -85,15 +85,15 @@ class createAccount extends Component {
                 <form id="accountForm" action="#" method="POST" encType="multipart/form-data">
                     <br />
                     <div className="row">
-                        <input type="text" onInput={this.updateText.bind(this)} name="email" placeholder="email@gmail.com" />Email <br />
-                        <input type="text" onInput={this.updateText.bind(this)} name="fname" placeholder="First Name" />First Name <br />
-                        <input type="text" onInput={this.updateText.bind(this)} name="lname" placeholder="Last Name" />Last Name <br />
-                        <input type="password" onInput={this.updateText.bind(this)} name="password" placeholder="password" />Password <br />
+                        <input type="text" onInput={this.updateText.bind(this)} id="input-email" name="email" placeholder="email@gmail.com" />Email <br />
+                        <input type="text" onInput={this.updateText.bind(this)}  id="input-name" name="fname" placeholder="First Name" />First Name <br />
+                        <input type="text" onInput={this.updateText.bind(this)} id="input-lastname" name="lname" placeholder="Last Name" />Last Name <br />
+                        <input type="password" onInput={this.updateText.bind(this)} id="input-password" name="password" placeholder="password" />Password <br />
                         <input type="checkbox" onClick={this.checkStatus.bind(this)} name="client" />is this account a client?(if no don't click)<br />
                         <input type="checkbox" onClick={this.checkStatus.bind(this)} name="admin" />is this account an admin?(if no don't click)<br />
                         <input type="text" onInput={this.updateText.bind(this)} name="institution" placeholder="Institution" />What is the name of the institution that you work for?<br />
                     </div>
-                    <button type="button" onClick={this.submitForm.bind(this)}>Create</button>
+                    <button type="button" id="sub-button" onClick={this.submitForm.bind(this)}>Create</button>
                 </form>
             </div>
         );
