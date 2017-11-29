@@ -23,39 +23,6 @@ function testFunction($name,$address,$state,$city,$zipCode,$phoneNumber,$db){
         return -1;
     }
 }
-function registerInstitution($name, $address, $state, $city, $zipCode, $phoneNumber, $db){
-    /*
-    if($qry = $db->prepare("INSERT INTO account(emailAddress,firstName,lastName,hash,salt) VALUES(?,?,?,?,?)")){
-        $array = array();
-        $array['message'] = "prepare was succesful";
-        $array['status'] = 0;
-        echo json_encode($array); 
-        return -1;
-    }
-    else{
-        $array = array();
-        $array['message'] = "query prepare uncsuccessful:(" . $db->errno . ") " . $db->error;
-        $array['status'] = 0;
-        echo json_encode($array); 
-        return -1;
-    }
-    
-    $array = array();
-    $array['message'] = "prepare was succesful";
-    $array['status'] = 0;
-    echo json_encode($array); 
-    
-  */
-  if($qry = $db->prepare("SELECT accountID, salt, hash FROM account WHERE emailAddress = ?")){
-      }
-else{
-    $array = array();
-    $array['message'] = "query prepare uncsuccessful:(" . $db->errno . ") " . $db->error;
-    $array['status'] = 0;
-    echo json_encode($array); 
-    return -1;
-}
-}
 
 $name = $decoded['name'];
 $address = $decoded['address'];
@@ -65,13 +32,12 @@ $zipCode = $decoded['zipCode'];
 $phoneNumber = $decoded['phoneNumber'];
 
 if(isset($name,$address,$state,$city,$zipCode,$phoneNumber)){
-    //$institutionID = registerInstitution($name,$address,$state,$zipCode,$phoneNumber,$db);
     $test = testFunction($name,$address,$state,$city,$zipCode,$phoneNumber,$db);
     if($test != -1){
         $array = array();
         $array['message'] = "Institution Registration was successful";
         $array['status'] = 1;
-        //$array['institutionID'] = $institutionID;
+        $array['institutionID'] = $test;
         echo json_encode($array);
     }
     else{
