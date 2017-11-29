@@ -1,5 +1,9 @@
 <?php
 function registerInstitution($name, $address, $state, $city, $zipCode, $phoneNumber, $db){
+    $array = array();
+    $array['message'] = "Test";
+    $array['status'] = 0;
+    echo json_encode($array); 
     if($qry = $db->prepare("INSERT INTO institution('name','address','state','city','zipCode','phoneNumber') VALUES(?,?,?,?,?,?)")){
         $array = array();
         $array['message'] = "prepare was succesful";
