@@ -44,7 +44,7 @@ class createInstitution extends Component {
                 address: this.state.address,
                 city: this.state.city,
                 state: this.state.state,
-                zCode: this.state.zCode,
+                zipCode: this.state.zCode,
             })
         })
             .then((response) => response.json())
