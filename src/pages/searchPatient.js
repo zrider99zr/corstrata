@@ -10,14 +10,8 @@ const searchPatient = () => (
                <div id="top" >
             <label id="Header"> Search </label>
             <input  type="text" id="input" />
-            <div><button>Create Patient</button></div></div>
-                
-             
-  
-             
+            <div><button>Create Patient</button></div></div>             
              <div className="class">
-                             {/*come back to replace the function here with the actual functionality*/}
-
             <table className="blueTable" border="0">
                     <thead>
                         <tr>
@@ -75,18 +69,9 @@ const searchPatient = () => (
                         </tr>
                     </tbody>
                 </table>
-    
-  </div>
+                </div>
          </form>
-  
-            
-     
-
-    </div >
-
-       
+    </div >  
 </div>
-
     ) ;
-
 export default searchPatient
