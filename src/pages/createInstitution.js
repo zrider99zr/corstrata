@@ -36,7 +36,6 @@ class createInstitution extends Component {
     }
 
     submitForm() {
-        console.log(this.state);
         fetch('http://165.227.191.245/corstrata/api/index.php', {
             method: 'POST',
             headers: {
