@@ -12,6 +12,8 @@ import nav from './nav'
 import createPage from './createPage'
 import bates from './bates'
 import linegraph from './linegraph'
+import createInstitution from './createInstitution'
+import createPatient from './createPatient'
 
 
 // The Main component renders one of the three provided
@@ -34,7 +36,9 @@ const main = () => (
             <Route path='/createAccount' component={createAccount} />
             <Route path='/bates' component={bates} />
             <Route path='/linegraph' component={linegraph}/>
-            <Route path='/nav' component={nav}/>
+            <Route path='/nav' component={nav} />
+            <Route path='/createInstitution' component={createInstitution} />
+            <Route path='/createPatient' component={createPatient} />
         </Switch>
     </main>
 )
