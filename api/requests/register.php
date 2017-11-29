@@ -21,16 +21,7 @@ function registerAccount($email, $firstName, $lastName, $password, $isClient, $i
         $qry->execute();
         $qry->close();
     }
-    //Function returns institution ID of the user
-    function getInstitutionID($db){
-        $uid = $_SESSION['uid'];
-        $qry = $db->prepare("SELECT institutionID from clientAccount where accountID =  ?");
-        $qry->bind_param("i",$uid);
-        $qry->execute();
-        $result = $qry->get_result();
-        $qry->close();
-        return isset($result[0]['institutionID']) ? $result[0]['institutionID'] : -1;
-    }
+    
     //Creates a salt for the hash/salt process
     $salt = mcrypt_create_iv(22, MCRYPT_DEV_URANDOM);
     $options = [
@@ -49,22 +40,8 @@ function registerAccount($email, $firstName, $lastName, $password, $isClient, $i
     $qry->close();
     //If the created account is a client account create a client account
     if($isClient == 1){
-      if($institutionID == -1){
-        //If no specified institutionID from the front end get one from the current users institutionID
-        $iID = getInstitutionID($db);
-        if($iID != -1){
-          registerClientAccount($incrementID,$iID,$isAdmin);
-          return 1;
-        }
-        else{
-          return 0;
-        }
-      }
-      else{
-        //Otherwise just use the one from the frontend
         registerClientAccount($incrementID,$institutionID,$isAdmin,$db);
         return 1;
-      }
     }
     //Otherwise create a system account
     else{
@@ -81,18 +58,74 @@ $lastName = $decoded['lastName'];
 $password = $decoded['password'];
 $isClient = $decoded['isClient'];
 $isAdmin = $decoded['isAdmin'];
-$institutionID = $decoded['institutionID'];
-if(isset($email,$firstName,$lastName,$password,$isClient,$isAdmin,$institutionID)){
-    if(registerAccount($email, $firstName, $lastName, $password, $isClient, $isAdmin, $institutionID, $db) == 1){
-        $array = array();
-        $array['message'] = "Account Registration was successful";
-        $array['status'] = 1;
-        echo json_encode($array);
+$iID = $decoded['institutionID'];
+
+//Get institutionID of current user
+require_once("getInstitutionID.php");
+//Check that all of the fields are set
+if(isset($email,$firstName,$lastName,$password,$isClient,$isAdmin)){
+    //If the institution ID we retrieved from getInstitutionID is not -1 then we will go ahead and use it
+    if($institutionID != -1){
+        if(registerAccount($email, $firstName, $lastName, $password, $isClient, $isAdmin, $institutionID, $db) == 1){
+            $array = array();
+            $array['message'] = "Account Registration was successful";
+            $array['status'] = 1;
+            echo json_encode($array);
+        }
+        else{
+            $array = array();
+            $array['message'] = "Account Registration was unsuccessful";
+            $array['status'] = 0;
+            echo json_encode($array);
+        }
     }
     else{
-        $array = array();
-        $array['message'] = "Account Registration was unsuccessful";
-        $array['status'] = 0;
-        echo json_encode($array);
+        //Otherwise if the account is not a client we dont care
+        if($isClient == 0){
+            if(registerAccount($email, $firstName, $lastName, $password, $isClient, $isAdmin, $institutionID, $db) == 1){
+                $array = array();
+                $array['message'] = "Account Registration was successful";
+                $array['status'] = 1;
+                echo json_encode($array);
+            }
+            else{
+                $array = array();
+                $array['message'] = "Account Registration was unsuccessful";
+                $array['status'] = 0;
+                echo json_encode($array);
+            }
+        }
+        //However if it is a client
+        else{
+            //If the institution ID sent by the frontend is -1 we have a problem
+            if($iID != -1){
+                $array = array();
+                $array['message'] = "Please send a valid institutionID";
+                $array['status'] = 0;
+                echo json_encode($array);
+            }
+            //Otherwise were good and we send that one
+            else{
+                if(registerAccount($email, $firstName, $lastName, $password, $isClient, $isAdmin, $iID, $db) == 1){
+                    $array = array();
+                    $array['message'] = "Account Registration was successful";
+                    $array['status'] = 1;
+                    echo json_encode($array);
+                }
+                else{
+                    $array = array();
+                    $array['message'] = "Account Registration was unsuccessful";
+                    $array['status'] = 0;
+                    echo json_encode($array);
+                } 
+            }
+        }
+
     }
+}
+else{
+    $array = array();
+    $array['message'] = "Please ensure that you sent all of the required fields";
+    $array['status'] = 0;
+    echo json_encode($array);
 }
