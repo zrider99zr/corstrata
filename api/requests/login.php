@@ -71,7 +71,7 @@ if(isset($email, $password)){
         $array['message'] = "Login was successful";
         $array['status'] = 1;
         $array['uid'] = $userID;
-        $array['name'] = getUsername($userID);
+        $array['name'] = getUsername($userID, $db);
         $array['sid'] = $session->handleSID($userID);
         echo json_encode($array);
     }
