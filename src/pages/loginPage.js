@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import 'font-awesome/css/font-awesome.min.css'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 
 //import styled from 'styled-components';
 
@@ -17,6 +17,7 @@ class loginPage extends Component {
             error: props.error,
             info: props.info,
             password: "",
+            login: false,
         };
     }
 
@@ -44,11 +45,10 @@ class loginPage extends Component {
         })
             .then((response) => response.json())
             .then((res) => {
-                alert(res.message[0] + " " + res.message[1] + " " + res.message[2] + " " + res.message[3]);
-                console.log(res.message);
-                console.log(res.status);
-                console.log(res.uid);
-                console.log(sessionStorage.getItem.toString());
+                sessionStorage.setItem("userData", res);
+                if (res==1) {
+                    login = true;
+                }
             })
             .catch((error) => {
                 alert(error.message);
@@ -57,6 +57,10 @@ class loginPage extends Component {
     }
 
     render() {
+        if (login == true) {
+            <Redirect to="/" />
+        }
+
         return (
             <AuthPage subtitle="Welcome Please Sign in">
                 <StackedInputs>
