@@ -1,17 +1,19 @@
 <?php
 function registerInstitution($name, $address, $state, $city, $zipCode, $phoneNumber, $db){
-    /*
     if($qry = $db->prepare("INSERT INTO institution(name,address,state,city,zipCode,phoneNumber) VALUES(?,?,?,?,?,?)")){
         $qry->bind_param("ssssii",$name, $address, $state, $city, $zipCode, $phoneNumber);
         if($qry->execute()){
             $institutionID = $qry->insert_id;
             $qry->close();
+            /*
             if(isset($institutionID)){
                 return $institutionID;
             }
             else{
                 return -1;
             }
+            */
+            return 1;
         }
         else{
             $array = array();
@@ -29,8 +31,8 @@ function registerInstitution($name, $address, $state, $city, $zipCode, $phoneNum
         echo json_encode($array); 
         return -1;
     }
-    */
-    return -1;
+    
+   
 }
 
 $name = $decoded['name'];
@@ -51,7 +53,7 @@ if(isset($name,$address,$state,$city,$zipCode,$phoneNumber)){
     }
     else{
         $array = array();
-        $array['message'] = "Institution Registration was successful";
+        $array['message'] = "Institution Registration was unsuccessful";
         $array['status'] = 0;
         echo json_encode($array);
     }
