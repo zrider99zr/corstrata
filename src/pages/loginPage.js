@@ -46,7 +46,7 @@ class loginPage extends Component {
             .then((response) => response.json())
             .then((res) => {
                 sessionStorage.setItem("userData", res.status);
-                if (res==1) {
+                if (res.status==1) {
                     this.state.login = true;
                 }
             })
@@ -57,7 +57,7 @@ class loginPage extends Component {
     }
 
     render() {
-        if (login === true) {
+        if (this.state.login === true) {
             return (<Redirect to="/" />)
         }
 
