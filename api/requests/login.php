@@ -36,6 +36,31 @@ function login($email, $password, $db){
         return -1;
     }
 }
+//Function to return a username of the user
+function getUsername($userID,$db){
+    if($qry = $db->prepare("SELECT firstName, lastName FROM account WHERE accountID = ?")){
+        $qry->bind_param("is",$userID);
+        $qry->execute();
+        $qry->bind_result($firstName,$lastname);
+        $qry->store_result();
+        $qry->fetch();
+        $qry->close();
+
+        if(isset($firstName, $lastname)){
+            return $firstName . " " . $lastname;
+        }
+        else{
+            return -1;
+        }
+    }
+    else{
+        $array = array();
+        $array['message'] = "query prepare uncsuccessful:(" . $db->errno . ") " . $db->error;
+        $array['status'] = 0;
+        echo json_encode($array); 
+        return -1;
+    }
+}
 
 //USAGE
 //Send a json with request field login and fields shown below filled
@@ -49,6 +74,7 @@ if(isset($email, $password)){
         $array['message'] = "Login was successful";
         $array['status'] = 1;
         $array['uid'] = $userID;
+        $array['accountName'] = getUsername($userID,$db);
         $_SESSION['uid'] = $userID;
         echo json_encode($array);
     }
