@@ -1,26 +1,11 @@
 <?php
-function registerInstitution($name, $address, $state, $city, $zipCode, $phoneNumber){
-    if($qry = $this->mysqli->prepare("INSERT INTO institution(name,address,state,city,zipCode,phoneNumber) VALUES(?,?,?,?,?,?)")){
-        $qry->bind_param("ssssii",$name, $address, $state, $city, $zipCode, $phoneNumber);
-        if($qry->execute()){
-            $qry->execute();
-            $institutionID = $qry->insert_id;
-            $qry->close();
-            if(isset($institutionID)){
-                return $institutionID;
-            }
-            else{
-                return -1;
-            }
-        }
-        else{
-            $array = array();
-            $array['message'] = "query prepare uncsuccessful:(" . $qry->errno . ") " . $qry->error;
-            $array['status'] = 0;
-            echo json_encode($array); 
-            return -1;
-        }
-        
+function registerInstitution($name, $address, $state, $city, $zipCode, $phoneNumber, $db){
+    if($qry = $db->prepare("INSERT INTO institution(name,address,state,city,zipCode,phoneNumber) VALUES(?,?,?,?,?,?)")){
+        $array = array();
+        $array['message'] = "prepare was succesful";
+        $array['status'] = 0;
+        echo json_encode($array); 
+        return -1;
     }
     else{
         $array = array();
@@ -29,6 +14,23 @@ function registerInstitution($name, $address, $state, $city, $zipCode, $phoneNum
         echo json_encode($array); 
         return -1;
     }
+    /*
+    $array = array();
+    $array['message'] = "prepare was succesful";
+    $array['status'] = 0;
+    echo json_encode($array); 
+    $qry->bind_param("ssssis",$name, $address, $state, $city, $zipCode, $phoneNumber);
+    $qry->execute();
+    $institutionID = $qry->insert_id;
+    $qry->close();
+            
+    if(isset($institutionID)){
+        return $institutionID;
+    }
+    else{
+        return -1;
+    }
+  */
 }
 
 $name = $decoded['name'];
@@ -39,7 +41,7 @@ $zipCode = $decoded['zipCode'];
 $phoneNumber = $decoded['phoneNumber'];
 
 if(isset($name,$address,$state,$city,$zipCode,$phoneNumber)){
-    $institutionID = registerInstitution($name,$address,$state,$zipCode,$phoneNumber);
+    $institutionID = registerInstitution($name,$address,$state,$zipCode,$phoneNumber, $db);
     if($institutionID != -1){
         $array = array();
         $array['message'] = "Institution Registration was successful";
@@ -49,7 +51,7 @@ if(isset($name,$address,$state,$city,$zipCode,$phoneNumber)){
     }
     else{
         $array = array();
-        $array['message'] = "Institution Registration was successful";
+        $array['message'] = "Institution Registration was unsuccessful";
         $array['status'] = 0;
         echo json_encode($array);
     }
