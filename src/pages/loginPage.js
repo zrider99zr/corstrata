@@ -44,7 +44,7 @@ class loginPage extends Component {
         })
             .then((response) => response.json())
             .then((res) => {
-                alert(res.message);
+                alert(res.message[0] + " " + res.message[1] + " " + res.message[2] + " " + res.message[3]);
                 //console.log(res.message);
             })
             .catch((error) => {
