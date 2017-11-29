@@ -120,10 +120,10 @@ class Session {
     if ($qry->execute()) {
       $_SESSION['sid'] = $sid;
       $qry->close();
-      return 1;
+      return true;
     }
     $qry->close();
-    return 0;
+    return false;
   }
   public function getUserID(){
     return getUID($sid);
