@@ -39,7 +39,7 @@ function login($email, $password, $db){
 //Function to return a username of the user
 function getUsername($userID,$db){
     if($qry = $db->prepare("SELECT firstName, lastName FROM account WHERE accountID = ?")){
-        $qry->bind_param("is",$userID);
+        $qry->bind_param("i",$userID);
         $qry->execute();
         $qry->bind_result($firstName,$lastName);
         $qry->fetch();
