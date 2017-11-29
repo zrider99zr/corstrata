@@ -11,15 +11,15 @@ function getInstitutionID($db, $session){
     return isset($result[0]['institutionID']) ? $result[0]['institutionID'] : -1;
 }
 
-$institutionID = getInstitutionID($db,$session);
-
+//$institutionID = getInstitutionID($db,$session);
+$institutionID = 1;
 if($request == "getInstitutionID"){
     //TODO add the functionality 
     if($institutionID != -1){
         $array = array();
         $array['message'] = "Institution was found";
         $array['status'] = 1;
-        $array['institutionID'] = $institutionID;
+        $array['userID'] = $session->getUserID();
         echo json_encode($array);
       }
       else{
