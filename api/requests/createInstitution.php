@@ -1,4 +1,21 @@
 <?php
+
+function testFunction($db){
+    if($qry = $db->prepare("INSERT INTO institution(name,address,state,city,zipCode,phoneNumber) VALUES(?, ?, ?, ?, ?, ?)")){
+        $array = array();
+        $array['message'] = "prepare was succesful";
+        $array['status'] = 0;
+        echo json_encode($array); 
+        return -1;
+    }
+    else{
+        $array = array();
+        $array['message'] = "query prepare uncsuccessful:(" . $db->errno . ") " . $db->error;
+        $array['status'] = 0;
+        echo json_encode($array); 
+        return -1;
+    }
+}
 function registerInstitution($name, $address, $state, $city, $zipCode, $phoneNumber, $db){
     /*
     if($qry = $db->prepare("INSERT INTO account(emailAddress,firstName,lastName,hash,salt) VALUES(?,?,?,?,?)")){
@@ -51,8 +68,8 @@ $zipCode = $decoded['zipCode'];
 $phoneNumber = $decoded['phoneNumber'];
 
 if(isset($name,$address,$state,$city,$zipCode,$phoneNumber)){
-    $institutionID = registerInstitution($name,$address,$state,$zipCode,$phoneNumber,$db);
-    if($institutionID != -1){
+    //$institutionID = registerInstitution($name,$address,$state,$zipCode,$phoneNumber,$db);
+    if(testFunction($db) != -1){
         $array = array();
         $array['message'] = "Institution Registration was successful";
         $array['status'] = 1;
