@@ -135,7 +135,7 @@ class Session {
     $qry->execute();
     $result = $qry->get_result();
     $qry->close();
-    return isset($result[0]['userid']) ? $result[0]['userid'] : -1;
+    return isset($result[0]['accountID']) ? $result[0]['accountID'] : -1;
   }
 
   //Verifies if the session is logged in
