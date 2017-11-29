@@ -50,9 +50,7 @@ class loginPage extends Component {
                 alert(error.message);
             })
             .done();
-            if('status'==1){
-                
-            }
+            
     }
 
     render() {
