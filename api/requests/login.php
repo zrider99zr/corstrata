@@ -37,10 +37,8 @@ function login($email, $password, $db){
     }
 }
 
-
 //USAGE
 //Send a json with request field login and fields shown below filled
-
 $email = $decoded['email'];
 $password = $decoded['password'];
 
