@@ -8,9 +8,7 @@ function login($email, $password, $db){
         $qry->store_result();
         $qry->fetch();
 
-        $isset = isset($userID, $dbSalt, $dbHash);
-
-        if(!$isset){
+        if(!isset($userID, $dbSalt, $dbHash)){
             return -1;
         }
         
@@ -36,34 +34,11 @@ function login($email, $password, $db){
         return -1;
     }
 }
-//Function to return a username of the user
-function getUsername($userID,$db){
-    if($qry = $db->prepare("SELECT firstName, lastName FROM account WHERE accountID = ?")){
-        $qry->bind_param("i",$userID);
-        $qry->execute();
-        $qry->bind_result($firstName,$lastName);
-        $qry->fetch();
 
-        if(isset($firstName, $lastName)){
-            $qry->close();
-            return $firstName . " " . $lastName;
-        }
-        else{
-            $qry->close();
-            return -1;
-        }
-    }
-    else{
-        $array = array();
-        $array['message'] = "query prepare uncsuccessful:(" . $db->errno . ") " . $db->error;
-        $array['status'] = 0;
-        echo json_encode($array); 
-        return -1;
-    }
-}
 
 //USAGE
 //Send a json with request field login and fields shown below filled
+
 $email = $decoded['email'];
 $password = $decoded['password'];
 
@@ -74,8 +49,7 @@ if(isset($email, $password)){
         $array['message'] = "Login was successful";
         $array['status'] = 1;
         $array['uid'] = $userID;
-        $array['accountName'] = getUsername($userID,$db);
-        $array['sessionCreated'] = $session->handleSID($userID);
+        $session->handleSID($userID);
         echo json_encode($array);
     }
     else{
