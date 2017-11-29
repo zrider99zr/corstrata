@@ -14,7 +14,7 @@ class nav extends Component {
                     <li><Link to='/loginPage'>Login Page</Link></li>
                     <li><Link to='/resetPassword'>reset Password</Link></li>
 
-                    <li><Link to='/createPage'>Create Admin Page</Link></li>
+                    <li><Link to='/createPage'>CreateAdmin Page</Link></li>
                     <li><Link to='/MNAtest'>Mini-Nutritional Assessment</Link></li>
                     <li><Link to='/wagnerScaleTest'>Wagner Scale Test</Link></li>
                     <li><Link to='/testSelectionPage'>Test Selection Page</Link></li>
