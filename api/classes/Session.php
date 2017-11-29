@@ -173,5 +173,8 @@ class Session {
     }
     return $randstr;
   }
+  public function getSID(){
+    return $this->sid;
+  }
 }
  ?>

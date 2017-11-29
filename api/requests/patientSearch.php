@@ -3,25 +3,11 @@
 //USAGE
 //Send a json with request field register and fields shown below filled
 
+//get the institutionID of the use
+require_once("getInstitutionID.php");
 //Function that searches through the patient table given a search input
-function patientSearch($searchInput, $db){
+function patientSearch($searchInput, $institutionID, $db){
   //TODO sanitize search input to make sure no sql injections
-
-  //Function returns institution ID of the user
-  function getInstitutionID($db){
-    $uid = $_SESSION['uid'];
-    $qry = $db->prepare("SELECT institutionID from clientAccount where accountID =  ?");
-    $qry->bind_param("i",$uid);
-    $qry->execute();
-    $result = $qry->get_result();
-    $qry->close();
-    return isset($result[0]['institutionID']) ? $result[0]['institutionID'] : -1;
-  }
-
-  $institutionID = getInstitutionID($db);
-  if($institutionID == -1){
-    return -1;
-  }
   $qry = $db->prepare("SELECT patientID, firstName, lastName FROM patient WHERE lastName = %?% AND institutionID = ?");
   $qry->bind_param("si",$searchInput,$institutionID);
   $qry->execute();
@@ -38,19 +24,28 @@ function patientSearch($searchInput, $db){
 
 $searchInput = $decoded['searchInput'];
 if(isset($searchInput)){
-  $search = patientSearch($searchInput,$db);
-  if($search != -1){
-    $array = array();
-    $array['message'] = "Search was successful";
-    $array['status'] = 1;
-    $array['search'] = $search;
-    echo json_encode($array);
+  if($institutionID != -1){
+    $search = patientSearch($searchInput,$institutionID,$db);
+    if($search != -1){
+      $array = array();
+      $array['message'] = "Search was successful";
+      $array['status'] = 1;
+      $array['search'] = $search;
+      echo json_encode($array);
+    }
+    else{
+      $array = array();
+      $array['message'] = "Search was unsuccesful";
+      $array['status'] = 0;
+      echo json_encode($array);
+    }
   }
   else{
     $array = array();
-    $array['message'] = "Search was unsuccesful";
+    $array['message'] = "Institution was not found";
     $array['status'] = 0;
     echo json_encode($array);
   }
+  
 }
 
