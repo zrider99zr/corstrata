@@ -126,7 +126,7 @@ class Session {
     }
   }
   public function getUserID(){
-    return getUID($this->sid);
+    return $this->sid;
   }
   //Takes either an email address or a session id and returns a user id
   function getUID($sid){
