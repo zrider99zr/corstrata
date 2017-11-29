@@ -1,6 +1,6 @@
 <?php
 
-function testFunction($db){
+function testFunction($name,$address,$state,$city,$zipCode,$phoneNumber,$db){
     if($qry = $db->prepare("INSERT INTO institution(name,address,state,city,zipCode,phoneNumber) VALUES(?, ?, ?, ?, ?, ?)")){
         $array = array();
         $array['message'] = "prepare was succesful";
@@ -69,7 +69,7 @@ $phoneNumber = $decoded['phoneNumber'];
 
 if(isset($name,$address,$state,$city,$zipCode,$phoneNumber)){
     //$institutionID = registerInstitution($name,$address,$state,$zipCode,$phoneNumber,$db);
-    $test = testFunction($db);
+    $test = testFunction($name,$address,$state,$city,$zipCode,$phoneNumber,$db);
     if($test != -1){
         $array = array();
         $array['message'] = "Institution Registration was successful";
