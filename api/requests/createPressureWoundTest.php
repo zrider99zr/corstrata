@@ -2,7 +2,8 @@
 require('createTest.php');
 //TODO implement a function that takes all of the data from a pressure wound test and inserts it into the database
 //TODO Call create test to get a test id and insert it into the test table
-function createPressureWoundTest($testID, $size, $depth, $edges, $undermining, $necType, $necAmount, $exudateType, $exudateAmount, $skinColorAround, $peripheralEdema, $peripheralInduration, $granTissue, $epith){
+function createPressureWoundTest($testID, $size, $depth, $edges, $undermining, $necType, $necAmount, $exudateType, 
+  $exudateAmount, $skinColorAround, $peripheralEdema, $peripheralInduration, $granTissue, $epith){
     //MAY NEED TO ADD PARAMS FOR SUSSMAN
     //Note: just shoved all the stuff into the parameters individually. There's got to be a better way... maybe an array?
     //TODO make 'clamps' to ensure inputs are within numerical bounds
@@ -86,7 +87,7 @@ function createPressureWoundTest($testID, $size, $depth, $edges, $undermining, $
   //TODO implement a function that takes the information from a pressure wound test and spits out a bates jensen score
   function getBatesJensenScore($size, $depth, $edges, $undermining, $necType, $necAmount, $exudateType, $exudateAmount, $skinColorAround, $peripheralEdema, $peripheralInduration, $granTissue, $epith){
     //Sub-Scores: Size, Depth, Edges, Undermining, Necrotic Tissue Type, Necrotic Tissue Amount, Exudate Type, Exudate Amount,
-                //Skin Color Surrounding Wound, Peripheral Tissue Edema, Peripheral Tissue Induration, Granulation Tissue, Epithelialization
+    //Skin Color Surrounding Wound, Peripheral Tissue Edema, Peripheral Tissue Induration, Granulation Tissue, Epithelialization
 
     //Size
     if($size > 0){
