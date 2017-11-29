@@ -1,6 +1,6 @@
 <?php
 
-function testFunction($name,$address,$state,$city,$zipCode,$phoneNumber,$db){
+function createNewInstitution($name,$address,$state,$city,$zipCode,$phoneNumber,$db){
     if($qry = $db->prepare("INSERT INTO institution(name,address,state,city,zipCode,phoneNumber) VALUES(?, ?, ?, ?, ?, ?)")){
         $qry->bind_param("ssssis",$name, $address, $state, $city, $zipCode, $phoneNumber);
         $qry->execute();
@@ -23,21 +23,21 @@ function testFunction($name,$address,$state,$city,$zipCode,$phoneNumber,$db){
         return -1;
     }
 }
-
+//Everything in decoded must be sent to the backend exactly as stated
 $name = $decoded['name'];
 $address = $decoded['address'];
 $state = $decoded['state'];
 $city = $decoded['city'];
 $zipCode = $decoded['zipCode'];
 $phoneNumber = $decoded['phoneNumber'];
-
+//Check to make sure that everything is working
 if(isset($name,$address,$state,$city,$zipCode,$phoneNumber)){
-    $test = testFunction($name,$address,$state,$city,$zipCode,$phoneNumber,$db);
-    if($test != -1){
+    $institutionID = createNewInstitution($name,$address,$state,$city,$zipCode,$phoneNumber,$db);
+    if($institutionID != -1){
         $array = array();
         $array['message'] = "Institution Registration was successful";
         $array['status'] = 1;
-        $array['institutionID'] = $test;
+        $array['institutionID'] = $institutionID;
         echo json_encode($array);
     }
     else{
