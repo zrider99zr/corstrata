@@ -45,6 +45,7 @@ class loginPage extends Component {
             .then((response) => response.json())
             .then((res) => {
                 alert(res.message);
+                console.log(res.message);
             })
             .catch((error) => {
                 alert(error.message);
