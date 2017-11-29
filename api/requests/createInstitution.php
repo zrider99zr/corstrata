@@ -5,7 +5,7 @@ function registerInstitution($name, $address, $state, $city, $zipCode, $phoneNum
     $array['message'] = "prepare was succesful";
     $array['status'] = 0;
     echo json_encode($array); 
-    $qry->bind_param("ssssii",$name, $address, $state, $city, $zipCode, $phoneNumber);
+    $qry->bind_param("ssssis",$name, $address, $state, $city, $zipCode, $phoneNumber);
     $qry->execute();
     $institutionID = $qry->insert_id;
     $qry->close();
