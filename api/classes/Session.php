@@ -68,10 +68,7 @@ class Session {
       }
     }
     //Creates a session
-    if ($this->buildSID($userID)) {
-      return true;
-    }
-    return false;
+    return $this->buildSID($userID);
   }
 
   //Returns if a session currently exists for a given user
@@ -122,8 +119,11 @@ class Session {
       $qry->close();
       return true;
     }
-    $qry->close();
-    return false;
+    else{
+      $error = $qry->error;
+      $qry->close();
+      return $error;
+    }
   }
   public function getUserID(){
     return getUID($sid);
