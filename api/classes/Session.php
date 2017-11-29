@@ -68,10 +68,7 @@ class Session {
       }
     }
     //Creates a session
-    if ($this->buildSID($userID)) {
-      return true;
-    }
-    return false;
+    return $this->buildSID($userID);
   }
 
   //Returns if a session currently exists for a given user
@@ -115,15 +112,18 @@ class Session {
     $timestamp = $time + 60 * SESSION_LENGTH;
 
     $qry = $this->mysqli->prepare("INSERT INTO sessions (sessionID, accountID, timeCreated) VALUES (?, ?, ?)");
-    $qry->bind_param("iii",$sid,$userid,$timestamp);
+    $qry->bind_param("sii",$sid,$userid,$timestamp);
 
     if ($qry->execute()) {
       $_SESSION['sid'] = $sid;
       $qry->close();
       return true;
     }
-    $qry->close();
-    return false;
+    else{
+      $error = $qry->error;
+      $qry->close();
+      return $error;
+    }
   }
   public function getUserID(){
     return getUID($sid);
