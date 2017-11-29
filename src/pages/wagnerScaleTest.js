@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import ResponseLabel from './responseLabel'
 import Response from './response'
-import './home.css'
-import '../styling/wagner.css'
+
+import '../styling/un.css'
 
 class wagnerScaleTest extends Component {
 

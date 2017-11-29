@@ -1,16 +1,16 @@
 import React from 'react'; 
 //import $ from 'jquery';
-import '../styling/mna.css'
+import '../styling/un.css'
 
 var x;
 const bates = () => (
     
 
 
-  <div id="class" className="classContainer" background>
+  <div id="class">
          
   <label id="Header">Bates Jensen </label>
-  <div class="container">
+  
  
     <form class="mnaform" action="#" method="POST" encType="multipart/form-data">
  
@@ -18,7 +18,7 @@ const bates = () => (
    
 
 
-<div class="classContainer">
+<div >
 
 
 <label>LOCATION</label>
@@ -65,7 +65,7 @@ const bates = () => (
 
 
 </div>
-<div class= "classContainer" id="textes">
+<div  id="textes">
   <label>If Other Please Specify</label>
 <input type="text" />
 <label>&nbsp;</label>
@@ -76,7 +76,7 @@ const bates = () => (
 
 
       {/*values || severe decrease in food intake = 0 || moderate dec in food intake = 1 || no dec in food intake = 2 */}
-      <div class="container">
+      <div >
       <label id="name">Size (cm)<sup>2</sup> </label>
       <input id="size" type="text" />
       
@@ -431,7 +431,7 @@ less than 25% wound covered
 
  
 </div>
-</div>
+
 
 
 

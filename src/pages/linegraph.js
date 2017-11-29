@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../styling/linegraph.css';
+import '../styling/un.css';
 //import LineChart from './linechart';
 import LineChart from 'react-svg-line-chart'
 import Tooltip from 'react-simple-tooltip'

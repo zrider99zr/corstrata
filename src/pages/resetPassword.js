@@ -1,20 +1,20 @@
 import React from 'react';
-import '../styling/resetPassword.css';
+import '../styling/un.css';
 import { Link } from 'react-router-dom';
 import {slide as Menu} from 'react-burger-menu';
 import {navm} from '../styleForm';
 const resetPassword = () => (
 
-<div class= "container">
-<div class= "classContianer">
+<div id="class">
+
      <label id="Header"> PASSWORD RESET </label>
-    <body className="bodyf">
+    
 
 
   
 
    
-    <form class="inputform">
+    <form class="mnaform">
       <div>
         <label className="label" id="advice"><b>Password must include a minimum of 8 characters.<br></br><br></br>
         And one or more of each of the following:</b>
@@ -32,19 +32,23 @@ const resetPassword = () => (
 
       
 
-        <label className="label" id="inlabel"> Old Password: </label>
-        <input className="inputboxpassword" type="text" id="input" />
+        <label className="label" > Old Password: </label>
+        <input type="text" id="res" />
         <br></br>
 
 
 
-        <label className="label" id="inlabel"> New Password: </label>
-        <input className="inputboxpassword" type="text" id="input" />
+        <label className="label" > New Password: </label>
+      <input  type="text" />
 
         <br></br>
-        <label className="label" id="inlabel">Confirm New Password: </label>
-        <input className="inputboxpassword" type="text" id="input" />
-        <input id="changeButton" type="submit" value="Confirm Password" />
+        <label className="label" >Confirm New Password: </label>
+        <input  type="text"  id="res"/>
+        
+<label>&nbsp;</label>
+<br></br>
+<label>&nbsp;</label>
+        <input id="submit_button" type="submit" value="Submit " />
 
       </div>
 
@@ -54,9 +58,9 @@ const resetPassword = () => (
 
 
 
-  
-</body>
-</div>
+ 
+
+
 </div>
 )
 export default resetPassword

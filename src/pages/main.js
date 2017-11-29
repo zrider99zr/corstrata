@@ -12,7 +12,7 @@ import nav from './nav'
 import createPage from './createPage'
 import bates from './bates'
 import linegraph from './linegraph'
-
+import '../styling/un.css';
 
 // The Main component renders one of the three provided
 // Routes (provided that one matches). Both the /roster

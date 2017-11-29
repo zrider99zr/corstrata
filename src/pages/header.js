@@ -12,12 +12,7 @@ const header = () => (
        
                
                 
-               <Link to= '/loginPage'><Button id="logout">LOGOUT</Button></Link>
- <Link to='/nav'><Button id="menu">MENU</Button></Link>
-                
                
-               
-
       
         
     </header>
