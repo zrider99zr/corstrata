@@ -47,7 +47,7 @@ class loginPage extends Component {
             .then((res) => {
                 sessionStorage.setItem("userData", res);
                 if (res==1) {
-                    login = true;
+                    this.state.login = true;
                 }
             })
             .catch((error) => {
@@ -57,7 +57,7 @@ class loginPage extends Component {
     }
 
     render() {
-        if (login == true) {
+        if (login === true) {
             return (<Redirect to="/" />)
         }
 
