@@ -115,7 +115,7 @@ class Session {
     $timestamp = $time + 60 * SESSION_LENGTH;
 
     $qry = $this->mysqli->prepare("INSERT INTO sessions (sessionID, accountID, timeCreated) VALUES (?, ?, ?)");
-    $qry->bind_param("iii",$sid,$userid,$timestamp);
+    $qry->bind_param("sii",$sid,$userid,$timestamp);
 
     if ($qry->execute()) {
       $_SESSION['sid'] = $sid;
