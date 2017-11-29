@@ -71,7 +71,7 @@ if(isset($name,$address,$state,$city,$zipCode,$phoneNumber)){
         $array = array();
         $array['message'] = "Institution Registration was successful";
         $array['status'] = 1;
-        $array['institutionID'] = $institutionID;
+        //$array['institutionID'] = $institutionID;
         echo json_encode($array);
     }
     else{
