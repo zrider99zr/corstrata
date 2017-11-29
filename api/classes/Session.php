@@ -31,7 +31,7 @@ class Session {
     return self::$self_instance;
   }
   
-  function validate($sid, $currentTime){
+  public function validate($sid, $currentTime){
     //$sid = htmlentities(mysqli_real_escape_string(this->mysqli),$sid);
     $qry = $this->mysqli->prepare("SELECT timeCreated, accountID FROM sessions WHERE sessionID = ?");
     $qry->bind_param("s",$sid);
@@ -42,9 +42,11 @@ class Session {
       while($qry->fetch()){
         if($currentTime > $timestamp){
           $this->clear($sid);
+          $qry->close();
           return false;
         }
         else{
+          $qry->close();
           return true;
         }
       }
@@ -54,27 +56,8 @@ class Session {
         $this->clear($sid);
       }
     }
-    $qry->close();
-  }
 
-  //Logs in with an email and password if successful creates a session
-  /*
-  function login($email, $pass){
-    
-    //Validate the credentials of the users
-    if($this->validateLogin($email, $pass)){
-      //Get the userid
-      
-      $userid = $this->getUID($email);
-      if($this->handleSID($userid)){
-        return 1;
-      }
-      
-    }
-    return 0;
-    
   }
-  */
 
   //Prevents more than one session per user
   public function handleSID($userID){
@@ -142,7 +125,9 @@ class Session {
     $qry->close();
     return 0;
   }
-
+  public function getUserID(){
+    return getUID($sid);
+  }
   //Takes either an email address or a session id and returns a user id
   function getUID($input){
     if(filter_var($input, FILTER_VALIDATE_EMAIL) == true){

@@ -75,7 +75,7 @@ if(isset($email, $password)){
         $array['status'] = 1;
         $array['uid'] = $userID;
         $array['accountName'] = getUsername($userID,$db);
-        $_SESSION['uid'] = $userID;
+        $session->handleSID($userID);
         echo json_encode($array);
     }
     else{
