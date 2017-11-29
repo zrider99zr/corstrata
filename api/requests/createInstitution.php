@@ -1,6 +1,20 @@
 <?php
 function registerInstitution($name, $address, $state, $city, $zipCode, $phoneNumber, $db){
-    $qry = $db->prepare("INSERT INTO institution(name,address,state,city,zipCode,phoneNumber) VALUES(?,?,?,?,?,?)");
+    if($qry = $db->prepare("INSERT INTO institution(name,address,state,city,zipCode,phoneNumber) VALUES(?,?,?,?,?,?)")){
+        $array = array();
+        $array['message'] = "prepare was succesful";
+        $array['status'] = 0;
+        echo json_encode($array); 
+        return -1;
+    }
+    else{
+        $array = array();
+        $array['message'] = "query prepare uncsuccessful:(" . $db->errno . ") " . $db->error;
+        $array['status'] = 0;
+        echo json_encode($array); 
+        return -1;
+    }
+    /*
     $array = array();
     $array['message'] = "prepare was succesful";
     $array['status'] = 0;
@@ -16,7 +30,7 @@ function registerInstitution($name, $address, $state, $city, $zipCode, $phoneNum
     else{
         return -1;
     }
-  
+  */
 }
 
 $name = $decoded['name'];
