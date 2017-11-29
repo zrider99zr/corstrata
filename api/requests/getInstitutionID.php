@@ -19,7 +19,8 @@ if($request == "getInstitutionID"){
         $array = array();
         $array['message'] = "Institution was found";
         $array['status'] = 1;
-        $array['userID'] = $session->getUserID();
+        //$array['userID'] = $session->getUserID();
+        $array['sessionID'] = isset($_SESSION['sid']) $_SESSION['sid'] ? -1;
         echo json_encode($array);
       }
       else{
