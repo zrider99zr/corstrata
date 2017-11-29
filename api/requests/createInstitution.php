@@ -69,7 +69,8 @@ $phoneNumber = $decoded['phoneNumber'];
 
 if(isset($name,$address,$state,$city,$zipCode,$phoneNumber)){
     //$institutionID = registerInstitution($name,$address,$state,$zipCode,$phoneNumber,$db);
-    if(testFunction($db) != -1){
+    $test = testFunction($db);
+    if($test != -1){
         $array = array();
         $array['message'] = "Institution Registration was successful";
         $array['status'] = 1;
