@@ -9,7 +9,7 @@ const searchPatient = () => (
         <form class="searchform"  >       
                <div id="top" >
             <label id="Header"> Search </label>
-            <input  type="text" id= "input" />
+            <input  type="text" id="input" />
             <div><button>Create Patient</button></div></div>
                 
              

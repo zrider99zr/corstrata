@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom'
 //import styled from 'styled-components';
 
 import {
-    Container, InputBox, HelpmMessage, LoginForm, SubButton, InputGroup,
-    AuthPage, WelcomeParagraph, InputField, StackedInputs, SubmitButton
+    HelpmMessage, InputGroup,
+    AuthPage, InputField, StackedInputs, SubmitButton
 } from '../styleForm';
 
 class loginPage extends Component {

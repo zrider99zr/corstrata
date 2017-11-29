@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import Response from './response';
 import '../styling/mna.css';
 
 class MNAtest extends Component {

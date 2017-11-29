@@ -1,8 +1,7 @@
 import React from 'react';
 import '../styling/resetPassword.css';
-import { Link } from 'react-router-dom';
-import {slide as Menu} from 'react-burger-menu';
-import {navm} from '../styleForm';
+import {slide} from 'react-burger-menu';
+import {nav} from '../styleForm';
 const resetPassword = () => (
 
 <div class= "container">

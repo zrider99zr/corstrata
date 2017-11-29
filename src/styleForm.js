@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import 'font-awesome/css/font-awesome.min.css';
-import {slide as Menu} from 'react-burger-menu';
+import {slide} from 'react-burger-menu';
 import {nav} from './pages/nav.js';
 
 export const Container = styled.div`
