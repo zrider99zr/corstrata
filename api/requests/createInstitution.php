@@ -1,10 +1,6 @@
 <?php
 function registerInstitution($name, $address, $state, $city, $zipCode, $phoneNumber, $db){
-    $array = array();
-    $array['message'] = "Test";
-    $array['status'] = 0;
-    echo json_encode($array); 
-    if($qry = $db->prepare("INSERT INTO institution('name','address','state','city','zipCode','phoneNumber') VALUES(?,?,?,?,?,?)")){
+    if($qry = $db->prepare("INSERT INTO instituon(name,address,state,city,zipCode,phoneNumber) VALUES(?, ?, ?, ?, ?, ?)")){
         $array = array();
         $array['message'] = "prepare was succesful";
         $array['status'] = 0;
@@ -45,7 +41,7 @@ $zipCode = $decoded['zipCode'];
 $phoneNumber = $decoded['phoneNumber'];
 
 if(isset($name,$address,$state,$city,$zipCode,$phoneNumber)){
-    $institutionID = registerInstitution($name,$address,$state,$zipCode,$phoneNumber, $db);
+    $institutionID = registerInstitution($name,$address,$state,$zipCode,$phoneNumber,$db);
     if($institutionID != -1){
         $array = array();
         $array['message'] = "Institution Registration was successful";
