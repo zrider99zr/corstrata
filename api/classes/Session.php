@@ -134,16 +134,13 @@ class Session {
       $qry = $this->mysqli->prepare("SELECT accountID from accounts where emailAddress = ?");
       $qry->bind_param($input);
       $qry->execute();
-
-      $result = $qry->get_result();
     }
     else{
       $qry = $this->mysqli->prepare("SELECT accountID from sessions where sessionID = ?");
       $qry->bind_param($input);
       $qry->execute();
-
-      $result = $qry->get_result();
     }
+    $result = $qry->get_result();
     $qry->close();
     return isset($result[0]['userid']) ? $result[0]['userid'] : -1;
   }
