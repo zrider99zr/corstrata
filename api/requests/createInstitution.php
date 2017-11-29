@@ -1,6 +1,6 @@
 <?php
-function registerInstitution($name, $address, $state, $city, $zipCode, $phoneNumber, $dbi){
-    if($q = $dbi->prepare("INSERT INTO instituon(name,address,state,city,zipCode,phoneNumber) VALUES(?, ?, ?, ?, ?, ?)")){
+function registerInstitution($name, $address, $state, $city, $zipCode, $phoneNumber, $db){
+    if($qry = $db->prepare("INSERT INTO account(emailAddress,firstName,lastName,hash,salt) VALUES(?,?,?,?,?)")){
         $array = array();
         $array['message'] = "prepare was succesful";
         $array['status'] = 0;
