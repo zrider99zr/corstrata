@@ -2,7 +2,7 @@
 require('createTest.php');
 //TODO implement a function that takes all of the data from a pressure wound test and inserts it into the database
 //TODO Call create test to get a test id and insert it into the test table
-function createPressureWoundTest($testID, $size, $depth, $edges, $undermining, $necType, $necAmount, $exudateType, 
+function createPressureWoundTest($testID, $size, $depth, $edges, $undermining, $necType, $necAmount, $exudateType,
   $exudateAmount, $skinColorAround, $peripheralEdema, $peripheralInduration, $granTissue, $epith){
     //MAY NEED TO ADD PARAMS FOR SUSSMAN
     //Note: just shoved all the stuff into the parameters individually. There's got to be a better way... maybe an array?
@@ -177,7 +177,7 @@ function createPressureWoundTest($testID, $size, $depth, $edges, $undermining, $
       $epithSS = 0;
     }
 
-    return array($hemorrhageSS, $macerationSS, $underminingSS, $erythemaSS, $necroticSS, $adherenceSS, $granulationSS, $contrAppearanceSS, $contrSustainedSS, $epithSS);
+    return strval($hemorrhageSS).strval($macerationSS).strval($underminingSS).strval($erythemaSS).strval($necroticSS).strval($adherenceSS).strval($granulationSS).strval($contrAppearanceSS).strval($contrSustainedSS).strval($epithSS);
   }
 
     //calculate PUSH/Bates-Jensen/Sussman Scores
@@ -189,7 +189,7 @@ function createPressureWoundTest($testID, $size, $depth, $edges, $undermining, $
     //dump test results and raw data into table
     //order of table keys for reference: testID, PUSHScore, BatesJensenScore, SussmanScore, size, depth, edges, undermining, necType, necAmount, exudateType, exudateAmount, skinColorAround, peripheralEdema, peripheralInduration, granTissue, epith
     $qry = $this->$mysqli->prepare("INSERT INTO pressureWoundTest VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-    $qry->bind_param("iiibdiiiiiiiiiiii",$testID, $PUSHScore, $BatesJensenScore, $SussmanScore, $size, $depth, $edges, $undermining, $necType, $necAmount, $exudateType, $exudateAmount, $skinColorAround, $peripheralEdema, $peripheralInduration, $granTissue, $epith);
+    $qry->bind_param("iiisdiiiiiiiiiiii",$testID, $PUSHScore, $BatesJensenScore, $SussmanScore, $size, $depth, $edges, $undermining, $necType, $necAmount, $exudateType, $exudateAmount, $skinColorAround, $peripheralEdema, $peripheralInduration, $granTissue, $epith);
     //hey so sussman is an array of 10 0's and 1's: change this in the DB so it either accepts this data type or has its own table.
     $qry->execute();
     $qry->close();
