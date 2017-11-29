@@ -1,5 +1,6 @@
 <?php
 function registerInstitution($name, $address, $state, $city, $zipCode, $phoneNumber, $db){
+    /*
     if($qry = $db->prepare("INSERT INTO account(emailAddress,firstName,lastName,hash,salt) VALUES(?,?,?,?,?)")){
         $array = array();
         $array['message'] = "prepare was succesful";
@@ -14,7 +15,7 @@ function registerInstitution($name, $address, $state, $city, $zipCode, $phoneNum
         echo json_encode($array); 
         return -1;
     }
-    /*
+    
     $array = array();
     $array['message'] = "prepare was succesful";
     $array['status'] = 0;
@@ -31,6 +32,15 @@ function registerInstitution($name, $address, $state, $city, $zipCode, $phoneNum
         return -1;
     }
   */
+  if($qry = $db->prepare("SELECT accountID, salt, hash FROM account WHERE emailAddress = ?")){
+      }
+else{
+    $array = array();
+    $array['message'] = "query prepare uncsuccessful:(" . $db->errno . ") " . $db->error;
+    $array['status'] = 0;
+    echo json_encode($array); 
+    return -1;
+}
 }
 
 $name = $decoded['name'];
