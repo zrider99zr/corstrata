@@ -1,10 +1,10 @@
 <?php
 function registerInstitution($name, $address, $state, $city, $zipCode, $phoneNumber, $db){
+    $qry = $db->prepare("INSERT INTO institution(name,address,state,city,zipCode,phoneNumber) VALUES(?,?,?,?,?,?)");
     $array = array();
     $array['message'] = "prepare was succesful";
     $array['status'] = 0;
     echo json_encode($array); 
-    $qry = $db->prepare("INSERT INTO institution(name,address,state,city,zipCode,phoneNumber) VALUES(?,?,?,?,?,?)");
     $qry->bind_param("ssssii",$name, $address, $state, $city, $zipCode, $phoneNumber);
     $qry->execute();
     $institutionID = $qry->insert_id;
