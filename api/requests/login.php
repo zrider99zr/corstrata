@@ -73,6 +73,8 @@ if(isset($email, $password)){
         $array['uid'] = $userID;
         $array['name'] = getUsername($userID, $db);
         $array['sid'] = $session->handleSID($userID);
+        $array['sessionID'] = $_SESSION['sid'];
+        $_SESSION['uid'] = $userID;
         echo json_encode($array);
     }
     else{
