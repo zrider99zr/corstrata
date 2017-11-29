@@ -4,9 +4,6 @@
 	grid-auto-rows: 1fr;
 }
 
-
-
-
 .inputboxpassword {
     grid-area: topright;
     height: 25px;
@@ -171,10 +168,6 @@ margin-top: 200px;
 
 label{
   display: block;
-
-  
-   
-  
   }
 
 

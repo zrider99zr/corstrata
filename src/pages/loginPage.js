@@ -62,7 +62,7 @@ class loginPage extends Component {
             return (<Redirect to={'/'} />)
         }
 
-        return (
+        return ( 
             <AuthPage subtitle="Welcome Please Sign in">
                 <StackedInputs>
 
