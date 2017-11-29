@@ -45,7 +45,7 @@ class loginPage extends Component {
         })
             .then((response) => response.json())
             .then((res) => {
-                sessionStorage.setItem("userData", res);
+                sessionStorage.setItem("userData", res.status);
                 if (res==1) {
                     this.state.login = true;
                 }
