@@ -6,9 +6,10 @@ import Nav from './nav.js';
 
 const App = () => (
     <div>
-        <Nav/>
+   <Nav/>
         <Header />
-        <Main />
+       
+        <Main /> 
     </div>
 );
 

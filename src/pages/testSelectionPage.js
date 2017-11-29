@@ -7,9 +7,9 @@ class testSelectionPage extends Component {
     render() {
         return (
           
-            <div className="classContainer">
-                 <label>Which test do you wish to perform?</label>
-                <div id="buttongroup">
+            <div id="containerb">
+                 <label id= "Header">Which test do you wish to perform?</label>
+                
                 <Link  to='./'> <Button className = "testbutton">Pressure Wound </Button></Link> <br></br>
                 <Link  to='./wagnerScaleTest'> <Button className = "testbutton">Wagner Scale Test </Button></Link>
                      <br></br>
@@ -20,7 +20,7 @@ class testSelectionPage extends Component {
                 
                 
                  
-            </div>
+            
         );
     };
 }

@@ -1,7 +1,6 @@
 import React from 'react';
-import { Button, ButtonGroup } from 'react-bootstrap';
-import styled from 'styled-components';
-import '../styling/un.css';
+
+import '../styling/nav.css';
 import { Link } from 'react-router-dom';
 import {slide as Menu} from 'react-burger-menu';
  /* export const ButtonGroup = styled.div`
@@ -12,7 +11,8 @@ import {slide as Menu} from 'react-burger-menu';
 
 const nav = () =>(
   <div>
-  <Menu>
+    <button class= "submit_button">
+  <Menu noOverlay disableOverlayClick >
   <Link className='button' to='./searchPatient'>Find Patient</Link>
   <Link className='button' to='./createAccount'>Create Account</Link>
   <li><Link to='/'>Home</Link></li>
@@ -31,7 +31,7 @@ const nav = () =>(
   <li><Link to='/linegraph'>linegraph</Link></li>
 </Menu>
 
-<button >dfadfds </button>
+ </button>
 </div>
 );
 

@@ -142,6 +142,15 @@
       
     }
     
+    #submit_button1{
+      font-size: 30px;
+      height: 90px;
+      width: 90px;
+      background-color: #2bb2db;
+          border: 4px solid black;
+          margin-bottom: 5px;
+          margin-top: 90px;
+        }
   
     select{
       height:35px;
@@ -165,7 +174,7 @@
         height: 150px;
         width: 650px;
      margin-top: 40px;
-     
+     margin-left: 855px ;
      color: rgba(255, 70, 70, 0.952);
     }
     #buttongroup{
@@ -220,6 +229,16 @@
         width: 100vh;
         
         }
+        #containerb{
+          display: inline-block;
+          
+          align-content: center;
+          width:100vmax;
+          height: 100vmax;
+          background-color: rgba(0, 0, 0, 0.712);
+          
+          }
+  
 
         .container{
             
@@ -239,6 +258,7 @@
                 background-color: rgba(0, 0, 0, 0.568);
             }
             
+         
             
             
             
@@ -464,6 +484,17 @@ background-color: rgba(0, 0, 0, 0.523);
         Main{
 
             width: fit-content;
+        }
+
+        nav{
+
+          width:30px;
+        }
+
+        Menu{
+
+  margin-top: 90px;
+
         }
     
     
