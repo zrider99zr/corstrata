@@ -1,6 +1,6 @@
 <?php
-function registerInstitution($name, $address, $state, $city, $zipCode, $phoneNumber){
-    if($qry = $this->mysqli->prepare("INSERT INTO institution(name,address,state,city,zipCode,phoneNumber) VALUES(?,?,?,?,?,?)")){
+function registerInstitution($name, $address, $state, $city, $zipCode, $phoneNumber, $db){
+    if($qry = $db->prepare("INSERT INTO institution(name,address,state,city,zipCode,phoneNumber) VALUES(?,?,?,?,?,?)")){
         $qry->bind_param("ssssii",$name, $address, $state, $city, $zipCode, $phoneNumber);
         if($qry->execute()){
             $institutionID = $qry->insert_id;
@@ -38,7 +38,7 @@ $zipCode = $decoded['zipCode'];
 $phoneNumber = $decoded['phoneNumber'];
 
 if(isset($name,$address,$state,$city,$zipCode,$phoneNumber)){
-    $institutionID = registerInstitution($name,$address,$state,$zipCode,$phoneNumber);
+    $institutionID = registerInstitution($name,$address,$state,$zipCode,$phoneNumber, $db);
     if($institutionID != -1){
         $array = array();
         $array['message'] = "Institution Registration was successful";
