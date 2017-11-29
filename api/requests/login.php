@@ -41,15 +41,15 @@ function getUsername($userID,$db){
     if($qry = $db->prepare("SELECT firstName, lastName FROM account WHERE accountID = ?")){
         $qry->bind_param("is",$userID);
         $qry->execute();
-        $qry->bind_result($firstName,$lastname);
-        $qry->store_result();
+        $qry->bind_result($firstName,$lastName);
         $qry->fetch();
-        $qry->close();
 
-        if(isset($firstName, $lastname)){
-            return $firstName . " " . $lastname;
+        if(isset($firstName, $lastName)){
+            $qry->close();
+            return $firstName . " " . $lastName;
         }
         else{
+            $qry->close();
             return -1;
         }
     }
