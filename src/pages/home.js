@@ -35,7 +35,7 @@ class Home extends Component {
             })
             .catch((error) => {
                 this.setState({ login: false });
-                alert(error.message);
+                //alert(error.message);
             })
             .done();
     }
