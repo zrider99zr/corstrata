@@ -29,10 +29,12 @@ class Home extends Component {
             .then((response) => response.json())
             .then((res) => {
 
+
                 if (res.status === 1) {
                     this.setState({ login: true });
                 } else if (res.status === 0) {
                     this.setState({ login: false });
+
                 }
             })
             .catch((error) => {
