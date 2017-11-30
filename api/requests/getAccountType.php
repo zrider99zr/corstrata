@@ -6,6 +6,7 @@ function getAccountType($uid, $db){
     $qry = $db->prepare("SELECT * from account where accountID =  ?");
     $qry->bind_param("i",$uid);
     $qry->execute();
+    $qry->store_result();
     return $qry->num_rows;
     //If it exists
     /*
