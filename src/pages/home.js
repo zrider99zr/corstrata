@@ -11,7 +11,8 @@ class Home extends Component {
     }
 
     componentDidMount() {
-        if (sessionStorage.getItem("token") != null || sessionStorage.getItem("token"!="")) {
+        console.log(sessionStorage.getItem("token"));
+        if (sessionStorage.getItem("token") != null || sessionStorage.getItem("token") != "") {
             this.validateUser();
         }else{
             this.setState({ loggedIn: false });
@@ -37,7 +38,6 @@ class Home extends Component {
 
                 } else if (res.status === 0) {
                     this.setState({ loggedIn: false });
-                    console.log(res.status);
                 }
             })
             .catch((error) => {
