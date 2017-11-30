@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { Component } from 'react';
+import { Link, Redirect } from 'react-router-dom';
 import '../styling/header.css';
 import { Button, ButtonGroup } from 'react-bootstrap';
 import {navm} from '../styleForm';
@@ -20,4 +20,29 @@ const header = () => (
     </header>
 );
 
+            /*    if (res.status === 1) {
+                    this.setState({ logout: true });
+                    sessionStorage.setItem("token", null);
+                    
+                } else {
+                    this.setState({ logout: false });
+                }
+            })
+            .catch((error) => {
+                alert(error.message);
+            })
+    }
+
+    render() {
+        if (this.state.logout === true ) {
+            return (<Redirect to={'/loginPage'} />)
+        }
+        return (
+            <header id="bodyf">
+                <Button onClick={this.logout.bind(this)} id="logout">LOGOUT</Button>
+                <Link to='/nav'> <Button id="menu">MENU</Button> </Link>
+            </header>
+        );
+    };
+}*/
 export default header;

@@ -68,7 +68,7 @@ CREATE TABLE pressureWoundTest
     testID INT(11) PRIMARY KEY NOT NULL,
     PUSHScore INT(11) NOT NULL,
     BatesJensenScore INT(11) NOT NULL,
-    SussmanScore INT(11) NOT NULL,
+    SussmanScore VARCHAR(10) NOT NULL,
     size DOUBLE(3,2) NOT NULL,
     depth INT(11) NOT NULL,
     edges INT(11) NOT NULL,
@@ -76,14 +76,14 @@ CREATE TABLE pressureWoundTest
     necType INT(11) NOT NULL,
     necAmount INT(11) NOT NULL,
     exudateType INT(11) NOT NULL,
-    exudateAmnt INT(11) NOT NULL,
+    exudateAmount INT(11) NOT NULL,
     skinColorAround INT(11) NOT NULL,
     peripheralEdema INT(11) NOT NULL,
     peripheralInduration INT(11) NOT NULL,
     granTissue INT(11) NOT NULL,
     epith INT(11) NOT NULL,
     CONSTRAINT pressureWoundTest_test_testID_fk FOREIGN KEY (testID) REFERENCES test (testID)
-); 
+);
 
 CREATE TABLE wagnerTest
 (

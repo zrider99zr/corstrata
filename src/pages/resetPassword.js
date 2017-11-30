@@ -15,10 +15,13 @@ const resetPassword = () => (
 
    
     <form class="mnaform">
-      <div>
-        <label className="label" id="advice"><b>Password must include a minimum of 8 characters.<br></br><br></br>
-        And one or more of each of the following:</b>
+      <div class="containerb">
+        <div><label className="label" id="advice">Password must include a minimum of 8 characters.
+       <br></br> And one or more of each of the following:
           <br></br>
+          <label >&nbsp;</label>
+          
+          <label>&nbsp;</label>
           <li> lower-case letter</li>
           <br></br>
           <li> upper-case letter</li>
@@ -27,32 +30,48 @@ const resetPassword = () => (
           <br></br>
           <li> punctuation mark</li>
         </label>
-      </div>
-      <div id="oldpassword">
-
+        </div>
       
+     
+     
+      
+<div class="containerb">
 
-        <label className="label" > Old Password: </label>
-        <input type="text" id="res" />
+<label id= "labelshort">&nbsp;</label>
+<br></br>
+<label id= "labelshort">&nbsp;</label>
+<br></br>
+        <label className="label"  id= "labelshort"> Old Password: </label>
+        <input type="text" id="res"  />
         <br></br>
 
 
+        <label id= "labelshort">&nbsp;</label>
+<br></br>
 
-        <label className="label" > New Password: </label>
+        <label className="label"  id= "labelshort" > New Password: </label>
       <input  type="text" />
 
-        <br></br>
-        <label className="label" >Confirm New Password: </label>
-        <input  type="text"  id="res"/>
-        
-<label>&nbsp;</label>
+      <label id= "labelshort">&nbsp;</label>
 <br></br>
-<label>&nbsp;</label>
-        <input id="submit_button" type="submit" value="Submit " />
+        <br></br>
+        <label className="label" id= "labelshort" >Confirm New Password: </label>
+        <input  type="text"  id="res" />
+        
+<label id = "labelshort" >&nbsp;</label>
+<br></br>
+<label id = "labelshort" >&nbsp;</label>
 
-      </div>
 
 
+       
+      
+
+</div>
+ <input id="submit_button" type="submit" value="Submit " />
+
+
+</div>
     </form>
 
 

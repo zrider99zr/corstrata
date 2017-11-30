@@ -95,6 +95,25 @@
                    
     }
   
+    .createform{
+      font-size: x-large;
+      padding: 40px 40px 40px 40px;
+      display: grid;
+      border-width: 15px;
+      grid-gap: 25px 10px;
+      border-style:none;
+      border-radius: 25px;
+      grid-area:topleft;
+      width: fit-content(150%);
+      height:fit-content(100%);
+      border-color:#eb7c32;
+    margin-right: 520px;
+    margin-left: 400px;
+      background-color: rgba(224, 224, 224, 0.973);
+     
+      
+                   
+    }
   
   
   
@@ -162,20 +181,17 @@
   
     }
    
-    Button.btn-default {
-        color: rgb(209, 212, 223);
-        background-color: grey;
-        border-color: #ccc;
-      }  
+   
 
       .testbutton{
-        font-size: 50px;
+        font-size: fit-content;
         border-radius: 25px; 
-        height: 150px;
+        border-color: black;
+        height: 95px;
         width: 650px;
      margin-top: 40px;
      margin-left: 855px ;
-     color: rgba(255, 70, 70, 0.952);
+     color: rgba(0, 0, 0, 0.952);
     }
     #buttongroup{
     margin-left: auto;
@@ -215,7 +231,7 @@
             border-radius: 25px; 
             height: 5em;
             width:15rem;
-         margin-buttom: 30px;
+         margin-bottom: 30px;
         float: right;
         
         margin-right: 40px
@@ -252,6 +268,18 @@
 
             
             }
+            .containerb{
+              
+                display: grid;
+            
+            
+                
+                grid-template-rows: 1fr;
+                grid-template-columns: 2fr auto;
+              height: fit-content;
+  
+              
+              }
           
             .classContainer{
 
@@ -259,7 +287,10 @@
             }
             
          
-            
+            #labelshort{
+              height:fit-content;
+              width: 180px !important;
+            }
             
             
             
@@ -497,8 +528,15 @@ background-color: rgba(0, 0, 0, 0.523);
 
         }
     
+
+        input[type="checkbox"]{
+          margin-left:15px;
+          transform: scale(2.5);
+        }
     
 
 
 
-  
+  .Response{
+grid-area: 3/4;
+  }

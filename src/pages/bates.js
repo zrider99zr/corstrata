@@ -13,17 +13,10 @@ const bates = () => (
   
  
     <form class="mnaform" action="#" method="POST" encType="multipart/form-data">
- 
- 
-   
-
 
 <div >
 
-
 <label>LOCATION</label>
-
-
 
 <select>
   <option  value="Sacrum and coccyx">Sacrum and coccyx</option>
@@ -34,12 +27,7 @@ const bates = () => (
   <option value="Heel">Heel </option>
   <option value="Other">Other </option>
 
-
 </select>
-
-
-
-
 
   <label>SHAPE</label>
 <select>
@@ -51,18 +39,14 @@ const bates = () => (
 <option value="Butterfly">Butterfly </option>
 <option value="Other"><input type="text" value="If other specify" /></option>
 
-
 </select>
-
 
 <label>SIDE</label >
 <select>
 <option value="left">LEFT</option>
 <option value="right">RIGHT</option>
 
-
 </select>
-
 
 </div>
 <div  id="textes">
@@ -73,7 +57,6 @@ const bates = () => (
     <label>&nbsp;</label>
     <label>&nbsp;</label>
 </div>
-
 
       {/*values || severe decrease in food intake = 0 || moderate dec in food intake = 1 || no dec in food intake = 2 */}
       <div >
@@ -100,10 +83,6 @@ const bates = () => (
         <input type="radio" class="calc" name="QA" value="5" />Full thickness skin loss with extensive destruction, tissue necrosis or damage to muscle, bone or supporting structures
      <p></p>
       </div>
-
-
-    
-
 
       {/*values || yes = 0 || no = 1 */}
       <label htmlFor="QB">Edges</label>
@@ -155,7 +134,6 @@ const bates = () => (
   <input type="radio" class="calc" name="QC" value="5" /> Undermining greater than 4 cm or Tunneling in any area 
   <p></p>
       </div>
-
 
       {/*values || BMI
       < 19=0 || 19 <=B MI < 21=1 || 21 <=B MI < 23=2 || 23 <=B MI=3 */} 
@@ -227,7 +205,6 @@ const bates = () => (
        Purulent: thin or thick, opaque, tan/yellow, with or without odor   
        <p></p>
         </div>
-
    
         <label htmlFor="QG">Exudate Amount</label>
         <br></br>
@@ -364,11 +341,6 @@ Pink and or dull , dusky red and or frills less than 25% wound
 No granulation
 <p></p>
 </div>
-
-
-
-
-
    
 <label htmlFor="QL">Epithelializtion</label>
 <br></br>
@@ -390,10 +362,6 @@ No granulation
 less than 25% wound covered
 <p></p>
 </div>
-
-
-
-
 
 <script>
     { /* calculates total sum but does store it yet, order of additon is required */ }
@@ -420,30 +388,12 @@ less than 25% wound covered
   */}
   </script>
 
-
-
-
-
-
         {/* Dynamically generate the final submission score on the bottom of the page as they fill it out, so there is some sort of feedback before they submit */}
         <input id="submit_button" type="submit" value="Sumbit form " onclick="displ"/>
-       
-   
-
     
     </form>
 
- 
 </div>
 
 
-
-
-  
-
-    
     ); export default bates;
-    
-
-
-

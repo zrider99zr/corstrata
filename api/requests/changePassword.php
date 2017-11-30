@@ -1,8 +1,8 @@
 <?php
-function changePassword($oldPassword, $newPassword,$db){
+//
+function changePassword($oldPassword, $newPassword,$userID,$db){
     if($oldPassword != $newPassword){
       //check old password to see if it is valid
-      $uid = $_SESSION['uid'];
       $qry = $db->prepare("SELECT hash, salt FROM account WHERE accountID = ?");
       $qry->bind_param("i",$uid);
       $qry->execute();
@@ -47,31 +47,42 @@ function changePassword($oldPassword, $newPassword,$db){
 $oldPassword = $decoded['oldPassword'];
 $newPassword = $decoded['newPassword'];
 
+require_once("userIDFromJWT.php");
+
 if(isset($oldPassword, $newPassword)){ 
-    $changeOptions= changePassword($oldPassword,$newPassword,$db);
-    if($chageOptions == 1){
-        $array = array();
-        $array['message'] = "Password Change was succesful";
-        $array['status'] = 1;
-        echo json_encode($array);
+    if($userID != -1){
+        $changeOptions= changePassword($oldPassword,$newPassword,$db);
+        if($chageOptions == 1){
+            $array = array();
+            $array['message'] = "Password Change was succesful";
+            $array['status'] = 1;
+            echo json_encode($array);
+        }
+        elseif($changeOptions == 0){
+            $array = array();
+            $array['message'] = "Old password cannot be the same as the new one";
+            $array['status'] = 0;
+            echo json_encode($array);
+        }
+        elseif($chageOptions == -1){
+            $array = array();
+            $array['message'] = "Did not match old password";
+            $array['status'] = 0;
+            echo json_encode($array);
+        }
+        elseif($chageOptions == -2){
+            $array = array();
+            $array['message'] = "Could not find account ID";
+            $array['status'] = 0;
+            echo json_encode($array);
+        }
     }
-    elseif($changeOptions == 0){
+    else{
         $array = array();
-        $array['message'] = "Old password cannot be the same as the new one";
+        $array['message'] = "UserID was not found";
         $array['status'] = 0;
         echo json_encode($array);
     }
-    elseif($chageOptions == -1){
-        $array = array();
-        $array['message'] = "Did not match old password";
-        $array['status'] = 0;
-        echo json_encode($array);
-    }
-    elseif($chageOptions == -2){
-        $array = array();
-        $array['message'] = "Could not find account ID";
-        $array['status'] = 0;
-        echo json_encode($array);
-    }
+    
 } 
 

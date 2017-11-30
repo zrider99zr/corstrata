@@ -34,8 +34,10 @@ const main = () => (
             <Route path='/createAccount' component={createAccount} />
             <Route path='/bates' component={bates} />
             <Route path='/linegraph' component={linegraph}/>
-            <Route path='/nav' component={nav}/>
+            <Route path='/nav' component={nav} />
+            
         </Switch>
+        
     </main>
 )
 

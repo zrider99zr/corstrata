@@ -1,12 +1,10 @@
 import React, { Component } from 'react'
 import 'font-awesome/css/font-awesome.min.css'
-import { Link } from 'react-router-dom'
-
-//import styled from 'styled-components';
+import { Link, Redirect } from 'react-router-dom'
 
 import {
-    Container, InputBox, HelpmMessage, LoginForm, SubButton, InputGroup,
-    AuthPage, WelcomeParagraph, InputField, StackedInputs, SubmitButton
+    HelpmMessage, InputGroup,
+    AuthPage, InputField, StackedInputs, SubmitButton
 } from '../styleForm';
 
 class loginPage extends Component {
@@ -17,6 +15,7 @@ class loginPage extends Component {
             error: props.error,
             info: props.info,
             password: "",
+            login: false,
         };
     }
 
@@ -30,7 +29,6 @@ class loginPage extends Component {
 
     checkInput(e) {
         //loggin in and passing it state, will need to trim or extend the method to show more/less state variables
-       
         fetch('http://165.227.191.245/corstrata/api/index.php', {
             method: 'POST',
             headers: {
@@ -44,16 +42,23 @@ class loginPage extends Component {
         })
             .then((response) => response.json())
             .then((res) => {
-                alert(res.message);
+                sessionStorage.setItem("token", res.token);
+
+                if (res.status===1) {
+                    this.setState({ login: true });
+                }
             })
             .catch((error) => {
                 alert(error.message);
-            })
-            .done();
+            }); 
     }
 
     render() {
-        return (
+        if (this.state.login) {
+            return (<Redirect to={'/'} />)
+        }
+
+        return ( 
             <AuthPage subtitle="Welcome Please Sign in">
                 <StackedInputs>
 
@@ -75,7 +80,7 @@ class loginPage extends Component {
                             placeholder="Password"
                             required
                         />
-                        <SubmitButton style={{marginTop:"0px"}}
+                        <SubmitButton style={{ marginTop: "0px" }}
                             onClick={this.checkInput.bind(this)}>
                             <i className="fa fa-sign-in fa-lg" />
                             <Link to='./'> </Link>

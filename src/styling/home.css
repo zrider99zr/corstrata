@@ -1,9 +1,6 @@
 .classContainer {
     display:flex;
     flex-direction: column;
-   
-
-
 }
 
 .button {
