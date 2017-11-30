@@ -32,8 +32,7 @@ class tempSearchPatient extends Component {
             })
             .catch((error) => {
                 alert(error.message);
-            })
-            .done();
+            });
     }
 
     searchInstitution() {
@@ -53,8 +52,7 @@ class tempSearchPatient extends Component {
             })
             .catch((error) => {
                 alert(error.message);
-            })
-            .done();
+            });
     }
 
     render(){
