@@ -6,6 +6,7 @@ function getInstitutionID($userID, $db){
     $qry->bind_param("i",$userID);
     $qry->execute();
     $qry->bind_result($institutionID);
+    $qry->fetch();
     $institutionID = isset($institutionID) ? $institutionID : -1;
     $qry->close();
     return $institutionID;
@@ -19,8 +20,7 @@ if($request == "getInstitutionID"){
         $array = array();
         $array['message'] = "Institution was found";
         $array['status'] = 1;
-        //$array['userID'] = $session->getUserID();
-        $array['sessionID'] = isset($_SESSION['sid']) ? $_SESSION['sid'] : -1;
+        
         echo json_encode($array);
       }
       else{

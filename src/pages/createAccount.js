@@ -66,6 +66,7 @@ class createAccount extends Component {
                 isClient: this.state.isClient,
                 isAdmin: this.state.isAdmin,
                 institutionID: this.state.institution,
+                token: sessionStorage.getItem("token"),
             })
         })
             .then((response) => response.json())
