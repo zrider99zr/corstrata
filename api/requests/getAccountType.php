@@ -11,7 +11,7 @@ function getAccountType($uid, $db){
     if($qry->num_rows > 0){
       //Pull the accounts is admin
       $qry->close();
-      $qry = $db->prepare("SELECT isAdmin from clientAccount where accountID =  ?");
+      $qry = $db->prepare("SELECT admin from clientAccount where accountID =  ?");
       $qry->bind_param("i",$uid);
       $qry->execute();
       $qry->bind_result($isAdmin);
@@ -21,13 +21,11 @@ function getAccountType($uid, $db){
         //If is admin the account is a client admin account
         $qry->fetch();
         if($isAdmin == 1){
-          
           $qry->close();
           return 1;
         }
         //Otherwise its a standard client account
         else if($isAdmin == 0){
-          
           $qry->close();
           return 2;
         }
