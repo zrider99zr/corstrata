@@ -43,8 +43,8 @@ class tempSearchPatient extends Component {
                 'Accept': 'application/.json',
             },
             body: JSON.stringify({
-                request: 'getInstitutionID',
-
+                request: 'userIDFromJWT',
+                token: sessionStorage.getItem("token"),
             })
         })
             .then((response) => response.json())
