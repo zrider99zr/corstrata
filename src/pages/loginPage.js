@@ -54,7 +54,6 @@ class loginPage extends Component {
             .catch((error) => {
                 alert(error.message);
             })
-            .done();
             
     }
 

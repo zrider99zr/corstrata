@@ -12,7 +12,7 @@ class Home extends Component {
 
     componentDidMount() {
         console.log(sessionStorage.getItem("token"));
-        this.validateUser().bind(this);
+        this.validateUser();
     }
 
     validateUser() {
@@ -38,7 +38,6 @@ class Home extends Component {
             .catch((error) => {
                 alert(error.message);
             })
-            .done();
     }
 
     render() {
