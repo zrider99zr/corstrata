@@ -2,13 +2,14 @@
 
 //Function to get userID from a given session ID
 function getUID($sid, $db){
-    if($qry = $db->prepare("SELECT accountID from sessions where sessionID = ?")){
+    if($qry = $db->prepare("SELECT accountID FROM sessions WHERE sessionID = ?")){
       $qry->bind_param("s",$sid);
       $qry->execute();
       $qry->bind_param($userID);
       $qry->fetch();
+      $userID = isset($userID) ? $userID : -1;
       $qry->close();
-      return isset($userID) ? $userID : -1;
+      return $userID;
     }
     else{
       return $db->error;
