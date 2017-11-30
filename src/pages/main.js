@@ -1,21 +1,21 @@
-import React from 'react'
-import { Switch, Route } from 'react-router-dom'
-import Home from './home'
-import loginPage from './loginPage'
-import searchPatient from './searchPatient'
-import resetPassword from './resetPassword'
-import MNAtest from './MNAtest'
-import wagnerScaleTest from './wagnerScaleTest'
-import testSelectionPage from './testSelectionPage'
-import createAccount from './createAccount'
-import nav from './nav'
-import createPage from './createPage'
-import bates from './bates'
-import linegraph from './linegraph'
-import createInstitution from './createInstitution'
-import createPatient from './createPatient'
-import tempSearchPatient from './tempSearchPatient'
-
+import React from 'react';
+import { Switch, Route } from 'react-router-dom';
+import Home from './home';
+import loginPage from './loginPage';
+import searchPatient from './searchPatient';
+import resetPassword from './resetPassword';
+import MNAtest from './MNAtest';
+import wagnerScaleTest from './wagnerScaleTest';
+import testSelectionPage from './testSelectionPage';
+import createAccount from './createAccount';
+import nav from './nav';
+import createPage from './createPage';
+import bates from './bates';
+import linegraph from './linegraph';
+import createInstitution from './createInstitution';
+import createPatient from './createPatient';
+import tempSearchPatient from './tempSearchPatient';
+import patientpage from './patientpage';
 
 // The Main component renders one of the three provided
 // Routes (provided that one matches). Both the /roster
@@ -41,6 +41,7 @@ const main = () => (
             <Route path='/createInstitution' component={createInstitution} />
             <Route path='/createPatient' component={createPatient} />
             <Route path='/tempSearchPatient' component={tempSearchPatient} />
+            <Route path='/patientpage' component={patientpage}/>
         </Switch>
         
     </main>
