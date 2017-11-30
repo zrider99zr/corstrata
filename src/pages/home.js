@@ -6,12 +6,11 @@ class Home extends Component {
     constructor() {
         super();
         this.state = {
-            login: true,
+            loggedIn: true,
         };
     }
 
     componentDidMount() {
-        console.log(sessionStorage.getItem("token"));
         this.validateUser();
     }
 
@@ -30,10 +29,10 @@ class Home extends Component {
             .then((res) => {
 
                 if (res.status === 1) {
-                    this.setState({ login: true });
+                    this.setState({ loggedIn: true });
 
                 } else if (res.status === 0) {
-                    this.setState({ login: false });
+                    this.setState({ loggedIn: false });
 
                 }
             })

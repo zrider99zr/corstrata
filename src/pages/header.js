@@ -12,6 +12,7 @@ class header extends Component{
             logout: false,
         };
     }
+
     logout() {
         fetch('http://165.227.191.245/corstrata/api/index.php', {
             method: 'POST',
