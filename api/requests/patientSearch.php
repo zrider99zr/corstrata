@@ -8,6 +8,10 @@
 function patientSearch($searchInput, $institutionID, $db){
   //TODO sanitize search input to make sure no sql injections
   if($qry = $db->prepare("SELECT patientID, firstName, lastName FROM patient WHERE lastName LIKE CONCAT("%", ? , "%") AND institutionID = ?")){
+    $array = array();
+    $array['message'] = "query prepare success";
+    $array['status'] = 0;
+    echo json_encode($array);
     $qry->bind_param("si",$searchInput,$institutionID);
     $qry->execute();
     $result = $qry->get_result();
