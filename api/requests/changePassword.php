@@ -4,7 +4,7 @@ function changePassword($oldPassword, $newPassword,$userID,$db){
     if($oldPassword != $newPassword){
       //check old password to see if it is valid
       $qry = $db->prepare("SELECT hash, salt FROM account WHERE accountID = ?");
-      $qry->bind_param("i",$uid);
+      $qry->bind_param("i",$userID);
       $qry->execute();
       $qry->bind_result($dbHash, $dbSalt);
       $qry->fetch();
@@ -25,7 +25,7 @@ function changePassword($oldPassword, $newPassword,$userID,$db){
             'cost' => 11,
             'salt' => $salt,
         ];
-        $newHasash = password_hash($newPassword, PASSWORD_BCRYPT, $options);
+        $newHash = password_hash($newPassword, PASSWORD_BCRYPT, $options);
 
         $qry = $db->prepare("UPDATE account SET hash = ?, salt = ? WHERE accountID = ?");
         $qry->bind_param("ssi",$newHash,$salt,$uid);
