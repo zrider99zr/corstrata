@@ -10,7 +10,6 @@ function getAccountType($uid, $db){
     //If it exists
     if($qry->num_rows > 0){
       //Pull the accounts is admin
-      $qry->free_result();
       $qry = $db->prepare("SELECT isAdmin from clientAccount where accountID =  ?");
       $qry->bind_param("i",$uid);
       $qry->execute();
@@ -21,20 +20,20 @@ function getAccountType($uid, $db){
         //If is admin the account is a client admin account
         $qry->fetch();
         if($isAdmin == 1){
-          $qry->free_result();
+          
           $qry->close();
           return 1;
         }
         //Otherwise its a standard client account
         else if($isAdmin == 0){
-          $qry->free_result();
+          
           $qry->close();
           return 2;
         }
       }
       //Otherwise the account is a corstrata account
       else{
-        $qry->free_result();
+      
         $qry->close();
         return 3;
       }
