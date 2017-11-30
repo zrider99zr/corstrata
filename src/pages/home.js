@@ -12,7 +12,7 @@ class Home extends Component {
 
     componentDidMount() {
         console.log(sessionStorage.getItem("token"));
-        this.validateUser();
+        this.validateUser().bind(this);
     }
 
     validateUser() {
@@ -29,12 +29,15 @@ class Home extends Component {
             .then((response) => response.json())
             .then((res) => {
 
-                if (res.status === 0) {
-                    this.setState({ login: falsse });
+
+                if (res.status === 1) {
+                    this.setState({ login: true });
+                } else if (res.status === 0) {
+                    this.setState({ login: false });
+
                 }
             })
             .catch((error) => {
-                this.setState({ login: false });
                 alert(error.message);
             })
     }
