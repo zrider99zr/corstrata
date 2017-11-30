@@ -14,13 +14,13 @@ class resetPassword extends Component {
 
     updateText(e) {
         if (e.target.name === "oldPass") {
-            this.setState({ name: e.target.value });
+            this.setState({ oldPass: e.target.value });
 
         } else if (e.target.name === "newPass") {
-            this.setState({ address: e.target.value });
+            this.setState({ newPass: e.target.value });
 
         } else if (e.target.name === "verifyPass") {
-            this.setState({ state: e.target.value });
+            this.setState({ verifyPass: e.target.value });
 
         }
     }
