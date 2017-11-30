@@ -10,17 +10,9 @@ function patientSearch($searchInput, $institutionID, $db){
   $qry = $db->prepare("SELECT patientID, firstName, lastName FROM patient WHERE lastName = %?% AND institutionID = ?");
   $qry->bind_param("si",$searchInput,$institutionID);
   $qry->execute();
-  $qry->bind_result($patientID,$firstName,$lastName);
-  $array = array();
-  $i = 0;
-  $ty = true;
-  while($ty){
-    $ty = $qry->fetch();
-    $array[$i]['patientID'] = $patientID;
-    $array[$i]['name'] = $firstName . " " . $lastName;
-    $i++;
-  }
-  return $array;
+  $result = $qry->get_result();
+  $qry->close();
+  return $result;
 }
 
 //get the institutionID of the use
