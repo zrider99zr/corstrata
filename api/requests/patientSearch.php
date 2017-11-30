@@ -13,7 +13,9 @@ function patientSearch($searchInput, $institutionID, $db){
   $qry->bind_result($patientID,$firstName,$lastName);
   $array = array();
   $i = 0;
-  while($qry->fetch()){
+  $ty = true;
+  while($ty){
+    $ty = $qry->fetch();
     $array[$i]['patientID'] = $patientID;
     $array[$i]['name'] = $firstName . " " . $lastName;
     $i++;
