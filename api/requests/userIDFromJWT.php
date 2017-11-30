@@ -14,17 +14,20 @@ function getUID($sid, $db){
     }
 }
 
-$userID = -1;
+$userID = 1;
 $token = JWT::decode($decoded['token'], 'thelastjedi');
+/*
 if(isset($token->sid)){
     $userID = getUID($token->sid,$db);
 }
+*/
 if($request == "userIDFromJWT"){
     if($userID != -1){
         $array = array();
         $array['message'] = "UserID was found";
         $array['status'] = 1;
-        $array['userID'] = $userID;
+        //$array['userID'] = $userID;
+        $array['sid'] = $token->sid;
         echo json_encode($array);
       }
       else{
