@@ -1,5 +1,6 @@
 <?php
 
+//Validates the entered usere id
 function validate($sid, $db){
     //$sid = htmlentities(mysqli_real_escape_string(this->mysqli),$sid);
     function clear($sid, $db) {
@@ -7,7 +8,7 @@ function validate($sid, $db){
         $db->query("DELETE FROM sessions WHERE sid='{$sid}'");
     }
 
-    $timestamp = time();
+    $currentTime = time();
     $qry = $db->prepare("SELECT timeCreated, accountID FROM sessions WHERE sessionID = ?");
     $qry->bind_param("s",$sid);
     $qry->execute();
