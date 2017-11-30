@@ -30,6 +30,7 @@ class createPatient extends Component {
                 request: 'createPatient',
                 firstName: this.state.fName,
                 lastName: this.state.lName,
+                token: sessionStorage.getItem("token"),
             })
         })
             .then((response) => response.json())
