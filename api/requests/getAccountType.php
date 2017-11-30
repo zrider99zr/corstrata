@@ -6,7 +6,9 @@ function getAccountType($uid, $db){
     $qry = $db->prepare("SELECT * from account where accountID =  ?");
     $qry->bind_param("i",$uid);
     $qry->execute();
+    return $qry->num_rows;
     //If it exists
+    /*
     if($qry->num_rows > 0){
       //Pull the accounts is admin
       $qry = $db->prepare("SELECT isAdmin from clientAccount where accountID =  ?");
@@ -36,6 +38,7 @@ function getAccountType($uid, $db){
     //If no account is found return -1 to specify
     $qry->close();
     return -1;
+    */
 }
 
 require_once("userIDFromJWT.php");
