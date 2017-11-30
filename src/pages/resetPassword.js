@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import '../styling/resetPassword.css';
-import {slide} from 'react-burger-menu';
-import { nav } from '../styleForm';
 
 class resetPassword extends Component {
     constructor() {

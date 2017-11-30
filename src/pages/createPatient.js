@@ -11,16 +11,14 @@ class createPatient extends Component {
 
     updateText(e) {
         if (e.target.name === "fName") {
-            this.setState({ name: e.target.value });
-
+            this.setState({ fName: e.target.value });
         } else if (e.target.name === "lName") {
-            this.setState({ address: e.target.value });
+            this.setState({ lName: e.target.value });
 
         } 
     }
 
     submitForm() {
-        console.log(this.state);
         fetch('http://165.227.191.245/corstrata/api/index.php', {
             method: 'POST',
             headers: {
@@ -49,8 +47,8 @@ class createPatient extends Component {
                 <form id="accountForm" >
                     <br />
                     <div className="row">
-                        <input type="text" onInput={this.updateText.bind(this)} name="fname" placeholder="First Name" />First Name <br />
-                        <input type="text" onInput={this.updateText.bind(this)} name="lname" placeholder="Last Name" />Last Name <br />
+                        <input type="text" onInput={this.updateText.bind(this)} name="fName" placeholder="First Name" />First Name <br />
+                        <input type="text" onInput={this.updateText.bind(this)} name="lName" placeholder="Last Name" />Last Name <br />
                         
                     </div>
                     <button type="button" onClick={this.submitForm.bind(this)}>Create</button>
