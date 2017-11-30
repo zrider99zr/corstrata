@@ -39,13 +39,7 @@ function validate($sid, $db){
 $token = JWT::decode($decoded['token'], 'thelastjedi');
 
 if(isset($token->sid)){
-    $array = array();
-    $array['message'] = "Valid session token";
-    $array['status'] = 1;
-    $array['sid'] = $token->sid;
-    echo json_encode($array);
-    /*
-    if(validate($token['sid'],$db)){
+    if(validate($token->sid,$db)){
         $array = array();
         $array['message'] = "Valid session token";
         $array['status'] = 1;
@@ -63,5 +57,5 @@ else{
     $array['message'] = "No token was sent";
     $array['status'] = -1;
     echo json_encode($array);
-    */
+
 }
