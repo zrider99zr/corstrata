@@ -15,7 +15,7 @@ function changePassword($oldPassword, $newPassword,$userID,$db){
         'cost' => 11,
         'salt' => $dbSalt,
         ];
-    
+
 
       $hash = password_hash($oldPassword, PASSWORD_BCRYPT, $options);
       if($hash == $dbHash){
@@ -49,10 +49,10 @@ $newPassword = $decoded['newPassword'];
 
 require_once("userIDFromJWT.php");
 
-if(isset($oldPassword, $newPassword)){ 
+if(isset($oldPassword, $newPassword)){
     if($userID != -1){
         $changeOptions= changePassword($oldPassword,$newPassword,$db);
-        if($chageOptions == 1){
+        if($changeOptions == 1){
             $array = array();
             $array['message'] = "Password Change was succesful";
             $array['status'] = 1;
@@ -64,13 +64,13 @@ if(isset($oldPassword, $newPassword)){
             $array['status'] = 0;
             echo json_encode($array);
         }
-        elseif($chageOptions == -1){
+        elseif($changeOptions == -1){
             $array = array();
             $array['message'] = "Did not match old password";
             $array['status'] = 0;
             echo json_encode($array);
         }
-        elseif($chageOptions == -2){
+        elseif($changeOptions == -2){
             $array = array();
             $array['message'] = "Could not find account ID";
             $array['status'] = 0;
@@ -83,6 +83,5 @@ if(isset($oldPassword, $newPassword)){
         $array['status'] = 0;
         echo json_encode($array);
     }
-    
-} 
 
+}
