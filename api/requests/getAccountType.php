@@ -3,7 +3,7 @@
 //Function to get the account type of a user
 function getAccountType($uid, $db){
     //Select acountID FROM account
-    $qry = $db->prepare("SELECT accountID from account where accountID =  ?");
+    $qry = $db->prepare("SELECT * from account where accountID =  ?");
     $qry->bind_param("i",$uid);
     $qry->execute();
     //If it exists
