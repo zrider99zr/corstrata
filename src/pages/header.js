@@ -28,7 +28,7 @@ class header extends Component{
             .then((res) => {
 
                 if (res.status === 1) {
-                    this.setState({ logout:true });
+                    this.setState({ logout: true });
                     sessionStorage.setItem("token", null);
                     
                 } else {
@@ -46,7 +46,7 @@ class header extends Component{
         }
         return (
             <header id="bodyf">
-                <Button onClick={this.logout} id="logout">LOGOUT</Button>
+                <Button onClick={this.logout.bind(this)} id="logout">LOGOUT</Button>
                 <Link to='/nav'> <Button id="menu">MENU</Button> </Link>
             </header>
         );
