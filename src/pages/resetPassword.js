@@ -14,13 +14,13 @@ class resetPassword extends Component {
 
     updateText(e) {
         if (e.target.name === "oldPass") {
-            this.setState({ name: e.target.value });
+            this.setState({ oldPass: e.target.value });
 
         } else if (e.target.name === "newPass") {
-            this.setState({ address: e.target.value });
+            this.setState({ newPass: e.target.value });
 
         } else if (e.target.name === "verifyPass") {
-            this.setState({ state: e.target.value });
+            this.setState({ verifyPass: e.target.value });
 
         }
     }
@@ -78,7 +78,7 @@ class resetPassword extends Component {
                                 <br></br>
                                 <label className="label" id="input-confirm">Confirm New Password: </label>
                                 <input onInput={this.updateText.bind(this)} className="inputboxpassword" type="password" name="verifyPass" id="input" />
-                                <button onClick={this.submitForm.bind(this)} id="changeButton" type="submit" >Submit</button>
+                                <button onClick={this.submitForm.bind(this)} id="changeButton" type="button" >Submit</button>
                             </div>
                         </form>
                     
