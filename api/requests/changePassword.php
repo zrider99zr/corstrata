@@ -54,7 +54,7 @@ require_once("userIDFromJWT.php");
 
 if(isset($oldPassword, $newPassword)){
     if($userID != -1){
-        $changeOptions= changePassword($oldPassword,$newPassword,$db);
+        $changeOptions= changePassword($oldPassword,$newPassword, $userID, $db);
         if($changeOptions == 1){
             $array = array();
             $array['message'] = "Password Change was succesful";
