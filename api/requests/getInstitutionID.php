@@ -1,18 +1,17 @@
 <?php
 
 //Function that gets a institution ID from the currently logged in user
-function getInstitutionID($db, $session){
-    $uid = $session->getUserID();
+function getInstitutionID($userID, $db){
     $qry = $db->prepare("SELECT institutionID from clientAccount where accountID =  ?");
-    $qry->bind_param("i",$uid);
+    $qry->bind_param("i",$userID);
     $qry->execute();
     $result = $qry->get_result();
     $qry->close();
     return isset($result[0]['institutionID']) ? $result[0]['institutionID'] : -1;
 }
-
+require_once("userIDFromJWT.php");
 //$institutionID = getInstitutionID($db,$session);
-$institutionID = 1;
+$institutionID = getInstitutionID($userID,$db);
 if($request == "getInstitutionID"){
     //TODO add the functionality 
     if($institutionID != -1){
