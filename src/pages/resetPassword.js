@@ -45,8 +45,7 @@ class resetPassword extends Component {
             })
             .catch((error) => {
                 alert(error.message);
-            })
-            .done();
+            });
     }
 
     render() {

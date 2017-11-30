@@ -1,46 +1,49 @@
 <?php
 //
 function changePassword($oldPassword, $newPassword,$userID,$db){
-    if($oldPassword != $newPassword){
-      //check old password to see if it is valid
-      $qry = $db->prepare("SELECT hash, salt FROM account WHERE accountID = ?");
-      $qry->bind_param("i",$userID);
-      $qry->execute();
-      $qry->bind_result($dbHash, $dbSalt);
-      $qry->fetch();
-      if(!isset($dbSalt, $dbHash)){
-          return -2;
+    if($qry = $db->prepare("SELECT salt, hash FROM account WHERE accountID = ?")){
+        $qry->bind_param("i",$userID);
+        $qry->execute();
+        $qry->bind_result($dbSalt,$dbHash);
+        $qry->store_result();
+        $qry->fetch();
+
+        if(!isset($dbSalt, $dbHash)){
+            return -1;
         }
-      $options = [
-        'cost' => 11,
-        'salt' => $dbSalt,
-        ];
-
-
-      $hash = password_hash($oldPassword, PASSWORD_BCRYPT, $options);
-      if($hash == $dbHash){
-        //update new salt and password in account
-        $salt = mcrypt_create_iv(22, MCRYPT_DEV_URANDOM);
+        
         $options = [
             'cost' => 11,
-            'salt' => $salt,
+            'salt' => $dbSalt,
         ];
-        $newHash = password_hash($newPassword, PASSWORD_BCRYPT, $options);
-
-        $qry = $db->prepare("UPDATE account SET hash = ?, salt = ? WHERE accountID = ?");
-        $qry->bind_param("ssi",$newHash,$salt,$uid);
-        $qry->execute();
+        
+        $hash = password_hash($password, PASSWORD_BCRYPT, $options);
         $qry->close();
-        return 1;
-      }
-      else{
-        $qry->close();
-        return -1;
-      }
+        //If the user entered the right previous password
+        if($hash == $dbHash){
+            $salt = mcrypt_create_iv(22, MCRYPT_DEV_URANDOM);
+            $options = [
+                'cost' => 11,
+                'salt' => $salt,
+            ];
+            $newHash = password_hash($newPassword, PASSWORD_BCRYPT, $options);
+    
+            $qry = $db->prepare("UPDATE account SET hash = ?, salt = ? WHERE accountID = ?");
+            $qry->bind_param("ssi",$newHash,$salt,$userID);
+            $qry->execute();
+            $qry->close();
+            return 1;
+        }
+        else {
+          return -1;
+        }
     }
-    else {
-      $qry->close();
-      return 0;
+    else{
+        $array = array();
+        $array['message'] = "query prepare uncsuccessful:(" . $db->errno . ") " . $db->error;
+        $array['status'] = 0;
+        echo json_encode($array); 
+        return -1;
     }
 }
 
