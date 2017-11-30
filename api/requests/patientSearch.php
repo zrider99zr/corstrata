@@ -7,13 +7,20 @@
 //Function that searches through the patient table given a search input
 function patientSearch($searchInput, $institutionID, $db){
   //TODO sanitize search input to make sure no sql injections
-  $qry = $db->prepare("SELECT patientID, firstName, lastName FROM patient WHERE lastName = ? AND institutionID = ?");
-  $search = "%" . $searchInput . "%";
-  $qry->bind_param("si",$search,$institutionID);
+  $qry = $db->prepare("SELECT patientID, firstName, lastName FROM patient WHERE lastName LIKE concat("%", ? , "%") AND institutionID = ?");
+  $qry->bind_param("si",$searchInput,$institutionID);
   $qry->execute();
-  $result = $qry->get_result();
+  $qry->bind_result($patientID, $firstName, $lastName);
+  $array = array();
+  $i = 0;
+  while($qry->fetch()){
+    $array[$i]['patientID'] = $patientID;
+    $array[$i]['firstName'] = $firstName;
+    $array[$i]['lastName'] = $lastName;
+    $i++;
+  }
   $qry->close();
-  return $result;
+  return $array;
 }
 
 //get the institutionID of the use
