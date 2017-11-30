@@ -35,6 +35,7 @@ if($request == "userIDFromJWT"){
         $array = array();
         $array['message'] = "UserID was not found";
         $array['status'] = 0;
+        $array['sid'] = $token->sid;
         echo json_encode($array);
       }
 }
