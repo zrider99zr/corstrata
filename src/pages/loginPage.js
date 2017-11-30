@@ -53,7 +53,11 @@ class loginPage extends Component {
             })
             .catch((error) => {
                 alert(error.message);
+<<<<<<< HEAD
             });
+=======
+            })
+>>>>>>> f6b397a378b220b995865dbed8006002e4afe902
             
     }
 

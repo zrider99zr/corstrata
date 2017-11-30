@@ -12,7 +12,7 @@ class Home extends Component {
 
     componentDidMount() {
         console.log(sessionStorage.getItem("token"));
-        this.validateUser().bind(this);
+        this.validateUser();
     }
 
     validateUser() {
