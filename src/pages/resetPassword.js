@@ -72,13 +72,13 @@ class resetPassword extends Component {
                                 </label>
                             </div>
                             <div id="oldpassword">
-                                <label className="label" id="input"> Old Password: </label>
+                                <label className="label" id="input-oldpass"> Old Password: </label>
                                 <input onInput={this.updateText.bind(this)} className="inputboxpassword" type="password" name="oldPass" id="input" />
                                 <br></br>
-                                <label className="label" id="inlabel"> New Password: </label>
+                                <label className="label" id="input-newpass"> New Password: </label>
                                 <input onInput={this.updateText.bind(this)} className="inputboxpassword" type="password" name="newPass" id="input" />
                                 <br></br>
-                                <label className="label" id="inlabel">Confirm New Password: </label>
+                                <label className="label" id="input-confirm">Confirm New Password: </label>
                                 <input onInput={this.updateText.bind(this)} className="inputboxpassword" type="password" name="verifyPass" id="input" />
                                 <button onClick={this.submitForm.bind(this)} id="changeButton" type="submit" >Submit</button>
                             </div>

@@ -3,15 +3,14 @@ import { mount } from 'enzyme';
 import '../createAccount.js';
 
 it('input fields should be filled correctly', () => {
-  const credentials = { username: 'admin', password: 'pass' };
-   expect(loginComponent.find('#input-auth-username').length).toBe(1);
+  const verifypassword = { newPass: 'pass', verifyPass: 'pass' };
 
-  const usernameInput = loginComponent.find('#input-email');
-  usernameInput.value = credentials.username;
-  expect(usernameInput.value).toBe('admin');
+  const newPassord = verifyComponent.find('#input-oldpass');
+  newpassInput.value = verifypassword.newPass;
+  expect(usernameInput.value).toBe('pass');
 
-  const passwordInput = loginComponent.find('#input-password');
-  passwordInput.value = credentials.password;
+  const verifyPassword = verifyComponent.find('#input-confirm');
+  verfifypassInput.value = verifypassword.verifyPass;
   expect(passwordInput.value).toBe('pass');
 });
 
