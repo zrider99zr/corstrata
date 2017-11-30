@@ -1,7 +1,7 @@
 <?php
 
 //Validates the entered usere id
-/*
+
 function validate($sid, $db){
     //$sid = htmlentities(mysqli_real_escape_string(this->mysqli),$sid);
     function clear($sid, $db) {
@@ -16,7 +16,7 @@ function validate($sid, $db){
     $qry->bind_result($timestamp,$uid);
     $qry->store_result();
     if($qry->num_rows >=1){
-      while($qry->fetch()){
+        $qry->fetch();
         if($currentTime > $timestamp){
           clear($sid, $db);
           $qry->close();
@@ -26,14 +26,14 @@ function validate($sid, $db){
           $qry->close();
           return true;
         }
-      }
+      
     }
     else{
         $qry->close();
         return false;
     }
 }
-*/
+
 //Try just returning the session id from the token
 
 $token = JWT::decode($decoded['token'], 'thelastjedi');
