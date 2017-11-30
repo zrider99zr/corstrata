@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import '../styling/mna.css';
+import { Link } from 'react-router-dom';
+import Response from './response';
+import '../styling/un.css';
 
 class MNAtest extends Component {
     constructor() {
@@ -17,27 +19,28 @@ class MNAtest extends Component {
 
         return (
 
-        <div id="class" className="classContainer" >
+        <div id="class"  >
          
   <label id="Header">Mini Nutritional  </label>
-  <div class="container">
+  
 
     <form class="mnaform" action="#" method="POST" encType="multipart/form-data">
 
 
 
       {/*values || severe decrease in food intake = 0 || moderate dec in food intake = 1 || no dec in food intake = 2 */}
-      <label htmlFor="name">Has Food intake declined over the past 3 months due to loss of appetite, digestive problems, chewing or swalloing diffculites?</label>
+      <label >Has Food intake declined over the past 3 months due to loss of appetite, digestive problems, chewing or swalloing diffculites?</label>
       
       <br></br>
 
-      <div>
+      <div class="g">
         <input type="radio" name="appetite" value="0" />severe decrease in food intake
         <br></br>
 
         <input type="radio" name="appetite" value="1" />modarate decrease in food intake
         <br></br>
         <input type="radio" name="appetite" value="2" />no decrease in food intake
+        <p></p>
       </div>
 
       {/*values || weight loss > 3kg = 0 || does not know = 1 || weight loss between 1/3kg = 2 || no weight loss = 3 */}
@@ -52,6 +55,8 @@ class MNAtest extends Component {
         <br></br>
         <input type="radio" name="WL" value="3" />no weight loss
         <br></br>
+
+        <p></p>
       </div>
 
 
@@ -65,6 +70,7 @@ class MNAtest extends Component {
         <br></br>
         <input type="radio" name="Mobility" value="2" />weight loss between 1 and 3 kg (2.2 and 6.6 lbs)
         <br></br>
+        <p></p>
       </div>
 
 
@@ -75,7 +81,7 @@ class MNAtest extends Component {
         <input type="radio" name="stress" value="0" />yes
         <br></br>
         <input type="radio" name="stress" value="1" />no
-
+        <p></p>
       </div>
 
       <label htmlFor="QC">Neuropsycologial problems </label>
@@ -87,7 +93,7 @@ class MNAtest extends Component {
         <input type="radio" name="neuro" value="1" />mild dementia
         <br></br>
         <input type="radio" name="neuro" value="2" />no psychological problems
-
+        <p></p>
       </div>
 
 
@@ -103,6 +109,7 @@ class MNAtest extends Component {
           <input type="radio" name="BMI" value="2" /> BMI less 21 to less than 23
           <br></br>
           <input type="radio" name="BMI" value="3" /> BMI 23 or greater
+          <p></p>
         </div>
 
 
@@ -119,16 +126,15 @@ class MNAtest extends Component {
           <input type="radio" name="CC" value="0" />CC less than 31
           <br></br>
           <input type="radio" name="CC" value="3" />CC 31 or greater
-
+          <p></p>
         </div>
-
 
         {/* Dynamically generate the final submission score on the bottom of the page as they fill it out, so there is some sort of feedback before they submit */}
         <input id="submit_button" type="submit" value="Sumbit form " />
     </form>
 
  
-</div>
+
 </div>
 
 
