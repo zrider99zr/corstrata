@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 import 'font-awesome/css/font-awesome.min.css'
 import { Link, Redirect } from 'react-router-dom'
 
-//import styled from 'styled-components';
-
 import {
     HelpmMessage, InputGroup,
     AuthPage, InputField, StackedInputs, SubmitButton
@@ -53,8 +51,7 @@ class loginPage extends Component {
             })
             .catch((error) => {
                 alert(error.message);
-            });
-            
+            }); 
     }
 
     render() {
