@@ -89,7 +89,7 @@ class loginPage extends Component {
                     </InputGroup>
                 </StackedInputs>
 
-                <HelpmMessage>Corstra Navigation Page</HelpmMessage>
+                <HelpmMessage>Corstrata Navigation Page</HelpmMessage>
             </AuthPage>
         );
     };
