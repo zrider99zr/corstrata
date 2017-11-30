@@ -1,6 +1,6 @@
 <?php
 //Require the function for creating an entry into the test table
-require("createTest.php");
+
 //Function that inserts a MiniNutritional test into the database; 
 function createMiniNutritionalTest($testID, $questionA, $questionB, $questionC, $questionD, $questionE, $questionF1, $questionF2, $db){
     
@@ -30,13 +30,15 @@ function createMiniNutritionalTest($testID, $questionA, $questionB, $questionC, 
 //Initialize all the variables for the function
 //Create a Test entry
 $patientID = $decoded['patientID'];
-$testID = createTest($patientID);
+
+require_once("createTest.php");
+
 $A = $decoded['A'];
 $B = $decoded['B'];
 $C = $decoded['C'];
 $D = $decoded['D'];
 $E = $decoded['E'];
-//F1 and F2 changes based off of if there is BMI available. Put -1 for the 
+//F1 and F2 changes based off of if there is BMI available. Put -1 for whichever question is available
 $F1 = $decoded['F1'];
 $F2 = $decoded['F2'];
 //Check to make sure that they are all set correctly 
