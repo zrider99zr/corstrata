@@ -19,6 +19,7 @@ if($request == "getInstitutionID"){
     if($institutionID != -1){
         $array = array();
         $array['message'] = "Institution was found";
+        $array['institutionID'] = $institutionID;
         $array['status'] = 1;
         
         echo json_encode($array);
