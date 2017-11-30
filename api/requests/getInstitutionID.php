@@ -5,9 +5,10 @@ function getInstitutionID($userID, $db){
     $qry = $db->prepare("SELECT institutionID from clientAccount where accountID =  ?");
     $qry->bind_param("i",$userID);
     $qry->execute();
-    $result = $qry->get_result();
+    $qry->bind_result($institutionID);
+    $institutionID = isset($institutionID) ? $institutionID : -1;
     $qry->close();
-    return isset($result[0]['institutionID']) ? $result[0]['institutionID'] : -1;
+    return $institutionID;
 }
 require_once("userIDFromJWT.php");
 //$institutionID = getInstitutionID($db,$session);
