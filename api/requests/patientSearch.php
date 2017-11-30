@@ -7,20 +7,28 @@
 //Function that searches through the patient table given a search input
 function patientSearch($searchInput, $institutionID, $db){
   //TODO sanitize search input to make sure no sql injections
-  $qry = $db->prepare("SELECT patientID, firstName, lastName FROM patient WHERE lastName LIKE concat("%", ? , "%") AND institutionID = ?");
-  $qry->bind_param("si",$searchInput,$institutionID);
-  $qry->execute();
-  $qry->bind_result($patientID, $firstName, $lastName);
-  $array = array();
-  $i = 0;
-  while($qry->fetch()){
-    $array[$i]['patientID'] = $patientID;
-    $array[$i]['firstName'] = $firstName;
-    $array[$i]['lastName'] = $lastName;
-    $i++;
+  if($qry = $db->prepare("SELECT patientID, firstName, lastName FROM patient WHERE lastName LIKE CONCAT("%", ? , "%") AND institutionID = ?")){
+    $qry->bind_param("si",$searchInput,$institutionID);
+    $qry->execute();
+    $qry->bind_result($patientID, $firstName, $lastName);
+    $array = array();
+    $i = 0;
+    while($qry->fetch()){
+      $array[$i]['patientID'] = $patientID;
+      $array[$i]['firstName'] = $firstName;
+      $array[$i]['lastName'] = $lastName;
+      $i++;
+    }
+    $qry->close();
+    return $array;
   }
-  $qry->close();
-  return $array;
+  else{
+    $array = array();
+    $array['message'] = "query prepare uncsuccessful:(" . $db->errno . ") " . $db->error;
+    $array['status'] = 0;
+    echo json_encode($array); 
+    return -1;
+  }
 }
 
 //get the institutionID of the use
