@@ -1,5 +1,42 @@
-Button.btn-default {
-  color: rgb(209, 212, 223);
-  background-color: grey;
-  border-color: #ccc;
+button{
+  max-width: 650px  ;
+  max-height:90px;
+  width: 90px;
+  font-size: 30px;
+  height: 90px;
+ margin-top: 90px !important;
+  background-color: #2bb2db;
+      border: 4px solid black;
+      margin-bottom: 5px;
+      margin-top: 90px;   
+
 }
+           
+.bm-burger-bars{
+
+max-width: 30px;
+
+}
+
+#menu{
+  position:fixed;
+  margin-top: 65px !important;
+}
+
+.bm-overlay {
+  margin-top:65px;
+  
+  background: rgb(255, 255, 255) !important;
+  width: 300px !important;
+}
+
+#submit_button1{
+  font-size: 30px;
+  height: 90px;
+  width: 90px;
+  background-color: #2bb2db;
+      border: 4px solid black;
+      margin-bottom: 5px;
+      margin-top: 90px;
+      
+    }

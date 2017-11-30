@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link, Redirect } from 'react-router-dom'
-import '../styling/home.css'
-
+import '../styling/un.css'
+import { Button, ButtonGroup } from 'react-bootstrap';
 class Home extends Component {
     constructor() {
         super();
@@ -47,11 +47,16 @@ class Home extends Component {
         }
 
         return (
-            <div className='classContainer' >
-                <h1>Welcome Whoever to the Corstrata Website!</h1>
-                <Link className='button' to='./searchPatient'>Find Patient</Link>
-                <Link className='button' to='./createAccount'>Create Account</Link>
-            </div>
+            <div id="containerb">
+                 <label id= "Header">WELCOME USER </label>
+                
+                <Link  to='./'> <Button className = "testbutton">Find Patient </Button></Link> <br></br>
+                <Link  to='./wagnerScaleTest'> <Button className = "testbutton">Create Account</Button></Link>
+                     <br></br>
+    
+                </div>
+                
+                
         );
     };
 }

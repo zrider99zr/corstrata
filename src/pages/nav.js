@@ -7,7 +7,8 @@ class nav extends Component {
     render() {
         return (
             <div>
-                <Menu>
+
+               <Menu>
                     <Link className='button' to='./searchPatient'>Find Patient</Link>
                     <Link className='button' to='./createAccount'>Create Account</Link>
                     <li><Link to='/'>Home</Link></li>
@@ -29,6 +30,7 @@ class nav extends Component {
                     <li><Link to='/tempSearchPatient'>Search Patient</Link></li>
 
                 </Menu>
+               
             </div>
         );
     };

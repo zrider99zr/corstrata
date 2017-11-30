@@ -1,25 +1,25 @@
 import React from 'react'; 
 //import $ from 'jquery';
-import '../styling/mna.css'
+import '../styling/un.css'
 
 var x;
 const bates = () => (
     
 
 
-  <div id="class" className="classContainer" background>
+  <div id="class">
          
   <label id="Header">Bates Jensen </label>
-  <div class="container">
+  
  
     <form class="mnaform" action="#" method="POST" encType="multipart/form-data">
 
-<div class="classContainer">
+<div >
 
 <label>LOCATION</label>
 
 <select>
-  <option value="Sacrum and coccyx">Sacrum and coccyx</option>
+  <option  value="Sacrum and coccyx">Sacrum and coccyx</option>
   <option value="Trochanter">Trochanter</option>
   <option value="Ischail">Ischail</option>
   <option value="Lateral Ankle<">Lateral Ankle</option>
@@ -49,7 +49,7 @@ const bates = () => (
 </select>
 
 </div>
-<div class="classContainer" id="textes">
+<div  id="textes">
   <label>If Other Please Specify</label>
 <input type="text" />
 <label>&nbsp;</label>
@@ -59,30 +59,33 @@ const bates = () => (
 </div>
 
       {/*values || severe decrease in food intake = 0 || moderate dec in food intake = 1 || no dec in food intake = 2 */}
-      <div class="container">
+      <div >
       <label id="name">Size (cm)<sup>2</sup> </label>
       <input id="size" type="text" />
       
       <br></br>
       </div>
       
+   
       {/*values || weight loss > 3kg = 0 || does not know = 1 || weight loss between 1/3kg = 2 || no weight loss = 3 */}
       <label htmlFor="email"> Depth</label>
       <br></br>
       <div>
-      <input type="radio" class="calc" name="QB" value="1" checked/>Non-blanchable erythema on intact skin 
+      <p></p>
+      <input type="radio" class="calc" name="QA" value="1" checked/>Non-blanchable erythema on intact skin 
       <br></br>
-      <input type="radio" class="calc" name="QB" value="2" /> Partial thickness skin loss involving epidermis /or dermis 
+      <input type="radio" class="calc" name="QA" value="2" /> Partial thickness skin loss involving epidermis /or dermis 
       <div></div>
-      <input type="radio" class="calc" name="QB" value="3" />Full thickness skin loss involving damage or necrosis of subcutaneous tissue;may extend down to but not through underlying fascia 
+      <input type="radio" class="calc" name="QA" value="3" />Full thickness skin loss involving damage or necrosis of subcutaneous tissue;may extend down to but not through underlying fascia 
       <br></br>
-      <input type="radio" class="calc" name="QB" value="4" /> Obscured by necrosis 
+      <input type="radio" class="calc" name="QA" value="4" /> Obscured by necrosis 
         <br></br>
-        <input type="radio" class="calc" name="QB" value="5" />Full thickness skin loss with extensive destruction, tissue necrosis or damage to muscle, bone or supporting structures
+        <input type="radio" class="calc" name="QA" value="5" />Full thickness skin loss with extensive destruction, tissue necrosis or damage to muscle, bone or supporting structures
+     <p></p>
       </div>
 
       {/*values || yes = 0 || no = 1 */}
-      <label htmlFor="QD">Edges</label>
+      <label htmlFor="QB">Edges</label>
       <br></br>
       <div>
       <br></br>
@@ -96,63 +99,64 @@ const bates = () => (
       </div>
       <br></br>
     
-      <input type="radio" class="calc" name="QC" value="1" checked/> Indistinct, diffuse, none clearly visible 
+      <input type="radio" class="calc" name="QB" value="1" checked/> Indistinct, diffuse, none clearly visible 
       <br></br>
     
-      <input type="radio" class="calc" name="QC" value="2" />Distinct, outline clearly visible, attached, even with wound base 
+      <input type="radio" class="calc" name="QB" value="2" />Distinct, outline clearly visible, attached, even with wound base 
       <br></br>
-      <input type="radio" class="calc" name="QC" value="3" />Well-defined, not attached to wound base 
-      <br></br>
-    
-      <input type="radio" class="calc" name="QC" value="4" />Well-defined, not attached to base, rolled under, thickened 
+      <input type="radio" class="calc" name="QB" value="3" />Well-defined, not attached to wound base 
       <br></br>
     
-      <input type="radio" class="calc" name="QC" value="5" /> Well-defined, fibrotic, scarred or hyperkeratotic 
+      <input type="radio" class="calc" name="QB" value="4" />Well-defined, not attached to base, rolled under, thickened 
       <br></br>
-   
+    
+      <input type="radio" class="calc" name="QB" value="5" /> Well-defined, fibrotic, scarred or hyperkeratotic 
+      <br></br>
+    
+      <p></p>
       </div>
 
       <label htmlFor="QC">Undermining </label>
       <br></br>
 
       <div>
-        <input type="radio" class="calc" name="QM" value="1" checked/> None present 
+        <input type="radio" class="calc" name="QC" value="1" checked/> None present 
   <br></br>
 
-  <input type="radio" class="calc" name="QM" value="2" />Undermining less than 2 cm in any area 
+  <input type="radio" class="calc" name="QC" value="2" />Undermining less than 2 cm in any area 
   <br></br>
-  <input type="radio" class="calc" name="QM" value="3" />Undermining 2-4 cm involving less than 50% wound margins 
-  <br></br>
-
-  <input type="radio" class="calc" name="QM" value="4" />Undermining 2-4 cm involving greater than 50% wound margins 
+  <input type="radio" class="calc" name="QC" value="3" />Undermining 2-4 cm involving less than 50% wound margins 
   <br></br>
 
-  <input type="radio" class="calc" name="QM" value="5" /> Undermining greater than 4 cm or Tunneling in any area 
-  
+  <input type="radio" class="calc" name="QC" value="4" />Undermining 2-4 cm involving greater than 50% wound margins 
+  <br></br>
+
+  <input type="radio" class="calc" name="QC" value="5" /> Undermining greater than 4 cm or Tunneling in any area 
+  <p></p>
       </div>
 
       {/*values || BMI
       < 19=0 || 19 <=B MI < 21=1 || 21 <=B MI < 23=2 || 23 <=B MI=3 */} 
-      <label htmlFor="QE">Necrotic Tissue Type </label>
+      <label htmlFor="QD">Necrotic Tissue Type </label>
         <br></br>
 
         <div>
-        <input type="radio" class="calc" name="QE" value="1" checked/>
+        <input type="radio" class="calc" name="QD" value="1" checked/>
         None visible   
       <br></br>
-      <input type="radio" class="calc" name="QE" value="2" />
+      <input type="radio" class="calc" name="QD" value="2" />
      White/Gray non viable tissue and or  non-adherent yellow slough
       <br></br>
-      <input type="radio" class="calc" name="QE" value="3" />
+      <input type="radio" class="calc" name="QD" value="3" />
       Adherent, soft ,black eschar
       <br></br>
-      <input type="radio" class="calc" name="QE" value="4" />
+      <input type="radio" class="calc" name="QD" value="4" />
         Firmly Adherent, hard,black eschar
       <br></br>
     
-      <input type="radio" class="calc" name="QE" value="5" />
+      <input type="radio" class="calc" name="QD" value="5" />
         75% to 100% of wound covered   
-    
+        <p></p>
         </div>
 
         <label htmlFor="QE">Necrotic Tissure Amount</label>
@@ -174,10 +178,11 @@ const bates = () => (
 
   <input type="radio" class="calc" name="QE" value="5" />
     75% to 100% of wound covered   
-
+    <p></p>
         </div>
 
-        <label htmlFor="QE">Exudate Type</label>
+
+        <label htmlFor="QF">Exudate Type</label>
         <br></br>
 
         <div>
@@ -198,10 +203,10 @@ const bates = () => (
     
       <input type="radio" class="calc" name="QF" value="5" />
        Purulent: thin or thick, opaque, tan/yellow, with or without odor   
-    
+       <p></p>
         </div>
    
-        <label htmlFor="QE">Exudate Amount</label>
+        <label htmlFor="QG">Exudate Amount</label>
         <br></br>
 
         <div>
@@ -223,35 +228,41 @@ const bates = () => (
       <input type="radio" class="calc" name="QG" value="5" />
         Large   
       <br></br>
-    
+      <p></p>
         </div>
 
-        <label htmlFor="QE">Skin Color Surrounding Wound</label>
+
+        <label htmlFor="QH">Skin Color Surrounding Wound</label>
         <br></br>
 
         <div>
-        <input type="radio" class="calc" name="QG" value="1" checked/>
+        <input type="radio" class="calc" name="QH" value="1" checked/>
          Pink or normal for ethnic group
       <br></br>
     
-      <input type="radio" class="calc" name="QG" value="2" />
+      <input type="radio" class="calc" name="QH" value="2" />
       Bright red &/or blanches to touch
       <br></br>
-      <input type="radio" class="calc" name="QG" value="3" />
+      <input type="radio" class="calc" name="QH" value="3" />
       White or grey pallor or hypopigmented 
       <br></br>
     
-      <input type="radio" class="calc" name="QG" value="4" />
+      <input type="radio" class="calc" name="QH" value="4" />
       Dark red or purple &/or non-blanchable
       <br></br>
     
-      <input type="radio" class="calc" name="QG" value="5" />
+      <input type="radio" class="calc" name="QH" value="5" />
       Black or hyperpigmented 
       <br></br>
-    
+      <p></p>
         </div>
- 
-<label htmlFor="QE">Peripheral Tissue Edema</label>
+
+
+
+
+
+   
+<label htmlFor="QI">Peripheral Tissue Edema</label>
 <br></br>
 
 <div>
@@ -271,61 +282,76 @@ Pitting edema extends less than 4 cm around wound
 
 <input type="radio" class="calc" name="QI" value="5" />
 Crepitus and/or pitting edema extends greater than 4 cm around wound   
+<p></p>
 
 </div>
- 
-<label htmlFor="QE">Peripheral Tissue Induration</label>
+
+
+
+
+
+
+
+   
+<label htmlFor="QJ">Peripheral Tissue Induration</label>
 <br></br>
 
 <div>
-<input type="radio" class="calc" name="QL" value="1" checked/>
+<input type="radio" class="calc" name="QJ" value="1" checked/>
 None present   
 <br></br>
 
-<input type="radio" class="calc" name="QL" value="2" />
+<input type="radio" class="calc" name="QJ" value="2" />
 Induration, less than 2 cm around wound   
 <br></br>
-<input type="radio" class="calc" name="QL" value="3" />
+<input type="radio" class="calc" name="QJ" value="3" />
 Induration 2-4 cm extending less than 50% around wound   
 <br></br>
 
-<input type="radio" class="calc" name="QL" value="4" />
+<input type="radio" class="calc" name="QJ" value="4" />
 Induration 2-4 cm extending greater than 50% around wound   
 <br></br>
-<input type="radio" class="calc" name="QL" value="5" />
+<input type="radio" class="calc" name="QJ" value="5" />
+<p></p>
 
 </div>
- 
-<label htmlFor="QE">Granulation Tissure </label>
+
+
+
+
+   
+<label htmlFor="QK">Granulation Tissure </label>
 <br></br>
 <div>
-<input type="radio" class="calc" name="QI" value="1" checked/>
+<input type="radio" class="calc" name="QK" value="1" checked/>
 Skin intact or partial thickness wound
 <br></br>
 
-<input type="radio" class="calc" name="QI" value="2" />
+<input type="radio" class="calc" name="QK" value="2" />
 Bright, beefy red; 75% to 100% of wound filled and or tissue overgrowth
 <br></br>
-<input type="radio" class="calc" name="QI" value="3" />
+<input type="radio" class="calc" name="QK" value="3" />
 Bright, beefy red; less than 75% and mmore than 25% of wound filled
 <br></br>
-<input type="radio" class="calc" name="QI" value="4" />
+<input type="radio" class="calc" name="QK" value="4" />
 Pink and or dull , dusky red and or frills less than 25% wound 
 <br></br>
 
-<input type="radio" class="calc" name="QI" value="5" />
+<input type="radio" class="calc" name="QK" value="5" />
 No granulation
-
+<p></p>
 </div>
    
-<label htmlFor="QE">Epithelializtion</label>
+<label htmlFor="QL">Epithelializtion</label>
 <br></br>
 
 <div>
-<input type="radio" class="calc" name="QL" value="2" />
+
+
+<input type="radio" class="calc" name="QL" value="1" checked/>
 100% wound covered, surface intact
 <br></br>
-<input type="radio" class="calc" name="QL" value="3" />
+<input type="radio" class="calc" name="QL" value="2" />
 75% to less than 100% wound vonverd or epithelial tissure extends more than .5cm into wound bed
 <br></br>
 
@@ -334,6 +360,7 @@ No granulation
 <br></br>
 <input type="radio" class="calc" name="QL" value="5" />
 less than 25% wound covered
+<p></p>
 </div>
 
 <script>
@@ -348,7 +375,7 @@ less than 25% wound covered
         + parseInt($('input[name="QM"]:checked', '#bate').val()) 
         + parseInt($('input[name="QD"]:checked', '#bate').val()) 
         + parseInt($('input[name="QE"]:checked', '#bate').val()) 
-        + parseInt($('input[name="QF"]:checked', '#bate').val()) 
+        + parseInt($('inpubt[name="QF"]:checked', '#bate').val()) 
         + parseInt($('input[name="QG"]:checked', '#bate').val()) 
         + parseInt($('input[name="QH"]:checked', '#bate').val()) 
         + parseInt($('input[name="QI"]:checked', '#bate').val()) 
@@ -367,6 +394,6 @@ less than 25% wound covered
     </form>
 
 </div>
-</div>
+
 
     ); export default bates;

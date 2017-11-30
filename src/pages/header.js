@@ -1,33 +1,26 @@
 import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import '../styling/header.css';
-import { Button } from 'react-bootstrap';
-import {nav} from '../styleForm';
+import { Button, ButtonGroup } from 'react-bootstrap';
+import {navm} from '../styleForm';
+import {slide as Menu} from 'react-burger-menu';
+import Nav from './nav.js';
 { /* this will only be here while we are testing all the pages, after page testing is done it will be removed and navigation will only be done through the webpage */}
 // The Header creates links that can be used to navigate between routes.
-class header extends Component{
-    constructor() {
-        super();
-        this.state = {
-            logout: false,
-        };
-    }
+const header = () => (
+  
+    <header id="bodyf" >
 
-    logout() {
-        fetch('http://165.227.191.245/corstrata/api/index.php', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/.json',
-            },
-            body: JSON.stringify({
-                request: 'logout',
-                token: sessionStorage.getItem("token"),
-            })
-        })
-            .then((response) => response.json())
-            .then((res) => {
+  <Nav/>
+               
+                
+               
+      
+        
+    </header>
+);
 
-                if (res.status === 1) {
+            /*    if (res.status === 1) {
                     this.setState({ logout: true });
                     sessionStorage.setItem("token", null);
                     
@@ -51,5 +44,5 @@ class header extends Component{
             </header>
         );
     };
-}
+}*/
 export default header;

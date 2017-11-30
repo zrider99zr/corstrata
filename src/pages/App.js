@@ -4,10 +4,13 @@ import Main from "./main";
 import nav from "./nav"
 import './App.css';
 
+
 const App = () => (
     <div>
+
         <Header />
-        <Main />
+       
+        <Main /> 
     </div>
 );
 
