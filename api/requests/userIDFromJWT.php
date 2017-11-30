@@ -5,7 +5,7 @@ function getUID($sid, $db){
     if($qry = $db->prepare("SELECT accountID FROM sessions WHERE sessionID = ?")){
       $qry->bind_param("s",$sid);
       $qry->execute();
-      $qry->bind_param($userID);
+      $qry->bind_result($userID);
       $qry->fetch();
       $userID = isset($userID) ? $userID : -1;
       $qry->close();
