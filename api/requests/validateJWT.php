@@ -1,6 +1,7 @@
 <?php
 
 //Validates the entered usere id
+/*
 function validate($sid, $db){
     //$sid = htmlentities(mysqli_real_escape_string(this->mysqli),$sid);
     function clear($sid, $db) {
@@ -32,14 +33,16 @@ function validate($sid, $db){
         return false;
     }
 }
+*/
+//Try just returning the session id from the token
 
 $token = JWT::decode($decoded['token'], 'thelastjedi');
 
-if(isset($token['sid'])){
+if(isset($token->sid)){
     $array = array();
     $array['message'] = "Valid session token";
     $array['status'] = 1;
-    $array['sid'] = $token['sid'];
+    $array['sid'] = $token->sid;
     echo json_encode($array);
     /*
     if(validate($token['sid'],$db)){
