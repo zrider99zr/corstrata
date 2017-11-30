@@ -10,7 +10,7 @@ class Home extends Component {
         };
     }
 
-    componentWillMount() {
+    componentDidMount() {
         console.log(sessionStorage.getItem("token"));
         this.validateUser();
     }
