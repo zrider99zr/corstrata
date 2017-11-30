@@ -16,7 +16,6 @@ import createInstitution from './createInstitution';
 import createPatient from './createPatient';
 import tempSearchPatient from './tempSearchPatient';
 import patientpage from './patientpage';
-
 // The Main component renders one of the three provided
 // Routes (provided that one matches). Both the /roster
 // and /schedule routes will match any pathname that starts
@@ -42,6 +41,7 @@ const main = () => (
             <Route path='/createPatient' component={createPatient} />
             <Route path='/tempSearchPatient' component={tempSearchPatient} />
             <Route path='/patientpage' component={patientpage}/>
+            <Route path='/searchPatient'component={searchPatient}/>
         </Switch>
         
     </main>

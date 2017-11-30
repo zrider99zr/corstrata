@@ -1,45 +1,51 @@
-import React from 'react';
-import '../styling/searchPatient.css';
-import { Link } from 'react-router-dom';
+import React,{Component} from 'react';
+//import '../styling/searchPatient.css';
+//import { Link } from 'react-router-dom';
 import ReactTable from 'react-table';
+import 'react-table/react-table.css'
 
 
 
-const columns = [{
-    Header: 'Name',
-    accessor: 'name' // String-based value accessors!
-  }, {
-    Header: 'Age',
-    accessor: 'age',
-    Cell: props => <span className='number'>{props.value}</span> // Custom cell components!
-  }, {
-    id: 'friendName', // Required because our accessor is not a string
-    Header: 'Friend Name',
-    accessor: d => d.friend.name // Custom value accessors!
-  }, {
-    Header: props => <span>Friend Age</span>, // Custom header components!
-    accessor: 'friend.age'
-  }]
+class searchPatient extends Component {
+    constructor() {
+        super();
+        this.state = {
+        
+  
+        };
+        
+    }
 
 
 
+    render() {
 
+        const columns = [{
+            Header: 'Patients',
+            accessor: 'Patients', // String-based value accessors!
+          },]
+        
+        
 
-const searchPatient = () => (
+    return(
+
 
     <div className="containerl" >
-<div class="container">
+        <div class="container">
         <form class="searchform"  >       
-               <div id="top" >
-            <label id="Header"> Search </label>
+            
+            <label id="Header"> Search Patient</label>
             <input  type="text" id="input" />
-            <div><button>Create Patient</button></div>
-            </div>             
-            <ReactTable
-            columns={columns}
-                />
+            <div><button>Search</button></div>
+                    
          </form>
-    </div >  
+    </div >
+    <ReactTable
+            columns={columns}
+                />  
 </div>
+   
     ) ;
-export default searchPatient
+    };
+}
+export default searchPatient;
