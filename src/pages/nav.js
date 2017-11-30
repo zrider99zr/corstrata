@@ -28,6 +28,8 @@ class nav extends Component {
                     <li><Link to='/createPatient'>Create Patient</Link></li>
                     <li><Link to='/tempSearchPatient'>Search Patient</Link></li>
 
+                    <li><Link to='/patientpage'>Patient Home</Link></li>
+
                 </Menu>
             </div>
         );

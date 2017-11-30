@@ -51,11 +51,11 @@ class resetPassword extends Component {
 
     render() {
         return (
-            <div class="container">
-                <div class="classContianer">
+            <div className="container">
+                <div className="classContianer">
                     <label id="Header"> PASSWORD RESET </label>
-                    <body className="bodyf">
-                        <form class="inputform">
+                    
+                        <form className="inputform">
                             <div>
                                 <label className="label" id="advice"><b>Password must include a minimum of 8 characters.<br></br><br></br>
                                     And one or more of each of the following:</b>
@@ -82,7 +82,7 @@ class resetPassword extends Component {
                                 <button onClick={this.submitForm.bind(this)} id="changeButton" type="submit" >Submit</button>
                             </div>
                         </form>
-                    </body>
+                    
                 </div>
             </div>
         );
