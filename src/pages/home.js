@@ -6,7 +6,7 @@ class Home extends Component {
     constructor() {
         super();
         this.state = {
-            login: false,
+            login: true,
         };
     }
 
@@ -31,11 +31,12 @@ class Home extends Component {
 
                 if (res.status === 1) {
                     this.setState({ login: true });
+                } else if (res.status === 0) {
+                    this.setState({ login: false });
                 }
             })
             .catch((error) => {
-                this.setState({ login: false });
-                //alert(error.message);
+                alert(error.message);
             })
             .done();
     }
