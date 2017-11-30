@@ -7,8 +7,9 @@
 //Function that searches through the patient table given a search input
 function patientSearch($searchInput, $institutionID, $db){
   //TODO sanitize search input to make sure no sql injections
-  $qry = $db->prepare("SELECT patientID, firstName, lastName FROM patient WHERE lastName = %?% AND institutionID = ?");
-  $qry->bind_param("si",$searchInput,$institutionID);
+  $qry = $db->prepare("SELECT patientID, firstName, lastName FROM patient WHERE lastName = ? AND institutionID = ?");
+  $search = "%" . $searchInput . "%";
+  $qry->bind_param("si",$search,$institutionID);
   $qry->execute();
   $result = $qry->get_result();
   $qry->close();
