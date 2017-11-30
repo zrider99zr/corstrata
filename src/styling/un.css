@@ -133,7 +133,7 @@
     }
   
     #submit_button{
-  font-size: 30px;
+  font-size: 30px !important;
   height: fit-content;
   width: fit-content;
   background-color: #2bb2db;

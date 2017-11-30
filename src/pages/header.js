@@ -9,8 +9,9 @@ import Nav from './nav.js';
 // The Header creates links that can be used to navigate between routes.
 const header = () => (
   
-    <header id="bodyf">
-  
+    <header id="bodyf" >
+
+  <Nav/>
                
                 
                

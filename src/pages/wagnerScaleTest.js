@@ -76,7 +76,7 @@ class wagnerScaleTest extends Component {
 
               
 
-                <form id="wagnerForm" action="#" method="POST" encType="multipart/form-data">
+                <form id="mnaForm" action="#" method="POST" encType="multipart/form-data">
                 <div id="oldpassword">
                  
                     
