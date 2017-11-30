@@ -17,7 +17,7 @@ $lastName = $decoded['lastName'];
 
 if(isset($firstName,$lastName)){
     if($institutionID != -1){
-        if(registerPatient($firstName, $lastName,$db) == 1){
+        if(registerPatient($firstName, $lastName, $institutionID, $db) == 1){
             $array = array();
             $array['message'] = "Patient Registration was successful";
             $array['status'] = 1;
