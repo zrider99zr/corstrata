@@ -65,8 +65,6 @@ class resetPassword extends Component {
                                     <br></br>
 
                                     <li> number</li>
-                                    <br></br>
-                                    <li> punctuation mark</li>
                                 </label>
                             </div>
                             <div id="oldpassword">

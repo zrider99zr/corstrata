@@ -15,6 +15,7 @@ class Home extends Component {
     }
 
     validateUser() {
+        console.log(sessionStorage.getItem("token"));
         fetch('http://165.227.191.245/corstrata/api/index.php', {
             method: 'POST',
             headers: {
@@ -33,7 +34,7 @@ class Home extends Component {
 
                 } else if (res.status === 0) {
                     this.setState({ loggedIn: false });
-
+                    console.log(res.status);
                 }
             })
             .catch((error) => {
