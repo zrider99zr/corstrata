@@ -37,7 +37,6 @@ class Home extends Component {
                 this.setState({ login: false });
                 alert(error.message);
             })
-            .done();
     }
 
     render() {
