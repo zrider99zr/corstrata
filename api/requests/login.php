@@ -153,7 +153,7 @@ if(isset($email, $password)){
         $array['status'] = 1;
         $array['uid'] = $userID;
         $array['name'] = getUsername($userID, $db);
-        $array['token'] = createJWT($userID,$db);
+        //$array['token'] = createJWT($userID,$db);
         echo json_encode($array);
     }
     else{
