@@ -19,7 +19,7 @@ class header extends Component{
                 'Accept': 'application/.json',
             },
             body: JSON.stringify({
-                request: 'validateJWT',
+                request: 'logout',
                 token: sessionStorage.getItem("token"),
             })
         })
