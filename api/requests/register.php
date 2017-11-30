@@ -98,7 +98,7 @@ if(isset($email,$firstName,$lastName,$password,$isClient,$isAdmin)){
         //However if it is a client
         else{
             //If the institution ID sent by the frontend is -1 we have a problem
-            if($iID != -1){
+            if($iID == -1){
                 $array = array();
                 $array['message'] = "Please send a valid institutionID";
                 $array['status'] = 0;
