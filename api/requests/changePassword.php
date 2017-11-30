@@ -17,7 +17,7 @@ function changePassword($oldPassword, $newPassword,$userID,$db){
             'salt' => $dbSalt,
         ];
         
-        $hash = password_hash($password, PASSWORD_BCRYPT, $options);
+        $hash = password_hash($oldPassword, PASSWORD_BCRYPT, $options);
         $qry->close();
         //If the user entered the right previous password
         if($hash == $dbHash){
