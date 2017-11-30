@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import '../styling/home.css'
 
 class Home extends Component {
@@ -12,7 +12,7 @@ class Home extends Component {
 
     componentWillMount() {
         console.log(sessionStorage.getItem("token"));
-        validateUser();
+        this.validateUser();
     }
 
     validateUser() {
@@ -41,7 +41,7 @@ class Home extends Component {
     }
 
     render() {
-        if (his.state.login === false) {
+        if (this.state.login === false) {
             return (<Redirect to={'/loginPage'} />)
         }
 
