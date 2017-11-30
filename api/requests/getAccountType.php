@@ -10,6 +10,7 @@ function getAccountType($uid, $db){
     //If it exists
     if($qry->num_rows > 0){
       //Pull the accounts is admin
+      $qry->close();
       $qry = $db->prepare("SELECT isAdmin from clientAccount where accountID =  ?");
       $qry->bind_param("i",$uid);
       $qry->execute();
