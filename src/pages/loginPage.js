@@ -45,7 +45,7 @@ class loginPage extends Component {
         })
             .then((response) => response.json())
             .then((res) => {
-                sessionStorage.setItem("userData", res.status);
+                sessionStorage.setItem("token", res.token);
 
                 if (res.status===1) {
                     this.setState({ login: true });
@@ -85,8 +85,8 @@ class loginPage extends Component {
                             placeholder="Password"
                             required
                         />
-                        <SubmitButton style={{marginTop:"0px"}}
-                            onClick={this.checkInput.bind(this)}>
+                        <SubmitButton style={{ marginTop: "0px" }}
+                            onClick={this.testSessionStorage}>
                             <i className="fa fa-sign-in fa-lg" />
                             <Link to='./'> </Link>
                         </SubmitButton>

@@ -3,6 +3,11 @@ import { Link } from 'react-router-dom'
 import '../styling/home.css'
 
 class Home extends Component {
+
+    componentWillMount() {
+        console.log(sessionStorage.getItem("token"));
+    }
+
     render() {
         return (
             <div className='classContainer' >
