@@ -16,7 +16,7 @@ function getUID($sid, $db){
     }
 }
 
-$userID = 1;
+$userID = -1;
 $token = JWT::decode($decoded['token'], 'thelastjedi');
 
 if(isset($token->sid)){
