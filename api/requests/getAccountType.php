@@ -50,6 +50,7 @@ if($userID != -1){
         $array['message'] = "Account Type retrieval was successful";
         $array['status'] = 1;
         $array['accountType'] = $accountType;
+        $array['uid'] = $userID;
         echo json_encode($array);
     }
     else{
