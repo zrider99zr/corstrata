@@ -16,8 +16,8 @@ function getUID($sid, $db){
 
 $userID = -1;
 $token = JWT::decode($decoded['token'], 'thelastjedi');
-if(isset($token)){
-    $userID = getUID($token['sid'],$db);
+if(isset($token->sid)){
+    $userID = getUID($token->sid,$db);
 }
 if($request == "userIDFromJWT"){
     if($userID != -1){
