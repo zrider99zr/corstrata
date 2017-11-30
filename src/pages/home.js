@@ -41,7 +41,7 @@ class Home extends Component {
     }
 
     render() {
-        if (his.state.login === false) {
+        if (this.state.login === false) {
             return (<Redirect to={'/loginPage'} />)
         }
 
