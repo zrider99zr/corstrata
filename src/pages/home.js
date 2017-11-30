@@ -11,11 +11,14 @@ class Home extends Component {
     }
 
     componentDidMount() {
-        this.validateUser();
+        if (sessionStorage.getItem("token") != null || sessionStorage.getItem("token"!="")) {
+            this.validateUser();
+        }else{
+            this.setState({ loggedIn: false });
+        }
     }
 
     validateUser() {
-        console.log(sessionStorage.getItem("token"));
         fetch('http://165.227.191.245/corstrata/api/index.php', {
             method: 'POST',
             headers: {
