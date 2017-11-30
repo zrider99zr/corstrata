@@ -3,8 +3,7 @@
 //USAGE
 //Send a json with request field register and fields shown below filled
 
-//get the institutionID of the use
-require_once("getInstitutionID.php");
+
 //Function that searches through the patient table given a search input
 function patientSearch($searchInput, $institutionID, $db){
   //TODO sanitize search input to make sure no sql injections
@@ -19,8 +18,11 @@ function patientSearch($searchInput, $institutionID, $db){
     $array[$i]['name'] = $firstName . " " . $lastName;
     $i++;
   }
-  return json_encode($array);
+  return $array;
 }
+
+//get the institutionID of the use
+require_once("getInstitutionID.php");
 
 $searchInput = $decoded['searchInput'];
 if(isset($searchInput)){

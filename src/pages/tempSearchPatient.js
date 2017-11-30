@@ -24,6 +24,7 @@ class tempSearchPatient extends Component {
             body: JSON.stringify({
                 request: 'patientSearch',
                 searchInput: this.state.name,
+                token: sessionStorage.getItem("token"),
             })
         })
             .then((response) => response.json())
