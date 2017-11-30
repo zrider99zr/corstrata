@@ -147,7 +147,6 @@ $password = $decoded['password'];
 
 if(isset($email, $password)){ 
     $userID = login($email,$password,$db);
-    $userID = -1;
     if($userID != -1){
         $array = array();
         $array['message'] = "Login was successful";
