@@ -10,17 +10,20 @@ function patientSearch($searchInput, $institutionID, $db){
   if($qry = $db->prepare("SELECT patientID, firstName, lastName FROM patient WHERE lastName LIKE CONCAT("%", ? , "%") AND institutionID = ?")){
     $qry->bind_param("si",$searchInput,$institutionID);
     $qry->execute();
+    $result = $qry->get_result();
+    /*
     $qry->bind_result($patientID, $firstName, $lastName);
-    $array = array();
+    $result = array();
     $i = 0;
     while($qry->fetch()){
-      $array[$i]['patientID'] = $patientID;
-      $array[$i]['firstName'] = $firstName;
-      $array[$i]['lastName'] = $lastName;
+      $result[$i]['patientID'] = $patientID;
+      $result[$i]['firstName'] = $firstName;
+      $result[$i]['lastName'] = $lastName;
       $i++;
     }
+    */
     $qry->close();
-    return $array;
+    return $result;
   }
   else{
     $array = array();
