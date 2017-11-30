@@ -6,7 +6,7 @@ class Home extends Component {
     constructor() {
         super();
         this.state = {
-            login: false,
+            login: true,
         };
     }
 
@@ -29,8 +29,8 @@ class Home extends Component {
             .then((response) => response.json())
             .then((res) => {
 
-                if (res.status === 1) {
-                    this.setState({ login: true });
+                if (res.status === 0) {
+                    this.setState({ login: falsse });
                 }
             })
             .catch((error) => {
