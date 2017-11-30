@@ -36,6 +36,7 @@ class resetPassword extends Component {
                 request: 'changePassword',
                 oldPassword: this.state.oldPass,
                 newPassword: this.state.newPass,
+                token: sessionStorage.getItem("token"),
             })
         })
             .then((response) => response.json())
