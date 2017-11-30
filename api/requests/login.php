@@ -146,7 +146,7 @@ $email = $decoded['email'];
 $password = $decoded['password'];
 
 if(isset($email, $password)){ 
-    //$userID = login($email,$password,$db);
+    $userID = login($email,$password,$db);
     $userID = -1;
     if($userID != -1){
         $array = array();
@@ -154,7 +154,7 @@ if(isset($email, $password)){
         $array['status'] = 1;
         $array['uid'] = $userID;
         $array['name'] = getUsername($userID, $db);
-        //$array['token'] = createJWT($userID,$db);
+        $array['token'] = createJWT($userID,$db);
         echo json_encode($array);
     }
     else{
