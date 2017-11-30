@@ -86,7 +86,7 @@ class loginPage extends Component {
                             required
                         />
                         <SubmitButton style={{ marginTop: "0px" }}
-                            onClick={this.testSessionStorage}>
+                            onClick={this.checkInput.bind(this)}>
                             <i className="fa fa-sign-in fa-lg" />
                             <Link to='./'> </Link>
                         </SubmitButton>
