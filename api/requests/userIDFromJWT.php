@@ -5,9 +5,10 @@ function getUID($sid, $db){
     if($qry = $db->prepare("SELECT accountID from sessions where sessionID = ?")){
       $qry->bind_param("s",$sid);
       $qry->execute();
-      $result = $qry->get_result();
+      $qry->bind_param($userID);
+      $qry->fetch();
       $qry->close();
-      return isset($result[0]['accountID']) ? $result[0]['accountID'] : -1;
+      return isset($userID) ? $userID : -1;
     }
     else{
       return $db->error;
@@ -16,17 +17,17 @@ function getUID($sid, $db){
 
 $userID = 1;
 $token = JWT::decode($decoded['token'], 'thelastjedi');
-/*
+
 if(isset($token->sid)){
     $userID = getUID($token->sid,$db);
 }
-*/
+
 if($request == "userIDFromJWT"){
     if($userID != -1){
         $array = array();
         $array['message'] = "UserID was found";
         $array['status'] = 1;
-        //$array['userID'] = $userID;
+        $array['userID'] = $userID;
         $array['sid'] = $token->sid;
         echo json_encode($array);
       }
