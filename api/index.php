@@ -1,7 +1,4 @@
 <?php
-$lifetime=600;
-session_set_cookie_params($lifetime);
-session_start();
 header("Content-Type: application/json");
 header('Access-Control-Allow-Origin: *');
 require_once(__DIR__ . '/config/global.php');

@@ -3,37 +3,36 @@
 //Function to get the account type of a user
 function getAccountType($uid, $db){
     //Select acountID FROM account
-    $qry = $db->prepare("SELECT accountID from account where accountID =  ?");
+    $qry = $db->prepare("SELECT * from account where accountID =  ?");
     $qry->bind_param("i",$uid);
     $qry->execute();
+    $qry->store_result();
     //If it exists
-    if($qry->num_rows == 1){
+    if($qry->num_rows > 0){
       //Pull the accounts is admin
-      $qry = $db->prepare("SELECT isAdmin from clientAccount where accountID =  ?");
+      $qry->close();
+      $qry = $db->prepare("SELECT admin from clientAccount where accountID =  ?");
       $qry->bind_param("i",$uid);
       $qry->execute();
       $qry->bind_result($isAdmin);
       $qry->store_result();
       //If that exists
-      if($qry->num_rows == 1){
-        while($qry->fetch()){
-          //If is admin the account is a client admin account
-          if($isAdmin == 1){
-            $qry->free_result();
-            $qry->close();
-            return 1;
-          }
-          //Otherwise its a standard client account
-          else if($isAdmin == 0){
-            $qry->free_result();
-            $qry->close();
-            return 2;
-          }
+      if($qry->num_rows > 0){
+        //If is admin the account is a client admin account
+        $qry->fetch();
+        if($isAdmin == 1){
+          $qry->close();
+          return 1;
+        }
+        //Otherwise its a standard client account
+        else if($isAdmin == 0){
+          $qry->close();
+          return 2;
         }
       }
       //Otherwise the account is a corstrata account
       else{
-        $qry->free_result();
+      
         $qry->close();
         return 3;
       }
@@ -52,6 +51,7 @@ if($userID != -1){
         $array['message'] = "Account Type retrieval was successful";
         $array['status'] = 1;
         $array['accountType'] = $accountType;
+        $array['uid'] = $userID;
         echo json_encode($array);
     }
     else{

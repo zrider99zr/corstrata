@@ -4,9 +4,8 @@
     "\\api",
     "\\api\\requests",
     "\\src",
-    "\\src\\pages",
-    "\\src\\styling"
+    "\\src\\pages"
   ],
-  "SelectedNode": "\\src\\pages\\tempSearchPatient.js",
+  "SelectedNode": "\\src\\pages\\header.js",
   "PreviewInSolutionExplorer": false
 }

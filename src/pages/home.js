@@ -6,12 +6,17 @@ class Home extends Component {
     constructor() {
         super();
         this.state = {
-            loggedIn: true,
+            loggedIn: false,
         };
     }
 
     componentDidMount() {
-        this.validateUser();
+        console.log(sessionStorage.getItem("token"));
+        if (sessionStorage.getItem("token") == null || sessionStorage.getItem("token") == "" ) {
+            this.setState({ loggedIn: false });
+        } else {
+            this.validateUser();
+        }
     }
 
     validateUser() {
@@ -33,7 +38,6 @@ class Home extends Component {
 
                 } else if (res.status === 0) {
                     this.setState({ loggedIn: false });
-
                 }
             })
             .catch((error) => {

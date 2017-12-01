@@ -3,24 +3,38 @@
 //USAGE
 //Send a json with request field register and fields shown below filled
 
-//get the institutionID of the use
-require_once("getInstitutionID.php");
+
 //Function that searches through the patient table given a search input
 function patientSearch($searchInput, $institutionID, $db){
   //TODO sanitize search input to make sure no sql injections
-  $qry = $db->prepare("SELECT patientID, firstName, lastName FROM patient WHERE lastName = %?% AND institutionID = ?");
-  $qry->bind_param("si",$searchInput,$institutionID);
-  $qry->execute();
-  $qry->bind_result($patientID,$firstName,$lastName);
-  $array = array();
-  $i = 0;
-  while($qry->fetch()){
-    $array[$i]['patientID'] = $patientID;
-    $array[$i]['name'] = $firstName . " " . $lastName;
-    $i++;
+  if($qry = $db->prepare("SELECT patientID, firstName, lastName FROM patient WHERE lastName LIKE CONCAT('%', ? , '%') AND institutionID = ?")){
+    $qry->bind_param("si",$searchInput,$institutionID);
+    $qry->execute();
+    
+    $qry->bind_result($patientID, $firstName, $lastName);
+    $result = array();
+    $i = 0;
+    while($qry->fetch()){
+      $result[$i]['patientID'] = $patientID;
+      $result[$i]['firstName'] = $firstName;
+      $result[$i]['lastName'] = $lastName;
+      $i++;
+    }
+    
+    $qry->close();
+    return $result;
   }
-  return json_encode($array);
+  else{
+    $array = array();
+    $array['message'] = "query prepare uncsuccessful:(" . $db->errno . ") " . $db->error;
+    $array['status'] = 0;
+    echo json_encode($array); 
+    return -1;
+  }
 }
+
+//get the institutionID of the use
+require_once("getInstitutionID.php");
 
 $searchInput = $decoded['searchInput'];
 if(isset($searchInput)){
