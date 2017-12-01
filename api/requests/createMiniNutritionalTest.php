@@ -11,14 +11,14 @@ function createMiniNutritionalTest($testID, $questionA, $questionB, $questionC, 
     }
     else{
       if($questionF2 == -1){
-        $qry = $this->mysqli->prepare("INSERT INTO miniNutritionalTest (testID, a, b, c, d, e, f1, f2, score) VALUES (?, ?, ?, ?, ?, ?, ?, null, ?)");
+        $qry = $db->prepare("INSERT INTO miniNutritionalTest (testID, a, b, c, d, e, f1, f2, score) VALUES (?, ?, ?, ?, ?, ?, ?, null, ?)");
         $grade = $questionA + $questionB + $questionC + $questionD + $questionE + $questionF1;
         $qry->bind_param("iiiiiiiii",$testID, $questionA, $questionB, $questionC, $questionD, $questionE, $questionF1, $grade);
         $qry->execute();
         $qry->close();
       }
       else{
-        $qry = $this->mysqli->prepare("INSERT INTO miniNutritionalTest (testID, a, b, c, d, e, f1, f2, score) VALUES (?, ?, ?, ?, ?, ?, null, ?, ?)");
+        $qry = $db->prepare("INSERT INTO miniNutritionalTest (testID, a, b, c, d, e, f1, f2, score) VALUES (?, ?, ?, ?, ?, ?, null, ?, ?)");
         $grade = $questionA + $questionB + $questionC + $questionD + $questionE + $questionF2;
         $qry->bind_param("iiiiiiiii",$testID, $questionA, $questionB, $questionC, $questionD, $questionE, $questionF2, $grade);
         $qry->execute();
