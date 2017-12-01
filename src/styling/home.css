@@ -26,3 +26,7 @@
 .button.active {
     transform: translate(1px);
 }
+.input{
+    margin-left: 42em;
+    width:15px;
+}
