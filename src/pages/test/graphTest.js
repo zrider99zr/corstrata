@@ -6,24 +6,23 @@ import 'react-table/react-table.css'
 
 
 
+const testPerson = () => {
+    return {
+        pID: "78",
+        firstName: "John",
+        lastName: "Doe",
+    };
+};
+
+const range = len => {
+    const arr = [];
+    for (let i = 0; i < len; i++) {
+        arr.push(i)
+    }
+    return arr;
+};
 
 class testGraph extends Component {
-    testPerson = () => {
-        return {
-            pID: "78",
-            firstName: "John",
-            lastName: "Doe",
-        };
-    };
-
-    makeData() {
-        return range(len).map( d => {
-            return {
-                ...newPerson(),
-            };
-        });
-    }
-
     constructor() {
         super();
         this.state = {
@@ -31,6 +30,14 @@ class testGraph extends Component {
 
         };
 
+    }
+
+    makeData(len = 10) {
+        return range(len).map(d => {
+            return {
+                ...testPerson(),
+            }
+        });
     }
 
     render() {
