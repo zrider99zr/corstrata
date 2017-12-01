@@ -13,7 +13,7 @@ class Home extends Component {
             accountName: "",
             showTable: false,
         };
-        getAccountName();
+        this.getAccountName()
     }
 
     //========================================================================================================
