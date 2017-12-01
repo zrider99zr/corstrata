@@ -64,6 +64,7 @@ class MNAtest extends Component {
                 showBMI: false,
                 showCC: true,
             });
+        }
     }
 
     updateVal(e) {
