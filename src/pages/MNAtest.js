@@ -70,7 +70,7 @@ class MNAtest extends Component {
                 i6: -7,
                 showBMI: false,
                 showCC: false,
-            }) ;
+            });
         }
     }
     updateVal(e) {
