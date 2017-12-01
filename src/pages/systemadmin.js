@@ -53,8 +53,8 @@ class Home extends Component {
         return (
             <div className='classContainer' >
                 <h1>Welcome Whoever to the Corstrata Website!</h1>
-                <Link className='button' to='./searchPatient'>Find Patient</Link>
-                <Link className='button' to='./createAccount'>Create Client Account</Link>
+                <Link className='button' to='./searchPatient'>Create Institution</Link>
+                <Link className='button' to='./createAccount'>Create Account</Link>
             </div>
         );
     };
