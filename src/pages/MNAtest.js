@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../styling/mna.css';
+import Response from './response'
 
 class MNAtest extends Component {
     constructor() {
@@ -11,10 +12,7 @@ class MNAtest extends Component {
             i4: "-1",
             i5: "-1",
             i6: "-1",
-            i7: "-1", 
             info: " ",
-            showBMI: false,
-            showCC: false,
         };
     }
 
@@ -66,21 +64,13 @@ class MNAtest extends Component {
                 showBMI: false,
                 showCC: true,
             });
-        }
-        else{
-            this.setState({
-                i6: -1,
-                i6: -7,
-                showBMI: false,
-                showCC: false,
-            });
-        }
     }
+
     updateVal(e) {
-        if (e.target.name === "appetite"){
+        if (e.target.name === "appetite") {
             this.setState({ i1: e.target.value });
 
-        } else if (e.target.name === "WL"){
+        } else if (e.target.name === "WL") {
             this.setState({ i2: e.target.value });
 
         } else if (e.target.name === "Mobility") {
@@ -95,17 +85,40 @@ class MNAtest extends Component {
         } else if (e.target.name === "BMI") {
             this.setState({ i6: e.target.value });
 
-        } else if (e.target.name === "CC"){
-            this.setState({ i7: e.target.value });
+        } else if (e.target.name === "CC") {
+            this.setState({ i6: e.target.value });
+        } else if (e.target.name === "hasBMI") {
+            var info = ""
+            if (e.target.value === "0") {
+                info = <div>
+                    < label htmlFor="QE" > Body Mass index BMI wieght in kg / (height in m) ^ 2 </label >
+                    <div>
+                        <input type="radio" onChange={this.updateVal.bind(this)} name="BMI" value="0" /> B.M.I. less that 19
+                    <br></br>
+                        <input type="radio" onChange={this.updateVal.bind(this)} name="BMI" value="1" /> BMI greater than 19 to less than 21
+                    <br></br>
+                        <input type="radio" onChange={this.updateVal.bind(this)} name="BMI" value="2" /> BMI less 21 to less than 23
+                    <br></br>
+                        <input type="radio" onChange={this.updateVal.bind(this)} name="BMI" value="3" /> BMI 23 or greater
+                    </div>
+                </div>
+            } else if (e.target.value === "1") {
+                info = <div>
+                    <label htmlFor="QE" > Calf circumference (CC) in cm </label >
+                    <div>
+                        <input type="radio" onChange={this.updateVal.bind(this)} name="CC" value="0" />CC less than 31
+                            <br></br>
+                        <input type="radio" onChange={this.updateVal.bind(this)} name="CC" value="3" />CC 31 or greater
+                        </div>
+                </div>
+            }
+            this.setState({ info: info });
         }
     }
 
     calculateTotal() {
         var total = 0;
-        if (this.state.i1 != -1 && this.state.i2 != -1 && this.state.i3 != -1 && this.state.i4 != -1 && this.state.i5 != -1) {
-            total = Number(this.state.i1) + Number(this.state.i2) + Number(this.state.i3) + Number(this.state.i4) + Number(this.state.i5) + Number(this.state.i6);
-            total = Number(this.state.i1) + Number(this.state.i2) + Number(this.state.i3) + Number(this.state.i4) + Number(this.state.i5) + Number(this.state.i6); 
-            this.setState({ total: total });
+        if (this.state.i1 != -1 && this.state.i2 != -1 && this.state.i3 != -1 && this.state.i4 != -1 && this.state.i5 != -1 && this.state.i6 != -1) {
             console.log(this.state);
         } else {
             alert("Please fill out the rest of the survey before submitting");
@@ -116,107 +129,83 @@ class MNAtest extends Component {
 
         return (
 
-        <div id="class" className="classContainer" >
-         
-  <label id="Header">Mini Nutritional  </label>
-  <div className="container">
+            <div id="class" className="classContainer" >
 
-        <form className="mnaform" >
+                <label id="Header">Mini Nutritional  </label>
+                <div className="container">
 
-      {/*values || severe decrease in food intake = 0 || moderate dec in food intake = 1 || no dec in food intake = 2 */}
-      <label htmlFor="name">Has Food intake declined over the past 3 months due to loss of appetite, digestive problems, chewing or swalloing diffculites?</label>
-      <div>
-        <input type="radio" onChange={this.updateVal.bind(this)} name="appetite" value="0" />severe decrease in food intake
+                    <form className="mnaform" >
+
+                        {/*values || severe decrease in food intake = 0 || moderate dec in food intake = 1 || no dec in food intake = 2 */}
+                        <label htmlFor="name">Has Food intake declined over the past 3 months due to loss of appetite, digestive problems, chewing or swalloing diffculites?</label>
+                        <div>
+                            <input type="radio" onChange={this.updateVal.bind(this)} name="appetite" value="0" />severe decrease in food intake
         <br></br>
-        <input type="radio" onChange={this.updateVal.bind(this)} name="appetite" value="1" />modarate decrease in food intake
+                            <input type="radio" onChange={this.updateVal.bind(this)} name="appetite" value="1" />modarate decrease in food intake
         <br></br>
-        <input type="radio" onChange={this.updateVal.bind(this)} name="appetite" value="2" />no decrease in food intake
+                            <input type="radio" onChange={this.updateVal.bind(this)} name="appetite" value="2" />no decrease in food intake
       </div>
 
-      {/*values || weight loss > 3kg = 0 || does not know = 1 || weight loss between 1/3kg = 2 || no weight loss = 3 */}
-      <label htmlFor="email"> Weight loss during the last 3 months</label>
-      <div>
-          <input type="radio" onChange={this.updateVal.bind(this)} name="WL" value="0" />weight loss greater thean 3kg (6.6 lbs)
+                        {/*values || weight loss > 3kg = 0 || does not know = 1 || weight loss between 1/3kg = 2 || no weight loss = 3 */}
+                        <label htmlFor="email"> Weight loss during the last 3 months</label>
+                        <div>
+                            <input type="radio" onChange={this.updateVal.bind(this)} name="WL" value="0" />weight loss greater thean 3kg (6.6 lbs)
         <br></br>
-        <input type="radio" onChange={this.updateVal.bind(this)} name="WL" value="1" />does not know
+                            <input type="radio" onChange={this.updateVal.bind(this)} name="WL" value="1" />does not know
         <br></br>
-        <input type="radio" onChange={this.updateVal.bind(this)} name="WL" value="2" />weight loss between 1 and 3 kg (2.2 and 6.6 lbs)
+                            <input type="radio" onChange={this.updateVal.bind(this)} name="WL" value="2" />weight loss between 1 and 3 kg (2.2 and 6.6 lbs)
         <br></br>
-        <input type="radio" onChange={this.updateVal.bind(this)} name="WL" value="3" />no weight loss
+                            <input type="radio" onChange={this.updateVal.bind(this)} name="WL" value="3" />no weight loss
         <br></br>
+                        </div>
+
+
+                        {/*values || bed/chair bound = 0 || able to get out of bed/chair = 1 || weight loss between 1/3kg = 2 */}
+                        <label htmlFor="message">Mobility</label>
+                        <div>
+                            <input type="radio" onChange={this.updateVal.bind(this)} name="Mobility" value="0" />bed or chair bound
+        <br></br>
+                            <input type="radio" onChange={this.updateVal.bind(this)} name="Mobility" value="1" />able to get out of bed/chair but doesnt no go out
+        <br></br>
+                            <input type="radio" onChange={this.updateVal.bind(this)} name="Mobility" value="2" />weight loss between 1 and 3 kg (2.2 and 6.6 lbs)
+        <br></br>
+                        </div>
+
+                        {/*values || yes = 0 || no = 1 */}
+                        <label htmlFor="QD">Has suffered psychological stress or acute disesease in the last 3 months</label>
+                        <br></br>
+                        <div>
+                            <input type="radio" onChange={this.updateVal.bind(this)} name="stress" value="0" />yes
+        <br></br>
+                            <input type="radio" onChange={this.updateVal.bind(this)} name="stress" value="2" />no
+      </div>
+
+                        <label htmlFor="QC">Neuropsycologial problems </label>
+                        <div>
+                            <input type="radio" onChange={this.updateVal.bind(this)} name="neuro" value="0" />severe dementia or depression
+        <br></br>
+                            <input type="radio" onChange={this.updateVal.bind(this)} name="neuro" value="1" />mild dementia
+        <br></br>
+                            <input type="radio" onChange={this.updateVal.bind(this)} name="neuro" value="2" />no psychological problems
       </div>
 
 
-      {/*values || bed/chair bound = 0 || able to get out of bed/chair = 1 || weight loss between 1/3kg = 2 */}
-      <label htmlFor="message">Mobility</label>
-      <div>
-        <input type="radio" onChange={this.updateVal.bind(this)}name="Mobility" value="0" />bed or chair bound
-        <br></br>
-        <input type="radio" onChange={this.updateVal.bind(this)} name="Mobility" value="1" />able to get out of bed/chair but doesnt no go out
-        <br></br>
-        <input type="radio" onChange={this.updateVal.bind(this)} name="Mobility" value="2" />weight loss between 1 and 3 kg (2.2 and 6.6 lbs)
-        <br></br>
-      </div>
-
-
-      {/*values || yes = 0 || no = 1 */}
-      <label htmlFor="QD">Has suffered psychological stress or acute disesease in the last 3 months</label>
-      <br></br>
-        <div>
-        <input type="radio" onChange={this.updateVal.bind(this)} name="stress" value="0" />yes
-        <br></br>
-        <input type="radio" onChange={this.updateVal.bind(this)} name="stress" value="2" />no
-      </div>
-
-      <label htmlFor="QC">Neuropsycologial problems </label>
-      <div>
-        <input type="radio" onChange={this.updateVal.bind(this)} name="neuro" value="0" />severe dementia or depression
-        <br></br>
-        <input type="radio" onChange={this.updateVal.bind(this)} name="neuro" value="1" />mild dementia
-        <br></br>
-        <input type="radio" onChange={this.updateVal.bind(this)} name="neuro" value="2" />no psychological problems
-      </div>
-
-      <div >
-          <label>Do you wish to perform BMI check or a Calf Circumference</label>
-          <input type="radio" name="hasBMI" onChange={this.updateHidden.bind(this)} value="0" />Check B.M.I.
+                        {/*Ask the user which question they would like to complete*/}
+                        <div>
+                            <label>Do you wish to perform BMI check or a Calf Circumference</label>
+                            <input type="radio" onChange={this.updateVal.bind(this)} name="hasBMI" value="0" />Check B.M.I.
           <br></br>
-          <input type="radio" name="hasBMI" onChange={this.updateHidden.bind(this)} value="1" />Check Calf Circumference
+                            <input type="radio" onChange={this.updateVal.bind(this)} name="hasBMI" value="1" />Check Calf Circumference
       </div>
 
+                        <Response info={this.state.info} />
 
+                        {/* Dynamically generate the final submission score on the bottom of the page as they fill it out, so there is some sort of feedback before they submit */}
+                        <button id="submit_button" onClick={this.submitTest.bind(this)} type="button">Submit</button>
+                    </form>
 
-      <div style={this.state.showBMI ? {} : { display: 'none' }}>
-          < label htmlFor="QE" > Body Mass index BMI wieght in kg / (height in m) ^ 2 </label >
-          <div>
-                    <input type="radio" onChange={this.updateVal.bind(this)} name="BMI" value="0" /> B.M.I. less that 19
-                    <br></br>
-                    <input type="radio" onChange={this.updateVal.bind(this)} name="BMI" value="1" /> BMI greater than 19 to less than 21
-                    <br></br>
-                    <input type="radio" onChange={this.updateVal.bind(this)} name="BMI" value="2" /> BMI less 21 to less than 23
-                    <br></br>
-                    <input type="radio" onChange={this.updateVal.bind(this)} name="BMI" value="3" /> BMI 23 or greater
-                    </div>
-      </div>
-      <div style={this.state.showCC ? {} : { display: 'none' }}>
-        {/*values || less than 31 = 0 || 31 or greater = 3 */}
-        <label htmlFor="QE">Calf circumference (CC) in cm </label>
-        <div>
-          <input type="radio" onChange={this.updateVal.bind(this)} name="CC" value="0" />CC less than 31
-          <br></br>
-          <input type="radio" onChange={this.updateVal.bind(this)} name="CC" value="3" />CC 31 or greater
-        </div>
-        </div>
-
-
-        {/* Dynamically generate the final submission score on the bottom of the page as they fill it out, so there is some sort of feedback before they submit */}
-        <button id="submit_button" onClick={this.calculateTotal.bind(this)} type="button">Submit</button>
-    </form>
-
- 
-</div>
-</div>
-
+                </div>
+            </div>
 
         );
     };
