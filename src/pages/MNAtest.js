@@ -12,6 +12,7 @@ class MNAtest extends Component {
             i4: "-1",
             i5: "-1",
             i6: "-1",
+            i7= "-1",
             info: " ",
         };
     }
@@ -87,7 +88,7 @@ class MNAtest extends Component {
             this.setState({ i6: e.target.value });
 
         } else if (e.target.name === "CC") {
-            this.setState({ i6: e.target.value });
+            this.setState({ i7: e.target.value });
         } else if (e.target.name === "hasBMI") {
             var info = ""
             if (e.target.value === "0") {
