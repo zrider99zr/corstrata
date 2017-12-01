@@ -12,7 +12,7 @@ class testGraph extends Component {
         };
     };
 
-
+    /*
     fillTables() {
         fetch('http://165.227.191.245/corstrata/api/index.php', {
             method: 'POST',
@@ -47,6 +47,7 @@ class testGraph extends Component {
                 alert(error.message);
             });
     };
+    */
 
     constructor() {
         super();
@@ -58,8 +59,38 @@ class testGraph extends Component {
     }
 
     getSearch(e) {
-        this.setState({ search: e.target.value });
-        console.log("input ", e.target.value)
+        fetch('http://165.227.191.245/corstrata/api/index.php', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/.json',
+            },
+            body: JSON.stringify({
+                request: 'patientSearch', 
+                token: sessionStorage.getItem("token"),
+                searchInput: e.target.value,
+
+            })
+        })
+            .then((response) => response.json())
+            .then((res) => {
+                var rows = [];
+                for(var i = 0; i < res.search.length;i++){
+                    var row = {
+                        pID: res.search[i].patientID,
+                        fName: res.search[i].firstName,
+                        lName: res.search[i].lastName,
+
+                    }
+                    rows.push(row)
+                }
+                this.setState({
+                    data: rows,
+                    loading: false,
+                })
+            })
+            .catch((error) => {
+                alert(error.message);
+            });
     }
 
     render() {
