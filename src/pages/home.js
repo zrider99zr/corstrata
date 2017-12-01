@@ -10,9 +10,10 @@ class Home extends Component {
         this.state = {
             loggedIn: false,
             data: [],
-            search: "",
+            accountName = "",
             showTable: false,
         };
+        getAccountName();
     }
 
     //========================================================================================================
@@ -23,6 +24,27 @@ class Home extends Component {
         };
     };
 
+    getAccountName(){
+        fetch('http://165.227.191.245/corstrata/api/index.php', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/.json',
+            },
+            body: JSON.stringify({
+                request: 'getAccountName',
+                token: sessionStorage.getItem("token"),
+            })
+        })
+            .then((response) => response.json())
+            .then((res) => {
+                if(res.status === 1){
+                    this.setState({accountName: res.accountName});
+                }
+            })
+            .catch((error) => {
+                alert(error.message);
+            });
+    }
     getSearch(e) {
         if(e.target.value != ""){
             this.setState({showTable: true});
@@ -116,7 +138,7 @@ class Home extends Component {
 
         return (
             <div className='classContainer' >
-                <h1>Welcome to the Corstrata Website!</h1>
+                <h1>Welcome, {this.state.accountName}, to the Corstrata Website!</h1>
                 <Link className='button' to='./createPatient'>Create Patient</Link>
 
 
