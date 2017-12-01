@@ -59,7 +59,7 @@ class testGraph extends Component {
 
     getSearch(e) {
         this.setState({ search: e.target.value });
-        console.log(e);
+        console.log(e)
     }
 
     render() {
