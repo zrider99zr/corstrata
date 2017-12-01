@@ -16,15 +16,54 @@ class testGraph extends Component {
     };
 
     makeData() {
-        
+        var rows = this.state.data
+        var row = {
+            pID: 2,
+            fName: "Abe",
+            lName: "Bee",
+        }
+        rows.push(row)
+        this.setState({
+            data: rows,
+        })
     };
 
     testAddGraph(){
-
+        
     };
 
     fillTables() {
-
+        /*
+        fetch('http://165.227.191.245/corstrata/api/index.php', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/.json',
+            },
+            body: JSON.stringify({
+                request: 'patientSearch', 
+                token: sessionStorage.getItem("token"),
+            })
+        })
+            .then((response) => response.json())
+            .then((res) => {
+                var rows = [];
+                for(var i = 0; i < res.search.length;i++){
+                    var row = {
+                        patientID: res.search[i].patientID,
+                        firstName = res.search[i].firstName,
+                        lastName = res.search[i].lastName,
+                    }
+                    rows.push(row)
+                }
+                this.setState({
+                    data: rows,
+                    loading: false,
+                })
+            })
+            .catch((error) => {
+                alert(error.message);
+            });
+            */
     };
 
     constructor() {
