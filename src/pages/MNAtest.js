@@ -47,23 +47,24 @@ class MNAtest extends Component {
                 .catch((error) => {
                     alert(error.message);
                 }); 
-        }
-        
+        }   
     }
-    updateHidden(e){
-        if(e.target.value === 0){
+
+    updateHidden(e) {
+        if (e.target.value === 0) {
             this.setState({
                 i7: -1,
                 showBMI: true,
                 showCC: false,
             });
         }
-        else if(e.target.value === 1){
+        else if (e.target.value === 1) {
             this.setState({
                 i6: -1,
                 showBMI: false,
                 showCC: true,
             });
+        }
     }
 
     updateVal(e) {
@@ -119,7 +120,7 @@ class MNAtest extends Component {
     calculateTotal() {
         var total = 0;
         if (this.state.i1 != -1 && this.state.i2 != -1 && this.state.i3 != -1 && this.state.i4 != -1 && this.state.i5 != -1 && this.state.i6 != -1) {
-            console.log(this.state);
+
         } else {
             alert("Please fill out the rest of the survey before submitting");
         }
@@ -140,11 +141,11 @@ class MNAtest extends Component {
                         <label htmlFor="name">Has Food intake declined over the past 3 months due to loss of appetite, digestive problems, chewing or swalloing diffculites?</label>
                         <div>
                             <input type="radio" onChange={this.updateVal.bind(this)} name="appetite" value="0" />severe decrease in food intake
-        <br></br>
+                            <br></br>
                             <input type="radio" onChange={this.updateVal.bind(this)} name="appetite" value="1" />modarate decrease in food intake
-        <br></br>
+                            <br></br>
                             <input type="radio" onChange={this.updateVal.bind(this)} name="appetite" value="2" />no decrease in food intake
-      </div>
+                            </div>
 
                         {/*values || weight loss > 3kg = 0 || does not know = 1 || weight loss between 1/3kg = 2 || no weight loss = 3 */}
                         <label htmlFor="email"> Weight loss during the last 3 months</label>
