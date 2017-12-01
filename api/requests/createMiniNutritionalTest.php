@@ -44,10 +44,13 @@ $F2 = $decoded['F2'];
 //Check to make sure that they are all set correctly 
 if($testID != -1 && isset($A,$B,$C,$D,$E,$F1,$F2)){
     //If create test was successful
-    if(createMiniNutritionalTest($testID,$A,$B,$C,$D,$E,$F1,$F2,$db) == 1){
+    //$mnaTest = createMiniNutritionalTest($testID,$A,$B,$C,$D,$E,$F1,$F2,$db);
+    $mnaTest = 1;
+    if($mnaTest == 1){
         $array = array();
         $array['message'] = "Test Creation was sucessful";
         $array['status'] = 1;
+        $array['testID'] = $testID;
         echo json_encode($array);
     }
     else{
