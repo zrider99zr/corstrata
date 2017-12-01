@@ -2,6 +2,7 @@
 //Require the function for creating an entry into the test table
 
 //Function that inserts a MiniNutritional test into the database; 
+/*
 function createMiniNutritionalTest($testID, $questionA, $questionB, $questionC, $questionD, $questionE, $questionF1, $questionF2, $db){
     
     if($testID == -1){
@@ -26,6 +27,7 @@ function createMiniNutritionalTest($testID, $questionA, $questionB, $questionC, 
       return 1;
     }
 }
+*/
 
 //Initialize all the variables for the function
 //Create a Test entry
