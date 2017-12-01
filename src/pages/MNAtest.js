@@ -18,7 +18,7 @@ class MNAtest extends Component {
     }
 
     submitTest() {
-        if((this.state.i1 != -1 && this.state.i2 != -1 && this.state.i3 != -1 && this.state.i4 != -1 && this.state.i5 != -1) && ((this.state.i6 != -1 && this.state.i7 === -1) || (this.state.i6 === -1 && this.state.i7 != -1))){
+        if((this.state.i1 !== "-1" && this.state.i2 !== "-1" && this.state.i3 !== "-1" && this.state.i4 !== "-1" && this.state.i5 !== "-1") && ((this.state.i6 !== "-1" && this.state.i7 === "-1") || (this.state.i6 === "-1" && this.state.i7 !== "-1"))){
             fetch('http://165.227.191.245/corstrata/api/index.php', {
                 method: 'POST',
                 headers: {
@@ -49,6 +49,9 @@ class MNAtest extends Component {
                 .catch((error) => {
                     alert(error.message);
                 }); 
+        }
+        else{
+            console.log(this.state.i1,this.state.i2,this.state.i3,this.state.i4,this.state.i5,this.state.i6,this.state.i7)
         }   
     }
 
