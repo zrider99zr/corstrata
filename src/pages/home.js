@@ -146,7 +146,7 @@ class Home extends Component {
             <div className='classContainer' >
                 <h1>Welcome, {this.state.accountName}, to the Corstrata Website!</h1>
                 <Link className='button' to='./createPatient'>Create Patient</Link>
-               <input type="text" className="input" onInput={this.getSearch.bind(this)} />
+               <input type="text"  className="inputName" onInput={this.getSearch.bind(this)} />
              
 
     
