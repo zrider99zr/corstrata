@@ -10,7 +10,7 @@ class Home extends Component {
         this.state = {
             loggedIn: false,
             data: [],
-            accountName = "",
+            accountName: "",
             showTable: false,
         };
         getAccountName();
