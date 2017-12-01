@@ -38,7 +38,7 @@ class Home extends Component {
             .then((response) => response.json())
             .then((res) => {
                 if(res.status === 1){
-                    this.setState({accountName: res.accountName});
+                    this.setState({accountName: res.userName});
                 }
             })
             .catch((error) => {
