@@ -29,7 +29,7 @@ class Home extends Component {
     };
 
     getSearch(e) {
-        if(e.targe.value != ""){
+        if(e.target.value != ""){
             this.setState({showTable: true});
             fetch('http://165.227.191.245/corstrata/api/index.php', {
                 method: 'POST',
