@@ -4,7 +4,57 @@ import { Link } from 'react-router-dom';
 import { slide as Menu } from 'react-burger-menu';
 
 class nav extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            email: "",
+            error: props.error,
+            info: props.info,
+            password: "",
+            login: false,
+            Admin: "",
+        };
+    }
+
+    setEmail(e) {
+        this.setState({ email: e.target.value });
+    }
+
+    setPass(e) {
+        this.setState({ password: e.target.value });
+    }
+
+    checkInput(e) {
+        //loggin in and passing it state, will need to trim or extend the method to show more/less state variables
+        fetch('http://165.227.191.245/corstrata/api/index.php', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/.json',
+            },
+            body: JSON.stringify({
+                request: 'login',
+                email: this.state.email,
+                password: this.state.password,
+            })
+        })
+            .then((response) => response.json())
+            .then((res) => {
+                sessionStorage.setItem("token", res.token);
+
+                if (res.status===1) {
+                    this.setState({ login: true });
+                }
+            })
+            .catch((error) => {
+                alert(error.message);
+            }); 
+    }
+
+   
+
     render() {
+
+         if (this.state.Admin == 1) {
         return (
             <div>
 
@@ -35,7 +85,33 @@ class nav extends Component {
                 </Menu>
                
             </div>
-        );
+       
+);
+     }
+    else{
+
+        return (
+            <div>
+
+               <Menu>
+                    <Link className='button' to='./searchPatient'>Find Patient</Link>
+                    <Link className='button' to='./createAccount'>Create Account</Link>
+                    
+                    
+
+                </Menu>
+               
+            </div>
+       
+);
+
+
+
+
+    }
+    
     };
-}
+
+    
+} 
 export default nav;
