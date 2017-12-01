@@ -12,19 +12,6 @@ class testGraph extends Component {
         };
     };
 
-    makeData() {
-        //this.fillTables();
-        var rows = this.state.data
-        /*var row = {
-            pID: 2,
-            fName: "Abe",
-            lName: "Bee",
-        }*/
-        rows.push(row)
-        this.setState({
-            data: rows,
-        })
-    };
 
     fillTables() {
         fetch('http://165.227.191.245/corstrata/api/index.php', {
