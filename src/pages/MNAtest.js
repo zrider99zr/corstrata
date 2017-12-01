@@ -34,7 +34,7 @@ class MNAtest extends Component {
                     D: this.state.i4,
                     E: this.state.i5,
                     F1: this.state.i6,
-                    F2: this.state.i6,
+                    F2: this.state.i7,
                 })
             })
                 .then((response) => response.json())
@@ -174,7 +174,7 @@ class MNAtest extends Component {
         <br></br>
                             <input type="radio" onChange={this.updateVal.bind(this)} name="Mobility" value="1" />Able to get out of bed/chair but doesnt no go out
         <br></br>
-                            <input type="radio" onChange={this.updateVal.bind(this)} name="Mobility" value="2" />Weight loss between 1 and 3 kg (2.2 and 6.6 lbs)
+                            <input type="radio" onChange={this.updateVal.bind(this)} name="Mobility" value="2" />Goes out
         <br></br>
                         </div>
 
@@ -208,7 +208,7 @@ class MNAtest extends Component {
                         <Response info={this.state.info} />
 
                         {/* Dynamically generate the final submission score on the bottom of the page as they fill it out, so there is some sort of feedback before they submit */}
-                        <button type="button" onClick={this.calculateTotal.bind(this)}>Create</button>
+                        <button type="button" onClick={this.submitTest.bind(this)}>Create</button>
                         </form>
                     
                 </div>
