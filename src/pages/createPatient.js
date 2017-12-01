@@ -38,11 +38,11 @@ class createPatient extends Component {
                 if(res.status===1){
                // alert(res.message);
                 this.setState({patientCreated: true});
-                }else{
+                }/*else{
                     alert("Test Creation failed");
                     console.log(res.status);
-                    this.setState({patientCreated: false});
-                }
+                    this.setState({patientCreated: false});*
+                }*/
             })
             .catch((error) => {
                 alert(error.message);
