@@ -26,7 +26,8 @@ class MNAtest extends Component {
                 },
                 body: JSON.stringify({
                     request: 'createMinNutitionalTest',
-                    testID: sessionStorage.getItem(""),
+                    token: sessionStorage.getItem("token"),
+                    patientID: sessionStorage.getItem("patientID"),
                     A: this.state.i1,
                     B: this.state.i2,
                     C: this.state.i3,
