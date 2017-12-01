@@ -55,14 +55,14 @@ class MNAtest extends Component {
                 i7: -1,
                 showBMI: true,
                 showCC: false,
-            })
+            });
         }
         else if(e.target.value === 1){
             this.setState({
                 i6: -1,
                 showBMI: false,
                 showCC: true,
-            })
+            });
         }
         else{
             this.setState({
@@ -70,7 +70,7 @@ class MNAtest extends Component {
                 i6: -7,
                 showBMI: false,
                 showCC: false,
-            }) 
+            }) ;
         }
     }
     updateVal(e) {
