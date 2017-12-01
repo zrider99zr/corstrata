@@ -109,10 +109,6 @@ class Home extends Component {
         //======================================================
         const columns = [
             {
-                Header: 'Patient ID',
-                accessor: 'pID', // String-based value accessors!
-                Cell: props => <span className='number'>{props.value}</span>
-            }, {
                 Header: 'First Name',
                 accessor: 'fName',
             }, {
