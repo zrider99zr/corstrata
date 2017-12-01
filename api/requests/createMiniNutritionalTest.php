@@ -2,7 +2,7 @@
 //Require the function for creating an entry into the test table
 
 //Function that inserts a MiniNutritional test into the database; 
-/*
+
 function createMiniNutritionalTest($testID, $questionA, $questionB, $questionC, $questionD, $questionE, $questionF1, $questionF2, $db){
     
     if($testID == -1){
@@ -27,7 +27,7 @@ function createMiniNutritionalTest($testID, $questionA, $questionB, $questionC, 
       return 1;
     }
 }
-*/
+
 
 //Initialize all the variables for the function
 //Create a Test entry
@@ -48,8 +48,7 @@ $F2 = $decoded['F2'];
 //Check to make sure that they are all set correctly 
 if($testID != -1 && isset($A,$B,$C,$D,$E,$F1,$F2)){
     //If create test was successful
-    //$mnaTest = createMiniNutritionalTest($testID,$A,$B,$C,$D,$E,$F1,$F2,$db);
-    $mnaTest = 1;
+    $mnaTest = createMiniNutritionalTest($testID,$A,$B,$C,$D,$E,$F1,$F2,$db);
     if($mnaTest == 1){
         $array = array();
         $array['message'] = "Test Creation was sucessful";
