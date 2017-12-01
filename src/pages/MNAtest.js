@@ -14,6 +14,7 @@ class MNAtest extends Component {
             i6: "-1",
             i7: "-1",
             info: " ",
+            testCreated: false,
         };
     }
 
@@ -39,16 +40,20 @@ class MNAtest extends Component {
             })
                 .then((response) => response.json())
                 .then((res) => {
+                    
                     if (res.status === 1) {
                         alert("Test Succesfully Created!");
+                        this.setState({testCreated: true});
                         
                     } else {
                         alert("Test Creation Failed");
+                        this.setState({testCreated: false});
                     }
                 })
                 .catch((error) => {
                     alert(error.message);
                 }); 
+            
         }
         else{
             console.log(this.state.i1,this.state.i2,this.state.i3,this.state.i4,this.state.i5,this.state.i6,this.state.i7)
@@ -133,7 +138,10 @@ class MNAtest extends Component {
     }
 
     render() {
+            if(this.state.testCreate===true){
 
+            return (<Redirect to={'/'} />)
+            }
         return (
 
             <div id="class" className="classContainer" >
