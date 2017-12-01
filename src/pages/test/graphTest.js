@@ -10,9 +10,8 @@ import 'react-table/react-table.css'
 class testGraph extends Component {
     testPerson = () => {
         return {
-            pID: "78",
-            firstName: "John",
-            lastName: "Doe",
+            data: [],
+            loading: false,
         };
     };
 
@@ -63,6 +62,41 @@ class testGraph extends Component {
                 </div >
                 <ReactTable
                     columns={columns}
+                    loading={this.state.loading}
+                    data={this.state.data}
+                    onFetchData={(state, instance) =>{
+                        this.setState({loading: true})
+
+                        fetch('http://165.227.191.245/corstrata/api/index.php', {
+                            method: 'POST',
+                            headers: {
+                                'Accept': 'application/.json',
+                            },
+                            body: JSON.stringify({
+                                request: 'patientSearch', 
+                                token: sessionStorage.getItem("token"),
+                            })
+                        })
+                            .then((response) => response.json())
+                            .then((res) => {
+                                var rows = [];
+                                for(var i = 0; i < res.search.length;i++){
+                                    var row = {
+                                        patientID: res.search[i].patientID,
+                                        firstName = res.search[i].firstName,
+                                        lastName = res.search[i].lastName,
+                                    }
+                                    rows.push(row)
+                                }
+                                this.setState({
+                                    data: rows,
+                                    loading: false,
+                                })
+                            })
+                            .catch((error) => {
+                                alert(error.message);
+                            });
+                    }}
                 />
             </div>
 
