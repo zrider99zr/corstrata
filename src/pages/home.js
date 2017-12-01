@@ -138,7 +138,8 @@ class Home extends Component {
                         <input type="text" id="input" onInput={this.getSearch.bind(this)} />
                         <div><button onClick={this.fillTables.bind(this)}>Search </button></div>
                     </div >
-                    <ReactTable
+                    <ReactTable 
+                        style={this.state.showMyComponent ? {} : { display: 'none' }}
                         columns={columns}
                         data={this.state.data}
                         getTdProps={(state, rowInfo, column, instance) => {
