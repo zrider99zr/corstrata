@@ -30,6 +30,7 @@ class testGraph extends Component {
     constructor() {
         super();
         this.state = {
+            data: [],
         };
 
     }
