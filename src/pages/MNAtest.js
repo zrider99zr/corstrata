@@ -98,20 +98,20 @@ class MNAtest extends Component {
                     <div>
                         <input type="radio" onChange={this.updateVal.bind(this)} name="BMI" value="0" /> B.M.I. less that 19
                     <br></br>
-                        <input type="radio" onChange={this.updateVal.bind(this)} name="BMI" value="1" /> BMI greater than 19 to less than 21
+                        <input type="radio" onChange={this.updateVal.bind(this)} name="BMI" value="1" /> B.M.I. greater than 19 to less than 21
                     <br></br>
-                        <input type="radio" onChange={this.updateVal.bind(this)} name="BMI" value="2" /> BMI less 21 to less than 23
+                        <input type="radio" onChange={this.updateVal.bind(this)} name="BMI" value="2" /> B.M.I. less 21 to less than 23
                     <br></br>
-                        <input type="radio" onChange={this.updateVal.bind(this)} name="BMI" value="3" /> BMI 23 or greater
+                        <input type="radio" onChange={this.updateVal.bind(this)} name="BMI" value="3" /> B.M.I. 23 or greater
                     </div>
                 </div>
             } else if (e.target.value === "1") {
                 info = <div>
                     <label htmlFor="QE" > Calf circumference (CC) in cm </label >
                     <div>
-                        <input type="radio" onChange={this.updateVal.bind(this)} name="CC" value="0" />CC less than 31
+                        <input type="radio" onChange={this.updateVal.bind(this)} name="CC" value="0" />C.C. less than 31
                             <br></br>
-                        <input type="radio" onChange={this.updateVal.bind(this)} name="CC" value="3" />CC 31 or greater
+                        <input type="radio" onChange={this.updateVal.bind(this)} name="CC" value="3" />C.C. 31 or greater
                         </div>
                 </div>
             }
@@ -142,23 +142,23 @@ class MNAtest extends Component {
                         {/*values || severe decrease in food intake = 0 || moderate dec in food intake = 1 || no dec in food intake = 2 */}
                         <label htmlFor="name">Has Food intake declined over the past 3 months due to loss of appetite, digestive problems, chewing or swalloing diffculites?</label>
                         <div>
-                            <input type="radio" onChange={this.updateVal.bind(this)} name="appetite" value="0" />severe decrease in food intake
+                            <input type="radio" onChange={this.updateVal.bind(this)} name="appetite" value="0" />Severe decrease in food intake
                             <br></br>
-                            <input type="radio" onChange={this.updateVal.bind(this)} name="appetite" value="1" />modarate decrease in food intake
+                            <input type="radio" onChange={this.updateVal.bind(this)} name="appetite" value="1" />Modarate decrease in food intake
                             <br></br>
-                            <input type="radio" onChange={this.updateVal.bind(this)} name="appetite" value="2" />no decrease in food intake
+                            <input type="radio" onChange={this.updateVal.bind(this)} name="appetite" value="2" />No decrease in food intake
                             </div>
 
                         {/*values || weight loss > 3kg = 0 || does not know = 1 || weight loss between 1/3kg = 2 || no weight loss = 3 */}
                         <label htmlFor="email"> Weight loss during the last 3 months</label>
                         <div>
-                            <input type="radio" onChange={this.updateVal.bind(this)} name="WL" value="0" />weight loss greater thean 3kg (6.6 lbs)
+                            <input type="radio" onChange={this.updateVal.bind(this)} name="WL" value="0" />Weight loss greater thean 3kg (6.6 lbs)
         <br></br>
-                            <input type="radio" onChange={this.updateVal.bind(this)} name="WL" value="1" />does not know
+                            <input type="radio" onChange={this.updateVal.bind(this)} name="WL" value="1" />Does not know
         <br></br>
-                            <input type="radio" onChange={this.updateVal.bind(this)} name="WL" value="2" />weight loss between 1 and 3 kg (2.2 and 6.6 lbs)
+                            <input type="radio" onChange={this.updateVal.bind(this)} name="WL" value="2" />Weight loss between 1 and 3 kg (2.2 and 6.6 lbs)
         <br></br>
-                            <input type="radio" onChange={this.updateVal.bind(this)} name="WL" value="3" />no weight loss
+                            <input type="radio" onChange={this.updateVal.bind(this)} name="WL" value="3" />No weight loss
         <br></br>
                         </div>
 
@@ -166,11 +166,11 @@ class MNAtest extends Component {
                         {/*values || bed/chair bound = 0 || able to get out of bed/chair = 1 || weight loss between 1/3kg = 2 */}
                         <label htmlFor="message">Mobility</label>
                         <div>
-                            <input type="radio" onChange={this.updateVal.bind(this)} name="Mobility" value="0" />bed or chair bound
+                            <input type="radio" onChange={this.updateVal.bind(this)} name="Mobility" value="0" />Bed or chair bound
         <br></br>
-                            <input type="radio" onChange={this.updateVal.bind(this)} name="Mobility" value="1" />able to get out of bed/chair but doesnt no go out
+                            <input type="radio" onChange={this.updateVal.bind(this)} name="Mobility" value="1" />Able to get out of bed/chair but doesnt no go out
         <br></br>
-                            <input type="radio" onChange={this.updateVal.bind(this)} name="Mobility" value="2" />weight loss between 1 and 3 kg (2.2 and 6.6 lbs)
+                            <input type="radio" onChange={this.updateVal.bind(this)} name="Mobility" value="2" />Weight loss between 1 and 3 kg (2.2 and 6.6 lbs)
         <br></br>
                         </div>
 
@@ -178,18 +178,18 @@ class MNAtest extends Component {
                         <label htmlFor="QD">Has suffered psychological stress or acute disesease in the last 3 months</label>
                         <br></br>
                         <div>
-                            <input type="radio" onChange={this.updateVal.bind(this)} name="stress" value="0" />yes
+                            <input type="radio" onChange={this.updateVal.bind(this)} name="stress" value="0" />Yes
         <br></br>
-                            <input type="radio" onChange={this.updateVal.bind(this)} name="stress" value="2" />no
+                            <input type="radio" onChange={this.updateVal.bind(this)} name="stress" value="2" />No
       </div>
 
                         <label htmlFor="QC">Neuropsycologial problems </label>
                         <div>
-                            <input type="radio" onChange={this.updateVal.bind(this)} name="neuro" value="0" />severe dementia or depression
+                            <input type="radio" onChange={this.updateVal.bind(this)} name="neuro" value="0" />Severe dementia or depression
         <br></br>
-                            <input type="radio" onChange={this.updateVal.bind(this)} name="neuro" value="1" />mild dementia
+                            <input type="radio" onChange={this.updateVal.bind(this)} name="neuro" value="1" />Mild dementia
         <br></br>
-                            <input type="radio" onChange={this.updateVal.bind(this)} name="neuro" value="2" />no psychological problems
+                            <input type="radio" onChange={this.updateVal.bind(this)} name="neuro" value="2" />No psychological problems
       </div>
 
 
