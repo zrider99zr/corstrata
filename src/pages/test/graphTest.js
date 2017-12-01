@@ -98,7 +98,7 @@ class testGraph extends Component {
 
                         <label id="Header"> Search Patient</label>
                         <input type="text" id="input" />
-                        <div><button>Search</button></div>
+                        <div><button>Search onClick={this.makeData.bind(this)}</button></div>
 
                     </form>
                 </div >
