@@ -13,14 +13,14 @@ function createMiniNutritionalTest($testID, $questionA, $questionB, $questionC, 
       if($questionF2 == -1){
         $qry = $db->prepare("INSERT INTO miniNutritionalTest (testID, a, b, c, d, e, f1, f2, score) VALUES (?, ?, ?, ?, ?, ?, ?, null, ?)");
         $grade = $questionA + $questionB + $questionC + $questionD + $questionE + $questionF1;
-        $qry->bind_param("iiiiiiiii",$testID, $questionA, $questionB, $questionC, $questionD, $questionE, $questionF1, $questionF2, $grade);
+        $qry->bind_param("iiiiiiiiii",$testID, $questionA, $questionB, $questionC, $questionD, $questionE, $questionF1, $questionF2, $grade);
         $qry->execute();
         $qry->close();
       }
       else{
         $qry = $db->prepare("INSERT INTO miniNutritionalTest (testID, a, b, c, d, e, f1, f2, score) VALUES (?, ?, ?, ?, ?, ?, null, ?, ?)");
         $grade = $questionA + $questionB + $questionC + $questionD + $questionE + $questionF2;
-        $qry->bind_param("iiiiiiiii",$testID, $questionA, $questionB, $questionC, $questionD, $questionE, $questionF1, $questionF2, $grade);
+        $qry->bind_param("iiiiiiiiii",$testID, $questionA, $questionB, $questionC, $questionD, $questionE, $questionF1, $questionF2, $grade);
         $qry->execute();
         $qry->close();
       }
