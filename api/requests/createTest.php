@@ -5,14 +5,16 @@ function createTest($patientID, $userID, $db){
     $datetime = date_create()->format('Y-m-d H:i:s');
     $qry->bind_param("iis",$patientID,$userID,$datetime);
     if($qry->execute()){
+      $testID = $qry->insert_id;
       $qry->close();
-      return $qry->insert_id;
+      return $testID;
     }
     $qry->close();
     return -1;
 }
 
 require_once("userIDFromJWT.php");
+
 $testID = -1;
 if($userID != -1){
   $testID = createTest($patientID, $userID, $db);
