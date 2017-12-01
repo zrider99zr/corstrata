@@ -16,7 +16,7 @@ class testSelectionPage extends Component {
                     <Link  to='/MNAtest'><Button className="testbutton">Mini-Nutritional Assessment</Button> </Link>
                     <br></br> 
                     <Link to='./bates'> <Button className="testbutton">Bates Jensen Wound Assessment</Button></Link>
-                    </div>     
+                    </div>
             </div>
         );
     };
