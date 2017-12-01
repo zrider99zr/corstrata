@@ -125,7 +125,7 @@ class Home extends Component {
 
     render() {
         if (this.state.movePage) {
-            return (<Redirect to={'/'} />)
+            return (<Redirect to={'/testSelectionPage'} />)
         }
 
 
@@ -158,7 +158,7 @@ class Home extends Component {
                         getTdProps={(state, rowInfo, column, instance) => {
                             return {
                                 onClick: (e, handleOriginal) => {
-                                    console.log('Row patient id', rowInfo.original.pID)
+                                    sessionStorage.setItem("patientID",rowInfo.original.pID);
                                     this.setState({movePage: true});
                                     // IMPORTANT! React-Table uses onClick internally to trigger
                                     // events like expanding SubComponents and pivots.
