@@ -44,6 +44,7 @@ class searchPatient extends Component {
     <ReactTable
             columns={columns}
             className="-highlight"
+            
             />  
 </div>
    
