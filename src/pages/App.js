@@ -1,14 +1,18 @@
 import React from 'react';
 import Header from "./header";
 import Main from "./main";
-import nav from "./nav"
+import Nav from "./nav"
 import './App.css';
 
 const App = () => (
-    <div>
+    <div id ="form">
+        
         <Header />
+        <Nav/>
+        
+      
         <Main />
-    </div>
+    </div>  
 );
 
 export default App;

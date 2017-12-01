@@ -1,5 +1,48 @@
 .App {
-  text-align: center;
+
+  
+
+  grid-template-columns: fit-content fit-content ;
+  grid-template-rows: auto;
+  grid-template-areas: 
+    "header header "
+    " sidebar main"
+    
+}
+
+#form{
+display: grid;
+  grid-template-columns:90px fit-content ;
+  grid-template-rows: auto;
+  grid-template-areas: 
+    "header header "
+    " sidebar main"
+
+    
+
+}
+
+.Button{
+
+  width: 900px;
+
+}
+
+Header{
+
+  grid-area: header;
+
+
+}
+
+Nav{
+grid-area: sidebar;
+
+}
+
+Main{
+
+  grid-area: main;
 }
 
 .App-logo {
