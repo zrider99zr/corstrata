@@ -18,7 +18,7 @@ class MNAtest extends Component {
     }
 
     submitTest() {
-        if((this.state.i1 != -1 && this.state.i2 != -1 && this.state.i3 != -1 && this.state.i4 != -1 && this.state.i5 != -1) && (this.state.i6 != -1 || this.state.i7 !=-1) && (this.state.i6 === -1 || this.state.i7 ===-1)){
+        if((this.state.i1 != -1 && this.state.i2 != -1 && this.state.i3 != -1 && this.state.i4 != -1 && this.state.i5 != -1) && ((this.state.i6 != -1 && this.state.i7 === -1) || (this.state.i6 === -1 && this.state.i7 != -1))){
             fetch('http://165.227.191.245/corstrata/api/index.php', {
                 method: 'POST',
                 headers: {
@@ -26,7 +26,8 @@ class MNAtest extends Component {
                 },
                 body: JSON.stringify({
                     request: 'createMinNutitionalTest',
-                    testID: sessionStorage.getItem(""),
+                    token: sessionStorage.getItem("token"),
+                    patientID: sessionStorage.getItem("patientID"),
                     A: this.state.i1,
                     B: this.state.i2,
                     C: this.state.i3,
