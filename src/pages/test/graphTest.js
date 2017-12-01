@@ -14,6 +14,21 @@ class testGraph extends Component {
 
 
     fillTables() {
+        
+            
+    };
+
+    constructor() {
+        super();
+        this.state = {
+            data: [],
+            search: "",
+        };
+
+    }
+
+    getSearch(e) {
+        this.setState({ search: e.target.value });
         fetch('http://165.227.191.245/corstrata/api/index.php', {
             method: 'POST',
             headers: {
@@ -22,7 +37,7 @@ class testGraph extends Component {
             body: JSON.stringify({
                 request: 'patientSearch', 
                 token: sessionStorage.getItem("token"),
-                searchInput: this.state.search,
+                searchInput: e.target.value,
 
             })
         })
@@ -46,21 +61,6 @@ class testGraph extends Component {
             .catch((error) => {
                 alert(error.message);
             });
-            
-    };
-
-    constructor() {
-        super();
-        this.state = {
-            data: [],
-            search: "",
-        };
-
-    }
-
-    getSearch(e) {
-        this.setState({ search: e.target.value });
-        this.fillTables();
     }
 
     render() {
