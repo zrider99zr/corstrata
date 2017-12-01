@@ -128,6 +128,7 @@ class Home extends Component {
                         style={this.state.showTable ? {} : { display: 'none' }}
                         columns={columns}
                         data={this.state.data}
+                        className="-highlight"
                         getTdProps={(state, rowInfo, column, instance) => {
                             return {
                                 onClick: (e, handleOriginal) => {
