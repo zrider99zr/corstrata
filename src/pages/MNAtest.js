@@ -49,6 +49,9 @@ class MNAtest extends Component {
                 .catch((error) => {
                     alert(error.message);
                 }); 
+        }
+        else{
+            console.log("ICKYICKY")
         }   
     }
 
