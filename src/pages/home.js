@@ -61,7 +61,7 @@ class Home extends Component {
                     })
                 })
                 .catch((error) => {
-                    alert(error.message);a
+                    alert(error.message);
                 });
         }
         else{
