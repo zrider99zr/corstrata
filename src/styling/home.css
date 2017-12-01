@@ -30,5 +30,7 @@
     margin-left: 42em;
     width:15em;
     border:4px;
-    border-radius:2px;
+    border-radius:4px;
+    border-style: solid;
+    padding:9px;
 }
