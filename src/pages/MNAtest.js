@@ -96,8 +96,6 @@ class MNAtest extends Component {
 
         <form className="mnaform" >
 
-
-
       {/*values || severe decrease in food intake = 0 || moderate dec in food intake = 1 || no dec in food intake = 2 */}
       <label htmlFor="name">Has Food intake declined over the past 3 months due to loss of appetite, digestive problems, chewing or swalloing diffculites?</label>
       <div>
@@ -159,25 +157,27 @@ class MNAtest extends Component {
           <input type="radio" name="hasBMI" value="1" />Check Calf Circumference
       </div>
 
+
+
       <div>
           < label htmlFor="QE" > Body Mass index BMI wieght in kg / (height in m) ^ 2 </label >
           <div>
-              <input type="radio" name="BMI" value="0" /> B.M.I. less that 19
+                    <input type="radio" onChange={this.updateVal.bind(this)} name="BMI" value="0" /> B.M.I. less that 19
                     <br></br>
-              <input type="radio" name="BMI" value="1" /> BMI greater than 19 to less than 21
+                    <input type="radio" onChange={this.updateVal.bind(this)} name="BMI" value="1" /> BMI greater than 19 to less than 21
                     <br></br>
-              <input type="radio" name="BMI" value="2" /> BMI less 21 to less than 23
+                    <input type="radio" onChange={this.updateVal.bind(this)} name="BMI" value="2" /> BMI less 21 to less than 23
                     <br></br>
-              <input type="radio" name="BMI" value="3" /> BMI 23 or greater
+                    <input type="radio" onChange={this.updateVal.bind(this)} name="BMI" value="3" /> BMI 23 or greater
                     </div>
       </div>
 
         {/*values || less than 31 = 0 || 31 or greater = 3 */}
         <label htmlFor="QE">Calf circumference (CC) in cm </label>
         <div>
-          <input type="radio" name="CC" value="0" />CC less than 31
+          <input type="radio" onChange={this.updateVal.bind(this)} name="CC" value="0" />CC less than 31
           <br></br>
-          <input type="radio" name="CC" value="3" />CC 31 or greater
+          <input type="radio" onChange={this.updateVal.bind(this)} name="CC" value="3" />CC 31 or greater
         </div>
 
 
