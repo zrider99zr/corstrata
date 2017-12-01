@@ -42,10 +42,11 @@ class loginPage extends Component {
         })
             .then((response) => response.json())
             .then((res) => {
-                sessionStorage.setItem("token", res.token);
-
-                if (res.status===1) {
+                if (res.status === 1) {
+                    sessionStorage.setItem("token", res.token);
                     this.setState({ login: true });
+                } else {
+                    sessionStorage.setItem("token","");
                 }
             })
             .catch((error) => {
