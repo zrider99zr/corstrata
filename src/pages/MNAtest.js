@@ -12,6 +12,8 @@ class MNAtest extends Component {
             i5: "-1",
             i6: "-1",
             info: " ",
+            showBMI: false,
+            showCC: false,
         };
     }
 
