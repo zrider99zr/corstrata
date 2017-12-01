@@ -35,7 +35,7 @@ class testGraph extends Component {
             body: JSON.stringify({
                 request: 'patientSearch', 
                 token: sessionStorage.getItem("token"),
-                searchInput: this.state.search;
+                searchInput: this.state.search,
 
             })
         })
@@ -44,9 +44,15 @@ class testGraph extends Component {
                 var rows = [];
                 for(var i = 0; i < res.search.length;i++){
                     var row = {
+<<<<<<< HEAD
                         pID: res.search[i].patientID,
                         fName = res.search[i].firstName,
                         lName = res.search[i].lastName,
+=======
+                        patientID: res.search[i].patientID,
+                        firstName: res.search[i].firstName,
+                        lastName: res.search[i].lastName,
+>>>>>>> 73eac4c76d8ffcdab1bf61813d8226bec6b9e506
                     }
                     rows.push(row)
                 }
