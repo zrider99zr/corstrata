@@ -140,12 +140,10 @@ class Home extends Component {
             <div className='classContainer' >
                 <h1>Welcome, {this.state.accountName}, to the Corstrata Website!</h1>
                 <Link className='button' to='./createPatient'>Create Patient</Link>
+               <input type="text" className="input" onInput={this.getSearch.bind(this)} />
+             
 
-
-                <div className="containerl" >
-                    <div className="container">
-                        <input type="text" id="input" onInput={this.getSearch.bind(this)} />
-                    </div >
+    
                     <ReactTable 
                         style={this.state.showTable ? {} : { display: 'none' }}
                         columns={columns}
@@ -169,8 +167,7 @@ class Home extends Component {
                         }}
 
                     />
-                </div>
-            </div>
+                 </div>
         );
     };
 }
