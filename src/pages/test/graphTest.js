@@ -4,9 +4,6 @@ import React, { Component } from 'react';
 import ReactTable from 'react-table';
 import 'react-table/react-table.css'
 
-
-
-
 class testGraph extends Component {
     testPerson = () => {
         return {
@@ -16,24 +13,20 @@ class testGraph extends Component {
     };
 
     makeData() {
+        this.fillTables();
         var rows = this.state.data
-        var row = {
+        /*var row = {
             pID: 2,
             fName: "Abe",
             lName: "Bee",
-        }
+        }*/
         rows.push(row)
         this.setState({
             data: rows,
         })
     };
 
-    testAddGraph() {
-
-    };
-
     fillTables() {
-        /*
         fetch('http://165.227.191.245/corstrata/api/index.php', {
             method: 'POST',
             headers: {
@@ -42,6 +35,8 @@ class testGraph extends Component {
             body: JSON.stringify({
                 request: 'patientSearch', 
                 token: sessionStorage.getItem("token"),
+                searchInput: this.state.search;
+
             })
         })
             .then((response) => response.json())
@@ -63,19 +58,23 @@ class testGraph extends Component {
             .catch((error) => {
                 alert(error.message);
             });
-            */
+            
     };
 
     constructor() {
         super();
         this.state = {
             data: [],
+            search: "",
         };
 
     }
 
+    getSearch(e) {
+        this.setState({ search: e.target.value });
+    }
+
     render() {
-        //data={data}
         const columns = [
             {
                 Header: 'Patient ID',
@@ -95,20 +94,11 @@ class testGraph extends Component {
 
             <div className="containerl" >
                 <div className="container">
-<<<<<<< HEAD
                     <div><button onClick={this.makeData.bind(this)}>Search </button></div>
-=======
-                <div><button onClick={this.makeData.bind(this)}>Search </button></div>
->>>>>>> 81348fe3c9ba03c80f5f6e13335079a8a280422a
                     <form className="searchform"  >
 
                         <label id="Header"> Search Patient</label>
-                        <input type="text" id="input" />
-<<<<<<< HEAD
-
-=======
-                        
->>>>>>> 81348fe3c9ba03c80f5f6e13335079a8a280422a
+                        <input type="text" id="input" onInput={this.getSearch.bind(this)} />
 
                     </form>
                 </div >
