@@ -35,7 +35,7 @@ class testGraph extends Component {
             body: JSON.stringify({
                 request: 'patientSearch', 
                 token: sessionStorage.getItem("token"),
-                searchInput: this.state.search;
+                searchInput: this.state.search,
 
             })
         })
