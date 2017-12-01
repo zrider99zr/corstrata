@@ -92,7 +92,8 @@ class MNAtest extends Component {
             this.setState({ i6: e.target.value });
 
         } else if (e.target.name === "CC") {
-            this.setState({ i7: e.target.value });
+            this.setState({ i6: e.target.value });
+
         } else if (e.target.name === "hasBMI") {
             var info = ""
             if (e.target.value === "0") {
@@ -125,7 +126,7 @@ class MNAtest extends Component {
     calculateTotal() {
         var total = 0;
         if (this.state.i1 != -1 && this.state.i2 != -1 && this.state.i3 != -1 && this.state.i4 != -1 && this.state.i5 != -1 && this.state.i6 != -1) {
-
+            console.log(this.state);
         } else {
             alert("Please fill out the rest of the survey before submitting");
         }
@@ -140,7 +141,7 @@ class MNAtest extends Component {
                 <label id="Header">Mini Nutritional  </label>
                 <div className="container">
 
-                    <div className="mnaform" >
+                    <form className="mnaform" >
 
                         {/*values || severe decrease in food intake = 0 || moderate dec in food intake = 1 || no dec in food intake = 2 */}
                         <label htmlFor="name">Has Food intake declined over the past 3 months due to loss of appetite, digestive problems, chewing or swalloing diffculites?</label>
@@ -173,7 +174,7 @@ class MNAtest extends Component {
         <br></br>
                             <input type="radio" onChange={this.updateVal.bind(this)} name="Mobility" value="1" />Able to get out of bed/chair but doesnt no go out
         <br></br>
-                            <input type="radio" onChange={this.updateVal.bind(this)} name="Mobility" value="2" />Weight loss between 1 and 3 kg (2.2 and 6.6 lbs)
+                            <input type="radio" onChange={this.updateVal.bind(this)} name="Mobility" value="2" />Goes out
         <br></br>
                         </div>
 
@@ -203,14 +204,15 @@ class MNAtest extends Component {
           <br></br>
                             <input type="radio" onChange={this.updateVal.bind(this)} name="hasBMI" value="1" />Check Calf Circumference
       </div>
-
+                        
                         <Response info={this.state.info} />
 
                         {/* Dynamically generate the final submission score on the bottom of the page as they fill it out, so there is some sort of feedback before they submit */}
-                            <button id="submit_button" onClick={this.submitTest.bind(this)} type="button">Submit</button>
-                        </div>
+                        <button type="button" onClick={this.submitTest.bind(this)}>Create</button>
+                        </form>
                     
                 </div>
+                
             </div>
         );
     };
