@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
-
+import { Redirect } from 'react-router-dom'
 class createPatient extends Component {
     constructor() {
         super();
         this.state = {
             fName: "",
             lName: "",
+            patientCreated: false,
         };
     }
 
@@ -33,15 +34,26 @@ class createPatient extends Component {
         })
             .then((response) => response.json())
             .then((res) => {
+                if(res.status===1){
                 alert(res.message);
+                this.setState({patientCreated: true});
+                }else{
+                    alert("Test Creation failed");
+                    console.log(res.status);
+                    this.setState({patientCreated: false});
+                }
             })
             .catch((error) => {
                 alert(error.message);
+                this.setState({patientCreated: false});
             })
             .done();
     }
 
     render() {
+        if(this.state.patientCreated === true){
+                return (<Redirect to={'/'} />)
+        }
         return (
             <div>
                 <form id="accountForm" >
