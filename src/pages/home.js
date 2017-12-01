@@ -138,29 +138,28 @@ class Home extends Component {
                         <input type="text" id="input" onInput={this.getSearch.bind(this)} />
                         <div><button onClick={this.fillTables.bind(this)}>Search </button></div>
                     </div >
-                    <div className="table" style={this.state.showTable ? {} : { display: 'none' }}>
-                        <ReactTable 
-                            columns={columns}
-                            data={this.state.data}
-                            getTdProps={(state, rowInfo, column, instance) => {
-                                return {
-                                    onClick: (e, handleOriginal) => {
-                                        console.log('Row patient id', rowInfo.original.pID)
+                    <ReactTable 
+                        style={this.state.showTable ? {} : { display: 'none' }}
+                        columns={columns}
+                        data={this.state.data}
+                        getTdProps={(state, rowInfo, column, instance) => {
+                            return {
+                                onClick: (e, handleOriginal) => {
+                                    console.log('Row patient id', rowInfo.original.pID)
 
-                                        // IMPORTANT! React-Table uses onClick internally to trigger
-                                        // events like expanding SubComponents and pivots.
-                                        // By default a custom 'onClick' handler will override this functionality.
-                                        // If you want to fire the original onClick handler, call the
-                                        // 'handleOriginal' function.
-                                        if (handleOriginal) {
-                                            handleOriginal()
-                                        }
+                                    // IMPORTANT! React-Table uses onClick internally to trigger
+                                    // events like expanding SubComponents and pivots.
+                                    // By default a custom 'onClick' handler will override this functionality.
+                                    // If you want to fire the original onClick handler, call the
+                                    // 'handleOriginal' function.
+                                    if (handleOriginal) {
+                                        handleOriginal()
                                     }
                                 }
-                            }}
-                        />
-                    </div >
-                    
+                            }
+                        }}
+
+                    />
                 </div>
             </div>
         );
