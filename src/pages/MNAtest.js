@@ -12,7 +12,7 @@ class MNAtest extends Component {
             i4: "-1",
             i5: "-1",
             i6: "-1",
-            i7= "-1",
+            i7: "-1",
             info: " ",
         };
     }
