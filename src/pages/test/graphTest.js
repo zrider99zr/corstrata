@@ -13,7 +13,7 @@ class testGraph extends Component {
     };
 
     makeData() {
-        this.fillTables();
+        //this.fillTables();
         var rows = this.state.data
         /*var row = {
             pID: 2,
@@ -94,7 +94,7 @@ class testGraph extends Component {
 
             <div className="containerl" >
                 <div className="container">
-                    <div><button onClick={this.makeData.bind(this)}>Search </button></div>
+                    <div><button onClick={this.fillTables.bind(this)}>Search </button></div>
                     <form className="searchform"  >
 
                         <label id="Header"> Search Patient</label>
