@@ -17,15 +17,15 @@ class testGraph extends Component {
 
     makeData() {
         
-    }
+    };
 
     testAddGraph(){
 
-    }
+    };
 
     fillTables() {
 
-    }
+    };
 
     constructor() {
         super();
