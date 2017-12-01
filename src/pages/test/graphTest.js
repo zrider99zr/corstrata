@@ -82,13 +82,11 @@ class testGraph extends Component {
 
             <div className="containerl" >
                 <div className="container">
+                
+                    <label id="Header"> Search Patient</label>
+                    <input type="text" id="input" onInput={this.getSearch.bind(this)} />
                     <div><button onClick={this.fillTables.bind(this)}>Search </button></div>
-                    <form className="searchform"  >
-
-                        <label id="Header"> Search Patient</label>
-                        <input type="text" id="input" onInput={this.getSearch.bind(this)} />
-
-                    </form>
+                    
                 </div >
                 <ReactTable
                     columns={columns}
