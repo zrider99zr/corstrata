@@ -95,11 +95,12 @@ class testGraph extends Component {
 
             <div className="containerl" >
                 <div className="container">
+                <div><button onClick={this.makeData.bind(this)}>Search </button></div>
                     <form className="searchform"  >
 
                         <label id="Header"> Search Patient</label>
                         <input type="text" id="input" />
-                        <div><button onClick={this.makeData.bind(this)}>Search </button></div>
+                        
 
                     </form>
                 </div >
