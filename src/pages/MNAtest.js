@@ -25,7 +25,7 @@ class MNAtest extends Component {
                     'Accept': 'application/.json',
                 },
                 body: JSON.stringify({
-                    request: 'createMinNutritionalTest',
+                    request: 'createMiniNutritionalTest',
                     token: sessionStorage.getItem("token"),
                     patientID: sessionStorage.getItem("patientID"),
                     A: this.state.i1,
