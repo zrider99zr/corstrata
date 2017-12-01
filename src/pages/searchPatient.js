@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-//import '../styling/searchPatient.css';
+import '../styling/home.css'
 //import { Link } from 'react-router-dom';
 import ReactTable from 'react-table';
 import 'react-table/react-table.css'
@@ -19,11 +19,14 @@ class searchPatient extends Component {
     render() {
 
         const columns = [{
-            Header: 'Patients',
-            accessor: 'Patients', // String-based value accessors!
-          },]
-        
-        
+            Header: 'Last Name',
+            accessor: 'lName',
+            //accessor: d => d.friend.name // Custom value accessors!
+          }, {
+            Header: 'First Name',
+            accessor: 'fName',
+          },    
+        ]
 
     return(
 
@@ -32,7 +35,7 @@ class searchPatient extends Component {
         <div class="container">
         <form class="searchform"  >       
             
-            <label id="Header"> Search Patient</label>
+            <label id="Header" style={{marginLeft:"10em",border:"5px"}}> Search Patient</label>
             <input  type="text" id="input" />
             <div><button>Search</button></div>
                     
@@ -40,7 +43,8 @@ class searchPatient extends Component {
     </div >
     <ReactTable
             columns={columns}
-                />  
+            className="-highlight"
+            />  
 </div>
    
     ) ;

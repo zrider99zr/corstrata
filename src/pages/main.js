@@ -16,7 +16,7 @@ import createInstitution from './createInstitution';
 import createPatient from './createPatient';
 import tempSearchPatient from './tempSearchPatient';
 import patientpage from './patientpage';
-import graphTest from './test/graphTest'
+import graphTest from './graphTest'
 // The Main component renders one of the three provided
 // Routes (provided that one matches). Both the /roster
 // and /schedule routes will match any pathname that starts

@@ -4,7 +4,6 @@ import '../styling/home.css'
 import ReactTable from 'react-table';
 import 'react-table/react-table.css'
 //import '../styling/un.css'
-
 class Home extends Component {
     constructor() {
         super();
@@ -72,7 +71,7 @@ class Home extends Component {
     //========================================================================================================
     componentDidMount() {
         console.log(sessionStorage.getItem("token"));
-        if (sessionStorage.getItem("token") == null || sessionStorage.getItem("token") == "") {
+        if (sessionStorage.getItem("token") == null || sessionStorage.getItem("token") == "" ) {
             this.setState({ loggedIn: false });
         } else {
             this.validateUser();
@@ -106,7 +105,6 @@ class Home extends Component {
     }
 
     render() {
-        //======================================================
         const columns = [
             {
                 Header: 'First Name',
@@ -116,7 +114,6 @@ class Home extends Component {
                 accessor: 'lName',
             },
         ]
-        //======================================================
         if (this.state.login === false) {
             return (<Redirect to={'/loginPage'} />)
         }
