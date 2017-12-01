@@ -19,35 +19,38 @@ class MNAtest extends Component {
     }
 
     submitTest() {
-        fetch('http://165.227.191.245/corstrata/api/index.php', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/.json',
-            },
-            body: JSON.stringify({
-                request: 'createMinNutitionalTest',
-                testID: sessionStorage.getItem(""),
-                questionA: this.state.i1,
-                questionB: this.state.i2,
-                questionC: this.state.i3,
-                questionD: this.state.i4,
-                questionE: this.state.i5,
-                questionF1: this.state.i6,
-                questionF2: this.state.i7,
+        if((this.state.i1 != -1 && this.state.i2 != -1 && this.state.i3 != -1 && this.state.i4 != -1 && this.state.i5 != -1) && (this.state.i6 != -1 || this.state.i7 !=-1) && (this.state.i6 === -1 || this.state.i7 ===-1)){
+            fetch('http://165.227.191.245/corstrata/api/index.php', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/.json',
+                },
+                body: JSON.stringify({
+                    request: 'createMinNutitionalTest',
+                    testID: sessionStorage.getItem(""),
+                    A: this.state.i1,
+                    B: this.state.i2,
+                    C: this.state.i3,
+                    D: this.state.i4,
+                    E: this.state.i5,
+                    F1: this.state.i6,
+                    F2: this.state.i7,
+                })
             })
-        })
-            .then((response) => response.json())
-            .then((res) => {
-                if (res.status === 1) {
-                    alert("Test Succesfully Created!");
-                    
-                } else {
-                    alert("Test Creation Failed");
-                }
-            })
-            .catch((error) => {
-                alert(error.message);
-            }); 
+                .then((response) => response.json())
+                .then((res) => {
+                    if (res.status === 1) {
+                        alert("Test Succesfully Created!");
+                        
+                    } else {
+                        alert("Test Creation Failed");
+                    }
+                })
+                .catch((error) => {
+                    alert(error.message);
+                }); 
+        }
+        
     }
     updateHidden(e){
         if(e.target.value === 0){
