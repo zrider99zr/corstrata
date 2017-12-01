@@ -37,7 +37,7 @@ class searchPatient extends Component {
             
             <label id="Header" style={{marginLeft:"10em",border:"5px"}}> Search Patient</label>
             <input  type="text" id="input" />
-            <div><button>Search</button></div>
+            <div><button className="button" style={{marginLeft:"5em"}}>Search</button></div>
                     
          </form>
     </div >
