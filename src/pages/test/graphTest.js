@@ -16,15 +16,11 @@ class testGraph extends Component {
     };
 
     makeData() {
-        return range(len).map( d => {
-            return {
-                ...newPerson(),
-            };
-        });
+        
     }
 
     testAddGraph(){
-        
+
     }
 
     fillTables() {
