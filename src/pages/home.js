@@ -12,6 +12,7 @@ class Home extends Component {
             loggedIn: false,
             data: [],
             search: "",
+            showTable: false,
         };
     }
 
@@ -24,43 +25,49 @@ class Home extends Component {
     };
 
     fillTables() {
-        fetch('http://165.227.191.245/corstrata/api/index.php', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/.json',
-            },
-            body: JSON.stringify({
-                request: 'patientSearch',
-                token: sessionStorage.getItem("token"),
-                searchInput: this.state.search,
-
-            })
-        })
-            .then((response) => response.json())
-            .then((res) => {
-                var rows = [];
-                for (var i = 0; i < res.search.length; i++) {
-                    var row = {
-                        pID: res.search[i].patientID,
-                        fName: res.search[i].firstName,
-                        lName: res.search[i].lastName,
-
-                    }
-                    rows.push(row)
-                }
-                this.setState({
-                    data: rows,
-                    loading: false,
-                })
-            })
-            .catch((error) => {
-                alert(error.message);
-            });
+        
     };
 
     getSearch(e) {
-        this.setState({ search: e.target.value });
-
+        if(e.targe.value != ""){
+            this.setState({showTable: true});
+            fetch('http://165.227.191.245/corstrata/api/index.php', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/.json',
+                },
+                body: JSON.stringify({
+                    request: 'patientSearch',
+                    token: sessionStorage.getItem("token"),
+                    searchInput: e.target.value,
+    
+                })
+            })
+                .then((response) => response.json())
+                .then((res) => {
+                    var rows = [];
+                    for (var i = 0; i < res.search.length; i++) {
+                        var row = {
+                            pID: res.search[i].patientID,
+                            fName: res.search[i].firstName,
+                            lName: res.search[i].lastName,
+    
+                        }
+                        rows.push(row)
+                    }
+                    this.setState({
+                        data: rows,
+                        loading: false,
+                    })
+                })
+                .catch((error) => {
+                    alert(error.message);
+                });
+        }
+        else{
+            this.setState({showTable: false});
+        }
+        
     }
     //========================================================================================================
     componentDidMount() {
