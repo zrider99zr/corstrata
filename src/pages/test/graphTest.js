@@ -60,6 +60,7 @@ class testGraph extends Component {
 
     getSearch(e) {
         this.setState({ search: e.target.value });
+        fillTables();
     }
 
     render() {
