@@ -33,8 +33,8 @@ function createMiniNutritionalTest($testID, $questionA, $questionB, $questionC, 
 //Create a Test entry
 $patientID = $decoded['patientID'];
 
-//require_once("createTest.php");
-$testID = 1;
+require_once("createTest.php");
+
 
 $A = $decoded['A'];
 $B = $decoded['B'];
