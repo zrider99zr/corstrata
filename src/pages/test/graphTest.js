@@ -6,14 +6,11 @@ import 'react-table/react-table.css'
 
 
 
-
-
-class testGraph extends Component {
-    testPerson = () => {
-        return {
-            data: [],
-            loading: false,
-        };
+const testPerson = () => {
+    return {
+        pID: "78",
+        firstName: "John",
+        lastName: "Doe",
     };
 };
 
@@ -25,26 +22,27 @@ const range = len => {
     return arr;
 };
 
+export function makeData(len = 400) {
+    return range(len).map(d => {
+        return {
+
+            ...testPerson(),
+            children: range(4).map(testPerson)
+        };
+    });
+}
+
+
 class testGraph extends Component {
     constructor() {
         super();
         this.state = {
             data: makeData()
-
         };
-
-    }
-
-    makeData(len = 10) {
-        return range(len).map(d => {
-            return {
-                ...testPerson(),
-            }
-        });
     }
 
     render() {
-        //data={data}
+        const { data } = this.state
         const columns = [
             {
                 Header: 'Patient ID',
@@ -72,43 +70,8 @@ class testGraph extends Component {
                     </form>
                 </div >
                 <ReactTable
+                    data={data}
                     columns={columns}
-                    loading={this.state.loading}
-                    data={this.state.data}
-                    manual
-                    onFetchData={(state, instance) =>{
-                        this.setState({loading: true})
-
-                        fetch('http://165.227.191.245/corstrata/api/index.php', {
-                            method: 'POST',
-                            headers: {
-                                'Accept': 'application/.json',
-                            },
-                            body: JSON.stringify({
-                                request: 'patientSearch', 
-                                token: sessionStorage.getItem("token"),
-                            })
-                        })
-                            .then((response) => response.json())
-                            .then((res) => {
-                                var rows = [];
-                                for(var i = 0; i < res.search.length;i++){
-                                    var row = {
-                                        patientID: res.search[i].patientID,
-                                        firstName = res.search[i].firstName,
-                                        lastName = res.search[i].lastName,
-                                    }
-                                    rows.push(row)
-                                }
-                                this.setState({
-                                    data: rows,
-                                    loading: false,
-                                })
-                            })
-                            .catch((error) => {
-                                alert(error.message);
-                            });
-                    }}
                 />
             </div>
 
