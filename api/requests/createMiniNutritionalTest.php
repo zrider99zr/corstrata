@@ -31,7 +31,7 @@ function createMiniNutritionalTest($testID, $questionA, $questionB, $questionC, 
 
 //Initialize all the variables for the function
 //Create a Test entry
-//$patientID = $decoded['patientID'];
+$patientID = $decoded['patientID'];
 
 //require_once("createTest.php");
 $testID = 1;
@@ -46,7 +46,7 @@ $F1 = $decoded['F1'];
 $F2 = $decoded['F2'];
 
 //Check to make sure that they are all set correctly 
-if($testID != -1 /*&& isset($A,$B,$C,$D,$E,$F1,$F2)*/){
+if($testID != -1 && isset($A,$B,$C,$D,$E,$F1,$F2)){
     //If create test was successful
     //$mnaTest = createMiniNutritionalTest($testID,$A,$B,$C,$D,$E,$F1,$F2,$db);
     $mnaTest = 1;
