@@ -32,12 +32,69 @@ export function makeData(len = 400) {
     });
 }
 
+<<<<<<< HEAD
+=======
+    makeData() {
+        var rows = this.state.data
+        var row = {
+            pID: 2,
+            fName: "Abe",
+            lName: "Bee",
+        }
+        rows.push(row)
+        this.setState({
+            data: rows,
+        })
+    };
+
+    testAddGraph(){
+        
+    };
+
+    fillTables() {
+        /*
+        fetch('http://165.227.191.245/corstrata/api/index.php', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/.json',
+            },
+            body: JSON.stringify({
+                request: 'patientSearch', 
+                token: sessionStorage.getItem("token"),
+            })
+        })
+            .then((response) => response.json())
+            .then((res) => {
+                var rows = [];
+                for(var i = 0; i < res.search.length;i++){
+                    var row = {
+                        patientID: res.search[i].patientID,
+                        firstName = res.search[i].firstName,
+                        lastName = res.search[i].lastName,
+                    }
+                    rows.push(row)
+                }
+                this.setState({
+                    data: rows,
+                    loading: false,
+                })
+            })
+            .catch((error) => {
+                alert(error.message);
+            });
+            */
+    };
+>>>>>>> 3fc0dcd0358d3386bfb18f6815ad3c066cacbd71
 
 class testGraph extends Component {
     constructor() {
         super();
         this.state = {
+<<<<<<< HEAD
             data: makeData()
+=======
+            data: [],
+>>>>>>> 3fc0dcd0358d3386bfb18f6815ad3c066cacbd71
         };
     }
 
@@ -47,6 +104,7 @@ class testGraph extends Component {
             {
                 Header: 'Patient ID',
                 accessor: 'pID', // String-based value accessors!
+                Cell: props => <span className='number'>{props.value}</span>
             }, {
                 Header: 'First Name',
                 accessor: 'fName',
@@ -65,13 +123,18 @@ class testGraph extends Component {
 
                         <label id="Header"> Search Patient</label>
                         <input type="text" id="input" />
-                        <div><button>Search</button></div>
+                        <div><button>Search onClick={this.makeData.bind(this)}</button></div>
 
                     </form>
                 </div >
                 <ReactTable
                     data={data}
                     columns={columns}
+<<<<<<< HEAD
+=======
+                    data={this.state.data}
+            
+>>>>>>> 3fc0dcd0358d3386bfb18f6815ad3c066cacbd71
                 />
             </div>
 
