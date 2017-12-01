@@ -26,8 +26,8 @@ class nav extends Component {
                     <li><Link to='/linegraph'>linegraph</Link></li>
                     <li><Link to='/createInstitution'>Create Institution</Link></li>
                     <li><Link to='/createPatient'>Create Patient</Link></li>
-                    <li><Link to='/tempSearchPatient'>Search Patient</Link></li>
-
+                    <li><Link to='/tempSearchPatient'>search Institution</Link></li>
+                    <li><Link to='/searchPatient'> Search Patient</Link></li>
                     <li><Link to='/patientpage'>Patient Home</Link></li>
 
                 </Menu>
