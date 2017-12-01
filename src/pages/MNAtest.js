@@ -54,6 +54,7 @@ class MNAtest extends Component {
                 })
                 .catch((error) => {
                     alert(error.message);
+                    this.setState({testCreated: false});
                 }); 
             
         }
@@ -140,7 +141,7 @@ class MNAtest extends Component {
     }
 
     render() {
-            if(this.state.testCreate===true){
+            if(this.state.testCreated===true){
 
             return (<Redirect to={'/'} />)
             }
