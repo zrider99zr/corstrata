@@ -35,6 +35,7 @@ $patientID = $decoded['patientID'];
 
 //require_once("createTest.php");
 $testID = 1;
+/*
 $A = $decoded['A'];
 $B = $decoded['B'];
 $C = $decoded['C'];
@@ -43,8 +44,9 @@ $E = $decoded['E'];
 //F1 and F2 changes based off of if there is BMI available. Put -1 for whichever question is available
 $F1 = $decoded['F1'];
 $F2 = $decoded['F2'];
+*/
 //Check to make sure that they are all set correctly 
-if($testID != -1 && isset($A,$B,$C,$D,$E,$F1,$F2)){
+if($testID != -1 /*&& isset($A,$B,$C,$D,$E,$F1,$F2*/)){
     //If create test was successful
     //$mnaTest = createMiniNutritionalTest($testID,$A,$B,$C,$D,$E,$F1,$F2,$db);
     $mnaTest = 1;
