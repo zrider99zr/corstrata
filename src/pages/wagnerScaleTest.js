@@ -3,7 +3,7 @@ import Response from './response'
 
 import '../styling/un.css'
 
-class wagnerScaleTest extends Component {
+class braden extends Component {
 
     constructor() {
         super();
@@ -116,7 +116,45 @@ class wagnerScaleTest extends Component {
                         <div><Response input={this.state.input} info={this.state.info} />
                        </div>
                        
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                       <div> <label>Select the option that best describes the situation</label>
+                        <input type="radio" id="rb" onClick={this.updateInput.bind(this)} info="zignewton" name="WSD" value="0" /> Ulcers have intact skin <br></br>
+                        <input type="radio" id="rb" onClick={this.updateInput.bind(this)} name="WSD" value="1" /> Ulcers are superficial <br></br>
+                        <input type="radio" id="rb" onClick={this.updateInput.bind(this)} name="WSD" value="2" /> Ulcers are deeper, and may extend to tendons or bones  <br></br>
+                        <input type="radio" id="rb" onClick={this.updateInput.bind(this)} name="WSD" value="3" /> Ulcers contain an abscess or osteomyelitis <br></br>
+                        <input type="radio" id="rb" onClick={this.updateInput.bind(this)} name="WSD" value="4" /> Ulcers have gangrene of the forefoot  <br></br>
+                        </div>
+                        <div class="containerb">
+                        <div><Response input={this.state.input} info={this.state.info} />
+                       </div>
+                       
                       
+                       </div>
+     
+                   
+                       
+                       
+                       
+                       
+                       
+                       
+                       
                        </div>
      
                    
