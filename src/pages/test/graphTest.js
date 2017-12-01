@@ -75,6 +75,7 @@ class testGraph extends Component {
                     columns={columns}
                     loading={this.state.loading}
                     data={this.state.data}
+                    manual
                     onFetchData={(state, instance) =>{
                         this.setState({loading: true})
 
