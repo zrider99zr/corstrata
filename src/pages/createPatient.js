@@ -36,7 +36,7 @@ class createPatient extends Component {
             .then((response) => response.json())
             .then((res) => {
                 if(res.status===1){
-                alert(res.message);
+               // alert(res.message);
                 this.setState({patientCreated: true});
                 }else{
                     alert("Test Creation failed");
