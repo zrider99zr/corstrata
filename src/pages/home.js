@@ -23,10 +23,6 @@ class Home extends Component {
         };
     };
 
-    fillTables() {
-        
-    };
-
     getSearch(e) {
         if(e.target.value != ""){
             this.setState({showTable: true});
@@ -121,15 +117,13 @@ class Home extends Component {
         return (
             <div className='classContainer' >
                 <h1>Welcome to the Corstrata Website!</h1>
-                {/*<Link className='button' to='./searchPatient'>Find Patient</Link>
-                    <Link className='button' to='./createAccount'>Create Account</Link>*/}
+                <Link className='button' to='./searchPatient'>Find Patient</Link>
+                <Link className='button' to='./createAccount'>Create Account</Link>
 
 
                 <div className="containerl" >
                     <div className="container">
-                        <label id="Header"> Search Patient</label>
                         <input type="text" id="input" onInput={this.getSearch.bind(this)} />
-                        <div><button onClick={this.fillTables.bind(this)}>Search </button></div>
                     </div >
                     <ReactTable 
                         style={this.state.showTable ? {} : { display: 'none' }}
