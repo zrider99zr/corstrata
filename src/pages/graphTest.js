@@ -122,6 +122,7 @@ class testGraph extends Component {
                 <ReactTable
                     columns={columns}
                     data={this.state.data}
+                    className="-highlight"
                     getTdProps={(state, rowInfo, column, instance) => {
                         return {
                           onClick: (e, handleOriginal) => {
