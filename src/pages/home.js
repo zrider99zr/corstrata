@@ -12,6 +12,7 @@ class Home extends Component {
             data: [],
             accountName: "",
             showTable: false,
+            movePage: false,
         };
         this.getAccountName()
     }
@@ -123,6 +124,11 @@ class Home extends Component {
     }
 
     render() {
+        if (this.state.movePage) {
+            return (<Redirect to={'/'} />)
+        }
+
+
         const columns = [
             {
                 Header: 'First Name',
@@ -153,7 +159,7 @@ class Home extends Component {
                             return {
                                 onClick: (e, handleOriginal) => {
                                     console.log('Row patient id', rowInfo.original.pID)
-                                    return (<Redirect to={'/testSelectionPage'} />)
+                                    this.setState({movePage: true});
                                     // IMPORTANT! React-Table uses onClick internally to trigger
                                     // events like expanding SubComponents and pivots.
                                     // By default a custom 'onClick' handler will override this functionality.
