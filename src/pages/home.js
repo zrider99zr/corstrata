@@ -153,7 +153,7 @@ class Home extends Component {
                             return {
                                 onClick: (e, handleOriginal) => {
                                     console.log('Row patient id', rowInfo.original.pID)
-
+                                    return (<Redirect to={'/testSelectionPage'} />)
                                     // IMPORTANT! React-Table uses onClick internally to trigger
                                     // events like expanding SubComponents and pivots.
                                     // By default a custom 'onClick' handler will override this functionality.
