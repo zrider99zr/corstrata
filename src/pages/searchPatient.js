@@ -10,10 +10,8 @@ class searchPatient extends Component {
     constructor() {
         super();
         this.state = {
-        
-  
-        };
-        
+
+        }; 
     }
 
 
