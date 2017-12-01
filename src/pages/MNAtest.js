@@ -11,6 +11,7 @@ class MNAtest extends Component {
             i4: "-1",
             i5: "-1",
             i6: "-1",
+            i7: "-1", 
             info: " ",
             showBMI: false,
             showCC: false,
@@ -32,7 +33,7 @@ class MNAtest extends Component {
                 questionD: this.state.i4,
                 questionE: this.state.i5,
                 questionF1: this.state.i6,
-                questionF2: this.state.i6,
+                questionF2: this.state.i7,
             })
         })
             .then((response) => response.json())
@@ -48,7 +49,30 @@ class MNAtest extends Component {
                 alert(error.message);
             }); 
     }
-
+    updateHidden(e){
+        if(e.target.value === 0){
+            this.setState({
+                i7: -1,
+                showBMI: true,
+                showCC: false,
+            })
+        }
+        else if(e.target.value === 1){
+            this.setState({
+                i6: -1,
+                showBMI: false,
+                showCC: true,
+            })
+        }
+        else{
+            this.setState({
+                i6: -1,
+                i6: -7,
+                showBMI: false,
+                showCC: false,
+            }) 
+        }
+    }
     updateVal(e) {
         if (e.target.name === "appetite"){
             this.setState({ i1: e.target.value });
@@ -69,7 +93,7 @@ class MNAtest extends Component {
             this.setState({ i6: e.target.value });
 
         } else if (e.target.name === "CC"){
-            this.setState({ i6: e.target.value });
+            this.setState({ i7: e.target.value });
         }
     }
 
@@ -150,16 +174,16 @@ class MNAtest extends Component {
         <input type="radio" onChange={this.updateVal.bind(this)} name="neuro" value="2" />no psychological problems
       </div>
 
-      <div>
+      <div style={this.state.showBMI ? {} : { display: 'none' }}>
           <label>Do you wish to perform BMI check or a Calf Circumference</label>
-          <input type="radio" name="hasBMI" value="0" />Check B.M.I.
+          <input type="radio" name="hasBMI" onChange={this.updateHidden.bind(this)} value="0" />Check B.M.I.
           <br></br>
-          <input type="radio" name="hasBMI" value="1" />Check Calf Circumference
+          <input type="radio" name="hasBMI" onChange={this.updateHidden.bind(this)} value="1" />Check Calf Circumference
       </div>
 
 
 
-      <div>
+      <div style={this.state.showCC ? {} : { display: 'none' }}>
           < label htmlFor="QE" > Body Mass index BMI wieght in kg / (height in m) ^ 2 </label >
           <div>
                     <input type="radio" onChange={this.updateVal.bind(this)} name="BMI" value="0" /> B.M.I. less that 19
