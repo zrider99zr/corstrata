@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../styling/mna.css';
+import Response from './response'
 
 class MNAtest extends Component {
     constructor() {
@@ -68,15 +69,38 @@ class MNAtest extends Component {
 
         } else if (e.target.name === "CC"){
             this.setState({ i6: e.target.value });
+        } else if (e.target.name === "hasBMI") {
+            var info =""
+            if (e.target.value === "0") {
+                info = <div>
+                    < label htmlFor="QE" > Body Mass index BMI wieght in kg / (height in m) ^ 2 </label >
+                    <div>
+                        <input type="radio" onChange={this.updateVal.bind(this)} name="BMI" value="0" /> B.M.I. less that 19
+                    <br></br>
+                        <input type="radio" onChange={this.updateVal.bind(this)} name="BMI" value="1" /> BMI greater than 19 to less than 21
+                    <br></br>
+                        <input type="radio" onChange={this.updateVal.bind(this)} name="BMI" value="2" /> BMI less 21 to less than 23
+                    <br></br>
+                        <input type="radio" onChange={this.updateVal.bind(this)} name="BMI" value="3" /> BMI 23 or greater
+                    </div>
+                </div>
+            } else if (e.target.value === "1") {
+                info = <div>
+                    <label htmlFor="QE" > Calf circumference (CC) in cm </label >
+                        <div>
+                            <input type="radio" onChange={this.updateVal.bind(this)} name="CC" value="0" />CC less than 31
+                            <br></br>
+                            <input type="radio" onChange={this.updateVal.bind(this)} name="CC" value="3" />CC 31 or greater
+                        </div>
+                </div>
+            }
+            this.setState({ info: info });
         }
     }
 
     calculateTotal() {
         var total = 0;
-        if (this.state.i1 != -1 && this.state.i2 != -1 && this.state.i3 != -1 && this.state.i4 != -1 && this.state.i5 != -1) {
-            total = Number(this.state.i1) + Number(this.state.i2) + Number(this.state.i3) + Number(this.state.i4) + Number(this.state.i5) + Number(this.state.i6);
-            total = Number(this.state.i1) + Number(this.state.i2) + Number(this.state.i3) + Number(this.state.i4) + Number(this.state.i5) + Number(this.state.i6); 
-            this.setState({ total: total });
+        if (this.state.i1 != -1 && this.state.i2 != -1 && this.state.i3 != -1 && this.state.i4 != -1 && this.state.i5 != -1 && this.state.i6 != -1) {
             console.log(this.state);
         } else {
             alert("Please fill out the rest of the survey before submitting");
@@ -129,7 +153,6 @@ class MNAtest extends Component {
         <br></br>
       </div>
 
-
       {/*values || yes = 0 || no = 1 */}
       <label htmlFor="QD">Has suffered psychological stress or acute disesease in the last 3 months</label>
       <br></br>
@@ -148,45 +171,23 @@ class MNAtest extends Component {
         <input type="radio" onChange={this.updateVal.bind(this)} name="neuro" value="2" />no psychological problems
       </div>
 
+
+                        {/*Ask the user which question they would like to complete*/}
       <div>
           <label>Do you wish to perform BMI check or a Calf Circumference</label>
-          <input type="radio" name="hasBMI" value="0" />Check B.M.I.
+          <input type="radio" onChange={this.updateVal.bind(this)} name="hasBMI" value="0" />Check B.M.I.
           <br></br>
-          <input type="radio" name="hasBMI" value="1" />Check Calf Circumference
+          <input type="radio" onChange={this.updateVal.bind(this)} name="hasBMI" value="1" />Check Calf Circumference
       </div>
 
+      <Response info={this.state.info} />
 
-
-      <div>
-          < label htmlFor="QE" > Body Mass index BMI wieght in kg / (height in m) ^ 2 </label >
-          <div>
-                    <input type="radio" onChange={this.updateVal.bind(this)} name="BMI" value="0" /> B.M.I. less that 19
-                    <br></br>
-                    <input type="radio" onChange={this.updateVal.bind(this)} name="BMI" value="1" /> BMI greater than 19 to less than 21
-                    <br></br>
-                    <input type="radio" onChange={this.updateVal.bind(this)} name="BMI" value="2" /> BMI less 21 to less than 23
-                    <br></br>
-                    <input type="radio" onChange={this.updateVal.bind(this)} name="BMI" value="3" /> BMI 23 or greater
-                    </div>
-      </div>
-
-        {/*values || less than 31 = 0 || 31 or greater = 3 */}
-        <label htmlFor="QE">Calf circumference (CC) in cm </label>
-        <div>
-          <input type="radio" onChange={this.updateVal.bind(this)} name="CC" value="0" />CC less than 31
-          <br></br>
-          <input type="radio" onChange={this.updateVal.bind(this)} name="CC" value="3" />CC 31 or greater
-        </div>
-
-
-        {/* Dynamically generate the final submission score on the bottom of the page as they fill it out, so there is some sort of feedback before they submit */}
-        <button id="submit_button" onClick={this.calculateTotal.bind(this)} type="button">Submit</button>
+      {/* Dynamically generate the final submission score on the bottom of the page as they fill it out, so there is some sort of feedback before they submit */}
+      <button id="submit_button" onClick={this.calculateTotal.bind(this)} type="button">Submit</button>
     </form>
 
- 
 </div>
 </div>
-
 
         );
     };

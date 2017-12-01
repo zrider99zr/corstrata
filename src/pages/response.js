@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 class response extends Component {
     render(){
         return (
-            <label>Test Feedback: {this.props.info}</label>
+            <label>{this.props.info}</label>
         );
     };
 }
