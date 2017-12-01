@@ -20,6 +20,7 @@ class createPatient extends Component {
     }
 
     submitForm() {
+        if(this.state.fName!= "" && this.state.lName != ""){
         fetch('http://165.227.191.245/corstrata/api/index.php', {
             method: 'POST',
             headers: {
@@ -48,6 +49,9 @@ class createPatient extends Component {
                 this.setState({patientCreated: false});
             })
             .done();
+        }else{
+            alert("The input fields are blank, please enter a first name and a last name");
+        }
     }
 
     render() {
