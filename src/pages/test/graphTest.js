@@ -116,7 +116,7 @@ class testGraph extends Component {
                 
                     <label id="Header"> Search Patient</label>
                     <input type="text" id="input" onInput={this.getSearch.bind(this)} />
-                    <div><button onClick={this.fillTables.bind(this)}>Search </button></div>
+                    
                     
                 </div >
                 <ReactTable
@@ -127,7 +127,7 @@ class testGraph extends Component {
                           onClick: (e, handleOriginal) => {
                             console.log('Row patient id',rowInfo.original.pID)
                     
-                            // IMPORTANT! React-Table uses onClick internally to trigger
+                            // IMPORTANT! React-Table uses onClick internally to trigger <div><button onClick={this.fillTables.bind(this)}>Search </button></div>
                             // events like expanding SubComponents and pivots.
                             // By default a custom 'onClick' handler will override this functionality.
                             // If you want to fire the original onClick handler, call the
