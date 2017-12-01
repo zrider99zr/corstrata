@@ -174,7 +174,7 @@ class MNAtest extends Component {
         <input type="radio" onChange={this.updateVal.bind(this)} name="neuro" value="2" />no psychological problems
       </div>
 
-      <div style={this.state.showBMI ? {} : { display: 'none' }}>
+      <div >
           <label>Do you wish to perform BMI check or a Calf Circumference</label>
           <input type="radio" name="hasBMI" onChange={this.updateHidden.bind(this)} value="0" />Check B.M.I.
           <br></br>
@@ -183,7 +183,7 @@ class MNAtest extends Component {
 
 
 
-      <div style={this.state.showCC ? {} : { display: 'none' }}>
+      <div style={this.state.showBMI ? {} : { display: 'none' }}>
           < label htmlFor="QE" > Body Mass index BMI wieght in kg / (height in m) ^ 2 </label >
           <div>
                     <input type="radio" onChange={this.updateVal.bind(this)} name="BMI" value="0" /> B.M.I. less that 19
@@ -195,13 +195,14 @@ class MNAtest extends Component {
                     <input type="radio" onChange={this.updateVal.bind(this)} name="BMI" value="3" /> BMI 23 or greater
                     </div>
       </div>
-
+      <div style={this.state.showCC ? {} : { display: 'none' }}>
         {/*values || less than 31 = 0 || 31 or greater = 3 */}
         <label htmlFor="QE">Calf circumference (CC) in cm </label>
         <div>
           <input type="radio" onChange={this.updateVal.bind(this)} name="CC" value="0" />CC less than 31
           <br></br>
           <input type="radio" onChange={this.updateVal.bind(this)} name="CC" value="3" />CC 31 or greater
+        </div>
         </div>
 
 
