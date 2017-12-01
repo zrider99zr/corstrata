@@ -136,7 +136,7 @@ class MNAtest extends Component {
                 <label id="Header">Mini Nutritional  </label>
                 <div className="container">
 
-                    <form className="mnaform" >
+                    <div className="mnaform" >
 
                         {/*values || severe decrease in food intake = 0 || moderate dec in food intake = 1 || no dec in food intake = 2 */}
                         <label htmlFor="name">Has Food intake declined over the past 3 months due to loss of appetite, digestive problems, chewing or swalloing diffculites?</label>
@@ -203,12 +203,11 @@ class MNAtest extends Component {
                         <Response info={this.state.info} />
 
                         {/* Dynamically generate the final submission score on the bottom of the page as they fill it out, so there is some sort of feedback before they submit */}
-                        
-                        </form>
-                    <button id="submit_button" onClick={this.submitTest.bind(this)} type="button">Submit</button>
+                            <button id="submit_button" onClick={this.submitTest.bind(this)} type="button">Submit</button>
+                        </div>
+                    
                 </div>
             </div>
-
         );
     };
 }
