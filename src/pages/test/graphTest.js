@@ -94,11 +94,7 @@ class testGraph extends Component {
                     getTdProps={(state, rowInfo, column, instance) => {
                         return {
                           onClick: (e, handleOriginal) => {
-                            console.log('A Td Element was clicked!')
-                            console.log('it produced this event:', e)
-                            console.log('It was in this column:', column)
-                            console.log('It was in this row:', rowInfo)
-                            console.log('It was in this table instance:', instance)
+                            console.log('Row patient id',rowInfo.original.pID)
                     
                             // IMPORTANT! React-Table uses onClick internally to trigger
                             // events like expanding SubComponents and pivots.
