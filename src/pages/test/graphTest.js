@@ -45,8 +45,8 @@ class testGraph extends Component {
                 for(var i = 0; i < res.search.length;i++){
                     var row = {
                         patientID: res.search[i].patientID,
-                        firstName = res.search[i].firstName,
-                        lastName = res.search[i].lastName,
+                        firstName: res.search[i].firstName,
+                        lastName: res.search[i].lastName,
                     }
                     rows.push(row)
                 }
