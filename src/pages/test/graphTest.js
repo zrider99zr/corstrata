@@ -95,12 +95,20 @@ class testGraph extends Component {
 
             <div className="containerl" >
                 <div className="container">
+<<<<<<< HEAD
                     <div><button onClick={this.makeData.bind(this)}>Search </button></div>
+=======
+                <div><button onClick={this.makeData.bind(this)}>Search </button></div>
+>>>>>>> 81348fe3c9ba03c80f5f6e13335079a8a280422a
                     <form className="searchform"  >
 
                         <label id="Header"> Search Patient</label>
                         <input type="text" id="input" />
+<<<<<<< HEAD
 
+=======
+                        
+>>>>>>> 81348fe3c9ba03c80f5f6e13335079a8a280422a
 
                     </form>
                 </div >
