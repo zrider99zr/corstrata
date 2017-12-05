@@ -151,12 +151,8 @@ function createPressureWoundTest($testID, $size, $depth, $edges, $undermining, $
     //To be asked on the web form: Has there been sustained contraction of the wound edges?
 
     //Epithelialization
-    if($epith <= 4){
-      $epithSS = 1;
-    }
-    else{
-      $epithSS = 0;
-    }
+    if($epith <= 4){$epithSS = 1;}
+    else{$epithSS = 0;}
 
     return strval($hemorrhageSS).strval($macerationSS).strval($underminingSS).strval($erythemaSS).strval($necroticSS).strval($adherenceSS).strval($granulationSS).strval($contrAppearanceSS).strval($contrSustainedSS).strval($epithSS);
   }
