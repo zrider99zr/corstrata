@@ -1,6 +1,7 @@
 <?php
 
 function createNewInstitution($name,$address,$state,$city,$zipCode,$phoneNumber,$db){
+    //Insert the information into the database
     if($qry = $db->prepare("INSERT INTO institution(name,address,state,city,zipCode,phoneNumber) VALUES(?, ?, ?, ?, ?, ?)")){
         $qry->bind_param("ssssis",$name, $address, $state, $city, $zipCode, $phoneNumber);
         $qry->execute();
@@ -16,10 +17,6 @@ function createNewInstitution($name,$address,$state,$city,$zipCode,$phoneNumber,
         return -1;
     }
     else{
-        $array = array();
-        $array['message'] = "query prepare uncsuccessful:(" . $db->errno . ") " . $db->error;
-        $array['status'] = 0;
-        echo json_encode($array); 
         return -1;
     }
 }
@@ -32,7 +29,9 @@ $zipCode = $decoded['zipCode'];
 $phoneNumber = $decoded['phoneNumber'];
 //Check to make sure that everything is working
 if(isset($name,$address,$state,$city,$zipCode,$phoneNumber)){
+    //Get the institutionID from the above function
     $institutionID = createNewInstitution($name,$address,$state,$city,$zipCode,$phoneNumber,$db);
+    //Check if it's valid if so tell the frontend
     if($institutionID != -1){
         $array = array();
         $array['message'] = "Institution Registration was successful";

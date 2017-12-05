@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom'
 import '../styling/mna.css';
 import Response from './response'
+import { Redirect } from 'react-router-dom'
 
 class MNAtest extends Component {
     constructor() {
@@ -16,6 +17,7 @@ class MNAtest extends Component {
             i7: "-1",
             info: " ",
             loggedIn: false,
+            testCreated: false,
         };
     }
 
@@ -28,7 +30,7 @@ class MNAtest extends Component {
                     'Accept': 'application/.json',
                 },
                 body: JSON.stringify({
-                    request: 'createMinNutitionalTest',
+                    request: 'createMiniNutritionalTest',
                     token: sessionStorage.getItem("token"),
                     patientID: sessionStorage.getItem("patientID"),
                     A: this.state.i1,
@@ -42,16 +44,21 @@ class MNAtest extends Component {
             })
                 .then((response) => response.json())
                 .then((res) => {
+                    
                     if (res.status === 1) {
                         alert("Test Succesfully Created!");
+                        this.setState({testCreated: true});
                         
                     } else {
                         alert("Test Creation Failed");
+                        this.setState({testCreated: false});
                     }
                 })
                 .catch((error) => {
                     alert(error.message);
+                    this.setState({testCreated: false});
                 }); 
+            
         }
         else{
             console.log(this.state.i1,this.state.i2,this.state.i3,this.state.i4,this.state.i5,this.state.i6,this.state.i7)
@@ -178,7 +185,10 @@ class MNAtest extends Component {
         if (this.state.loggedIn === false) {
             return (<Redirect to={'/loginPage'} />)
         }
+            if(this.state.testCreated===true){
 
+            return (<Redirect to={'/'} />)
+            }
         return (
 
             <div id="class" className="classContainer" >
