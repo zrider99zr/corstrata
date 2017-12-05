@@ -114,61 +114,42 @@ function createPressureWoundTest($testID, $size, $depth, $edges, $undermining, $
     return $totalScore;
   }
   //TODO implement a function that takes the information from a pressure wound test and spits out a sussman score
-  function getSussmanScore($exudateType, $undermining, $skinColorAround, $necType, $edges, $granTissue, $epith){ //TODO discern other parameters
+  function getSussmanScore($hemorrhageSS, $macerationSS, $undermining, $skinColorAround, $necType, $edges, $granTissue, $contrAppearanceSS, $contrSustainedSS, $epith){ //TODO discern other parameters
     //Not good for healing: Hemorrhage, Maceration, Undermining, Erythema, Necrosis
     //Good for healing: Adherence at wound edge, Granulation Tissue, Appearance of contraction, Sustained contraction, Epithelialization
 
     //Hemorrhage
-    if($exudateType == 2){ //Might need specific question
-      $hemorrhageSS = 1;
-    }
-    else{
-      $hemorrhageSS = 0;
-    }
+    //To be asked on the web form: Is there external or internal hemorrhage from the wound?
+
     //Maceration
-    //Probably need specific question for this
-    $macerationSS = 1;
+    //To be asked on the web form: Is there maceration present on or surrounding the wound?
+
     //Undermining
-    if($undermining >= 2){
-      $underminingSS = 1;
-    }
-    else{
-      $underminingSS = 0;
-    }
+    if($undermining >= 2){$underminingSS = 1;}
+    else{$underminingSS = 0;}
+
     //Erythema
-    if($skinColorAround == 2){
-      $erythemaSS = 1;
-    }
-    else{
-      $erythemaSS = 0;
-    }
+    if($skinColorAround == 2){$erythemaSS = 1;}
+    else{$erythemaSS = 0;}
+
     //Necrosis
-    if($necType >= 2){
-      $necroticSS = 1;
-    }
-    else{
-      $necroticSS = 0;
-    }
+    if($necType >= 4){$necroticSS = 1;}
+    else{$necroticSS = 0;}
+
     //Adherence at wound edge
-    if($edges <= 2){
-      $adherenceSS = 1;
-    }
-    else{
-      $adherenceSS = 0;
-    }
+    if($edges <= 2){$adherenceSS = 1;}
+    else{$adherenceSS = 0;}
+
     //Granulation tissue
-    if($granTissue <= 3){
-      $granulationSS = 1;
-    }
-    else{
-      $granulationSS = 0;
-    }
+    if($granTissue <= 3){$granulationSS = 1;}
+    else{$granulationSS = 0;}
+
     //Appearance of contraction
-    //Asking Joe about this
-    $contrAppearanceSS = 1;
+    //To be asked on the web form: Do the edges of the wound appear to be contracting?
+
     //Sustained contraction
-    //Also asking about this
-    $contrSustainedSS = 1;
+    //To be asked on the web form: Has there been sustained contraction of the wound edges?
+
     //Epithelialization
     if($epith <= 4){
       $epithSS = 1;
