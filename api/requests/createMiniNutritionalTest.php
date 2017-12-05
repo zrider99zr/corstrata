@@ -9,6 +9,7 @@ function createMiniNutritionalTest($testID, $questionA, $questionB, $questionC, 
         $qry->bind_param("iiiiiiii",$testID, $questionA, $questionB, $questionC, $questionD, $questionE, $questionF1, $grade);
         $qry->execute();
         $qry->close();
+        return $grade;
     }
     else{
         $qry = $db->prepare("INSERT INTO miniNutritionalTest (testID, a, b, c, d, e, f1, f2, score) VALUES (?, ?, ?, ?, ?, ?, null, ?, ?)");
@@ -16,6 +17,7 @@ function createMiniNutritionalTest($testID, $questionA, $questionB, $questionC, 
         $qry->bind_param("iiiiiiii",$testID, $questionA, $questionB, $questionC, $questionD, $questionE, $questionF2, $grade);
         $qry->execute();
         $qry->close();
+        return $grade;
     }
     return 1;
 }
@@ -42,11 +44,12 @@ $F2 = $decoded['F2'];
 if($testID != -1 && isset($A,$B,$C,$D,$E,$F1,$F2)){
     //If create test was successful
     $mnaTest = createMiniNutritionalTest($testID,$A,$B,$C,$D,$E,$F1,$F2,$db);
-    if($mnaTest != 1){
+    if($mnaTest !=0 ){
         $array = array();
         $array['message'] = "Test Creation was sucessful";
         $array['status'] = 1;
         $array['testID'] = $testID;
+        $array['grade'] = $mnaTest;
         echo json_encode($array);
     }
     else{
