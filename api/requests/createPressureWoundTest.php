@@ -8,8 +8,8 @@ function insertPressureWoundTest($testID, $size, $db){
   $qry->close();
   return 1;
 }
-//Inserts a PUSH 
-function insertPUSH($testID, $size, $exudateAmount, $tissueType, $db){ 
+//Inserts a PUSH
+function insertPUSH($testID, $size, $exudateAmount, $tissueType, $db){
   //Note: input Bates-Jensen values here: approximation to PUSH score is done in this function
   //Sub-Scores: Size, Exudate Amount, Tissue Type
   $score = $size + $exudateAmount + $tissueType;
@@ -19,7 +19,7 @@ function insertPUSH($testID, $size, $exudateAmount, $tissueType, $db){
   $qry->close();
   return 1;
 }
-function insertBatesJensen($testID, $size, $depth, $edges, $undermining, $necroticTissueType, $necroticTissueAmount, $exudateType, $exudateAmount, $skinColor, 
+function insertBatesJensen($testID, $size, $depth, $edges, $undermining, $necroticTissueType, $necroticTissueAmount, $exudateType, $exudateAmount, $skinColor,
   $peripheralEdema, $peripheralInduration, $granTissue, $epith, $db){
     $score = $size + $depth + $edges + $undermining + $necroticTissueType + $necroticTissueAmount + $exudateType + $exudateAmount + $skinColor + $peripheralEdema + $peripheralInduration + $granTissue + $epith;
     $qry = $db->prepare("INSERT INTO batesJensenTest(
@@ -39,13 +39,13 @@ function insertBatesJensen($testID, $size, $depth, $edges, $undermining, $necrot
       granulationTissue,
       epithelialization
     ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-    $qry->bind_param("iiiiiiiiiiiiiii", $testID, $score, $size, $depth, $edges, $undermining, $necroticTissueType, $necroticTissueAmount, $exudateType, 
+    $qry->bind_param("iiiiiiiiiiiiiii", $testID, $score, $size, $depth, $edges, $undermining, $necroticTissueType, $necroticTissueAmount, $exudateType,
       $exudateAmount, $skinColor, $peripheralEdema, $peripheralInduration, $granTissue, $epith);
     $qry->execute();
     $qry->close();
     return 1;
 }
-//Function that inserts a sussman test given a criteria of 
+//Function that inserts a sussman test given a criteria of
 function insertSussman($testID, $hemorrhage, $maceration, $undermining, $necType, $edges, $granTissue, $appContract, $susContract, $epith, $db){
     //Not good for healing: Hemorrhage, Maceration, Undermining, Erythema, Necrosis
     //Good for healing: Adherence at wound edge, Granulation Tissue, Appearance of contraction, Sustained contraction, Epithelialization
@@ -88,21 +88,23 @@ function insertSussman($testID, $hemorrhage, $maceration, $undermining, $necType
     else{$epithSS = 0;}
 
     $qry = $db->prepare("INSERT INTO sussmanTest VALUES (
-      testID, 
-      hemorrhage, 
-      maceration, 
-      undermining, 
-      erythema, 
-      necrosis, 
-      adherence, 
-      granulation, 
-      appearanceOfContraction, 
-      sustainedContraction, 
+      testID,
+      hemorrhage,
+      maceration,
+      undermining,
+      erythema,
+      necrosis,
+      adherence,
+      granulation,
+      appearanceOfContraction,
+      sustainedContraction,
       epithelialization
       )
     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?");
     $qry->bind_param("iiiiiiiiii", $testID, $hemorrhage, $maceration, $underminingSS, $erythemaSS, $necroticSS, $adherenceSS, $granulationSS, $appContract, $susContract, $epith);
-
+    $qry->execute();
+    $qry->close();
+    return 1;
 }
 //Function to calculate a Bates-Jensen size based off of a given double
 function calculateBatesJensenSize($size){
@@ -161,7 +163,7 @@ function calculatePUSHSize($size){
     return 10;
   }
 }
-//Function to calculate the push exudate ammount given a bates jensen score
+//Function to calculate the push exudate amount given a bates jensen score
 function calculatePUSHExudate($exudate){
   if($exudate < 2){
     return 0;
@@ -215,7 +217,7 @@ $necroticTissueType = $decoded['necroticTissueType'];
 $necroticTissueAmount = $decoded['necroticTissueAmount'];
 $exudateType = $decoded['exudateType'];
 $exudateAmount = $decoded['exudateAmount'];
-$skinColor = $decoded['skinColor']; 
+$skinColor = $decoded['skinColor'];
 $peripheralEdema = $decoded['peripheralEdema'];
 $peripheralInduration = $decoded['peripheralInduration'];
 $granTissue = $decoded['granTissue'];
@@ -226,7 +228,7 @@ if(isset($size,$hemorrhage,$maceration,$appContract,$susContract,$depth,$edges,$
   $exudateType,$exudateAmount,$skinColor,$peripheralEdema,$peripheralInduration,$granTissue,$epith) && $testID != -1){
     if(insertPressureWoundTest($testID, $size, $db) == 1){
       $push = insertPUSH($testID, calculatePUSHSize($size), calculatePUSHExudate($exudateAmount), calculatePUSHTissueType($epith,$granTissue,$necroticTissueAmount), $db);
-      $bates = insertBatesJensen($testID, calculateBatesJensenSize($size), $depth, $edges, $undermining, $necroticTissueType, $necroticTissueAmount, 
+      $bates = insertBatesJensen($testID, calculateBatesJensenSize($size), $depth, $edges, $undermining, $necroticTissueType, $necroticTissueAmount,
         $exudateType, $exudateAmount, $skinColor, $peripheralEdema, $peripheralInduration,$granTissue,$epith, $db);
       $sus = insertSussman($testID, $hemorrhage, $maceration, $undermining, $necroticTissueType, $edges, $granTissue, $appContract, $susContract, $epith, $db);
       if($push == 1 && $bates == 1 && $sus == 1){
