@@ -8,7 +8,7 @@ configure({ adapter: new Adapter() });
 
 
 
-describe('subbut ', () => {
+describe('input tag ', () => {
   it('fires an input when typed', () => {
     const spy = jest.fn();
     const wrapper = mount(<input/>);
