@@ -10,7 +10,6 @@ function insertPressureWoundTest($testID, $size, $db){
 }
 //Inserts a PUSH
 function insertPUSH($testID, $size, $exudateAmount, $tissueType, $db){
-  //Note: input Bates-Jensen values here: approximation to PUSH score is done in this function
   //Sub-Scores: Size, Exudate Amount, Tissue Type
   $score = $size + $exudateAmount + $tissueType;
   $qry = $db->prepare("INSERT INTO PUSHTest(testID, score, size, exudateAmount, tissueType) VALUES(?,?,?,?,?)");
@@ -45,7 +44,7 @@ function insertBatesJensen($testID, $size, $depth, $edges, $undermining, $necrot
     $qry->close();
     return 1;
 }
-//Function that inserts a sussman test given a criteria of
+//Function that inserts a sussman test given criteria of attributes
 function insertSussman($testID, $hemorrhage, $maceration, $undermining, $necType, $edges, $granTissue, $appContract, $susContract, $epith, $db){
     //Not good for healing: Hemorrhage, Maceration, Undermining, Erythema, Necrosis
     //Good for healing: Adherence at wound edge, Granulation Tissue, Appearance of contraction, Sustained contraction, Epithelialization
