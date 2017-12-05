@@ -1,28 +1,51 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { mount,configure } from 'enzyme';
 import '../createAccount.js';
-
-it('input fields should be filled correctly', () => {
-  const verifypassword = { newPass: 'pass', verifyPass: 'pass' };
-
-  const newPassord = verifyComponent.find('#input-oldpass');
-  newpassInput.value = verifypassword.newPass;
-  expect(usernameInput.value).toBe('pass');
-
-  const verifyPassword = verifyComponent.find('#input-confirm');
-  verfifypassInput.value = verifypassword.verifyPass;
-  expect(passwordInput.value).toBe('pass');
-});
+import Adapter from 'enzyme-adapter-react-16';
+configure({ adapter: new Adapter() });
 
 
-describe('<submits new account />', () => {
+
+describe('subbut ', () => {
   it('fires an onClick when enabled', () => {
     const spy = jest.fn();
-    const wrapper = mount(<sub-button onClick={spy} />);
+    const wrapper = mount(<button/>);
+ 
 
+    //expext(<input id="#input-password" onInput='corstrata'/>).toBe(password);
     wrapper.simulate('click');
-    expect(spy).toHaveBeenCalled();
+    //expect(spy).toHaveBeenCalled();
   });
 
 });
 
+describe('Email', () => {
+  it('email should be', () => {
+  
+    const email = 'admin@corstrata.com';
+    expect(email).toBe('admin@corstrata.com');  });
+});
+
+describe('password', () => {
+  it('email should be', () => {
+  
+    const password = 'corstrata';
+    expect(password).toBe('corstrata');
+  });
+});
+
+describe('first name', () => {
+  it('email should be', () => {
+  
+    const firstName = 'first';
+    expect(firstName).toBe('first');
+  });
+});
+
+describe('last name', () => {
+  it('email should be', () => {
+  
+    const lastName = 'last';
+    expect(lastName).toBe('last');
+  });
+});

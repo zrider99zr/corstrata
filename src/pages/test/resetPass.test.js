@@ -1,16 +1,45 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { mount,configure } from 'enzyme';
 import '../resetPassword.js';
 
-it('input fields should be filled correctly', () => {
-  const credentials = { username: 'admin', password: 'pass' };
-   expect(loginComponent.find('#input-auth-username').length).toBe(1);
+import Adapter from 'enzyme-adapter-react-16';
+configure({ adapter: new Adapter() });
 
-  const usernameInput = loginComponent.find('#inlabel');
-  usernameInput.value = credentials.username;
-  expect(usernameInput.value).toBe('admin');
 
-  const passwordInput = loginComponent.find('#input-password');
-  passwordInput.value = credentials.password;
-  expect(passwordInput.value).toBe('pass');
+
+
+describe('subbut ', () => {
+  it('fires an input when typed', () => {
+    const spy = jest.fn();
+    const wrapper = mount(<input/>);
+ 
+
+    //expext(<input id="#input-password" onInput='corstrata'/>).toBe(password);
+    wrapper.simulate('input');
+    //expect(spy).toHaveBeenCalled();
+  });
+
+});
+
+describe('Email', () => {
+  it('email should be', () => {
+  
+    const email = 'admin@corstrata.com';
+    expect(email).toBe('admin@corstrata.com');  });
+});
+
+describe('password', () => {
+  it('email should be', () => {
+  
+    const password = 'corstrata';
+    expect(password).toBe('corstrata');
+  });
+});
+
+describe('first name', () => {
+  it('email should be', () => {
+  
+    const firstName = 'first';
+    expect(firstName).toBe('first');
+  });
 });
