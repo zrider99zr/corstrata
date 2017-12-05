@@ -11,12 +11,17 @@ class createInstitution extends Component {
             city: "",
             zCode: "",
             pNumber: "",
-            loggedIn: true,
+            loggedIn: false,
         };
     }
 
     componentDidMount() {
-        this.validateUser();
+        console.log(sessionStorage.getItem("token"));
+        if (sessionStorage.getItem("token") === null || sessionStorage.getItem("token") === "") {
+            this.setState({ loggedIn: false });
+        } else {
+            this.validateUser();
+        }
     }
 
     validateUser() {
@@ -38,7 +43,6 @@ class createInstitution extends Component {
 
                 } else if (res.status === 0) {
                     this.setState({ loggedIn: false });
-
                 }
             })
             .catch((error) => {
@@ -95,7 +99,7 @@ class createInstitution extends Component {
     }
 
     render() {
-        if (this.state.login === false) {
+        if (this.state.loggedIn === false) {
             return (<Redirect to={'/loginPage'} />)
         }
 

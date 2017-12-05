@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import 'font-awesome/css/font-awesome.min.css'
 import { Link, Redirect } from 'react-router-dom'
 
+//imorts buttons and other assets from styleForm.js
 import {
     HelpmMessage, InputGroup,
     AuthPage, InputField, StackedInputs, SubmitButton
@@ -19,16 +20,17 @@ class loginPage extends Component {
         };
     }
 
+    //updates state
     setEmail(e) {
         this.setState({ email: e.target.value });
     }
 
+    //updates state 
     setPass(e) {
         this.setState({ password: e.target.value });
     }
 
     checkInput(e) {
-        //loggin in and passing it state, will need to trim or extend the method to show more/less state variables
         fetch('http://165.227.191.245/corstrata/api/index.php', {
             method: 'POST',
             headers: {
