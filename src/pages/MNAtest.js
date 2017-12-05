@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom'
 import '../styling/mna.css';
 import Response from './response'
 
@@ -14,9 +15,11 @@ class MNAtest extends Component {
             i6: "-1",
             i7: "-1",
             info: " ",
+            loggedIn: false,
         };
     }
 
+    //sends the users input to the backend for storage.
     submitTest() {
         if((this.state.i1 !== "-1" && this.state.i2 !== "-1" && this.state.i3 !== "-1" && this.state.i4 !== "-1" && this.state.i5 !== "-1") && ((this.state.i6 !== "-1" && this.state.i7 === "-1") || (this.state.i6 === "-1" && this.state.i7 !== "-1"))){
             fetch('http://165.227.191.245/corstrata/api/index.php', {
@@ -55,6 +58,43 @@ class MNAtest extends Component {
         }   
     }
 
+    //function to validate, with the backened, that the user is who they say they area
+    validateUser() {
+        fetch('http://165.227.191.245/corstrata/api/index.php', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/.json',
+            },
+            body: JSON.stringify({
+                request: 'validateJWT',
+                token: sessionStorage.getItem("token"),
+            })
+        })
+            .then((response) => response.json())
+            .then((res) => {
+
+                if (res.status === 1) {
+                    this.setState({ loggedIn: true });
+
+                } else if (res.status === 0) {
+                    this.setState({ loggedIn: false });
+                }
+            })
+            .catch((error) => {
+                alert(error.message);
+            })
+    }
+
+    //calls functions after the page is loaded
+    componentDidMount() {
+        console.log(sessionStorage.getItem("token"));
+        if (sessionStorage.getItem("token") == null || sessionStorage.getItem("token") === "") {
+            this.setState({ loggedIn: false });
+        } else {
+            this.validateUser();
+        }
+    }
+
     updateHidden(e) {
         if (e.target.value === 0) {
             this.setState({
@@ -72,6 +112,7 @@ class MNAtest extends Component {
         }
     }
 
+    //function that updates the state value based upon which button group was pressed
     updateVal(e) {
         if (e.target.name === "appetite") {
             this.setState({ i1: e.target.value });
@@ -123,9 +164,9 @@ class MNAtest extends Component {
         }
     }
 
+    //function to test if the functionality of the page works, while not connected to the database
     calculateTotal() {
-        var total = 0;
-        if (this.state.i1 != -1 && this.state.i2 != -1 && this.state.i3 != -1 && this.state.i4 != -1 && this.state.i5 != -1 && this.state.i6 != -1) {
+        if (this.state.i1 !== -1 && this.state.i2 !== -1 && this.state.i3 !== -1 && this.state.i4 !== -1 && this.state.i5 !== -1 && this.state.i6 !== -1) {
             console.log(this.state);
         } else {
             alert("Please fill out the rest of the survey before submitting");
@@ -133,6 +174,10 @@ class MNAtest extends Component {
     }
 
     render() {
+        {/*Boots user back to login page, if they are not logged in or Validated*/}
+        if (this.state.loggedIn === false) {
+            return (<Redirect to={'/loginPage'} />)
+        }
 
         return (
 
@@ -143,7 +188,7 @@ class MNAtest extends Component {
 
                     <form className="mnaform" >
 
-                        {/*values || severe decrease in food intake = 0 || moderate dec in food intake = 1 || no dec in food intake = 2 */}
+                        {/*radio button group for the appetite section */}
                         <label htmlFor="name">Has Food intake declined over the past 3 months due to loss of appetite, digestive problems, chewing or swalloing diffculites?</label>
                         <div>
                             <input type="radio" onChange={this.updateVal.bind(this)} name="appetite" value="0" />Severe decrease in food intake
@@ -153,66 +198,62 @@ class MNAtest extends Component {
                             <input type="radio" onChange={this.updateVal.bind(this)} name="appetite" value="2" />No decrease in food intake
                             </div>
 
-                        {/*values || weight loss > 3kg = 0 || does not know = 1 || weight loss between 1/3kg = 2 || no weight loss = 3 */}
+                        {/*radio button group for the weightloss section */}
                         <label htmlFor="email"> Weight loss during the last 3 months</label>
                         <div>
                             <input type="radio" onChange={this.updateVal.bind(this)} name="WL" value="0" />Weight loss greater thean 3kg (6.6 lbs)
-        <br></br>
+                                <br></br>
                             <input type="radio" onChange={this.updateVal.bind(this)} name="WL" value="1" />Does not know
-        <br></br>
+                                <br></br>
                             <input type="radio" onChange={this.updateVal.bind(this)} name="WL" value="2" />Weight loss between 1 and 3 kg (2.2 and 6.6 lbs)
-        <br></br>
+                                <br></br>
                             <input type="radio" onChange={this.updateVal.bind(this)} name="WL" value="3" />No weight loss
-        <br></br>
+                                <br></br>
                         </div>
 
 
-                        {/*values || bed/chair bound = 0 || able to get out of bed/chair = 1 || weight loss between 1/3kg = 2 */}
+                        {/*radio button group for mobility section */}
                         <label htmlFor="message">Mobility</label>
                         <div>
                             <input type="radio" onChange={this.updateVal.bind(this)} name="Mobility" value="0" />Bed or chair bound
-        <br></br>
+                                <br></br>
                             <input type="radio" onChange={this.updateVal.bind(this)} name="Mobility" value="1" />Able to get out of bed/chair but doesnt no go out
-        <br></br>
+                                <br></br>
                             <input type="radio" onChange={this.updateVal.bind(this)} name="Mobility" value="2" />Goes out
-        <br></br>
+                                <br></br>
                         </div>
 
-                        {/*values || yes = 0 || no = 1 */}
+                        {/*radio button group for stress section*/}
                         <label htmlFor="QD">Has suffered psychological stress or acute disesease in the last 3 months</label>
-                        <br></br>
+                            <br></br>
                         <div>
                             <input type="radio" onChange={this.updateVal.bind(this)} name="stress" value="0" />Yes
-        <br></br>
+                                <br></br>
                             <input type="radio" onChange={this.updateVal.bind(this)} name="stress" value="2" />No
-      </div>
+                        </div>
 
                         <label htmlFor="QC">Neuropsycologial problems </label>
                         <div>
                             <input type="radio" onChange={this.updateVal.bind(this)} name="neuro" value="0" />Severe dementia or depression
-        <br></br>
+                                <br></br>
                             <input type="radio" onChange={this.updateVal.bind(this)} name="neuro" value="1" />Mild dementia
-        <br></br>
+                                <br></br>
                             <input type="radio" onChange={this.updateVal.bind(this)} name="neuro" value="2" />No psychological problems
-      </div>
+                        </div>
 
-
-                        {/*Ask the user which question they would like to complete*/}
+                        {/*Question for the user to decide if they are doing the calfcircumference test or BMI test*/}
                         <div>
                             <label>Do you wish to perform BMI check or a Calf Circumference</label>
                             <input type="radio" onChange={this.updateVal.bind(this)} name="hasBMI" value="0" />Check B.M.I.
-          <br></br>
+                                <br></br>
                             <input type="radio" onChange={this.updateVal.bind(this)} name="hasBMI" value="1" />Check Calf Circumference
-      </div>
-                        
-                        <Response info={this.state.info} />
+                        </div>
 
-                        {/* Dynamically generate the final submission score on the bottom of the page as they fill it out, so there is some sort of feedback before they submit */}
+                        {/* refer to response.js  */}
+                        <Response info={this.state.info} />
                         <button type="button" onClick={this.submitTest.bind(this)}>Create</button>
-                        </form>
-                    
+                        </form>   
                 </div>
-                
             </div>
         );
     };

@@ -2,11 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\api",
-    "\\api\\requests",
     "\\src",
-    "\\src\\pages",
-    "\\src\\styling"
+    "\\src\\pages"
   ],
-  "SelectedNode": "\\src\\pages\\MNAtest.js",
+  "SelectedNode": "\\src\\pages\\wagnerScaleTest.js",
   "PreviewInSolutionExplorer": false
 }

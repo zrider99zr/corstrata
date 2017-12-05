@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import '../styling/createAccount.css'
+import { Redirect } from 'react-router-dom';
 
 class createAccount extends Component {
     constructor() {
@@ -12,9 +13,11 @@ class createAccount extends Component {
             isClient: false,
             isAdmin: false,
             institution: "",
+            loggedIn: false,
         };
     }
 
+    //updates state when input is changed
     updateText(e) {
         if (e.target.name==="email") {
             this.setState({ email: e.target.value });
@@ -34,6 +37,44 @@ class createAccount extends Component {
         }
     }
 
+    //validates user && jwt on the backend
+    validateUser() {
+        fetch('http://165.227.191.245/corstrata/api/index.php', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/.json',
+            },
+            body: JSON.stringify({
+                request: 'validateJWT',
+                token: sessionStorage.getItem("token"),
+            })
+        })
+            .then((response) => response.json())
+            .then((res) => {
+
+                if (res.status === 1) {
+                    this.setState({ loggedIn: true });
+
+                } else if (res.status === 0) {
+                    this.setState({ loggedIn: false });
+                }
+            })
+            .catch((error) => {
+                alert(error.message);
+            })
+    }
+
+    //calls functions on page load
+    componentDidMount() {
+        console.log(sessionStorage.getItem("token"));
+        if (sessionStorage.getItem("token") === null || sessionStorage.getItem("token") === "") {
+            this.setState({ loggedIn: false });
+        } else {
+            this.validateUser();
+        }
+    }
+
+    //checks to see user input for client or admin
     checkStatus(e) {
         if (e.target.checked===true) {
             if (e.target.name==="client") {
@@ -50,6 +91,7 @@ class createAccount extends Component {
         }
     }
 
+    //sends user input to the backend
     submitForm() {
         console.log(this.state);
         fetch('http://165.227.191.245/corstrata/api/index.php', {
@@ -79,6 +121,9 @@ class createAccount extends Component {
     }
 
     render() {
+        if (this.state.loggedIn === false) {
+            return (<Redirect to={'/loginPage'} />)
+        }
 
         return (
             <div>

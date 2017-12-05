@@ -3,7 +3,7 @@ import { Link, Redirect } from 'react-router-dom'
 import '../styling/home.css'
 import ReactTable from 'react-table';
 import 'react-table/react-table.css'
-//import '../styling/un.css'
+
 class Home extends Component {
     constructor() {
         super();
@@ -17,7 +17,6 @@ class Home extends Component {
         this.getAccountName()
     }
 
-    //========================================================================================================
     testPerson = () => {
         return {
             data: [],
@@ -47,7 +46,7 @@ class Home extends Component {
             });
     }
     getSearch(e) {
-        if(e.target.value != ""){
+        if(e.target.value !== ""){
             this.setState({showTable: true});
             fetch('http://165.227.191.245/corstrata/api/index.php', {
                 method: 'POST',
@@ -90,7 +89,7 @@ class Home extends Component {
     //========================================================================================================
     componentDidMount() {
         console.log(sessionStorage.getItem("token"));
-        if (sessionStorage.getItem("token") == null || sessionStorage.getItem("token") == "" ) {
+        if (sessionStorage.getItem("token") === null || sessionStorage.getItem("token") === "" ) {
             this.setState({ loggedIn: false });
         } else {
             this.validateUser();
@@ -138,7 +137,7 @@ class Home extends Component {
                 accessor: 'lName',
             },
         ]
-        if (this.state.login === false) {
+        if (this.state.loggedIn === false) {
             return (<Redirect to={'/loginPage'} />)
         }
 
