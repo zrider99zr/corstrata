@@ -2,17 +2,12 @@
 
   
 
-  grid-template-columns: fit-content fit-content ;
-  grid-template-rows: auto;
-  grid-template-areas: 
-    "header header "
-    " sidebar main"
-    
+
 }
 
 #form{
 display: grid;
-  grid-template-columns:90px fit-content ;
+  grid-template-columns: inherit fit-content (100%)    ;
   grid-template-rows: auto;
   grid-template-areas: 
     "header header "
@@ -21,11 +16,17 @@ display: grid;
     
 
 }
+.btn-group-vertical{
 
-.Button{
 
-  width: 900px;
+ max-width: 90px !important;
+}
 
+Button{
+
+width: 80px !important;
+
+  height: 90px
 }
 
 Header{

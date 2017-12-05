@@ -6,12 +6,12 @@ import './App.css';
 
 const App = () => (
     <div id ="form">
-        
-        <Header />
+          <Header />
+        <Main />
+      
         <Nav/>
         
       
-        <Main />
     </div>  
 );
 
