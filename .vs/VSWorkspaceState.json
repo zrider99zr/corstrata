@@ -4,8 +4,9 @@
     "\\api",
     "\\api\\requests",
     "\\src",
-    "\\src\\pages"
+    "\\src\\pages",
+    "\\src\\styling"
   ],
-  "SelectedNode": "\\src\\pages\\header.js",
+  "SelectedNode": "\\src\\pages\\MNAtest.js",
   "PreviewInSolutionExplorer": false
 }

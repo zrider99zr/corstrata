@@ -12,6 +12,7 @@ class Home extends Component {
             data: [],
             accountName: "",
             showTable: false,
+            movePage: false,
         };
         this.getAccountName()
     }
@@ -123,6 +124,11 @@ class Home extends Component {
     }
 
     render() {
+        if (this.state.movePage) {
+            return (<Redirect to={'/testSelectionPage'} />)
+        }
+
+
         const columns = [
             {
                 Header: 'First Name',
@@ -140,7 +146,7 @@ class Home extends Component {
             <div className='classContainer' >
                 <h1>Welcome, {this.state.accountName}, to the Corstrata Website!</h1>
                 <Link className='button' to='./createPatient'>Create Patient</Link>
-               <input type="text" className="input" onInput={this.getSearch.bind(this)} />
+               <input type="text" placeholder="Search Patient by Last Name..." className="inputName" onInput={this.getSearch.bind(this)} />
              
 
     
@@ -152,8 +158,8 @@ class Home extends Component {
                         getTdProps={(state, rowInfo, column, instance) => {
                             return {
                                 onClick: (e, handleOriginal) => {
-                                    console.log('Row patient id', rowInfo.original.pID)
-
+                                    sessionStorage.setItem("patientID",rowInfo.original.pID);
+                                    this.setState({movePage: true});
                                     // IMPORTANT! React-Table uses onClick internally to trigger
                                     // events like expanding SubComponents and pivots.
                                     // By default a custom 'onClick' handler will override this functionality.

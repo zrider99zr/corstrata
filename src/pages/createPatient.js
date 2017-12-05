@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
-
+import { Redirect } from 'react-router-dom'
 class createPatient extends Component {
     constructor() {
         super();
         this.state = {
             fName: "",
             lName: "",
+            patientCreated: false,
         };
     }
 
@@ -19,6 +20,7 @@ class createPatient extends Component {
     }
 
     submitForm() {
+        if(this.state.fName!= "" && this.state.lName != ""){
         fetch('http://165.227.191.245/corstrata/api/index.php', {
             method: 'POST',
             headers: {
@@ -33,15 +35,29 @@ class createPatient extends Component {
         })
             .then((response) => response.json())
             .then((res) => {
-                alert(res.message);
+                if(res.status===1){
+               // alert(res.message);
+                this.setState({patientCreated: true});
+                }/*else{
+                    alert("Test Creation failed");
+                    console.log(res.status);
+                    this.setState({patientCreated: false});*
+                }*/
             })
             .catch((error) => {
                 alert(error.message);
+                this.setState({patientCreated: false});
             })
             .done();
+        }else{
+            alert("The input fields are blank, please enter a first name and a last name");
+        }
     }
 
     render() {
+        if(this.state.patientCreated === true){
+                return (<Redirect to={'/'} />)
+        }
         return (
             <div>
                 <form id="accountForm" >
