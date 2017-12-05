@@ -35,9 +35,10 @@ class searchPatient extends Component {
         <div class="container">
         <form class="wagnerform"  >       
             
-           <div id= "container"> <label id="Header" style={{marginLeft:"10em",border:"5px"}}> Search Patient</label>
-            <input  type="text" id="input" /></div>
-            <div><button className="button" style={{marginLeft:"5em"}}>Search</button></div>
+           <div class= "container"> <label id="Header" style={{marginLeft:"10em",border:"5px"}}> Search Patient</label>
+       <button className="button" style={{marginLeft:"5em"}}> <div>    <input  type="text" id="input" /></div>
+            Search</button>
+            </div>
                     
          </form>
     </div >

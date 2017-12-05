@@ -184,14 +184,16 @@
    
 
       .testbutton{
-        font-size: fit-content;
-        border-radius: 25px; 
-        border-color: black;
+        font-size: 40px;
+        border-radius: 25px !important; 
+        border-color: black!important;
         height: 95px;
         width: 650px;
      margin-top: 40px;
      margin-left: 855px ;
      color: rgba(0, 0, 0, 0.952);
+     background-color: #2bb2db!important;
+     border: 4px solid black;
     }
     #buttongroup{
     margin-left: auto;

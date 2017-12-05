@@ -14,7 +14,7 @@ const bates = () => (
  
     <form class="createform" action="#" method="POST" encType="multipart/form-data">
 
-<div  >
+<div >
 
 <label>LOCATION</label>
 

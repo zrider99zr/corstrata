@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import '../styling/createAccount.css'
+import '../styling/style.css'
 
 class createAccount extends Component {
     constructor() {
@@ -82,7 +82,7 @@ class createAccount extends Component {
 
         return (<div id="class">
 
-                <label id="Header">CREATE PATIENT</label>
+                <label id="Header">CREATE ACCOUNT</label>
   <form class="createform" action="#" method="POST" encType="multipart/form-data">
 
 
