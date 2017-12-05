@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import 'font-awesome/css/font-awesome.min.css'
-import { Link, Redirect } from 'react-router-dom'
+import { Link, Redirect,} from 'react-router-dom'
+import { routerActions } from 'react-router-redux'
 
 //imorts buttons and other assets from styleForm.js
 import {
@@ -47,6 +48,8 @@ class loginPage extends Component {
                 if (res.status === 1) {
                     sessionStorage.setItem("token", res.token);
                     this.setState({ login: true });
+                    routerActions.push('/'); //takes you to the home page
+                    
                 } else {
                     sessionStorage.setItem("token","");
                 }
@@ -84,9 +87,10 @@ class loginPage extends Component {
                             required
                         />
                         <SubmitButton style={{ marginTop: "0px" }}
+                        //enabled={true}
                             onClick={this.checkInput.bind(this)}>
                             <i className="fa fa-sign-in fa-lg" />
-                            <Link to='./'> </Link>
+                            
                         </SubmitButton>
 
                     </InputGroup>
@@ -98,3 +102,4 @@ class loginPage extends Component {
     };
 }
 export default loginPage;
+//                            <Link to='./'> </Link>
