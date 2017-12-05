@@ -53,6 +53,7 @@ if($testID != -1 && isset($A,$B,$C,$D,$E,$F1,$F2)){
         $array = array();
         $array['message'] = "Test Creation was unsuccesful";
         $array['status'] = 0;
+        $array['MNA'] = $mnaTest;
         echo json_encode($array);
     }
 }
