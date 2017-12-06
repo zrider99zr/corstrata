@@ -27,7 +27,7 @@ class createPatient extends Component {
 
     //sends the user input to the backend
     submitForm() {
-        if(this.state.fName!= "" && this.state.lName != ""){
+        if(this.state.fName !== "" && this.state.lName !== ""){
         fetch('http://165.227.191.245/corstrata/api/index.php', {
             method: 'POST',
             headers: {

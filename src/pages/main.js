@@ -10,12 +10,13 @@ import testSelectionPage from './testSelectionPage';
 import createAccount from './createAccount';
 import nav from './nav';
 import createPage from './createPage';
-import bates from './bates';
+//import bates from './bates';
 import linegraph from './linegraph';
 import createInstitution from './createInstitution';
 import createPatient from './createPatient';
 import tempSearchPatient from './tempSearchPatient';
 import patientpage from './patientpage';
+import pressureWoundTest2 from './pressureWoundTest2'
 
 // The Main component renders one of the three provided
 // Routes (provided that one matches). Both the /roster
@@ -35,14 +36,15 @@ const main = () => (
             <Route path='/wagnerScaleTest' component={wagnerScaleTest} />
             <Route path='/testSelectionPage' component={testSelectionPage} />
             <Route path='/createAccount' component={createAccount} />
-            <Route path='/bates' component={bates} />
+
             <Route path='/linegraph' component={linegraph}/>
             <Route path='/nav' component={nav} />
             <Route path='/createInstitution' component={createInstitution} />
             <Route path='/createPatient' component={createPatient} />
             <Route path='/tempSearchPatient' component={tempSearchPatient} />
             <Route path='/patientpage' component={patientpage}/>
-            <Route path='/searchPatient'component={searchPatient}/>
+            <Route path='/searchPatient' component={searchPatient} />
+            <Route path='/pressureWoundTest2' component={pressureWoundTest2} />
 
         </Switch>
         

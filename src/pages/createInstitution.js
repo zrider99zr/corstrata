@@ -73,29 +73,32 @@ class createInstitution extends Component {
     }
 
     submitForm() {
-        fetch('http://165.227.191.245/corstrata/api/index.php', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/.json',
-            },
-            body: JSON.stringify({
-                request: 'createInstitution',
-                name: this.state.name,
-                address: this.state.address,
-                city: this.state.city,
-                state: this.state.state,
-                zipCode: this.state.zCode,
-                phoneNumber: this.state.pNumber,
+        if (this.state.address !== "" && this.state.name !== "" && this.state.state !== "" && this.state.city !== "" && this.state.zCode !== "" && this.state.pNumber !== "") {
+            fetch('http://165.227.191.245/corstrata/api/index.php', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/.json',
+                },
+                body: JSON.stringify({
+                    request: 'createInstitution',
+                    name: this.state.name,
+                    address: this.state.address,
+                    city: this.state.city,
+                    state: this.state.state,
+                    zipCode: this.state.zCode,
+                    phoneNumber: this.state.pNumber,
+                })
             })
-        })
-            .then((response) => response.json())
-            .then((res) => {
-                alert(res.message);
-            })
-            .catch((error) => {
-                alert(error.message);
-            })
-            .done();
+                .then((response) => response.json())
+                .then((res) => {
+                    alert(res.message);
+                })
+                .catch((error) => {
+                    alert(error.message);
+                })
+                .done();
+        }
+        
     }
 
     render() {

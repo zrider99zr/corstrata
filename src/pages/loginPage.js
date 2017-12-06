@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import 'font-awesome/css/font-awesome.min.css'
-import { Link, Redirect,} from 'react-router-dom'
+import { Redirect,} from 'react-router-dom'
 import { routerActions } from 'react-router-redux'
 
 //imorts buttons and other assets from styleForm.js
@@ -32,32 +32,35 @@ class loginPage extends Component {
     }
 
     checkInput(e) {
-        fetch('http://165.227.191.245/corstrata/api/index.php', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/.json',
-            },
-            body: JSON.stringify({
-                request: 'login',
-                email: this.state.email,
-                password: this.state.password,
+        if (this.state.email !== "" && this.state.password !== "") {
+            fetch('http://165.227.191.245/corstrata/api/index.php', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/.json',
+                },
+                body: JSON.stringify({
+                    request: 'login',
+                    email: this.state.email,
+                    password: this.state.password,
+                })
             })
-        })
-            .then((response) => response.json())
-            .then((res) => {
-                if (res.status === 1) {
-                    sessionStorage.setItem("token", res.token);
-                    this.setState({ login: true });
-                    routerActions.push('/'); //takes you to the home page
-                    
-                } else {
-                    sessionStorage.setItem("token","");
-                }
-            })
-            .catch((error) => {
-                alert(error.message);
-            }); 
-    }
+                .then((response) => response.json())
+                .then((res) => {
+                    if (res.status === 1) {
+                        sessionStorage.setItem("token", res.token);
+                        this.setState({ login: true });
+                        routerActions.push('/'); //takes you to the home page
+
+                    } else {
+                        sessionStorage.setItem("token", "");
+                    }
+                })
+                .catch((error) => {
+                    alert(error.message);
+                });
+            }
+        }
+        
 
     render() {
         if (this.state.login) {
@@ -102,4 +105,3 @@ class loginPage extends Component {
     };
 }
 export default loginPage;
-//                            <Link to='./'> </Link>

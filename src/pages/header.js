@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import '../styling/header.css';
 import { Button } from 'react-bootstrap';
 { /* this will only be here while we are testing all the pages, after page testing is done it will be removed and navigation will only be done through the webpage */}
