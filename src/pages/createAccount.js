@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
-import { Link, Redirect } from 'react-router-dom'
+import React, { Component } from 'react';
+import { Link, Redirect } from 'react-router-dom';
 
-import '../styling/style.css'
+import '../styling/style.css';
 
 
 class createAccount extends Component {
