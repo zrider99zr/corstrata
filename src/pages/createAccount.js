@@ -1,6 +1,8 @@
-import React, { Component } from 'react'
-import '../styling/createAccount.css'
-import { Redirect } from 'react-router-dom';
+import React, { Component } from 'react';
+import { Link, Redirect } from 'react-router-dom';
+
+import '../styling/style.css';
+
 
 class createAccount extends Component {
     constructor() {
@@ -125,22 +127,68 @@ class createAccount extends Component {
             return (<Redirect to={'/loginPage'} />)
         }
 
-        return (
-            <div>
-                <form id="accountForm" action="#" method="POST" encType="multipart/form-data">
-                    <br />
-                    <div className="row">
-                        <input type="text" onInput={this.updateText.bind(this)} id="input-email" name="email" placeholder="email@gmail.com" />Email <br />
-                        <input type="text" onInput={this.updateText.bind(this)}  id="input-name" name="fname" placeholder="First Name" />First Name <br />
-                        <input type="text" onInput={this.updateText.bind(this)} id="input-lastname" name="lname" placeholder="Last Name" />Last Name <br />
-                        <input type="password" onInput={this.updateText.bind(this)} id="input-password" name="password" placeholder="password" />Password <br />
-                        <input type="checkbox" onClick={this.checkStatus.bind(this)} name="client" />is this account a client?(if no don't click)<br />
-                        <input type="checkbox" onClick={this.checkStatus.bind(this)} name="admin" />is this account an admin?(if no don't click)<br />
-                        <input type="text" onInput={this.updateText.bind(this)} name="institution" placeholder="Institution" />What is the name of the institution that you work for?<br />
-                    </div>
-                    <button type="button" id="subbutton" onClick={this.submitForm.bind(this)}>Create</button>
-                </form>
-            </div>
+
+        return (<div id="class">
+
+                <label id="Header">CREATE ACCOUNT</label>
+  <form class="createform" action="#" method="POST" encType="multipart/form-data">
+
+
+<div id ="labelshort" class= "container">
+    <label id ="labelshort">First Name</label>
+    
+      <input type="text" onInput={this.updateText.bind(this)} id="input-email" name="email" placeholder="email@gmail.com" />
+    </div>
+    <div class ="container" id ="labelshort"><label id ="labelshort">Last Name</label>
+    
+      <input type="text" onInput={this.updateText.bind(this)} id="input-name" name="fname" placeholder="First Name" />
+    </div>
+   <div class ="container" id ="labelshort" > <label id ="labelshort">Email</label>
+    
+      <input type="text" onInput={this.updateText.bind(this)} id="input-lastname" name="lname" placeholder="Last Name" />
+    </div>
+
+    <div class ="container" id ="labelshort"> <label id ="labelshort">Password</label>
+    
+    <input type="password" onInput={this.updateText.bind(this)} id="input-password" name="password" placeholder="password" />
+    </div>
+
+    <div class ="container" id ="labelshort"> <label id ="labelshort"> Institution </label>
+    
+    <input type="text" onInput={this.updateText.bind(this)} name="institution" placeholder="Institution" />
+    </div>
+
+    <div class ="container" id ="labelshort"> <label id ="labelshort"> &nbsp; </label>
+    
+ 
+    </div>
+    
+    <div>
+
+
+
+
+    
+    
+
+      <div> is this account a client?(if no don't click)
+      <input type="checkbox" onClick={this.checkStatus.bind(this)} name="client" />
+        <br />
+      </div>
+    <div> is this account an admin?(if no don't click)
+        <input type="checkbox" onClick={this.checkStatus.bind(this)} name="admin" />
+        <br/>
+      </div>
+    </div>
+
+   
+
+    <button type="button" id="submit_button" onClick={this.submitForm.bind(this)}>Create</button>
+    
+  </form>
+</div>
+
+
         );
     };
 }

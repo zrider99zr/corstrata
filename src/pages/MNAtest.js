@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
+
+import '../styling/style.css';
+
 import { Redirect } from 'react-router-dom'
-import '../styling/mna.css';
+
+
 import Response from './response'
 
 class MNAtest extends Component {
@@ -190,80 +194,127 @@ class MNAtest extends Component {
             }
         return (
 
-            <div id="class" className="classContainer" >
+            <div id="class"  >
+         
+  <label id="Header">Mini Nutritional  </label>
+  
 
-                <label id="Header">Mini Nutritional  </label>
-                <div className="container">
-
-                    <form className="mnaform" >
-
-                        {/*radio button group for the appetite section */}
-                        <label htmlFor="name">Has Food intake declined over the past 3 months due to loss of appetite, digestive problems, chewing or swalloing diffculites?</label>
-                        <div>
-                            <input type="radio" onChange={this.updateVal.bind(this)} name="appetite" value="0" />Severe decrease in food intake
-                            <br></br>
-                            <input type="radio" onChange={this.updateVal.bind(this)} name="appetite" value="1" />Modarate decrease in food intake
-                            <br></br>
-                            <input type="radio" onChange={this.updateVal.bind(this)} name="appetite" value="2" />No decrease in food intake
-                            </div>
-
-                        {/*radio button group for the weightloss section */}
-                        <label htmlFor="email"> Weight loss during the last 3 months</label>
-                        <div>
-                            <input type="radio" onChange={this.updateVal.bind(this)} name="WL" value="0" />Weight loss greater thean 3kg (6.6 lbs)
-                                <br></br>
-                            <input type="radio" onChange={this.updateVal.bind(this)} name="WL" value="1" />Does not know
-                                <br></br>
-                            <input type="radio" onChange={this.updateVal.bind(this)} name="WL" value="2" />Weight loss between 1 and 3 kg (2.2 and 6.6 lbs)
-                                <br></br>
-                            <input type="radio" onChange={this.updateVal.bind(this)} name="WL" value="3" />No weight loss
-                                <br></br>
-                        </div>
+    <form class="mnaform" action="#" method="POST" encType="multipart/form-data">
 
 
-                        {/*radio button group for mobility section */}
-                        <label htmlFor="message">Mobility</label>
-                        <div>
-                            <input type="radio" onChange={this.updateVal.bind(this)} name="Mobility" value="0" />Bed or chair bound
-                                <br></br>
-                            <input type="radio" onChange={this.updateVal.bind(this)} name="Mobility" value="1" />Able to get out of bed/chair but doesnt no go out
-                                <br></br>
-                            <input type="radio" onChange={this.updateVal.bind(this)} name="Mobility" value="2" />Goes out
-                                <br></br>
-                        </div>
 
-                        {/*radio button group for stress section*/}
-                        <label htmlFor="QD">Has suffered psychological stress or acute disesease in the last 3 months</label>
-                            <br></br>
-                        <div>
-                            <input type="radio" onChange={this.updateVal.bind(this)} name="stress" value="0" />Yes
-                                <br></br>
-                            <input type="radio" onChange={this.updateVal.bind(this)} name="stress" value="2" />No
-                        </div>
 
-                        <label htmlFor="QC">Neuropsycologial problems </label>
-                        <div>
-                            <input type="radio" onChange={this.updateVal.bind(this)} name="neuro" value="0" />Severe dementia or depression
-                                <br></br>
-                            <input type="radio" onChange={this.updateVal.bind(this)} name="neuro" value="1" />Mild dementia
-                                <br></br>
-                            <input type="radio" onChange={this.updateVal.bind(this)} name="neuro" value="2" />No psychological problems
-                        </div>
+      {/*values || severe decrease in food intake = 0 || moderate dec in food intake = 1 || no dec in food intake = 2 */}
+      <label >Has Food intake declined over the past 3 months due to loss of appetite, digestive problems, chewing or swalloing diffculites?</label>
+      
+      <br></br>
 
-                        {/*Question for the user to decide if they are doing the calfcircumference test or BMI test*/}
-                        <div>
-                            <label>Do you wish to perform BMI check or a Calf Circumference</label>
-                            <input type="radio" onChange={this.updateVal.bind(this)} name="hasBMI" value="0" />Check B.M.I.
-                                <br></br>
-                            <input type="radio" onChange={this.updateVal.bind(this)} name="hasBMI" value="1" />Check Calf Circumference
-                        </div>
+      <div class="g">
+        <input type="radio" name="appetite" value="0" />severe decrease in food intake
+        <br></br>
 
-                        {/* refer to response.js  */}
-                        <Response info={this.state.info} />
-                        <button type="button" onClick={this.submitTest.bind(this)}>Create</button>
-                        </form>   
-                </div>
-            </div>
+        <input type="radio" name="appetite" value="1" />modarate decrease in food intake
+        <br></br>
+        <input type="radio" name="appetite" value="2" />no decrease in food intake
+        <p></p>
+      </div>
+
+      {/*values || weight loss > 3kg = 0 || does not know = 1 || weight loss between 1/3kg = 2 || no weight loss = 3 */}
+      <label htmlFor="email"> Weight loss during the last 3 months</label>
+      <br></br>
+      <div>
+        <input type="radio" name="WL" value="0" />weight loss greater thean 3kg (6.6 lbs)
+        <br></br>
+        <input type="radio" name="WL" value="1" />does not know
+        <br></br>
+        <input type="radio" name="WL" value="2" />weight loss between 1 and 3 kg (2.2 and 6.6 lbs)
+        <br></br>
+        <input type="radio" name="WL" value="3" />no weight loss
+        <br></br>
+
+        <p></p>
+      </div>
+
+
+      {/*values || bed/chair bound = 0 || able to get out of bed/chair = 1 || weight loss between 1/3kg = 2 */}
+      <label htmlFor="message">Mobility</label>
+      <br></br>
+      <div>
+        <input type="radio" name="Mobility" value="0" />bed or chair bound
+        <br></br>
+        <input type="radio" name="Mobility" value="1" />able to get out of bed/chair but doesnt no go out
+        <br></br>
+        <input type="radio" name="Mobility" value="2" />weight loss between 1 and 3 kg (2.2 and 6.6 lbs)
+        <br></br>
+        <p></p>
+      </div>
+
+
+      {/*values || yes = 0 || no = 1 */}
+      <label htmlFor="QD">Has suffered psychological stress or acute disesease in the last 3 months</label>
+      <br></br>
+      <div>
+        <input type="radio" name="stress" value="0" />yes
+        <br></br>
+        <input type="radio" name="stress" value="1" />no
+        <p></p>
+      </div>
+
+      <label htmlFor="QC">Neuropsycologial problems </label>
+      <br></br>
+
+      <div>
+        <input type="radio" name="neuro" value="0" />severe dementia or depression
+        <br></br>
+        <input type="radio" name="neuro" value="1" />mild dementia
+        <br></br>
+        <input type="radio" name="neuro" value="2" />no psychological problems
+        <p></p>
+      </div>
+
+
+      {/*values || BMI
+      < 19=0 || 19 <=B MI < 21=1 || 21 <=B MI < 23=2 || 23 <=B MI=3 */} <label htmlFor="QE">Body Mass index BMI wieght in kg/(height in m)^2 </label>
+        <br></br>
+
+        <div>
+          <input type="radio" name="BMI" value="0" /> BMI less that 19
+          <br></br>
+          <input type="radio" name="BMI" value="1" /> BMI greater than 19 to less than 21
+          <br></br>
+          <input type="radio" name="BMI" value="2" /> BMI less 21 to less than 23
+          <br></br>
+          <input type="radio" name="BMI" value="3" /> BMI 23 or greater
+          <p></p>
+        </div>
+
+
+
+
+
+
+
+        {/*values || less than 31 = 0 || 31 or greater = 3 */}
+        <label htmlFor="QE">Calf circumference (CC) in cm </label>
+        <br></br>
+
+        <div>
+          <input type="radio" name="CC" value="0" />CC less than 31
+          <br></br>
+          <input type="radio" name="CC" value="3" />CC 31 or greater
+          <p></p>
+        </div>
+
+        {/* Dynamically generate the final submission score on the bottom of the page as they fill it out, so there is some sort of feedback before they submit */}
+        <input id="submit_button" type="submit" value="Sumbit form " />
+    </form>
+
+ 
+
+</div>
+
+
+                       
         );
     };
 }

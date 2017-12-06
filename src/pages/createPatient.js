@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 
+import '../styling/style.css'
+
 class createPatient extends Component {
     constructor() {
         super();
@@ -106,15 +108,50 @@ class createPatient extends Component {
         }
 
         return (
-            <div>
-                <form id="accountForm" >
-                    <br />
-                    <div className="row">
-                        <input type="text" onInput={this.updateText.bind(this)} name="fName" placeholder="First Name" />First Name <br />
-                        <input type="text" onInput={this.updateText.bind(this)} name="lName" placeholder="Last Name" />Last Name <br />
-                    </div>
-                    <button type="button" onClick={this.submitForm.bind(this)}>Create</button>
+
+
+            <div id="class">
+           
+
+            <label id="Header">CREATE PATIENT</label>
+                <form class="createform" >
+
+                <div id ="labelshort" class= "container">
+    <label id ="labelshort">First Name</label>
+    
+    <input type="text" onInput={this.updateText.bind(this)} name="fName" placeholder="First Name" />
+    </div>
+
+    
+<div id ="labelshort" class= "container">
+    <label id ="labelshort">Last Name</label>
+    
+    <input type="text" onInput={this.updateText.bind(this)} name="lName" placeholder="Last Name" />
+    </div>
+
+    <div>
+
+
+
+
+    
+    
+
+      <div> MALE &nbsp;  &nbsp;
+      <input type="checkbox"  />
+        <br />
+      </div>
+    <div> FEMALE
+        <input type="checkbox"  />
+        <br/>
+      </div>
+    </div>
+
+
+                    <button type="button" id="submit_button" onClick={this.submitForm.bind(this)}>Create</button>
+
                 </form>
+           
             </div>
         );
     };

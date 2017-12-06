@@ -2,24 +2,23 @@ import React, { Component } from 'react';
 import '../styling/nav.css';
 import { Link } from 'react-router-dom';
 import { slide as Menu } from 'react-burger-menu';
+import { Button,ButtonGroup } from 'react-bootstrap';
 
 class nav extends Component {
     render() {
         return (
-            <div>
-                <Menu>
-                    <Link className='button' to='./searchPatient'>Find Patient</Link>
-                    <Link className='button' to='./createAccount'>Create Account</Link>
-                    <li><Link to='/'>Home</Link></li>
-                    <li><Link to='/loginPage'>Login Page</Link></li>
-                    <li><Link to='/resetPassword'>reset Password</Link></li>
+        
+  <ButtonGroup vertical >
+  <Link to='./'><Button>HOME</Button></Link>
+  <Link to='./wagnerScaleTest'><Button >CHANGE PASSWORD</Button></Link>
+  
+  <Link to='./createPatient'><Button >Create PATIENT</Button></Link>
 
-                    <li><Link to='/createPage'>Create Admin Page</Link></li>
-                    <li><Link to='/MNAtest'>Mini-Nutritional Assessment</Link></li>
-                    <li><Link to='/wagnerScaleTest'>Wagner Scale Test</Link></li>
-                    <li><Link to='/testSelectionPage'>Test Selection Page</Link></li>
-                    <li><Link to='/createAccount'>Create Account Page</Link></li>
+  <Link to='./wagnerScaleTest'><Button > LOGOUT</Button></Link>
+</ButtonGroup>
 
+
+{/*<<<<<<< HEAD
                     <li><Link to='/createPage'>Search Admin</Link></li>
                     <li><Link to='/nav'>Nav Bar</Link></li>
                     <li><Link to='/bates'>bates</Link></li>
@@ -34,6 +33,8 @@ class nav extends Component {
                     
                 </Menu>
             </div>
+=======
+>>>>>>> 34f0e87a16694a18e0f80b604e45c55825ef3e34*/}
         );
     };
 }
