@@ -6,7 +6,6 @@ import { Redirect } from 'react-router-dom'
 
 
 import Response from './response'
-import { Redirect } from 'react-router-dom'
 
 class MNAtest extends Component {
     constructor() {
