@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import '../styling/header.css';
 import { Button } from 'react-bootstrap';
-import {nav} from '../styleForm';
 { /* this will only be here while we are testing all the pages, after page testing is done it will be removed and navigation will only be done through the webpage */}
 // The Header creates links that can be used to navigate between routes.
 class header extends Component{

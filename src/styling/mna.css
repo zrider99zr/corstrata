@@ -39,11 +39,7 @@ height: 20px;
   grid-column: 2/4;
  
 }
-
-
-    
-    
-    
+ 
     .mnaform{
       padding: 40px 40px 40px 40px;
       display: grid;
@@ -55,20 +51,15 @@ height: 20px;
       width:fit-content(100%);
       height:fit-content(100%);
       border-color:#eb7c32;
-    margin-right: 520px;
+      margin-right: 520px;
       background-color: rgb(224, 216, 216);
-     
-      grid-template-columns:   fit-content(100%);
-                   
+      grid-template-columns:   fit-content(100%);              
     }
 
     #size{
  
     }
     
-
-
-  
     #input{width: 70;
     padding: 12px 20px;
     margin: 8px 0;
@@ -84,18 +75,11 @@ height: 20px;
     font-size:large;
     }
     
-   
-    
     #class{
 background-color: rgba(0, 0, 0, .7)
 
     }
-
-
-    
-    
-    
-    
+  
       button.bChange{
       grid-area: bottomleft;
       margin-left:10em;
@@ -112,11 +96,7 @@ background-color: rgba(0, 0, 0, .7)
       text-align: center;
     
     }
-    
-    
-    
-    
-    
+     
     #Header{
       
       margin-left: auto;
@@ -135,7 +115,6 @@ background-color: #9c9a99;
       margin-bottom: 5px;
     }
     
-
     select{
       height:35px;
       line-height:40px;
@@ -143,6 +122,4 @@ background-color: #9c9a99;
      
 
 
-    }
-   
-    
+    } 

@@ -17,6 +17,7 @@ class nav extends Component {
   <Link to='./wagnerScaleTest'><Button > LOGOUT</Button></Link>
 </ButtonGroup>
 
+
         );
     };
 }

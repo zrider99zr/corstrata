@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import 'font-awesome/css/font-awesome.min.css'
-import { Link, Redirect } from 'react-router-dom'
+import { Link, Redirect,} from 'react-router-dom'
+import { routerActions } from 'react-router-redux'
 
+//imorts buttons and other assets from styleForm.js
 import {
     HelpmMessage, InputGroup,
     AuthPage, InputField, StackedInputs, SubmitButton
@@ -19,16 +21,17 @@ class loginPage extends Component {
         };
     }
 
+    //updates state
     setEmail(e) {
         this.setState({ email: e.target.value });
     }
 
+    //updates state 
     setPass(e) {
         this.setState({ password: e.target.value });
     }
 
     checkInput(e) {
-        //loggin in and passing it state, will need to trim or extend the method to show more/less state variables
         fetch('http://165.227.191.245/corstrata/api/index.php', {
             method: 'POST',
             headers: {
@@ -45,6 +48,8 @@ class loginPage extends Component {
                 if (res.status === 1) {
                     sessionStorage.setItem("token", res.token);
                     this.setState({ login: true });
+                    routerActions.push('/'); //takes you to the home page
+                    
                 } else {
                     sessionStorage.setItem("token","");
                 }
@@ -82,9 +87,10 @@ class loginPage extends Component {
                             required
                         />
                         <SubmitButton style={{ marginTop: "0px" }}
+                        //enabled={true}
                             onClick={this.checkInput.bind(this)}>
                             <i className="fa fa-sign-in fa-lg" />
-                            <Link to='./'> </Link>
+                            
                         </SubmitButton>
 
                     </InputGroup>
@@ -96,3 +102,4 @@ class loginPage extends Component {
     };
 }
 export default loginPage;
+//                            <Link to='./'> </Link>

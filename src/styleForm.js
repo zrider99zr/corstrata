@@ -38,6 +38,18 @@ border-bottom-left-radius: 0;
 }
 `;
 
+export const InputField = styled.input`
+flex: 1;
+width: 100%;
+height: 34px;
+font-size: 14px;
+padding: 6px 12px;
+margin-bottom: 5px;
+border: 1px solid #ccc;
+border-radius: 4px;
+box-sizing: border-box;
+`;
+
 export const InputGroup = styled.div`
 display: flex;
 width: 100%;
@@ -73,17 +85,6 @@ export const StackedInputs = styled.div`
 }
 `;
 
-export const InputField = styled.input`
-flex: 1;
-width: 100%;
-height: 34px;
-font-size: 14px;
-padding: 6px 12px;
-margin-bottom: 5px;
-border: 1px solid #ccc;
-border-radius: 4px;
-box-sizing: border-box;
-`;
 
 export const HelpmMessage = styled.p`
 padding:1em;

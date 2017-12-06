@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
+
 import '../styling/style.css';
-import Response from './response'
+
 import { Redirect } from 'react-router-dom'
 
+
+import Response from './response'
+import { Redirect } from 'react-router-dom'
 
 class MNAtest extends Component {
     constructor() {
@@ -16,10 +20,12 @@ class MNAtest extends Component {
             i6: "-1",
             i7: "-1",
             info: " ",
+            loggedIn: false,
             testCreated: false,
         };
     }
 
+    //sends the users input to the backend for storage.
     submitTest() {
         if((this.state.i1 !== "-1" && this.state.i2 !== "-1" && this.state.i3 !== "-1" && this.state.i4 !== "-1" && this.state.i5 !== "-1") && ((this.state.i6 !== "-1" && this.state.i7 === "-1") || (this.state.i6 === "-1" && this.state.i7 !== "-1"))){
             fetch('http://165.227.191.245/corstrata/api/index.php', {
@@ -63,6 +69,43 @@ class MNAtest extends Component {
         }   
     }
 
+    //function to validate, with the backened, that the user is who they say they area
+    validateUser() {
+        fetch('http://165.227.191.245/corstrata/api/index.php', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/.json',
+            },
+            body: JSON.stringify({
+                request: 'validateJWT',
+                token: sessionStorage.getItem("token"),
+            })
+        })
+            .then((response) => response.json())
+            .then((res) => {
+
+                if (res.status === 1) {
+                    this.setState({ loggedIn: true });
+
+                } else if (res.status === 0) {
+                    this.setState({ loggedIn: false });
+                }
+            })
+            .catch((error) => {
+                alert(error.message);
+            })
+    }
+
+    //calls functions after the page is loaded
+    componentDidMount() {
+        console.log(sessionStorage.getItem("token"));
+        if (sessionStorage.getItem("token") == null || sessionStorage.getItem("token") === "") {
+            this.setState({ loggedIn: false });
+        } else {
+            this.validateUser();
+        }
+    }
+
     updateHidden(e) {
         if (e.target.value === 0) {
             this.setState({
@@ -80,6 +123,7 @@ class MNAtest extends Component {
         }
     }
 
+    //function that updates the state value based upon which button group was pressed
     updateVal(e) {
         if (e.target.name === "appetite") {
             this.setState({ i1: e.target.value });
@@ -131,9 +175,9 @@ class MNAtest extends Component {
         }
     }
 
+    //function to test if the functionality of the page works, while not connected to the database
     calculateTotal() {
-        var total = 0;
-        if (this.state.i1 != -1 && this.state.i2 != -1 && this.state.i3 != -1 && this.state.i4 != -1 && this.state.i5 != -1 && this.state.i6 != -1) {
+        if (this.state.i1 !== -1 && this.state.i2 !== -1 && this.state.i3 !== -1 && this.state.i4 !== -1 && this.state.i5 !== -1 && this.state.i6 !== -1) {
             console.log(this.state);
         } else {
             alert("Please fill out the rest of the survey before submitting");
@@ -141,6 +185,10 @@ class MNAtest extends Component {
     }
 
     render() {
+        {/*Boots user back to login page, if they are not logged in or Validated*/}
+        if (this.state.loggedIn === false) {
+            return (<Redirect to={'/loginPage'} />)
+        }
             if(this.state.testCreated===true){
 
             return (<Redirect to={'/'} />)
@@ -153,6 +201,7 @@ class MNAtest extends Component {
   
 
     <form class="mnaform" action="#" method="POST" encType="multipart/form-data">
+
 
 
 
@@ -265,6 +314,8 @@ class MNAtest extends Component {
 
 </div>
 
+
+                       
         );
     };
 }

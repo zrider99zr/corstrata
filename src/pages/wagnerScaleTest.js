@@ -47,6 +47,7 @@ class wagnerScaleTest extends Component {
         this.setState({ input });
         if (input==="0"){
             info = <ul>
+                <label>Wound Feedback: </label>
                 <li>The Patient has diabetes.</li>
                 <li> there are no signs of any damage or ulceration on the feet. </li>
                 <li>It is appropriate to evaluate the patient annually with the semmes-Weistein monofilament to determine if there are any changes in sensation</li>
@@ -61,6 +62,7 @@ class wagnerScaleTest extends Component {
 
         } else if (input==="2"){
             info = <ul>
+                <label>Wound Feedback: </label>
                 <li>The ulcer involces deep tissue destruction that may involve muscle bone or tendon.</li>
                 <li>Aggressive treatment is necessary to prevent complications such as amputation.</li>
                 <li>The aggressive management of diabetes mellitus includes off-loading and prevention of osteomyelitis.</li>
@@ -69,6 +71,7 @@ class wagnerScaleTest extends Component {
 
         } else if (input==="3"){
             info = <ul>
+                <label>Wound Feedback: </label>
                 <li>The ulcer involces gangrene or a deep tissue abscess.</li>
                 <li>There is potential for the loss of a limb.</li>
                 <li>Diabetes control as well as aggressive topical wound care is necessary.</li>
@@ -76,12 +79,14 @@ class wagnerScaleTest extends Component {
 
         } else if (input==="4"){
             info = <ul>
+                <label>Wound Feedback: </label>
                 <li>The ulcer involves gangrene of the forefoot.</li>
                 <li>Limb salvage is the goal of the treatment</li>
             </ul>
 
         } else if (input==="5"){
             info = <ul>
+                <label>Wound Feedback: </label>
                 <li>The ulcer involes gangrene of a major portion of the foot.</li>
                 <li>The possiblity of limb loss increases</li>
             </ul>
