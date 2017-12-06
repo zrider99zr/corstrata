@@ -1,5 +1,5 @@
-import React from 'react'; 
-//import $ from 'jquery';
+import React, { Component } from 'react'
+import { Link, Redirect, } from 'react-router-dom'
 import '../styling/mna.css'
 
 var x;

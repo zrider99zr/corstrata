@@ -102,4 +102,3 @@ class loginPage extends Component {
     };
 }
 export default loginPage;
-//                            <Link to='./'> </Link>

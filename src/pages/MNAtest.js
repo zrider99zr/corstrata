@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom'
 import '../styling/mna.css';
 import Response from './response'
-import { Redirect } from 'react-router-dom'
 
 class MNAtest extends Component {
     constructor() {
