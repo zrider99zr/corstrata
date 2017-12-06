@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Response from './response'
-import '../styling/wagner.css'
+
+import '../styling/style.css'
 
 class wagnerScaleTest extends Component {
 
@@ -95,33 +96,53 @@ class wagnerScaleTest extends Component {
 
     render() {
         return (
-            <div>
-                <div align="left">
-                    <nav />
-                </div>
-            <div id="containera">
-                <form id="wagnerForm" action="#" method="POST" encType="multipart/form-data">
-                <div id="oldpassword">
-                        <label className="lab">Select the option that best describes the situation</label><br></br> <label>&nbsp;</label><label>&nbsp;</label>   <br></br>
-                        <input type="radio" id="rb" onClick={this.updateInput.bind(this)} info="zignewton" name="WSD" value="0" /> Ulcers have intact skin <br></br>
-                        <input type="radio" id="rb" onClick={this.updateInput.bind(this)} name="WSD" value="1" /> Ulcers are superficial <br></br>
-                        <input type="radio" id="rb" onClick={this.updateInput.bind(this)} name="WSD" value="2" /> Ulcers are deeper, and may extend to tendons or bones  <br></br>
-                        <input type="radio" id="rb" onClick={this.updateInput.bind(this)} name="WSD" value="3" /> Ulcers contain an abscess or osteomyelitis <br></br>
-                        <input type="radio" id="rb" onClick={this.updateInput.bind(this)} name="WSD" value="4" /> Ulcers have gangrene of the forefoot  <br></br>
-                        <input type="radio" id="rb" onClick={this.updateInput.bind(this)} name="WSD" value="5" /> Ulcers have gangrene of a major portion of the foot<br></br>
-                    </div>
-                    <div className="class">
-                    {/* potentially swap this submit button out for an actual link button with a function to interface to the backend*/}
-                   
-                <Response input={this.state.input} info={this.state.info} /> 
-                <br></br>
-                
-                </div>
-                    <button id="changeButton" type="submit">Submit</button>
-                </form>
-                
-            </div>
-                </div>
+   
+            <div id="class">
+
+  <label id="Header">Wagner</label>
+  <br></br>
+
+  <form class="mnaform" action="#" method="POST" encType="multipart/form-data">
+
+    <div class="containerb">
+
+
+
+
+
+
+      <div>
+        <label>Select the option that best describes the situation</label>
+        <input type="radio" id="rb" onClick={this.updateInput.bind(this)} info="zignewton" name="WSD" value="0" /> Ulcers have intact skin
+        <br></br>
+        <input type="radio" id="rb" onClick={this.updateInput.bind(this)} name="WSD" value="1" /> Ulcers are superficial
+        <br></br>
+        <input type="radio" id="rb" onClick={this.updateInput.bind(this)} name="WSD" value="2" /> Ulcers are deeper, and may extend to tendons or bones
+        <br></br>
+        <input type="radio" id="rb" onClick={this.updateInput.bind(this)} name="WSD" value="3" /> Ulcers contain an abscess or osteomyelitis
+        <br></br>
+        <input type="radio" id="rb" onClick={this.updateInput.bind(this)} name="WSD" value="4" /> Ulcers have gangrene of the forefoot
+        <br></br>
+      </div>
+      <div class="containerb">
+        <div>
+          <Response input={this.state.input} info={this.state.info} />
+        </div>
+
+      </div>
+
+    </div>
+    {/* potentially swap this submit button out for an actual link button with a function to interface to the backend*/}
+
+
+    <br></br>
+
+
+    <button id="submit_button" type="submit">Submit</button>
+  </form>
+
+</div>
+
         );
     };
 }

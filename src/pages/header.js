@@ -46,7 +46,7 @@ class header extends Component{
         return (
             <header id="bodyf">
                 <Button onClick={this.logout.bind(this)} id="logout">LOGOUT</Button>
-                <Link to='/nav'> <Button id="menu">MENU</Button> </Link>
+               
             </header>
         );
     };
