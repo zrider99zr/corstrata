@@ -36,10 +36,3 @@ describe('password', () => {
   });
 });
 
-describe('first name', () => {
-  it('email should be', () => {
-  
-    const firstName = 'first';
-    expect(firstName).toBe('first');
-  });
-});
