@@ -10,7 +10,7 @@ import testSelectionPage from './testSelectionPage';
 import createAccount from './createAccount';
 import nav from './nav';
 import createPage from './createPage';
-import bates from './bates';
+//import bates from './bates';
 import linegraph from './linegraph';
 import createInstitution from './createInstitution';
 import createPatient from './createPatient';
@@ -36,7 +36,7 @@ const main = () => (
             <Route path='/wagnerScaleTest' component={wagnerScaleTest} />
             <Route path='/testSelectionPage' component={testSelectionPage} />
             <Route path='/createAccount' component={createAccount} />
-            <Route path='/bates' component={bates} />
+
             <Route path='/linegraph' component={linegraph}/>
             <Route path='/nav' component={nav} />
             <Route path='/createInstitution' component={createInstitution} />
