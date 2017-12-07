@@ -8,7 +8,7 @@ class Home extends Component {
     constructor() {
         super();
         this.state = {
-            loggedIn: false,
+            loggedIn: true,
             data: [],
             accountName: "",
             showTable: false,
