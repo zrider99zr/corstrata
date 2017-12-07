@@ -18,7 +18,7 @@ class pressureWoundTest2 extends Component {
             periphTissInduration: 0,
             granulationTissue: 0,
             epithelialization: 0,
-            loggedIn: false,
+            loggedIn: true,
 
         };
     }

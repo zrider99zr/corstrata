@@ -64,7 +64,6 @@ class MNAtest extends Component {
             
         }
         else{
-            console.log(this.state.i1,this.state.i2,this.state.i3,this.state.i4,this.state.i5,this.state.i6,this.state.i7)
         }   
     }
 
@@ -97,7 +96,6 @@ class MNAtest extends Component {
 
     //calls functions after the page is loaded
     componentDidMount() {
-        console.log(sessionStorage.getItem("token"));
         if (sessionStorage.getItem("token") == null || sessionStorage.getItem("token") === "") {
             this.setState({ loggedIn: false });
         } else {
@@ -177,7 +175,6 @@ class MNAtest extends Component {
     //function to test if the functionality of the page works, while not connected to the database
     calculateTotal() {
         if (this.state.i1 !== -1 && this.state.i2 !== -1 && this.state.i3 !== -1 && this.state.i4 !== -1 && this.state.i5 !== -1 && this.state.i6 !== -1) {
-            console.log(this.state);
         } else {
             alert("Please fill out the rest of the survey before submitting");
         }

@@ -9,7 +9,7 @@ class createPatient extends Component {
         this.state = {
             fName: "",
             lName: "",
-            loggedIn: false,
+            loggedIn: true,
             patientCreated: false,
         };
     }
@@ -47,7 +47,6 @@ class createPatient extends Component {
                 this.setState({patientCreated: true});
                 }/*else{
                     alert("Test Creation failed");
-                    console.log(res.status);
                     this.setState({patientCreated: false});*
                 }*/
             })
@@ -90,7 +89,6 @@ class createPatient extends Component {
 
     //called on page load
     componentDidMount() {
-        console.log(sessionStorage.getItem("token"));
         if (sessionStorage.getItem("token") === null || sessionStorage.getItem("token") === "") {
             this.setState({ loggedIn: false });
         } else {

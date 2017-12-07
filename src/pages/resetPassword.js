@@ -9,7 +9,7 @@ class resetPassword extends Component {
             oldPass: "",
             newPass: "",
             verifyPass: "",
-            loggedIn: false,
+            loggedIn: true,
 
         };
     }
@@ -30,7 +30,6 @@ class resetPassword extends Component {
 
     //sends user input to the backend for storage
     submitForm() {
-        console.log(this.state);
         fetch('http://165.227.191.245/corstrata/api/index.php', {
             method: 'POST',
             headers: {
@@ -81,7 +80,6 @@ class resetPassword extends Component {
 
     //calls functions on page load
     componentDidMount() {
-        console.log(sessionStorage.getItem("token"));
         if (sessionStorage.getItem("token") === null || sessionStorage.getItem("token") === "") {
             this.setState({ loggedIn: false });
         } else {

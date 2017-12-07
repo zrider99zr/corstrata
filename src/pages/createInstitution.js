@@ -11,12 +11,11 @@ class createInstitution extends Component {
             city: "",
             zCode: "",
             pNumber: "",
-            loggedIn: false,
+            loggedIn: true,
         };
     }
 
     componentDidMount() {
-        console.log(sessionStorage.getItem("token"));
         if (sessionStorage.getItem("token") === null || sessionStorage.getItem("token") === "") {
             this.setState({ loggedIn: false });
         } else {

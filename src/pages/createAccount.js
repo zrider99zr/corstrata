@@ -15,7 +15,7 @@ class createAccount extends Component {
             isClient: false,
             isAdmin: false,
             institution: "",
-            loggedIn: false,
+            loggedIn: true,
         };
     }
 
@@ -68,7 +68,6 @@ class createAccount extends Component {
 
     //calls functions on page load
     componentDidMount() {
-        console.log(sessionStorage.getItem("token"));
         if (sessionStorage.getItem("token") === null || sessionStorage.getItem("token") === "") {
             this.setState({ loggedIn: false });
         } else {
@@ -95,7 +94,6 @@ class createAccount extends Component {
 
     //sends user input to the backend
     submitForm() {
-        console.log(this.state);
         fetch('http://165.227.191.245/corstrata/api/index.php', {
             method: 'POST',
             headers: {

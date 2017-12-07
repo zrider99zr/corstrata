@@ -88,7 +88,6 @@ class Home extends Component {
     }
     //========================================================================================================
     componentDidMount() {
-        console.log(sessionStorage.getItem("token"));
         if (sessionStorage.getItem("token") === null || sessionStorage.getItem("token") === "" ) {
             this.setState({ loggedIn: false });
         } else {

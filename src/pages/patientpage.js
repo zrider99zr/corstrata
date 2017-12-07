@@ -15,7 +15,6 @@ class patientPage extends Component {
 
   //sends user input to the backend for storage
   submitForm() {
-      console.log(this.state);
       fetch('http://165.227.191.245/corstrata/api/index.php', {
           method: 'POST',
           headers: {
