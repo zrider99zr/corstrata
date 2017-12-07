@@ -7,7 +7,7 @@ class patientPage extends Component {
   constructor() {
       super();
       this.state = {
-          loggedIn: false,
+          loggedIn: true,
           date: "",
           patient: "test",
       };   

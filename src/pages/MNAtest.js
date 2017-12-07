@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
-
 import '../styling/style.css';
-
 import { Redirect } from 'react-router-dom'
-
-
 import Response from './response'
 
 class MNAtest extends Component {
