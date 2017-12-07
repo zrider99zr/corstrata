@@ -19,7 +19,7 @@ class MNAtest extends Component {
             i6: "-1",
             i7: "-1",
             info: " ",
-            loggedIn: false,
+            loggedIn: true,
             testCreated: false,
         };
     }
