@@ -32,7 +32,7 @@ class loginPage extends Component {
     }
 
     checkInput(e) {
-       // if (this.state.email !== "" && this.state.password !== "") {
+        if (this.state.email !== "" && this.state.password !== "") {
             fetch('http://165.227.191.245/corstrata/api/index.php', {
                 method: 'POST',
                 headers: {
@@ -58,7 +58,7 @@ class loginPage extends Component {
                 .catch((error) => {
                     alert(error.message);
                 });
-            //}
+            }
         }
         
 
